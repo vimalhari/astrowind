@@ -1,7 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
@@ -14,66 +13,63 @@ const metadata = {
 
   <HeroText tagline="Contact" title="Let's Connect!" />
 
-  <ContactUs
-    id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-    ]}
-    textarea={{
-      label: 'Message',
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
-  />
-
+  <div id="form-container">
+    <iframe 
+    src="https://forms.office.com/Pages/ResponsePage.aspx?id=9Tx_8ertr06M3TrVZD7biKqgAITMzgVDrkcmylHSritUQ1dWR1AyTkdGUzQxREFRMFZZVzlKUkFWRS4u&embed=true" 
+    style="border: none; width: 100%; height: 100%" 
+    > 
+  </iframe>
+  </div>
+  
   <!-- Features2 Widget ************** -->
 
   <Features2
     title="We are here to help!"
     items={[
-      {
+     {
         title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+        description: 'For general inquiries, account assistance, website navigation, or billing questions, our support team is ready to help.',
       },
       {
         title: 'Contact sales',
         description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+          'Have questions about our services, custom solutions, project proposals, or pricing? Get in touch with our sales team.',
       },
       {
         title: 'Technical support',
         description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
+          'Experiencing technical difficulties? Contact our experts for assistance with website issues, software problems, or any other technical challenges.',
       },
       {
         title: 'Phone',
-        description: '+1 (234) 567-890',
+        description: '<a href="tel:+4407404979307">+44 (0) 74049 79307</a>',
         icon: 'tabler:headset',
       },
       {
         title: 'Email',
-        description: 'contact@support.com',
+        description: '<a href="mailto:info@criztec.com">info@criztec.com</a>',
         icon: 'tabler:mail',
       },
       {
         title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
+        description: '121 Bath Road, Slough, Berkshire, United Kingdom, SL1 3UW',
         icon: 'tabler:map-pin',
       },
     ]}
   />
 </Layout>
+
+<style>
+  #form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    /* min-height: 100vh;  No need for this if you don't want the container to fill the screen */
+    height: 2200px; /* Set the container height to match the iframe height */
+  }
+
+  #form-container iframe {
+    width: 100%; /* Make the iframe take up the full width of its container */
+    height: 100%; /* Make the iframe take up the full height of its container */
+  }
+</style>
