@@ -111,7 +111,7 @@ export const headerData = {
       href: getPermalink('/contact'),
     },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  actions: [{ text: 'Get in Touch', href: getPermalink('/contact'), target: '_blank' }],
 };
 
 export const footerData = {
