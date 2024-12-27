@@ -3,112 +3,72 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Homes',
+      text: 'Company',
+      href: getPermalink('/#'),
       links: [
         {
-          text: 'SaaS',
-          href: getPermalink('/homes/saas'),
-        },
-        {
-          text: 'Startup',
-          href: getPermalink('/homes/startup'),
-        },
-        {
-          text: 'Mobile App',
-          href: getPermalink('/homes/mobile-app'),
-        },
-        {
-          text: 'Personal',
-          href: getPermalink('/homes/personal'),
-        },
-      ],
-    },
-    {
-      text: 'Pages',
-      links: [
-        {
-          text: 'Features (Anchor Link)',
-          href: getPermalink('/#features'),
-        },
-        {
-          text: 'Services',
-          href: getPermalink('/services'),
-        },
-        {
-          text: 'About us',
+          text: 'About Us',
           href: getPermalink('/about'),
         },
-        {
-          text: 'Contact',
-          href: getPermalink('/contact'),
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
+        // {
+        //   text: 'Startup',
+        //   href: getPermalink('/homes/startup'),
+        // },
+        // {
+        //   text: 'Mobile App',
+        //   href: getPermalink('/homes/mobile-app'),
+        // },
+        // {
+        //   text: 'Personal',
+        //   href: getPermalink('/homes/personal'),
+        // },
       ],
     },
     {
-      text: 'Landing',
+      text: 'Design',
       links: [
-        {
-          text: 'Lead Generation',
-          href: getPermalink('/landing/lead-generation'),
-        },
-        {
-          text: 'Long-form Sales',
-          href: getPermalink('/landing/sales'),
-        },
-        {
-          text: 'Click-Through',
-          href: getPermalink('/landing/click-through'),
-        },
-        {
-          text: 'Product Details (or Services)',
-          href: getPermalink('/landing/product'),
-        },
-        {
-          text: 'Coming Soon or Pre-Launch',
-          href: getPermalink('/landing/pre-launch'),
-        },
-        {
-          text: 'Subscription',
-          href: getPermalink('/landing/subscription'),
-        },
+        { text: 'Web Design', href: getPermalink('/web-design') },
+        { text: 'UX Design', href: getPermalink('/ux-design') },
+        { text: 'Graphic Design', href: getPermalink('/graphic-design') },
+        { text: 'Video Production', href: getPermalink('/video-production') },
       ],
+    },
+    {
+      text: 'Development',
+      links: [
+        { text: 'Web Development', href: getPermalink('/web-development') },
+        { text: 'Mobile App Development', href: getPermalink('/mobile-app') },
+        { text: 'Software Development', href: getPermalink('/software-development') },
+        { text: 'Ecommerce Solutions', href: getPermalink('/ecommerce-solutions') },
+        { text: 'Hugo Static Site', href: getPermalink('/hugo-static-site') },
+        { text: 'Astro Site', href: getPermalink('/astro-site') },
+        { text: 'WordPress', href: getPermalink('/wordpress') }, 
+        { text: 'Automation', href: getPermalink('/automation') },
+        { text: 'ETL / Data Processing', href: getPermalink('/etl-data-processing') },
+      ],
+    },
+    {
+      text: 'Digital Marketing',
+      links: [
+        { text: 'SEO', href: getPermalink('/seo') },
+        { text: 'Social Media Marketing', href: getPermalink('/social-media-marketing') }, 
+        { text: 'Content Marketing', href: getPermalink('/content-marketing') }, 
+      ],
+    },
+    {
+      text: 'Technical',
+    links: [
+      { text: 'IT Support', href: getPermalink('/it-support') },
+      { text: 'IT Solutions', href: getPermalink('/it-solutions') },
+      { text: 'Cloud Services', href: getPermalink('/cloud-services') },
+      { text: 'Cybersecurity', href: getPermalink('/cyber-security') },
+      { text: 'Cloud Infrastructure', href: getPermalink('/cloud-infrastructure') },
+      { text: 'Office 365', href: getPermalink('/office-365') },
+    ],
     },
     {
       text: 'Blog',
-      links: [
-        {
-          text: 'Blog List',
-          href: getBlogPermalink(),
-        },
-        {
-          text: 'Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-        },
-        {
-          text: 'Article (with MDX)',
-          href: getPermalink('markdown-elements-demo-post', 'post'),
-        },
-        {
-          text: 'Category Page',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Tag Page',
-          href: getPermalink('astro', 'tag'),
-        },
-      ],
-    },
-    {
-      text: 'Contact',
-      href: getPermalink('/contact'),
+      href: getBlogPermalink(),
     },
   ],
   actions: [{ text: 'Get in Touch', href: getPermalink('/contact'), target: '_blank' }],
@@ -122,7 +82,7 @@ export const footerData = {
         { text: 'Features', href: '#' },
         { text: 'Security', href: '#' },
         { text: 'Team', href: '#' },
-        { text: 'Enterprise', href: '#' },
+        // { text: 'Enterprise', href: '#' },
         { text: 'Customer stories', href: '#' },
         { text: 'Pricing', href: '#' },
         { text: 'Resources', href: '#' },
@@ -154,10 +114,10 @@ export const footerData = {
         { text: 'About', href: '#' },
         { text: 'Blog', href: '#' },
         { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
-        { text: 'Inclusion', href: '#' },
-        { text: 'Social Impact', href: '#' },
-        { text: 'Shop', href: '#' },
+        // { text: 'Press', href: '#' },
+        // { text: 'Inclusion', href: '#' },
+        // { text: 'Social Impact', href: '#' },
+        // { text: 'Shop', href: '#' },
       ],
     },
   ],
@@ -172,11 +132,10 @@ export const footerData = {
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
     // { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
   ],
-  footNote: `
-    
-    © 2024 <a class="text-blue-600 underline dark:text-muted" href="https://criztec.com/"> Crizaze Business Services Ltd </a>. All rights reserved.<br>Registered in England & Wales. Company No. 15494238.
-  `,
+  footNote: `© 2024 <a> Crizaze Business Services Ltd </a>. All rights reserved. <br>Registered in England & Wales. Company No. <a class="text-blue-600 underline dark:text-muted" href="https://find-and-update.company-information.service.gov.uk/company/15494238"> 15494238. </a>`,
 };
+
+// class="text-blue-600 underline dark:text-muted" href="https://criztec.com/"
 
 // the below line is to add image in front of footer notes
 // <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img>
