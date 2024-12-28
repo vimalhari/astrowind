@@ -9,12 +9,11 @@ import Image from 'src/components/common/Image.astro';
   🌐 {SITE?.name}
 </span> -->
 
-<span class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white flex items-center"> 
+<span class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white flex items-center">
   <Image 
     src="~/assets/images/CriztecLogo.png" 
     alt="Criztec Logo" 
-    class="h-12 mr-2" 
+    class="h-12 mr-2 hidden md:block" 
   />
   <span class="md:hidden">Criztec</span>
-  <!-- {SITE?.name}  -->
 </span>
