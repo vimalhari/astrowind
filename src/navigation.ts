@@ -28,16 +28,16 @@ export const headerData = {
       text: 'Services',
       links: [
         { text: 'Website Development', href: getPermalink('/website-development') },
-        { text: 'Graphic Design', href: getPermalink('/graphic-design') },
-        { text: 'Video Production', href: getPermalink('/video-production') },
+        // { text: 'Graphic Design', href: getPermalink('/graphic-design') },
+        // { text: 'Video Production', href: getPermalink('/video-production') },
 
-        { text: 'Digital Marketing', href: getPermalink('/digital-marketing') },
-        { text: 'Social Media Marketing', href: getPermalink('/social-media-marketing') },
+        // { text: 'Digital Marketing', href: getPermalink('/digital-marketing') },
+        // { text: 'Social Media Marketing', href: getPermalink('/social-media-marketing') },
 
-        { text: 'IT Solutions', href: getPermalink('/it-solutions') },
-        { text: 'Cloud Services', href: getPermalink('/cloud-services') },
-        { text: 'Automation', href: getPermalink('/automation') },
-        { text: 'ETL / Data Processing', href: getPermalink('/etl-data-processing') }, 
+        // { text: 'IT Solutions', href: getPermalink('/it-solutions') },
+        // { text: 'Cloud Services', href: getPermalink('/cloud-services') },
+        // { text: 'Automation', href: getPermalink('/automation') },
+        // { text: 'ETL / Data Processing', href: getPermalink('/etl-data-processing') }, 
       ],
     },
     // {
