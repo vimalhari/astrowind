@@ -1,6 +1,6 @@
 site:
   name: 'Criztec Technologies'
-  site: 'https://astrowind.vercel.app'
+  site: 'https://criztec.com'
   base: '/'
   trailingSlash: false
 
