@@ -193,21 +193,31 @@ export const getStaticPathsBlogPost = async () => {
   }));
 };
 
-/** */
+interface Category {
+  slug: string;
+  // Add other properties for Category here
+}
+
+interface Tag {
+  slug: string;
+  // Add other properties for Tag here
+}
+
 export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: PaginateFunction }) => {
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const categories = {};
-  posts.map((post) => {
+  const categories: Record<string, Category> = {}; // Explicitly typed as Record<string, Category>
+  
+  posts.forEach((post) => {
     if (post.category?.slug) {
-      categories[post.category?.slug] = post.category;
+      categories[post.category.slug] = post.category;
     }
   });
 
   return Array.from(Object.keys(categories)).flatMap((categorySlug) =>
     paginate(
-      posts.filter((post) => post.category?.slug && categorySlug === post.category?.slug),
+      posts.filter((post) => post.category?.slug && categorySlug === post.category.slug),
       {
         params: { category: categorySlug, blog: CATEGORY_BASE || undefined },
         pageSize: blogPostsPerPage,
@@ -217,16 +227,18 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
   );
 };
 
-/** */
 export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFunction }) => {
   if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const tags = {};
-  posts.map((post) => {
+  const tags: Record<string, Tag> = {}; // Explicitly typed as Record<string, Tag>
+  
+  posts.forEach((post) => {
     if (Array.isArray(post.tags)) {
-      post.tags.map((tag) => {
-        tags[tag?.slug] = tag;
+      post.tags.forEach((tag) => {
+        if (tag?.slug) {
+          tags[tag.slug] = tag; // Assign tag to the correct slug key
+        }
       });
     }
   });
@@ -242,6 +254,7 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
     )
   );
 };
+
 
 /** */
 export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {

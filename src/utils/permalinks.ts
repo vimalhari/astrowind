@@ -104,31 +104,65 @@ export const getAsset = (path: string): string =>
 const definitivePermalink = (permalink: string): string => createPath(BASE_PATHNAME, permalink);
 
 /** */
-export const applyGetPermalinks = (menu: object = {}) => {
+interface MenuItem {
+  type?: 'home' | 'blog' | 'asset';
+  url?: string;
+  href?: string;
+  // Other properties for MenuItem
+  [key: string]: any; // Allow other properties
+}
+
+interface Menu {
+  [key: string]: MenuItem | MenuItem[];
+}
+
+export const applyGetPermalinks = (menu: Menu | MenuItem | undefined = {}): Menu | MenuItem | any => {
   if (Array.isArray(menu)) {
     return menu.map((item) => applyGetPermalinks(item));
-  } else if (typeof menu === 'object' && menu !== null) {
-    const obj = {};
+  }
+
+  if (typeof menu === 'object' && menu !== null) {
+    const obj: Record<string, any> = {};
+
     for (const key in menu) {
-      if (key === 'href') {
-        if (typeof menu[key] === 'string') {
-          obj[key] = getPermalink(menu[key]);
-        } else if (typeof menu[key] === 'object') {
-          if (menu[key].type === 'home') {
-            obj[key] = getHomePermalink();
-          } else if (menu[key].type === 'blog') {
-            obj[key] = getBlogPermalink();
-          } else if (menu[key].type === 'asset') {
-            obj[key] = getAsset(menu[key].url);
-          } else if (menu[key].url) {
-            obj[key] = getPermalink(menu[key].url, menu[key].type);
+      if (menu.hasOwnProperty(key)) {
+        const item = menu[key];
+
+        if (key === 'href') {
+          if (typeof item === 'string') {
+            obj[key] = getPermalink(item);
+          } else if (item && item.hasOwnProperty('type')) {
+            try {
+              if (item.type === 'home') {
+                obj[key] = getHomePermalink();
+              } else if (item.type === 'blog') {
+                obj[key] = getBlogPermalink();
+              } else if (item.type === 'asset') {
+                if (item.url) {
+                  obj[key] = getAsset(item.url);
+                } else {
+                  console.warn("Missing URL for asset:", item);
+                  obj[key] = item.href; // Keep original or assign a default
+                }
+              } else if (item.url) {
+                obj[key] = getPermalink(item.url, item.type);
+              } else {
+                 obj[key] = item.href
+              }
+            } catch (error) {
+              console.error("Error generating permalink for:", item, error);
+              obj[key] = item.href; // Keep original or handle differently
+            }
+          } else {
+            obj[key] = item?.href;
           }
+        } else {
+          obj[key] = applyGetPermalinks(item);
         }
-      } else {
-        obj[key] = applyGetPermalinks(menu[key]);
       }
     }
     return obj;
   }
+
   return menu;
 };
