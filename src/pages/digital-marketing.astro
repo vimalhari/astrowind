@@ -1,0 +1,147 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+
+const metadata = {
+  title: 'Services',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline=""
+    title="Digital Marketing"
+    subtitle="Results-driven strategy, effective search optimisation, targeted social media, pro website management & engaging communication"
+    actions={[{ variant: 'primary', target: '', text: 'Work with Us', href: '/contact' }]}
+    image={{ src: '~/assets/images/digital-marketing.webp', alt: 'Criztec Hero Image' }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Built for Experience"
+    subtitle="Our team of skilled web developers is ready to collaborate with you to create an engaging and functional website that makes your business accessible. We utilize top open-source platforms to ensure your website remains secure and at the forefront of technological advancements."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    columns={3}
+    items={[
+      {
+        title: 'Strategy',
+        description:
+          'Create a winning strategy and uncover opportunities with in-depth website and digital marketing analytics.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Search',
+        description:
+          'Get ahead of your competitors and boost traffic to your website with effective organic SEO and targeted PPC campaigns.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Social',
+        description:
+          'Outsource your Social Media and ensure you professionally engage with your target market and enhance brand awareness.',
+        icon: 'tabler:brand-facebook',
+      },
+      {
+        title: 'Web',
+        description:
+          'Save time managing your website, with quick response updates and changes to your website from our team of talented web designers.',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Comms',
+        description:
+          'Never miss an opportunity to connect with your target audience as well as reaching out to current clients and wider business network.',
+        icon: 'tabler:messages',
+      },
+      {
+        title: 'Content', // Added a new category
+        description:
+          "Create engaging and informative content that will capture your audience's attention and help you achieve your business goals.", // Added a description
+        icon: 'tabler:pencil', // Added an icon
+      },
+    ]}
+  />
+
+  <!-- Hero2 Component with integrated buttons -->
+
+<Content
+  image={{
+    src: '~/assets/images/digital-marketing-executive.webp',
+    alt: 'digital-marketing-executive',
+    loading: 'eager',
+  }}
+  >
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+  </Fragment>
+
+  <Fragment slot="content">
+    <div class="flex flex-col space-y-4"> {/* Changed to space-y-4 for more compact spacing */}
+      <div class="content-section">
+        <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Strategy & Analytics</h2>
+        <p>
+          Effective digital marketing starts with a solid strategy. Without a good strategy and clear plan in place, the
+          road to success becomes difficult to navigate.
+        </p>
+        <p class="mt-4">
+          We work with our clients to map-out clear marketing strategies so that we can ensure that both short and
+          long-term marketing objectives are on track.
+        </p>
+        <p class="mt-4">
+          It's important to make changes in direction when needed and to try a different approach to seek improvement and
+          new opportunities at all times.
+        </p>
+        
+        <ul class="list-none pl-4 mt-4">
+          <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Strategic Consultations</li>
+          <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Performance Briefings</li>
+          <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Campaign Dashboards</li>
+          <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Optimization Strategies</li>
+          <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Competitive Landscape Assessment</li>
+          <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Market Trend Analysis</li>
+        </ul>
+      </div>
+      
+      <div class="flex flex-wrap gap-4 mt-4">
+        <a href="#" class="btn btn-primary">
+          Discover Our Packages
+        </a>
+        <!-- <a href="#" class="btn btn-outline">
+          Learn More
+        </a> -->
+      </div>
+    </div>
+  </Fragment>
+</Content>
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get a Free Quote', // Changed to a more relevant CTA
+        href: '/contact', // Changed to a contact page
+      },
+    ]}
+    title="Bring Your Vision to Life"
+    ,
+    subtitle="We create high-performing, custom websites that drive business growth."
+    ,
+  />
+</Layout>
