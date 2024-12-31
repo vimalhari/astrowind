@@ -1,6 +1,5 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
 import Prices from '~/components/widgets/Pricing.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Features3 from '~/components/widgets/Features3.astro';
@@ -91,11 +90,11 @@ const metadata = {
         { description: 'Digital Marketing Reports (Quarterly)' },
         { description: 'Strategy & Performance Meetings (Bi-Monthly)' },
       ],
-      callToAction: {
-        target: '_blank',
-        text: 'Get started',
-        href: '#',
-      },
+      // callToAction: {
+      //   target: '_blank',
+      //   text: 'Get started',
+      //   href: '#',
+      // },
     },
     {
       title: 'Standard',
@@ -109,11 +108,11 @@ const metadata = {
         { description: 'Digital Marketing Reports (Bi-Monthly)' },
         { description: 'Strategy & Performance Meetings (Bi-Monthly)' },
       ],
-      callToAction: {
-        target: '_blank',
-        text: 'Get started',
-        href: '#',
-      },
+      // callToAction: {
+      //   target: '_blank',
+      //   text: 'Get started',
+      //   href: '#',
+      // },
       hasRibbon: true,
       ribbonTitle: 'popular',
     },
@@ -131,11 +130,11 @@ const metadata = {
         { description: 'Digital Marketing Reports' },
         { description: 'Strategy & Performance Meetings' },
       ],
-      callToAction: {
-        target: '_blank',
-        text: 'Get started',
-        href: '#',
-      },
+      // callToAction: {
+      //   target: '_blank',
+      //   text: 'Get started',
+      //   href: '#',
+      // },
     },
     {
       title: 'Business+',
@@ -155,11 +154,11 @@ const metadata = {
         { description: 'Digital Marketing Reports' },
         { description: 'Strategy & Performance Meetings' },
       ],
-      callToAction: {
-        target: '_blank',
-        text: 'Get started',
-        href: '#',
-      },
+      // callToAction: {
+      //   target: '_blank',
+      //   text: 'Get started',
+      //   href: '#',
+      // },
     },
   ]}
 />
@@ -263,14 +262,14 @@ const metadata = {
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
-    title="Ready to boost your projects?"
-    subtitle="Join our community of satisfied customers who have transformed their work with our templates."
-    actions={[
+  actions={[
       {
-        variant: 'primary',
-        text: 'Get started now',
-        href: '/',
+          variant: 'primary',
+          text: 'Get in Touch', // Changed to a more relevant CTA
+          href: '/contact', // Changed to a contact page 
       },
-    ]}
-  />
+  ]}
+  title="Starting a new project?",
+  subtitle="We’d love to find out how we can help..",
+/>
 </Layout>

@@ -28,7 +28,7 @@ export const headerData = {
       text: 'Services',
       links: [
         { text: 'Website Development', href: getPermalink('/website-development') },
-        // { text: 'Graphic Design', href: getPermalink('/graphic-design') },
+        { text: 'Digital Marketing', href: getPermalink('/digital-marketing') },
         // { text: 'Video Production', href: getPermalink('/video-production') },
 
         // { text: 'Digital Marketing', href: getPermalink('/digital-marketing') },
@@ -128,7 +128,7 @@ export const footerData = {
       title: 'Services',
       links: [
         { text: 'Website Development', href: '/website-development' },
-    //     { text: 'Security', href: '#' },
+        { text: 'Digital Marketing', href: '/digital-marketing' },
     //     { text: 'Team', href: '#' },
     //     { text: 'Enterprise', href: '#' },
     //     { text: 'Customer stories', href: '#' },
