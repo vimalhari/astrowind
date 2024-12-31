@@ -15,7 +15,8 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
-const { page, tag } = Astro.props as Props;
+// Ensure tag has a title property with TypeScript assertion
+const { page, tag } = Astro.props as Props & { tag: { title: string } };
 
 const currentPage = page.currentPage ?? 1;
 
