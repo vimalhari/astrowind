@@ -1,0 +1,276 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Prices from '~/components/widgets/Pricing.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Hero from '~/components/widgets/Hero.astro';
+
+const metadata = {
+  title: 'Pricing',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
+
+  <Hero
+    tagline="Pricing"
+    title="Partner Plans"
+    subtitle="See us as an extension of your marketing team, delivering a diverse range of activities every month."
+    image={{ src: '~/assets/images/pricing.webp', alt: 'Pricing Hero Image' }}
+  />
+
+  <Content
+  isReversed
+  tagline="Flexible digital marketing packages"
+  title="Digital Marketing Packages"
+  subtitle="Experience the Criztec difference with our monthly digital marketing packages. We're an extension of your team, providing expert support and maximizing your marketing ROI."
+  
+  items={[
+    {
+        title: 'Dedicated account manager', 
+        icon: 'tabler:user' // You might want to choose a more suitable icon
+    },
+    {
+        title: 'Experienced design and marketing team', 
+        icon: 'tabler:users' // Or another icon representing a team
+    },
+    {
+        title: 'Regular performance reports', 
+        icon: 'tabler:chart-bar'  // Or a suitable reporting icon
+    },
+    {
+        title: 'Flexible marketing and design services', 
+        icon: 'tabler:palette' // Or a more relevant icon for flexibility/services
+    },
+    {
+        title: 'Regular client review meetings',
+        icon: 'tabler:calendar-event' // Or an icon representing meetings
+    },
+    {
+        title: 'Proactive recommendations', 
+        icon: 'tabler:bulb' // Or an icon for ideas/suggestions
+    },
+    {
+        title: 'Priority support by phone and email', 
+        icon: 'tabler:phone-call' // Or a combined icon for phone/email support
+    },
+]}
+  image={{
+    src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    alt: 'Colorful Image',
+  }}
+>
+  <!-- <Fragment slot="content">
+    <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
+    Gain a competitive advantage by incorporating industry leading practices
+  </Fragment> -->
+
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+  </Fragment>
+</Content>
+
+  <!-- Pricing Widget ******************* -->
+
+  <Prices
+  title="Partner Plans"
+  subtitle="Flexible digital marketing packages"
+  prices={[
+    {
+      title: 'Essentials',
+      subtitle: '10 hours per month',
+      price: 500,
+      period: 'per month',
+      items: [
+        { description: 'Search Engine Optimisation' },
+        { description: 'Website Updates & Maintenance' },
+        { description: 'Digital Marketing Reports (Quarterly)' },
+        { description: 'Strategy & Performance Meetings (Bi-Monthly)' },
+      ],
+      callToAction: {
+        target: '_blank',
+        text: 'Get started',
+        href: '#',
+      },
+    },
+    {
+      title: 'Standard',
+      subtitle: '18 hours per month',
+      price: 900,
+      period: 'per month',
+      items: [
+        { description: 'Search Engine Optimisation' },
+        { description: 'Website Updates & Maintenance' },
+        { description: 'Social Media Management' },
+        { description: 'Digital Marketing Reports (Bi-Monthly)' },
+        { description: 'Strategy & Performance Meetings (Bi-Monthly)' },
+      ],
+      callToAction: {
+        target: '_blank',
+        text: 'Get started',
+        href: '#',
+      },
+      hasRibbon: true,
+      ribbonTitle: 'popular',
+    },
+    {
+      title: 'Business',
+      subtitle: '24 hours per month',
+      price: 1200,
+      period: 'per month',
+      items: [
+        { description: 'Search Engine Optimisation' },
+        { description: 'Website Updates & Maintenance' },
+        { description: 'Social Media Management' },
+        { description: 'Google Ads Management' },
+        { description: 'Social Media Ads Management' },
+        { description: 'Digital Marketing Reports' },
+        { description: 'Strategy & Performance Meetings' },
+      ],
+      callToAction: {
+        target: '_blank',
+        text: 'Get started',
+        href: '#',
+      },
+    },
+    {
+      title: 'Business+',
+      subtitle: '35 hours per month',
+      price: 1750,
+      period: 'per month',
+      items: [
+        { description: 'Search Engine Optimisation' },
+        { description: 'Website Updates & Maintenance' },
+        { description: 'Social Media Management' },
+        { description: 'Google Ads Management' },
+        { description: 'Social Media Ads Management' },
+        { description: 'Stock Images' },
+        { description: 'Graphic Design' },
+        { description: 'Sales Pipeline (CRM) Support' },
+        { description: 'Visitor & Engagement Tools' },
+        { description: 'Digital Marketing Reports' },
+        { description: 'Strategy & Performance Meetings' },
+      ],
+      callToAction: {
+        target: '_blank',
+        text: 'Get started',
+        href: '#',
+      },
+    },
+  ]}
+/>
+
+
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="Price-related features"
+    subtitle="Discover the advantages of choosing our plans"
+    columns={2}
+    items={[
+      {
+        title: 'Tiered Pricing Plans',
+        description: 'Choose from a range of pricing plans designed to accommodate different budgets and requirements.',
+        icon: 'tabler:stairs',
+      },
+      {
+        title: 'Transparent Pricing',
+        description: 'Clearly displayed pricing details for each plan, with no hidden costs or unexpected charges.',
+        icon: 'tabler:flip-vertical',
+      },
+      {
+        title: 'Secure Payment Methods',
+        description: 'Secure payment gateways to protect your financial information during transactions.',
+        icon: 'tabler:shield-lock',
+      },
+      {
+        title: 'Instant Access',
+        description: `Immediate access to your chosen plan's features and templates upon subscription.`,
+        icon: 'tabler:accessible',
+      },
+      {
+        title: 'Upgrade Value',
+        description: 'Upgrade to higher-tier plans to unlock more features and benefits for an enhanced experience.',
+        icon: 'tabler:chevrons-up',
+      },
+      {
+        title: '24H support',
+        description: 'Questions answered via live chat, email or phone, every calendar day.',
+        icon: 'tabler:headset',
+      },
+    ]}
+    classes={{ container: 'max-w-5xl' }}
+  />
+
+
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Pricing FAQs"
+    subtitle="Choosing the right plan is important, and we're here to answer your questions. If you have queries about our pricing options, you're in the right place."
+    columns={1}
+    items={[
+      {
+        title: 'Do the plans come with customer support?',
+        description:
+          'Absolutely, all plans include access to our dedicated customer support to assist you with any queries or concerns.',
+      },
+      {
+        title: 'Do you provide reports?',
+        description:
+          'Yes, we provide regular reports on the services we deliver including valuable insights, recommendations and opportunities.',
+      },
+      {
+        title: 'Can I switch between plans?',
+        description:
+          'Certainly! You can easily upgrade or downgrade your plan, at any time, to find the one that best suits your evolving requirements.',
+      },
+      {
+        title: 'We just need support with SEO – is that OK?',
+        description:
+          'Sure – we have many clients where SEO is the primary service that we deliver on a monthly basis. If SEO is the only service you need, we’ll spend all of our time on SEO related tasks.',
+      },
+      {
+        title: 'Does the cost include advertising spend?',
+        description:
+          'Advertising expenditures on platforms such as Meta and Google are considered an ancillary cost and are not incorporated into the pricing of our service packages.',
+      },
+      {
+        title: 'What payment methods do you accept?',
+        description:
+          'We accept major credit cards and online payment methods to ensure a convenient and secure transaction process.',
+      },
+      {
+        title: 'Are there any hidden fees beyond the displayed cost?',
+        description:
+          'No, the subscription cost covers all the features and templates listed under each plan. There are no hidden fees or extra charges.',
+      },
+      {
+        title: 'Do we have to sign up for a 12 month contract?',
+        description:
+          'No, we understand the importance of a flexible marketing partner. We have rolling 30 day contracts with a 30 day notice period if you wish to pause or cancel services.',
+      },
+    ]}
+  />
+  
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    title="Ready to boost your projects?"
+    subtitle="Join our community of satisfied customers who have transformed their work with our templates."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get started now',
+        href: '/',
+      },
+    ]}
+  />
+</Layout>
