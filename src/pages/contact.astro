@@ -14,21 +14,22 @@ const metadata = {
   <HeroText tagline="Contact" title="Let's Connect!" />
 
   <div id="form-container">
-    <iframe 
-    src="https://forms.office.com/Pages/ResponsePage.aspx?id=9Tx_8ertr06M3TrVZD7biKqgAITMzgVDrkcmylHSritUQ1dWR1AyTkdGUzQxREFRMFZZVzlKUkFWRS4u&embed=true" 
-    style="border: none; width: 100%; height: 100%" 
-    > 
-  </iframe>
+    <iframe
+      src="https://forms.office.com/Pages/ResponsePage.aspx?id=9Tx_8ertr06M3TrVZD7biKqgAITMzgVDrkcmylHSritUQ1dWR1AyTkdGUzQxREFRMFZZVzlKUkFWRS4u&embed=true"
+      style="border: none; width: 100%; height: 100%"
+    >
+    </iframe>
   </div>
-  
+
   <!-- Features2 Widget ************** -->
 
   <Features2
     title="We are here to help!"
     items={[
-     {
+      {
         title: 'General support',
-        description: 'For general inquiries, account assistance, website navigation, or billing questions, our support team is ready to help.',
+        description:
+          'For general inquiries, account assistance, website navigation, or billing questions, our support team is ready to help.',
       },
       {
         title: 'Contact sales',
@@ -63,7 +64,7 @@ const metadata = {
   #form-container {
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     /* min-height: 100vh;  No need for this if you don't want the container to fill the screen */
     height: 2200px; /* Set the container height to match the iframe height */
   }

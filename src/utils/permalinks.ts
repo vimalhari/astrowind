@@ -108,60 +108,75 @@ interface MenuItem {
   type?: 'home' | 'blog' | 'asset';
   url?: string;
   href?: string;
-  // Other properties for MenuItem
-  [key: string]: any; // Allow other properties
+  [key: string]: unknown;
 }
 
 interface Menu {
   [key: string]: MenuItem | MenuItem[];
 }
 
-export const applyGetPermalinks = (menu: Menu | MenuItem | undefined = {}): Menu | MenuItem | any => {
-  if (Array.isArray(menu)) {
-    return menu.map((item) => applyGetPermalinks(item));
+// Helper function to handle permalink generation based on item type
+const generatePermalink = (item: MenuItem): string => {
+  if (!item.type) {
+    return item.href || '';
   }
 
+  try {
+    switch (item.type) {
+      case 'home':
+        return getHomePermalink();
+      case 'blog':
+        return getBlogPermalink();
+      case 'asset':
+        return item.url ? getAsset(item.url) : item.href || '';
+      default:
+        return item.url ? getPermalink(item.url, item.type) : item.href || '';
+    }
+  } catch (error) {
+    console.error('Error generating permalink for:', item, error);
+    return item.href || '';
+  }
+};
+
+// Type guard to check if an object is of type MenuItem
+const isMenuItem = (item: unknown): item is MenuItem => {
+  return item !== null && typeof item === 'object' && ('href' in item || 'type' in item || 'url' in item);
+};
+
+export const applyGetPermalinks = (menu: Menu | MenuItem | MenuItem[] = []): Menu | MenuItem | MenuItem[] => {
+  // Handle array of MenuItems
+  if (Array.isArray(menu)) {
+    return menu.map((item) => applyGetPermalinks(item) as MenuItem);
+  }
+
+  // Handle single MenuItem
+  if (isMenuItem(menu)) {
+    const processedItem: MenuItem = { ...menu };
+    if ('href' in processedItem) {
+      processedItem.href = generatePermalink(processedItem);
+    }
+    return processedItem;
+  }
+
+  // Handle Menu object
   if (typeof menu === 'object' && menu !== null) {
-    const obj: Record<string, any> = {};
+    const result: Menu = {};
 
-    for (const key in menu) {
-      if (menu.hasOwnProperty(key)) {
-        const item = menu[key];
-
-        if (key === 'href') {
-          if (typeof item === 'string') {
-            obj[key] = getPermalink(item);
-          } else if (item && item.hasOwnProperty('type')) {
-            try {
-              if (item.type === 'home') {
-                obj[key] = getHomePermalink();
-              } else if (item.type === 'blog') {
-                obj[key] = getBlogPermalink();
-              } else if (item.type === 'asset') {
-                if (item.url) {
-                  obj[key] = getAsset(item.url);
-                } else {
-                  console.warn("Missing URL for asset:", item);
-                  obj[key] = item.href; // Keep original or assign a default
-                }
-              } else if (item.url) {
-                obj[key] = getPermalink(item.url, item.type);
-              } else {
-                 obj[key] = item.href
-              }
-            } catch (error) {
-              console.error("Error generating permalink for:", item, error);
-              obj[key] = item.href; // Keep original or handle differently
-            }
-          } else {
-            obj[key] = item?.href;
-          }
-        } else {
-          obj[key] = applyGetPermalinks(item);
+    for (const [key, value] of Object.entries(menu)) {
+      if (Array.isArray(value)) {
+        result[key] = value.map((item) => applyGetPermalinks(item) as MenuItem);
+      } else if (isMenuItem(value)) {
+        const processedItem = { ...value };
+        if ('href' in processedItem) {
+          processedItem.href = generatePermalink(processedItem);
         }
+        result[key] = processedItem;
+      } else {
+        result[key] = value;
       }
     }
-    return obj;
+
+    return result;
   }
 
   return menu;

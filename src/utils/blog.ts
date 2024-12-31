@@ -208,7 +208,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
 
   const posts = await fetchPosts();
   const categories: Record<string, Category> = {}; // Explicitly typed as Record<string, Category>
-  
+
   posts.forEach((post) => {
     if (post.category?.slug) {
       categories[post.category.slug] = post.category;
@@ -232,7 +232,7 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 
   const posts = await fetchPosts();
   const tags: Record<string, Tag> = {}; // Explicitly typed as Record<string, Tag>
-  
+
   posts.forEach((post) => {
     if (Array.isArray(post.tags)) {
       post.tags.forEach((tag) => {
@@ -254,7 +254,6 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
     )
   );
 };
-
 
 /** */
 export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {
