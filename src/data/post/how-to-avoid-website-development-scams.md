@@ -1,7 +1,7 @@
 ---
 publishDate: 2025-01-03T16:07:29Z
 title: 'How Website Development Companies and Freelancers Cheat Customers (And How to Avoid It)'
-excerpt: Don't fall victim to website development scams! Learn common tactics and how to protect your UK small business with clear communication and a well-defined contract. 
+excerpt: Don't fall victim to website development scams! Learn common tactics and how to protect your UK small business with clear communication and a well-defined contract.
 image: https://images.pexels.com/photos/7534753/pexels-photo-7534753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 category: small-business
 tags:
@@ -28,12 +28,12 @@ Building a website is crucial for any modern business, especially in the UK's co
 
 This is a classic tactic. A company or freelancer offers an incredibly low initial price to lure you in. Once the project is underway, they start adding "essential" extras, inflating the final bill significantly. These extras might include:
 
-*   **"Essential" plugins or extensions:** Charging exorbitant prices for standard plugins readily available for free or at low cost.
-*   **"Necessary" SEO setup:** Claiming basic SEO practices as premium services.
-*   **"Urgent" bug fixes:** Creating minor issues and then charging to fix them.
-*   **Hosting and maintenance fees:** Charging inflated rates for services easily obtainable elsewhere.
+- **"Essential" plugins or extensions:** Charging exorbitant prices for standard plugins readily available for free or at low cost.
+- **"Necessary" SEO setup:** Claiming basic SEO practices as premium services.
+- **"Urgent" bug fixes:** Creating minor issues and then charging to fix them.
+- **Hosting and maintenance fees:** Charging inflated rates for services easily obtainable elsewhere.
 
-**Example:** A freelancer offers a website for £500. During development, they claim you *need* a premium SEO plugin (£200), a custom contact form (£150), and "urgent" bug fixes (£100), suddenly turning your £500 project into £950.
+**Example:** A freelancer offers a website for £500. During development, they claim you _need_ a premium SEO plugin (£200), a custom contact form (£150), and "urgent" bug fixes (£100), suddenly turning your £500 project into £950.
 
 ### 2. The Ghosting Act: Vanishing After Receiving Payment
 
@@ -45,7 +45,7 @@ This is more common with freelancers found on platforms like Fiverr or Upwork, b
 
 Many developers exploit clients' lack of technical knowledge by using complex jargon and suggesting unnecessary features. This allows them to justify higher prices and make it difficult for clients to understand what they're paying for.
 
-**Example:** A developer convinces you that you *need* a "custom-built, highly scalable, cloud-based microservices architecture" for your small local bakery website, when a simple WordPress site would suffice.
+**Example:** A developer convinces you that you _need_ a "custom-built, highly scalable, cloud-based microservices architecture" for your small local bakery website, when a simple WordPress site would suffice.
 
 ### 4. The SEO Smoke and Mirrors: Promising Unrealistic Results
 
@@ -69,9 +69,9 @@ Some developers create websites using proprietary code or platforms, making it d
 
 While platforms like Fiverr and Upwork offer access to a global pool of talent, they also present unique risks:
 
-*   **Lack of vetting:** It can be difficult to assess a freelancer's true skills and experience.
-*   **Communication barriers:** Language differences and time zone issues can lead to misunderstandings and delays.
-*   **Dispute resolution challenges:** Resolving disputes with freelancers on these platforms can be complex and time-consuming.
+- **Lack of vetting:** It can be difficult to assess a freelancer's true skills and experience.
+- **Communication barriers:** Language differences and time zone issues can lead to misunderstandings and delays.
+- **Dispute resolution challenges:** Resolving disputes with freelancers on these platforms can be complex and time-consuming.
 
 ## Protecting Yourself: Practical Tips for UK Small Businesses
 
