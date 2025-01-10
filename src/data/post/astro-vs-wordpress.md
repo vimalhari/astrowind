@@ -2,7 +2,7 @@
 publishDate: 2025-01-03T16:07:29Z
 title: 'Astro vs WordPress: The Definitive Guide (2024)'
 excerpt: 'Astro vs WordPress: A deep dive into the pros and cons of each platform to help you choose the right one for your website in 2024.'
-image: https://i.imgur.com/3LY2Wlb.png
+image: https://i.imghippo.com/files/LEo3185cvA.webp
 category: web development
 tags:
   - astro

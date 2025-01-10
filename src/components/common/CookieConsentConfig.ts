@@ -52,7 +52,7 @@ export const config: CookieConsentConfig = {
           acceptNecessaryBtn: 'Reject all',
           showPreferencesBtn: 'Manage preferences',
           footer:
-            '<a href="/privacy-policy">Privacy Policy</a>\n<a href="/terms-and-conditions">Terms and Conditions</a>',
+            '<a href="/privacy">Privacy Policy</a>\n<a href="/terms">Terms and Conditions</a>',
         },
         preferencesModal: {
           title: 'Your Cookie Preferences',
