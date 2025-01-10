@@ -22,23 +22,23 @@ Hugo is a mature and highly performant SSG written in Go. It's renowned for its 
 
 ### Hugo's Strengths: Why It Remains a Popular Choice
 
-*   **Blazing Fast Build Times:** Hugo's Go implementation and optimized architecture enable incredibly fast build times, even for large websites. This speed is a significant advantage during development and deployment, allowing for rapid iteration and quick updates.
+- **Blazing Fast Build Times:** Hugo's Go implementation and optimized architecture enable incredibly fast build times, even for large websites. This speed is a significant advantage during development and deployment, allowing for rapid iteration and quick updates.
 
-*   **Powerful Templating Engine:** Hugo's templating engine, based on Go's `html/template` and `text/template` packages, offers a powerful and flexible way to create dynamic layouts and content structures.
+- **Powerful Templating Engine:** Hugo's templating engine, based on Go's `html/template` and `text/template` packages, offers a powerful and flexible way to create dynamic layouts and content structures.
 
-*   **Extensive Theme Ecosystem:** Hugo boasts a vast library of pre-built themes, providing a quick starting point for many projects. These themes offer various designs and functionalities, allowing users to find a suitable foundation for their websites.
+- **Extensive Theme Ecosystem:** Hugo boasts a vast library of pre-built themes, providing a quick starting point for many projects. These themes offer various designs and functionalities, allowing users to find a suitable foundation for their websites.
 
-*   **Large and Active Community:** Hugo has a large and active community, providing ample resources, documentation, and support for users.
+- **Large and Active Community:** Hugo has a large and active community, providing ample resources, documentation, and support for users.
 
-*   **Built-in Features:** Hugo comes with many built-in features, such as multilingual support, taxonomies, and shortcodes, reducing the need for external plugins or extensions.
+- **Built-in Features:** Hugo comes with many built-in features, such as multilingual support, taxonomies, and shortcodes, reducing the need for external plugins or extensions.
 
 ### Hugo's Challenges: Areas Where It Shows Its Age
 
-*   **Steeper Learning Curve:** Hugo's templating syntax and configuration can be challenging for beginners, especially those unfamiliar with Go's templating system.
+- **Steeper Learning Curve:** Hugo's templating syntax and configuration can be challenging for beginners, especially those unfamiliar with Go's templating system.
 
-*   **Limited Client-Side Interactivity:** Hugo primarily focuses on static site generation, with limited built-in support for client-side interactivity. While JavaScript can be added, it requires more manual integration than Astro.
+- **Limited Client-Side Interactivity:** Hugo primarily focuses on static site generation, with limited built-in support for client-side interactivity. While JavaScript can be added, it requires more manual integration than Astro.
 
-*   **Front-end Framework Agnosticism (Can be a double edged sword):** While not tied to a specific framework, it means you have to bring your own JS libraries/frameworks which can be a pro or con depending on your preference.
+- **Front-end Framework Agnosticism (Can be a double edged sword):** While not tied to a specific framework, it means you have to bring your own JS libraries/frameworks which can be a pro or con depending on your preference.
 
 ## Astro: The Modern Approach to Performance and Flexibility
 
@@ -46,46 +46,46 @@ Astro is a modern SSG designed for building content-focused websites with excell
 
 ### Astro's Strengths: A Modern Take on Static Sites
 
-*   **Partial Hydration and Island Architecture:** Astro's core innovation is its partial hydration strategy. By treating interactive components as "islands" of JavaScript, Astro minimizes the amount of JS sent to the browser, resulting in significantly faster load times.
+- **Partial Hydration and Island Architecture:** Astro's core innovation is its partial hydration strategy. By treating interactive components as "islands" of JavaScript, Astro minimizes the amount of JS sent to the browser, resulting in significantly faster load times.
 
-*   **Bring Your Own Framework (BYOF):** Astro supports popular front-end frameworks like React, Vue, Svelte, and Preact, allowing developers to use their preferred tools and libraries.
+- **Bring Your Own Framework (BYOF):** Astro supports popular front-end frameworks like React, Vue, Svelte, and Preact, allowing developers to use their preferred tools and libraries.
 
-*   **Excellent Developer Experience:** Astro offers a modern and intuitive developer experience with features like component-based architecture, hot module replacement, and TypeScript support.
+- **Excellent Developer Experience:** Astro offers a modern and intuitive developer experience with features like component-based architecture, hot module replacement, and TypeScript support.
 
-*   **Focus on Content Sites:** Astro is particularly well-suited for content-heavy websites, such as blogs, documentation sites, and marketing websites.
+- **Focus on Content Sites:** Astro is particularly well-suited for content-heavy websites, such as blogs, documentation sites, and marketing websites.
 
-*   **Built-in Image Optimization:** Astro has built-in image optimization features that automatically resize and optimize images, further improving performance.
+- **Built-in Image Optimization:** Astro has built-in image optimization features that automatically resize and optimize images, further improving performance.
 
 ### Astro's Challenges: Areas for Improvement
 
-*   **Relatively New Ecosystem:** Compared to Hugo, Astro's ecosystem of themes and plugins is still relatively young and less mature.
+- **Relatively New Ecosystem:** Compared to Hugo, Astro's ecosystem of themes and plugins is still relatively young and less mature.
 
-*   **E-commerce Solutions Still Emerging:** While Astro can be used with headless commerce solutions, dedicated e-commerce integrations are still developing.
+- **E-commerce Solutions Still Emerging:** While Astro can be used with headless commerce solutions, dedicated e-commerce integrations are still developing.
 
 ## Head-to-Head: Hugo vs Astro
 
-| Feature             | Hugo                                   | Astro                                    |
-| ------------------- | -------------------------------------- | --------------------------------------- |
-| **Performance**     | 🚀 Blazing fast build times             | 🚀 Blazing fast runtime performance    |
-| **Learning Curve**   | 陡 Steep                               | 🚶 Moderate                             |
-| **Templating**       | Powerful Go templating                 | Flexible, supports various frameworks |
-| **Interactivity**     | Requires manual JS integration       | Partial hydration, component islands    |
-| **Ecosystem**        | Mature, extensive themes and modules | Growing, but less mature                |
-| **Developer Exp.**   | Can be complex                          | Modern and intuitive                     |
-| **Use Cases**        | Large websites, blogs, documentation    | Content sites, blogs, marketing sites    |
-| **Build Speed** | Extremely fast | Fast |
+| Feature            | Hugo                                 | Astro                                 |
+| ------------------ | ------------------------------------ | ------------------------------------- |
+| **Performance**    | 🚀 Blazing fast build times          | 🚀 Blazing fast runtime performance   |
+| **Learning Curve** | 陡 Steep                             | 🚶 Moderate                           |
+| **Templating**     | Powerful Go templating               | Flexible, supports various frameworks |
+| **Interactivity**  | Requires manual JS integration       | Partial hydration, component islands  |
+| **Ecosystem**      | Mature, extensive themes and modules | Growing, but less mature              |
+| **Developer Exp.** | Can be complex                       | Modern and intuitive                  |
+| **Use Cases**      | Large websites, blogs, documentation | Content sites, blogs, marketing sites |
+| **Build Speed**    | Extremely fast                       | Fast                                  |
 
 ## When to Choose Hugo
 
-*   **Large Websites:** If you're building a website with thousands of pages, Hugo's build speed is a significant advantage.
-*   **Performance-Critical Projects:** For projects where build time is a top priority, Hugo is an excellent choice.
-*   **Developers Comfortable with Go Templating:** If you're familiar with Go's templating system or willing to learn it, Hugo offers a powerful and flexible toolset.
+- **Large Websites:** If you're building a website with thousands of pages, Hugo's build speed is a significant advantage.
+- **Performance-Critical Projects:** For projects where build time is a top priority, Hugo is an excellent choice.
+- **Developers Comfortable with Go Templating:** If you're familiar with Go's templating system or willing to learn it, Hugo offers a powerful and flexible toolset.
 
 ## When to Choose Astro
 
-*   **Content-Focused Websites:** If you're building a blog, documentation site, or marketing website, Astro's focus on content and performance makes it a strong contender.
-*   **Modern Developer Experience:** If you prefer a modern and intuitive developer experience with component-based architecture and framework support, Astro is a great choice.
-*   **Prioritizing Runtime Performance:** If minimizing JavaScript and maximizing runtime performance is crucial, Astro's partial hydration is a key advantage.
+- **Content-Focused Websites:** If you're building a blog, documentation site, or marketing website, Astro's focus on content and performance makes it a strong contender.
+- **Modern Developer Experience:** If you prefer a modern and intuitive developer experience with component-based architecture and framework support, Astro is a great choice.
+- **Prioritizing Runtime Performance:** If minimizing JavaScript and maximizing runtime performance is crucial, Astro's partial hydration is a key advantage.
 
 ## Conclusion: Choosing the Right Tool for the Job
 
@@ -95,5 +95,5 @@ The best choice depends on your specific project requirements, team's expertise,
 
 **Further Resources:**
 
-*   [Hugo Documentation](https://gohugo.io/)
-*   [Astro Documentation](https://astro.build/)
+- [Hugo Documentation](https://gohugo.io/)
+- [Astro Documentation](https://astro.build/)
