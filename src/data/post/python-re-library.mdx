@@ -1,0 +1,189 @@
+---
+publishDate: 2025-01-12T16:07:29Z
+title: "Unleash the Power of Python's `re` Library: 3 Practical Examples"
+excerpt: 'The Python re library (regular expression library) is a powerful tool for pattern matching and manipulation within strings.'
+image: https://i.imghippo.com/files/dSv3857qA.webp
+category: programming
+tags:
+  - Python
+  - Regular Expressions
+  - Text Processing
+  - Data Extraction
+  - CPattern Matching
+metadata:
+  canonical: https://criztec.com/python-re-library/
+---
+
+Python's `re` library, the cornerstone of regular expressions, is an indispensable tool for developers dealing with text manipulation. Whether you're extracting data, validating input, or transforming strings, mastering `re` can significantly streamline your workflow. This article dives into three powerful examples that demonstrate the versatility and practicality of Python's regular expressions.
+
+## What are Regular Expressions?
+
+Regular expressions (regex or regexp) are sequences of characters that define a search pattern. They provide a concise and flexible way to match, locate, and manipulate text within strings. Think of them as a highly advanced "find and replace" tool on steroids.
+
+## Why Use Python's `re` Library?
+
+Python's built-in `re` module offers a robust implementation of regular expressions. Here's why you should leverage it:
+
+- **Efficiency:** Quickly process large amounts of text data.
+- **Flexibility:** Handle complex patterns with ease.
+- **Built-in:** No need for external dependencies.
+- **Widely Used:** A standard tool in a Python developer's toolkit.
+
+## 3 Practical Examples of Python's `re` Library in Action
+
+Let's explore these examples to showcase the capabilities of Python's `re` library:
+
+### 1. Extracting Email Addresses from Text
+
+Extracting email addresses from a large block of text is a common task. This example shows how to use `re` to identify and isolate email addresses efficiently.
+
+**Problem:** Given a text document, extract all valid email addresses.
+
+**Solution:**
+
+Python
+
+```
+import re
+
+text = """
+Contact us at info@example.com or support@company.net for assistance.
+You can also reach John Doe at john.doe123@subdomain.example.co.uk or Jane at jane-doe@email.org.
+Invalid email like @invalid.com or missing@ should not be matched.
+"""
+
+email_pattern = r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+
+emails = re.findall(email_pattern, text)
+
+print("Extracted Email Addresses:")
+for email in emails:
+    print(email)
+```
+
+**Code Explanation:**
+
+1. **`import re`:** Imports the `re` module.
+2. **`email_pattern`:** Defines the regular expression pattern for matching email addresses.
+   - `[a-zA-Z0-9._%+-]+`: Matches the local part (before `@`).
+   - `@`: Matches the literal "@" symbol.
+   - `[a-zA-Z0-9.-]+`: Matches the domain name part.
+   - `\.`: Matches the dot before the top-level domain.
+   - `[a-zA-Z]{2,}`: Matches the top-level domain (e.g., "com", "org").
+3. **`re.findall(email_pattern, text)`:** Finds all occurrences of the pattern in the text.
+4. **Output:** Prints the list of extracted emails.
+
+**Output:**
+
+```
+Extracted Email Addresses:
+info@example.com
+support@company.net
+john.doe123@subdomain.example.co.uk
+jane-doe@email.org
+```
+
+### 2. Validating Phone Numbers with Regular Expressions
+
+Phone number formats can vary. This example demonstrates how to validate phone numbers against specific patterns using `re`.
+
+**Problem:** Validate US phone numbers in the format `(XXX) XXX-XXXX` or `XXX-XXX-XXXX`.
+
+**Solution:**
+
+Python
+
+```
+import re
+
+def validate_phone_number(phone_number):
+    """Validates US phone numbers in the format (XXX) XXX-XXXX or XXX-XXX-XXXX."""
+    pattern = r"^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$"
+    match = re.match(pattern, phone_number)
+    return bool(match)
+
+phone_numbers = [
+    "(123) 456-7890",
+    "123-456-7890",
+    "123 456 7890",
+    "1234567890",  # Invalid format
+    "(123)456-7890", # valid format
+    "abc-def-ghij",  # Invalid format
+    "(123-456-7890", # Invalid format
+    "123) 456-7890", # Invalid format
+]
+
+print("Phone Number Validation:")
+for number in phone_numbers:
+    print(f"{number}: {validate_phone_number(number)}")
+```
+
+**Code Explanation:**
+
+1. **`pattern`:** Defines the regex pattern for US phone numbers.
+   - `^` and `$`: Ensure the entire string is matched.
+   - `\(?` and `\)?`: Allow optional parentheses.
+   - `(\d{3})`: Captures three digits.
+   - `[- ]?`: Allows an optional hyphen or space as a separator.
+2. **`re.match(pattern, phone_number)`:** Matches the pattern against the phone number.
+3. **`return bool(match)`:** Returns `True` if valid, `False` otherwise.
+
+**Output:**
+
+```
+Phone Number Validation:
+(123) 456-7890: True
+123-456-7890: True
+123 456 7890: True
+1234567890: False
+(123)456-7890: True
+abc-def-ghij: False
+(123-456-7890: False
+123) 456-7890: False
+```
+
+### 3. Replacing Text with HTML Tags for Formatting
+
+Regular expressions can also be used to transform text. Here's how to convert text between asterisks into bold HTML tags.
+
+**Problem:** Convert text enclosed in single asterisks (e.g., `*bold text*`) to bold text using HTML tags (`<b>`).
+
+**Solution:**
+
+Python
+
+```
+import re
+
+def bold_text(text):
+    """Converts text enclosed in asterisks to bold HTML tags."""
+    pattern = r"\*(.*?)\*"
+    return re.sub(pattern, r"<b>\1</b>", text)
+
+text = "This is some *sample text* with *bold words*."
+html_text = bold_text(text)
+print(html_text)
+```
+
+**Code Explanation:**
+
+1. **`pattern`:** Defines the pattern to find text within asterisks.
+   - `\*`: Matches literal asterisks.
+   - `(.*?)`: Captures any characters between the asterisks (non-greedy).
+2. **`re.sub(pattern, r"<b>\1</b>", text)`:** Replaces the matched pattern with `<b>` + captured text + `</b>`.
+   - `\1`: Refers to the captured group (the text inside the asterisks).
+
+**Output:**
+
+```
+This is some <b>sample text</b> with <b>bold words</b>.
+```
+
+## Conclusion
+
+The Python `re` library is a powerful and versatile tool for working with text. These examples demonstrate just a fraction of what's possible. By mastering regular expressions, you can efficiently extract information, validate data, and manipulate strings, significantly enhancing your Python programming skills.
+
+**Further Exploration:**
+
+- **Python `re` Documentation:** The official documentation provides comprehensive information on all the functions and features of the `re` module.
+- **Regex101:** A fantastic online tool for testing and debugging regular expressions: [https://regex101.com/](https://www.google.com/url?sa=E&source=gmail&q=https://regex101.com/)
