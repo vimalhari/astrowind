@@ -23,10 +23,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-      # - run: npm test
+          cache: 'pnpm' # Use pnpm cache
+      - run: pnpm install # Use pnpm install
+      - run: pnpm run build # Use pnpm run build
+      # - run: pnpm test # Use pnpm test
 
   check:
     runs-on: ubuntu-latest
@@ -36,6 +36,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run check
+          cache: 'pnpm' # Use pnpm cache
+      - run: pnpm install # Use pnpm install
+      - run: pnpm run check # Use pnpm run check
