@@ -10,7 +10,7 @@ site:
 metadata:
   title:
     default: 'Criztec Technologies'
-    template: '%s — AstroWind'
+    template: '%s — Criztec Technologies'
   description: "\U0001F680 Suitable for Criztec Technologies: Innovative IT solutions for your digital future. Cloud migration, IT management, web app development, and website solutions."
   robots:
     index: true
