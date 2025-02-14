@@ -2,7 +2,7 @@
 publishDate: 2025-01-21T16:07:29Z
 title: 'Why Your Small Business Needs a Strong Online Presence in Europe'
 excerpt: Learn why a strong online presence is vital for small businesses in London and Europe. Get actionable tips to boost visibility, build trust, and drive growth.
-image: https://i.imghippo.com/files/rSG6552Ewk.webp
+image: https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/small-business_large.webp
 category: Digital Marketing
 tags:
   - Small Business Marketing

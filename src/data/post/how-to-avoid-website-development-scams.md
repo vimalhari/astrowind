@@ -2,7 +2,7 @@
 publishDate: 2025-01-03T16:07:29Z
 title: 'How Website Development Companies and Freelancers Cheat Customers (And How to Avoid It)'
 excerpt: Don't fall victim to website development scams! Learn common tactics and how to protect your UK small business with clear communication and a well-defined contract.
-image: https://images.pexels.com/photos/7534753/pexels-photo-7534753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+image: https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/scam-alert.webp
 category: small-business
 tags:
   - website development scams

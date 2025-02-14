@@ -2,7 +2,7 @@
 publishDate: 2025-01-10T11:16:49Z
 title: 'Hugo vs Astro: A Modern Static Site Generator Showdown (2025)'
 excerpt: 'A comprehensive comparison of Hugo and Astro, two powerful static site generators, helping you choose the best tool for your next web project in 2025.'
-image: https://i.imghippo.com/files/zZ9977OSg.webp
+image: https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/hugovsastro.webp
 category: web development
 tags:
   - hugo
