@@ -1,0 +1,294 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Services',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline=""
+    title="Social Media Marketing"
+    subtitle="Social media marketing is a powerful way for businesses of all sizes to reach prospects and customers."
+    actions={[{ variant: 'primary', target: '', text: 'Work with Us', href: '/contact' }]}
+    image={{
+      src: 'https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/Earn-these-qualifications-For-a-Digital-Marketing-Job6-1200x675.png.webp',
+      alt: 'Criztec Hero Image',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Best Social Media Marketing Agency in London, UK"
+    subtitle="Our team of skilled social media marketers is ready to collaborate with you to create and execute a powerful social media strategy that elevates your brand and drives measurable results. We leverage the latest social media trends and technologies to ensure your business connects with your target audience and achieves its marketing objectives."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    columns={3}
+    items={[
+      {
+        title: 'Social Media Strategy',
+        description:
+          'Develop a tailored social media strategy aligned with your business goals, including audience targeting, platform selection, and content planning.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Content Creation',
+        description:
+          'Craft compelling and engaging content, from eye-catching visuals to captivating copy, that resonates with your target audience and drives engagement.',
+        icon: 'tabler:pencil',
+      },
+      {
+        title: 'Community Management',
+        description:
+          'Build and nurture a thriving online community by actively engaging with your followers, responding to comments and messages, and fostering meaningful conversations.',
+        icon: 'tabler:messages',
+      },
+      {
+        title: 'Social Media Advertising',
+        description:
+          'Maximize your reach and drive targeted traffic to your website with strategic social media advertising campaigns across relevant platforms.',
+        icon: 'tabler:ad',
+      },
+      {
+        title: 'Performance Tracking & Reporting',
+        description:
+          'Monitor key performance indicators (KPIs) and receive regular reports on your social media performance, providing valuable insights to optimize your strategy.',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: 'Platform Expertise',
+        description:
+          'Leverage our in-depth knowledge and expertise across all major social media platforms, including Facebook, Instagram, Twitter, LinkedIn, and more.',
+        icon: 'tabler:world', // Could also be a specific platform icon here.
+      },
+    ]}
+  />
+
+  <!-- Hero2 Component with integrated buttons -->
+
+  <Content
+    image={{
+      src: 'https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/Social-Medias-Transformative-Touch.webp', // Updated image path and alt text
+      alt: 'social-media-marketing',
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-4">
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">
+            Social Media Strategy & Analytics
+          </h2>
+          <p>
+            Effective social media marketing starts with a solid strategy. Without a well-defined plan, it's difficult
+            to achieve your social media goals.
+          </p>
+          <p class="mt-4">
+            We collaborate closely with our clients to develop tailored social media strategies that align with their
+            specific business objectives, ensuring both short and long-term success.
+          </p>
+          <p class="mt-4">
+            We continuously monitor performance, adapt to changing trends, and explore new opportunities to maximize
+            your social media impact.
+          </p>
+
+          <ul class="list-none pl-4 mt-4">
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Social Media Audits</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Competitor Analysis</li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Audience Research & Targeting
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Content Strategy Development
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Performance Reporting & Analysis
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Platform-Specific Strategies (e.g., Instagram,
+              TikTok, LinkedIn)
+            </li>
+          </ul>
+        </div>
+
+        <!-- <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/pricing" class="btn btn-primary"> Discover Our Packages </a>
+        </div> -->
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget ***************** -->
+  <Content
+    isReversed
+    image={{
+      src: '~/assets/images/digitalmarketing/digital_marketing_4.webp',
+      alt: 'digital-marketing-executive',
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-4">
+        {/* Changed to space-y-4 for more compact spacing */}
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Social Media Management</h2>
+          <p>
+            Let us help you position your business right in front of your target market to boost brand awareness and
+            spark new opportunities.
+          </p>
+          <p class="mt-4">
+            With more people than ever using social media to communicate, it has become increasingly important for
+            businesses to have active, up-to-date social profiles.
+          </p>
+          <!-- <p class="mt-4">
+          It's important to make changes in direction when needed and to try a different approach to seek improvement and
+          new opportunities at all times.
+        </p> -->
+
+          <ul class="list-none pl-4 mt-4">
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Account Set-Up & Maintenance
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Multi-Channel Social Management
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Graphic Design & Post Creation
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Post Scheduling & Automation
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Social Ad Campaign Management
+            </li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Follower Growth Strategy</li>
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/pricing" class="btn btn-primary"> Discover Our Packages </a>
+          <!-- <a href="#" class="btn btn-outline">
+          Learn More
+        </a> -->
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <Features2
+    title="Explore our Social Media Management Services"
+    subtitle="Elevate your brand presence across all major platforms."
+    columns={3}
+    items={[
+      {
+        title: 'Facebook Page Management',
+        description: 'Build a strong Facebook community, engage with your audience, and run effective ad campaigns.',
+        icon: 'tabler:brand-facebook',
+      },
+      {
+        title: 'X (Twitter) Profile Management',
+        description:
+          'Increase your brand visibility on X with engaging tweets, targeted hashtags, and real-time interactions.',
+        icon: 'tabler:brand-x', // Or find a suitable X icon.
+      },
+      {
+        title: 'Instagram Profile Management',
+        description:
+          'Grow your Instagram following, create visually appealing content, and leverage influencer marketing.',
+        icon: 'tabler:brand-instagram',
+      },
+      {
+        title: 'LinkedIn Profile Management',
+        description: 'Optimize your LinkedIn profile to attract new opportunities and build your professional network.',
+        icon: 'tabler:brand-linkedin',
+      },
+      {
+        title: 'LinkedIn Company Page Management',
+        description: 'Showcase your company culture, share industry insights, and generate leads on LinkedIn.',
+        icon: 'tabler:brand-linkedin', // You might use a different icon if you have one.
+      },
+      {
+        title: 'Google Business Profile Listing Management',
+        description: 'Improve your local search ranking, manage customer reviews, and attract more foot traffic.',
+        icon: 'tabler:brand-google', // Or a suitable icon.
+      },
+      {
+        title: 'YouTube Channel Management',
+        description: 'Create engaging video content, optimize your YouTube channel, and build a loyal audience.',
+        icon: 'tabler:brand-youtube',
+      },
+      {
+        title: 'Pinterest Profile Management',
+        description: 'Drive traffic to your website and increase brand awareness with visually appealing pins.',
+        icon: 'tabler:brand-pinterest',
+      },
+      {
+        title: 'TikTok Profile Management',
+        description: 'Create viral TikTok videos, engage with trending challenges, and reach a younger demographic.',
+        icon: 'tabler:brand-tiktok',
+      },
+      {
+        title: 'Mastodon Profile Management',
+        description: 'Build a community on Mastodon, engage in discussions, and connect with your target audience.',
+        icon: 'tabler:brand-mastodon', // Find an appropriate Mastodon icon.
+      },
+      {
+        title: 'Threads Profile Management',
+        description: 'Engage with your audience on Threads through text-based posts and build a strong brand presence.',
+        icon: 'tabler:brand-threads', // Find an appropriate Threads icon.
+      },
+      {
+        title: 'Telegram Profile Management',
+        description: 'Connect with your audience on Telegram through channels, groups, and direct messaging.',
+        icon: 'tabler:brand-telegram', // Find an appropriate Telegram icon.
+      },
+      {
+        title: 'WhatsApp Business Profile Management',
+        description: 'Communicate with customers directly, provide support, and promote your products or services.',
+        icon: 'tabler:brand-whatsapp', // Find a WhatsApp Business icon.
+      },
+      {
+        title: 'Bluesky Profile Management',
+        description: "Build your presence on Bluesky, engage with the community, and share your brand's perspective.",
+        icon: 'tabler:brand-bluesky', // Find an appropriate Bluesky icon.
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get a Free Social Media Audit', // Changed to a more relevant CTA
+        href: '/contact', // Changed to a contact page
+      },
+    ]}
+    title="Elevate Your Social Media Presence"
+    subtitle="Comprehensive social media management to achieve your business goals."
+  />
+</Layout>

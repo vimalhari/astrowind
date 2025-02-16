@@ -32,7 +32,7 @@ export const headerData = {
         // { text: 'Video Production', href: getPermalink('/video-production') },
 
         // { text: 'Digital Marketing', href: getPermalink('/digital-marketing') },
-        // { text: 'Social Media Marketing', href: getPermalink('/social-media-marketing') },
+        { text: 'Social Media Marketing', href: getPermalink('/socialmedia-marketing') },
 
         // { text: 'IT Solutions', href: getPermalink('/it-solutions') },
         // { text: 'Cloud Services', href: getPermalink('/cloud-services') },
@@ -129,7 +129,7 @@ export const footerData = {
       links: [
         { text: 'Website Development', href: '/website-development' },
         { text: 'Digital Marketing', href: '/digital-marketing' },
-        //     { text: 'Team', href: '#' },
+        { text: 'Social Media Marketing', href: '/socialmedia-marketing' },
         //     { text: 'Enterprise', href: '#' },
         //     { text: 'Customer stories', href: '#' },
         //     { text: 'Pricing', href: '#' },

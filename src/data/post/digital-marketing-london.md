@@ -73,22 +73,22 @@ Small businesses in London have a variety of digital marketing channels and stra
 
 - **Content Marketing:** Creating and publishing valuable content, such as blog posts, videos, and guides, helps build trust, brand awareness, and ultimately drives sales10.
 - **Social Media Marketing:** Platforms like Facebook, Instagram, Twitter, and LinkedIn offer opportunities to engage with audiences, showcase products, and drive website traffic10. To effectively utilize social media, small businesses should:
-    - Choose the right platforms where their target audience is most active8.
-    - Post consistently to maintain visibility and engagement8.
-    - Engage with their audience by responding to comments, messages, and reviews8.
-    - Use stories and live videos to connect with their audience in a more informal and interactive way8.
-    - Run giveaways or contests to increase engagement and attract new followers8.
-    - Consider the demographics of each platform to tailor their content accordingly. For example, TikTok is particularly popular with younger audiences, while LinkedIn is more geared towards professionals11. The table below provides a summary of key social media platforms and their user demographics:
+  - Choose the right platforms where their target audience is most active8.
+  - Post consistently to maintain visibility and engagement8.
+  - Engage with their audience by responding to comments, messages, and reviews8.
+  - Use stories and live videos to connect with their audience in a more informal and interactive way8.
+  - Run giveaways or contests to increase engagement and attract new followers8.
+  - Consider the demographics of each platform to tailor their content accordingly. For example, TikTok is particularly popular with younger audiences, while LinkedIn is more geared towards professionals11. The table below provides a summary of key social media platforms and their user demographics:
 
-| Platform     | Monthly Active Users (Global) | Monthly Active Users (UK) | Key Demographic                         |
-|-------------|--------------------------------|---------------------------|------------------------------------------|
-| Facebook    | Nearly 5 billion               | Not specified             | Wide reach, diverse community           |
-| Instagram   | Over 2 billion                 | Not specified             | Visually-driven, popular for showcasing products |
-| TikTok      | Over 1 billion                 | 23 million                | Younger audience (18-34)                |
-| LinkedIn    | Over 1 billion                 | 40 million                | Professionals, businesses, jobseekers   |
-| Twitter (X) | Around 500 million             | 25 million                | Popular among people aged 25-34         |
-| YouTube     | Around 2.5 billion             | 56 million                | Largest audience aged 25-34             |
-| Pinterest   | Nearly 500 million             | 13.5 million              | Global users: Women aged 25-34          |
+| Platform    | Monthly Active Users (Global) | Monthly Active Users (UK) | Key Demographic                                  |
+| ----------- | ----------------------------- | ------------------------- | ------------------------------------------------ |
+| Facebook    | Nearly 5 billion              | Not specified             | Wide reach, diverse community                    |
+| Instagram   | Over 2 billion                | Not specified             | Visually-driven, popular for showcasing products |
+| TikTok      | Over 1 billion                | 23 million                | Younger audience (18-34)                         |
+| LinkedIn    | Over 1 billion                | 40 million                | Professionals, businesses, jobseekers            |
+| Twitter (X) | Around 500 million            | 25 million                | Popular among people aged 25-34                  |
+| YouTube     | Around 2.5 billion            | 56 million                | Largest audience aged 25-34                      |
+| Pinterest   | Nearly 500 million            | 13.5 million              | Global users: Women aged 25-34                   |
 
 - **Paid Social and PPC Advertising:** Targeted ads on social media and search engines allow businesses to reach specific demographics and increase brand visibility10. Social media platforms offer various ad formats, including photo ads, video ads, carousel ads, and stories ads8.
 - **Email Marketing:** Building an email list and sending targeted campaigns can nurture customer relationships, promote new products, and drive repeat business10.
@@ -101,14 +101,14 @@ By implementing a comprehensive digital marketing strategy that incorporates the
 Real-world examples demonstrate the power of digital marketing to drive growth for small businesses in London.
 
 - **Signature Brew's "Pub in a Box" Campaign:** During the lockdown, when pubs were closed, Signature Brew, a London-based brewery, launched an innovative "Pub in a Box" campaign. They delivered craft beers, glassware, snacks, music playlists, and pub quizzes to local customers, creating a pub experience at home. This campaign successfully leveraged digital marketing to:
-    - Transform the pub experience for home consumption13.
-    - Build community connection through social media engagement and virtual events13.
-    - Maintain social traditions with virtual pub quizzes and online community building13.
+  - Transform the pub experience for home consumption13.
+  - Build community connection through social media engagement and virtual events13.
+  - Maintain social traditions with virtual pub quizzes and online community building13.
 - **The Kingdom of Fife Campaign:** This campaign in Fife, Scotland, promoted local food producers, restaurants, and artisanal businesses through an integrated app and social media campaign. The campaign utilized:
-    - An interactive food and drink trail mobile app13.
-    - A digital business directory featuring local businesses13.
-    - A #TasteofFife social media campaign13.
-    - Virtual food festivals and online events13. This campaign effectively combined digital innovation with authentic local experiences to drive engagement and support local businesses13.
+  - An interactive food and drink trail mobile app13.
+  - A digital business directory featuring local businesses13.
+  - A #TasteofFife social media campaign13.
+  - Virtual food festivals and online events13. This campaign effectively combined digital innovation with authentic local experiences to drive engagement and support local businesses13.
 
 These case studies illustrate how small businesses can creatively leverage digital marketing to adapt to challenges, engage with their community, and achieve remarkable results.
 
