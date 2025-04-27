@@ -4,51 +4,55 @@ import Hero from '~/components/widgets/Hero.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features from '~/components/widgets/Features.astro'; // Import Features for variety
 
+// SEO Metadata: Added a descriptive meta description.
 const metadata = {
-  title: 'About us',
+  title: 'About Criztec Technologies | UK & India Web Development Experts',
+  description:
+    'Learn about Criztec Technologies, a UK-based web design and development company with expert teams in the UK and India, offering high-quality, cost-effective web solutions, driven by innovation and client success.',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
+  <!-- Hero Widget: Clear headline, engaging subtitle, relevant image -->
   <Hero
-    tagline="About us"
+    tagline="About Us"
     image={{
+      // Descriptive alt text
       src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Caos Image',
+      alt: 'Modern office space representing Criztec Technologies professional environment',
     }}
   >
     <Fragment slot="title">
-      Elevate your online presence with <br />
+      Elevate Your Online Presence with <br />
       <span class="text-accent dark:text-white highlight"> Criztec Technologies</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      We're a passionate team of web designers and developers dedicated to helping businesses like yours thrive online.
-      We believe a stunning website is more than just aesthetics; it's a powerful tool to connect with your audience,
-      build your brand, and achieve your business goals.
+      We are a dynamic team of web designers, developers, and digital strategists passionate about crafting exceptional
+      online experiences. We believe a powerful website is more than just code; it's a vital tool to connect with your
+      audience, amplify your brand, and drive measurable results.
     </Fragment>
   </Hero>
 
+  <!-- Content Widget: Our Story - Expanded narrative -->
   <Content
+    isReversed
+    tagline="Our Journey"
     id="about"
-    columns={3}
     items={[
+      // Social links remain
       {
         icon: 'tabler:brand-x',
-        callToAction: {
-          target: '_blank',
-          text: 'X',
-          href: 'https://x.com/criztec_it',
-        },
+        callToAction: { target: '_blank', text: 'Follow on X', href: 'https://x.com/criztec_it' },
       },
       {
         icon: 'tabler:brand-instagram',
         callToAction: {
           target: '_blank',
-          text: 'Instagram',
+          text: 'Follow on Instagram',
           href: 'https://www.instagram.com/criztec_technologies',
         },
       },
@@ -56,80 +60,165 @@ const metadata = {
         icon: 'tabler:brand-facebook',
         callToAction: {
           target: '_blank',
-          text: 'Facebook',
+          text: 'Follow on Facebook',
           href: 'https://www.facebook.com/criztec.technologies',
         },
       },
     ]}
     image={{
+      // Descriptive alt text
       src: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      alt: 'Colorful Image',
-      loading: 'eager',
+      alt: 'Diverse team collaborating on a project at Criztec Technologies',
     }}
   >
     <Fragment slot="content">
-      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Our Story</h2>
-      <p>
-        Criztec Technologies was founded by Vimal Hari, an IT industry veteran with over 15 years of experience.
-        Originally from India, Vimal established Criztec in the UK with a vision to provide businesses with
-        high-quality, cost-effective web solutions.
+      <h2 class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-4">Our Story: Bridging Expertise</h2>
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-4">
+        Criztec Technologies was founded by Vimal Hari, an IT industry veteran with over 15 years of hands-on experience
+        across diverse technology landscapes. Originally from India, Vimal established Criztec in the UK with a clear
+        vision: to provide businesses with access to high-quality, innovative, and cost-effective web solutions.
       </p>
-      <br />
-      <p>
-        The idea for Criztec was born from a common challenge: many UK businesses struggle to find skilled web
-        developers who can meet their needs and budgets. Often, the options are either expensive UK-based firms or
-        overseas companies that can be difficult to communicate and collaborate with.
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-4">
+        The inspiration came from observing a common challenge faced by UK businesses – the difficulty in finding
+        skilled web development partners who could deliver exceptional quality without exorbitant costs. The choice
+        often seemed limited to expensive local agencies or navigating the complexities and potential communication
+        barriers of working with purely overseas firms.
       </p>
-      <br />
-      <p>
-        Criztec bridges that gap. We offer the best of both worlds: expert project management and communication based in
-        the UK, combined with the talent and cost-effectiveness of our development team in India.
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        Criztec was created to bridge this gap. We uniquely combine UK-based strategic oversight, project management,
+        and client communication with the deep technical expertise and cost-efficiency of our dedicated development team
+        located in India. This hybrid model ensures seamless collaboration and delivers the best of both worlds – local
+        understanding and global talent.
       </p>
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-blue-50 dark:bg-slate-800"></div>
     </Fragment>
   </Content>
 
-  <!-- CalltoAction ************** -->
+  <!-- Features Widget: Our Core Values -->
+  <Features
+    id="values"
+    tagline="Our Principles"
+    title="Guiding Our Work: Our Core Values"
+    subtitle="These principles are the foundation of our company culture and how we approach every project and client relationship."
+    items={[
+      {
+        title: 'Client Focus',
+        description:
+          'Your success is our priority. We listen, understand your goals, and tailor solutions to meet your specific needs.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Innovation',
+        description:
+          'We embrace emerging technologies and creative thinking to deliver cutting-edge, future-proof web solutions.',
+        icon: 'tabler:bulb',
+      },
+      {
+        title: 'Quality & Excellence',
+        description:
+          'We are committed to the highest standards of design, development, and performance in everything we build.',
+        icon: 'tabler:award',
+      },
+      {
+        title: 'Integrity & Transparency',
+        description: 'We believe in open communication, honest pricing, and building long-term trust with our clients.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Collaboration',
+        description:
+          'We foster a collaborative environment, both internally and with our clients, for the best possible outcomes.',
+        icon: 'tabler:puzzle',
+      },
+      {
+        title: 'Cost-Effectiveness',
+        description:
+          'Leveraging our global team structure, we provide exceptional value without compromising on quality.',
+        icon: 'tabler:receipt-pound',
+      },
+    ]}
+  />
 
+  <!-- Steps Widget: Why Choose Us - Refined descriptions -->
+  <Steps
+    title="Why Partner with Criztec?"
+    subtitle="Our unique structure and commitment to excellence provide distinct advantages for your web development needs."
+    items={[
+      {
+        title: 'UK Project Management & Strategy',
+        description:
+          'Benefit from clear, local communication, strategic planning, and expert oversight based in the UK.',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Expert Indian Development Team',
+        description:
+          'Access a pool of highly skilled, experienced developers in India, ensuring technical excellence and efficiency.',
+        icon: 'tabler:users-group',
+      },
+      {
+        title: 'Seamless Hybrid Model',
+        description:
+          'Experience the best of both worlds: local accountability combined with global talent and cost advantages.',
+        icon: 'tabler:arrows-join',
+      },
+      {
+        title: 'Focus on Quality & Reliability',
+        description:
+          'We are dedicated to delivering robust, scalable, secure, and high-performing websites built to last.',
+        icon: 'tabler:thumb-up',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1531545514256-b1400bc00f31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
+      alt: 'Team members collaborating and celebrating success at Criztec Technologies',
+    }}
+  />
+
+  <!-- Features2 Widget: Locations - Remains concise -->
+  <Features2
+    title="Our Global Presence"
+    tagline="Find Us"
+    columns={2}
+    items={[
+      {
+        title: 'United Kingdom (HQ & Client Relations)',
+        description: '121 Bath Road, Slough, Berkshire, United Kingdom, SL1 3UW',
+        icon: 'tabler:building-community',
+      },
+      {
+        title: 'India (Development Center)',
+        description: '1/694 Valyaipathi Salai, Mogappair East, Chennai 600037, India',
+        icon: 'tabler:building-arch',
+      },
+    ]}
+    classes={{
+      container: 'max-w-5xl',
+      item: 'md:px-6',
+      title: 'text-xl font-semibold',
+      description: 'text-gray-600 dark:text-gray-400',
+    }}
+  />
+
+  <!-- CallToAction Widget: Strong CTA -->
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Work with us',
+        text: 'Start Your Project',
         href: '/contact',
-        // target: '_blank',
         icon: 'tabler:user-plus',
       },
     ]}
   >
-    <Fragment slot="title">
-      Criztec&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Technologies</span>
-    </Fragment>
+    <Fragment slot="title"> Ready to Transform Your Digital Presence? </Fragment>
 
     <Fragment slot="subtitle">
-      Ready to transform your business with innovative IT solutions? <br class="hidden md:inline" /> Let's discuss your needs
-      and unlock your digital potential.
+      Partner with Criztec Technologies to unlock your business's full online potential. Let's discuss your vision and
+      craft a tailored web solution that drives growth. Contact us today for a free consultation.
     </Fragment>
   </CallToAction>
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={2}
-    items={[
-      {
-        title: 'United Kingdom',
-        description: '121 Bath Road, Slough, Berkshire, United Kingdom, SL1 3UW',
-      },
-      {
-        title: 'India',
-        description: '1/694 Valyaipathi Salai, Mogappair East, Chennai 600037, India',
-      },
-    ]}
-  />
 </Layout>

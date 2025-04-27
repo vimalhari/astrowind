@@ -1,0 +1,183 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Web Design',
+  description:
+    'Professional web design services to create stunning, responsive, and user-friendly websites tailored to your business needs.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Creative Web Solutions"
+    title="Web Design"
+    subtitle="Crafting beautiful, functional, and user-centric websites that drive results and elevate your brand online."
+    actions={[{ variant: 'primary', target: '', text: 'Get Started', href: '/contact' }]}
+    image={{ src: '~/assets/images/web-design-hero.webp', alt: 'Web Design Service Hero Image' }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Our Web Design Philosophy"
+    subtitle="We believe in creating websites that are not only visually appealing but also intuitive, accessible, and optimized for performance. Our goal is to deliver a seamless digital experience for your users."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    columns={3}
+    items={[
+      {
+        title: 'Custom Design',
+        description:
+          'Unique website designs tailored to your brand identity and business objectives, ensuring you stand out.',
+        icon: 'tabler:palette',
+      },
+      {
+        title: 'Responsive Layout',
+        description: 'Websites that look and function perfectly on all devices – desktops, tablets, and smartphones.',
+        icon: 'tabler:devices',
+      },
+      {
+        title: 'User Experience (UX)',
+        description:
+          'Intuitive navigation and user-friendly interfaces designed to engage visitors and achieve conversions.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Performance Optimized',
+        description:
+          'Fast-loading websites built with performance best practices for better user satisfaction and SEO.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'SEO-Friendly',
+        description: 'Websites structured and built with SEO in mind to improve visibility on search engines.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Content Management',
+        description:
+          'Easy-to-use CMS integration (like WordPress, DecapCMS) allowing you to manage your website content effortlessly.',
+        icon: 'tabler:edit',
+      },
+    ]}
+  />
+
+  <!-- Content Section 1 ************ -->
+
+  <Content
+    image={{
+      src: 'https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/What-is-Custom-web-design-and-web-development-1200x770.webp',
+      alt: 'Our Web Design Process',
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-4">
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Our Design Process</h2>
+          <p>
+            We follow a structured design process to ensure your project's success, from initial consultation to final
+            launch and beyond.
+          </p>
+          <p class="mt-4">
+            Collaboration is key. We work closely with you at each stage to understand your vision and requirements,
+            providing mockups and prototypes for feedback.
+          </p>
+
+          <ul class="list-none pl-4 mt-4">
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Discovery & Planning</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Wireframing & Prototyping</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Visual Design & Mockups</li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Development & Implementation
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Testing & Quality Assurance
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Launch & Post-Launch Support
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/contact" class="btn btn-primary"> Discuss Your Project </a>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Section 2 ************ -->
+
+  <Content
+    isReversed
+    image={{
+      src: 'https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/website-rsponsive-mobile-design.webp',
+      alt: 'Responsive Web Design Example',
+      loading: 'lazy',
+    }}
+  >
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-4">
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Responsive & Mobile-First</h2>
+          <p>
+            With the majority of web traffic coming from mobile devices, a responsive design is crucial. We prioritize a
+            mobile-first approach.
+          </p>
+          <p class="mt-4">
+            Our designs adapt seamlessly to any screen size, ensuring a consistent and optimal experience for all users,
+            regardless of the device they use.
+          </p>
+          <ul class="list-none pl-4 mt-4">
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Fluid Grids & Layouts</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Flexible Images & Media</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Touch-Friendly Navigation</li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Cross-Browser Compatibility
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Performance on Mobile Networks
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/pricing" class="btn btn-primary"> View Pricing Options </a>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get a Web Design Quote',
+        href: '/contact',
+      },
+    ]}
+    title="Ready for a Website That Wows?"
+    subtitle="Let's collaborate to build a website that reflects your brand and achieves your business goals. Contact us today for a free consultation."
+  />
+</Layout>

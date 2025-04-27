@@ -10,10 +10,10 @@ export const headerData = {
           text: 'About Us',
           href: getPermalink('/about'),
         },
-        // {
-        //   text: 'Startup',
-        //   href: getPermalink('/homes/startup'),
-        // },
+        {
+          text: 'Blog',
+          href: getBlogPermalink(),
+        },
         // {
         //   text: 'Mobile App',
         //   href: getPermalink('/homes/mobile-app'),
@@ -25,67 +25,49 @@ export const headerData = {
       ],
     },
     {
-      text: 'Services',
+      text: 'Design',
       links: [
-        { text: 'Website Development', href: getPermalink('/website-development') },
-        { text: 'Digital Marketing', href: getPermalink('/digital-marketing') },
+        { text: 'Web Design', href: getPermalink('/web-design') },
+        // { text: 'UX Design', href: getPermalink('/ux-design') },
+        // { text: 'Graphic Design', href: getPermalink('/graphic-design') },
         // { text: 'Video Production', href: getPermalink('/video-production') },
-
-        // { text: 'Digital Marketing', href: getPermalink('/digital-marketing') },
-        { text: 'Social Media Marketing', href: getPermalink('/socialmedia-marketing') },
-
-        // { text: 'IT Solutions', href: getPermalink('/it-solutions') },
-        // { text: 'Cloud Services', href: getPermalink('/cloud-services') },
-        // { text: 'Automation', href: getPermalink('/automation') },
-        // { text: 'ETL / Data Processing', href: getPermalink('/etl-data-processing') },
       ],
     },
-    // {
-    //   text: 'Design',
-    //   links: [
-    //     { text: 'Web Design', href: getPermalink('/web-design') },
-    //     { text: 'UX Design', href: getPermalink('/ux-design') },
-    //     { text: 'Graphic Design', href: getPermalink('/graphic-design') },
-    //     { text: 'Video Production', href: getPermalink('/video-production') },
-    //   ],
-    // },
-    // {
-    //   text: 'Development',
-    //   links: [
-    //     { text: 'Web Development', href: getPermalink('/web-development') },
-    //     { text: 'Mobile App Development', href: getPermalink('/mobile-app') },
-    //     { text: 'Software Development', href: getPermalink('/software-development') },
-    //     { text: 'Ecommerce Solutions', href: getPermalink('/ecommerce-solutions') },
-    //     { text: 'Hugo Static Site', href: getPermalink('/hugo-static-site') },
-    //     { text: 'Astro Site', href: getPermalink('/astro-site') },
-    //     { text: 'WordPress', href: getPermalink('/wordpress') },
-    //     { text: 'Automation', href: getPermalink('/automation') },
-    //     { text: 'ETL / Data Processing', href: getPermalink('/etl-data-processing') },
-    //   ],
-    // },
-    // {
-    //   text: 'Digital Marketing',
-    //   links: [
-    //     { text: 'SEO', href: getPermalink('/seo') },
-    //     { text: 'Social Media Marketing', href: getPermalink('/social-media-marketing') },
-    //     { text: 'Content Marketing', href: getPermalink('/content-marketing') },
-    //   ],
-    // },
-    // {
-    //   text: 'Technical',
-    // links: [
-    //   { text: 'IT Support', href: getPermalink('/it-support') },
-    //   { text: 'IT Solutions', href: getPermalink('/it-solutions') },
-    //   { text: 'Cloud Services', href: getPermalink('/cloud-services') },
-    //   { text: 'Cybersecurity', href: getPermalink('/cyber-security') },
-    //   { text: 'Cloud Infrastructure', href: getPermalink('/cloud-infrastructure') },
-    //   { text: 'Office 365', href: getPermalink('/office-365') },
-    // ],
-    // },
     {
-      text: 'Blog',
-      href: getBlogPermalink(),
+      text: 'Development',
+      links: [
+        { text: 'Website Development', href: getPermalink('/website-development') },
+        { text: 'Mobile App Development', href: getPermalink('/mobile-app') },
+        { text: 'Software Development', href: getPermalink('/software-development') },
+        { text: 'Ecommerce Solutions', href: getPermalink('/ecommerce-solutions') },
+        { text: 'Hugo Static Site', href: getPermalink('/hugo-static-site') },
+        { text: 'Astro Site', href: getPermalink('/astro-site') },
+        { text: 'WordPress', href: getPermalink('/wordpress') },
+        { text: 'Automation', href: getPermalink('/automation') },
+        { text: 'ETL / Data Processing', href: getPermalink('/etl-data-processing') },
+      ],
     },
+    {
+      text: 'Digital Marketing',
+      links: [
+        { text: 'Digital Marketing', href: getPermalink('/digital-marketing') },
+        { text: 'SEO', href: getPermalink('/seo') },
+        { text: 'Social Media Marketing', href: getPermalink('/socialmedia-marketing') },
+        { text: 'Content Marketing', href: getPermalink('/content-marketing') },
+      ],
+    },
+    {
+      text: 'Technical',
+    links: [
+      { text: 'IT Support', href: getPermalink('/it-support') },
+      { text: 'IT Solutions', href: getPermalink('/it-solutions') },
+      { text: 'Cloud Services', href: getPermalink('/cloud-services') },
+      { text: 'Cybersecurity', href: getPermalink('/cyber-security') },
+      { text: 'Cloud Infrastructure', href: getPermalink('/cloud-infrastructure') },
+      { text: 'Office 365', href: getPermalink('/office-365') },
+    ],
+    },
+    
   ],
   actions: [{ text: 'Get in Touch', href: getPermalink('/contact'), target: '_blank' }],
 };
