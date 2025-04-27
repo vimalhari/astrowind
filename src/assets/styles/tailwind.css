@@ -36,7 +36,7 @@
   .btn-tertiary {
     @apply btn border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
   }
-  
+
   /* Image background override for Content component */
   .content-image-bg-white .relative.m-auto.max-w-4xl img {
     @apply bg-white;

@@ -1,0 +1,366 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Faqs from '~/components/widgets/FAQs.astro';
+import Steps from '~/components/widgets/Steps.astro';
+
+const metadata = {
+  title: 'Mobile App Development UK | iOS & Android App Developers',
+  description:
+    'Custom mobile app development services in the UK for iOS, Android, and cross-platform applications. Our expert developers create innovative, user-friendly mobile apps that drive business growth.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Mobile Innovation"
+    title="Mobile App Development"
+    subtitle="Transform your business with custom mobile applications designed and developed by our expert UK team. We create intuitive, feature-rich apps for iOS, Android, and cross-platform environments."
+    actions={[{ variant: 'primary', target: '', text: 'Discuss Your App Idea', href: '/contact' }]}
+    image={{ src: '~/assets/images/hero-image.webp', alt: 'Mobile App Development Hero Image' }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Our Mobile App Development Approach"
+    subtitle="We combine technical expertise with creative design to deliver high-performance mobile applications that engage users and drive business growth. Our UK-based development team ensures quality, security, and innovation in every project."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    columns={3}
+    items={[
+      {
+        title: 'iOS App Development',
+        description:
+          'Native iOS applications custom-built for iPhone and iPad. We leverage Swift and Objective-C to create seamless, high-performance apps that follow Apple design guidelines.',
+        icon: 'tabler:brand-apple',
+      },
+      {
+        title: 'Android App Development',
+        description:
+          'Custom Android applications designed to work flawlessly across the diverse Android ecosystem. Using Kotlin and Java to develop scalable and robust mobile experiences.',
+        icon: 'tabler:brand-android',
+      },
+      {
+        title: 'Cross-Platform Development',
+        description:
+          'Cost-effective solutions that work on both iOS and Android from a single codebase. We use React Native and Flutter to create apps with near-native performance.',
+        icon: 'tabler:devices',
+      },
+      {
+        title: 'Progressive Web Apps',
+        description:
+          'Web applications that offer mobile app-like experiences. PWAs combine the best of web and mobile apps with offline capabilities and faster loading times.',
+        icon: 'tabler:world-www',
+      },
+      {
+        title: 'UI/UX Design',
+        description:
+          'User-centered design that focuses on creating intuitive, engaging, and accessible interfaces that delight your users and keep them coming back.',
+        icon: 'tabler:palette',
+      },
+      {
+        title: 'App Maintenance & Support',
+        description:
+          'Ongoing maintenance, updates, and technical support to ensure your app remains secure, compatible with new OS versions, and performs optimally.',
+        icon: 'tabler:tool',
+      },
+    ]}
+  />
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    title="Our Mobile App Development Process"
+    subtitle="We follow a structured, transparent development process to turn your app idea into reality, ensuring quality at every stage."
+    items={[
+      {
+        title: 'Discovery & Planning',
+        description:
+          "We begin by understanding your business objectives, target audience, and app requirements. This phase includes market research, competitor analysis, and defining your app's unique value proposition.",
+        icon: 'tabler:bulb',
+      },
+      {
+        title: 'UI/UX Design',
+        description:
+          "Our designers create wireframes and interactive prototypes that visualize your app's user journey. We focus on intuitive navigation, engaging visuals, and a seamless user experience.",
+        icon: 'tabler:paint',
+      },
+      {
+        title: 'Development',
+        description:
+          'Our experienced developers build your app using the most appropriate technologies. We follow agile methodologies, with regular sprints and updates to keep you involved throughout the process.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Quality Assurance',
+        description:
+          'Rigorous testing across multiple devices and scenarios ensures your app is bug-free, secure, and performs optimally under various conditions. We test for functionality, usability, compatibility, and performance.',
+        icon: 'tabler:checkup-list',
+      },
+      {
+        title: 'Deployment',
+        description:
+          'We handle the submission process to app stores, ensuring compliance with all guidelines and requirements for successful publication on the Apple App Store and Google Play Store.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Post-Launch Support',
+        description:
+          "Our relationship doesn't end at launch. We provide ongoing maintenance, updates, and support to ensure your app continues to perform well and meet evolving user needs.",
+        icon: 'tabler:lifebuoy',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
+      alt: 'Mobile App Development Process',
+    }}
+  />
+
+  <!-- Content Section 1 ************ -->
+
+  <Content
+    id="benefits"
+    image={{
+      src: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+      alt: 'Mobile App Benefits',
+    }}
+  >
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-6">
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">
+            Why Your Business Needs a Mobile App
+          </h2>
+          <p>
+            In today's digital-first world, mobile applications have become essential tools for businesses of all sizes.
+            With smartphone usage at an all-time high in the UK, a well-designed mobile app can:
+          </p>
+        </div>
+
+        <div class="content-section">
+          <h3 class="text-xl font-bold tracking-tight dark:text-white sm:text-2xl mb-2">Enhance Customer Engagement</h3>
+          <p>
+            Mobile apps provide a direct channel to your customers, allowing you to send personalized notifications,
+            offers, and updates. This direct interaction builds stronger relationships and increases customer loyalty.
+          </p>
+        </div>
+
+        <div class="content-section">
+          <h3 class="text-xl font-bold tracking-tight dark:text-white sm:text-2xl mb-2">Boost Brand Visibility</h3>
+          <p>
+            Your app icon on a user's phone serves as a constant reminder of your brand. The average smartphone user
+            checks their phone 58 times daily, providing multiple opportunities for brand recognition.
+          </p>
+        </div>
+
+        <div class="content-section">
+          <h3 class="text-xl font-bold tracking-tight dark:text-white sm:text-2xl mb-2">Create New Revenue Streams</h3>
+          <p>
+            Mobile apps open up various monetization opportunities—from in-app purchases and subscription models to
+            premium features and ad revenue. They can complement your existing business model or create entirely new
+            income sources.
+          </p>
+        </div>
+
+        <div class="content-section">
+          <h3 class="text-xl font-bold tracking-tight dark:text-white sm:text-2xl mb-2">Collect Valuable User Data</h3>
+          <p>
+            Apps provide insights into user behavior, preferences, and engagement patterns. This data helps you make
+            informed business decisions, personalize user experiences, and optimize your marketing strategies.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/contact" class="btn btn-primary">Explore App Possibilities</a>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Technologies We Use"
+    subtitle="We leverage the latest technologies and frameworks to build secure, scalable, and feature-rich mobile applications."
+    columns={3}
+    items={[
+      {
+        title: 'iOS Development',
+        description: 'Swift, Objective-C, Xcode, SwiftUI',
+        icon: 'tabler:brand-apple',
+      },
+      {
+        title: 'Android Development',
+        description: 'Kotlin, Java, Android Studio, Jetpack Compose',
+        icon: 'tabler:brand-android',
+      },
+      {
+        title: 'Cross-Platform',
+        description: 'React Native, Flutter, Xamarin',
+        icon: 'tabler:apps',
+      },
+      {
+        title: 'Backend & APIs',
+        description: 'Node.js, Python, Firebase, REST APIs, GraphQL',
+        icon: 'tabler:server',
+      },
+      {
+        title: 'Database',
+        description: 'Firebase, MongoDB, MySQL, PostgreSQL, SQLite',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'Cloud Services',
+        description: 'AWS, Google Cloud, Microsoft Azure',
+        icon: 'tabler:cloud',
+      },
+      {
+        title: 'Payment Integration',
+        description: 'Stripe, PayPal, Apple Pay, Google Pay',
+        icon: 'tabler:credit-card',
+      },
+      {
+        title: 'Analytics & Tracking',
+        description: 'Google Analytics, Firebase Analytics, Mixpanel',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: 'Authentication',
+        description: 'OAuth, JWT, Biometric, Social Login',
+        icon: 'tabler:lock',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Content Section 2 ************ -->
+
+  <Content
+    isReversed
+    id="industries"
+    image={{
+      src: 'https://images.unsplash.com/photo-1531973576160-7125cd663d86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+      alt: 'Industry-specific mobile app development',
+    }}
+  >
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-6">
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">
+            Industry-Specific Mobile Solutions
+          </h2>
+          <p>
+            We develop tailored mobile applications that address the specific challenges and opportunities in your
+            industry. Our team has extensive experience creating apps across various sectors:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div class="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-100 dark:border-slate-700">
+            <h3 class="text-lg font-semibold mb-2">Retail & E-commerce</h3>
+            <p>Shopping apps with seamless checkout, inventory management, and personalized recommendations.</p>
+          </div>
+
+          <div class="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-100 dark:border-slate-700">
+            <h3 class="text-lg font-semibold mb-2">Finance & Banking</h3>
+            <p>Secure payment apps, mobile banking solutions, and financial management tools.</p>
+          </div>
+
+          <div class="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-100 dark:border-slate-700">
+            <h3 class="text-lg font-semibold mb-2">Healthcare</h3>
+            <p>Patient management, telemedicine, appointment booking, and health monitoring applications.</p>
+          </div>
+
+          <div class="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-100 dark:border-slate-700">
+            <h3 class="text-lg font-semibold mb-2">Hospitality & Travel</h3>
+            <p>Booking systems, travel guides, hotel management, and customer service apps.</p>
+          </div>
+
+          <div class="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-100 dark:border-slate-700">
+            <h3 class="text-lg font-semibold mb-2">Education & E-learning</h3>
+            <p>Interactive learning platforms, course management, and educational content delivery.</p>
+          </div>
+
+          <div class="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-100 dark:border-slate-700">
+            <h3 class="text-lg font-semibold mb-2">Logistics & Transport</h3>
+            <p>Delivery tracking, fleet management, and route optimization solutions.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/contact" class="btn btn-primary">Discuss Your Industry Needs</a>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Faqs Widget ******************* -->
+
+  <Faqs
+    title="Frequently Asked Questions"
+    subtitle="Find answers to common questions about mobile app development, costs, timelines, and our development process."
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'How much does it cost to develop a mobile app in the UK?',
+        description:
+          'Mobile app development costs in the UK typically range from £10,000 to £100,000+, depending on complexity, features, and platforms. Simple apps with basic functionality may start around £10,000-£30,000, while complex enterprise applications with advanced features can cost £50,000-£100,000+. We provide detailed quotes based on your specific requirements after an initial consultation.',
+      },
+      {
+        title: 'How long does it take to develop a mobile app?',
+        description:
+          'The timeline for mobile app development varies based on complexity and scope. Simple apps typically take 2-4 months, medium-complexity apps 4-6 months, and complex, feature-rich applications 6-12 months or more. Our agile development approach allows for early releases with core functionality, followed by iterative improvements based on user feedback.',
+      },
+      {
+        title: 'Should I develop for iOS, Android, or both?',
+        description:
+          'This depends on your target audience, business goals, and budget. iOS users typically have higher spending power, while Android offers broader market reach. We often recommend a phased approach—starting with the platform most used by your target audience, then expanding to the other. Alternatively, cross-platform development allows you to reach both audiences with a single codebase, offering cost efficiency with minimal compromise on performance.',
+      },
+      {
+        title: 'Do you provide app maintenance services?',
+        description:
+          'Yes, we offer comprehensive app maintenance services including regular updates, bug fixes, performance optimization, compatibility updates for new OS versions, security patches, and feature enhancements. We offer flexible maintenance packages tailored to your needs, ensuring your app remains current, secure, and performing optimally throughout its lifecycle.',
+      },
+      {
+        title: 'What happens after my app is launched?',
+        description:
+          'After launch, we monitor performance, gather user feedback, and address any issues promptly. We help with marketing strategies, app store optimization, and planning for future updates. Our post-launch support ensures your app continues to evolve based on user needs and market trends, maximizing your return on investment.',
+      },
+      {
+        title: 'I have an idea for an app. Can you help me make it a reality?',
+        description:
+          "Absolutely! We specialize in transforming ideas into successful mobile applications. Our process begins with a consultation to understand your vision, followed by market research, conceptualization, and a detailed development plan. We'll guide you through each step, from initial concept to launch and beyond, providing expertise and support throughout the journey.",
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Start Your App Project',
+        href: '/contact',
+      },
+    ]}
+    title="Ready to Build Your Mobile App?"
+    subtitle="Let's collaborate to create an innovative mobile application that enhances your business and delights your users. Contact us today for a free consultation."
+  />
+</Layout>

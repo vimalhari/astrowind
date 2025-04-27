@@ -1,0 +1,350 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Content from '~/components/widgets/Content.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Features from '~/components/widgets/Features.astro';
+
+const metadata = {
+  title: 'Astro Web Development London | Fast, SEO-Friendly Websites | Criztec',
+  description:
+    'Expert Astro web development services in London. Build incredibly fast, secure, and SEO-optimised websites for your London business with Criztec Technologies.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget -->
+  <Hero
+    tagline="Future-Proof Your Web Presence"
+    title="Astro Web Development Services in London"
+    subtitle="Leverage the power of Astro to build lightning-fast, content-rich websites that dominate search rankings and captivate your London audience. Criztec Technologies delivers cutting-edge Astro solutions tailored for UK businesses."
+    actions={[{ variant: 'primary', text: 'Get Your Astro Quote', href: '/contact' }]}
+    image={{
+      src: '~/assets/images/web-design-hero.webp',
+      alt: 'Astro Web Development London Hero Image',
+    }}
+  />
+
+  <!-- Stats Widget: Highlighting Astro's Key Benefits -->
+  <Stats
+    title="Why London Businesses Choose Astro"
+    stats={[
+      { amount: '90%', title: 'Faster Load Times' },
+      { amount: '+SEO', title: 'Improved SEO Scores' },
+      { amount: '↓JS', title: 'Reduced JavaScript' },
+      { amount: '↑Sec.', title: 'Enhanced Security' },
+    ]}
+  />
+
+  <!-- Features Widget: What is Astro -->
+  <Features
+    id="features"
+    tagline="Modern Web Development"
+    title="What is Astro?"
+    subtitle="Astro is a cutting-edge web framework that focuses on delivering content-first websites with unparalleled performance. As London businesses face increasing competition online, Astro provides the technical edge needed to stand out."
+    items={[
+      {
+        title: 'Lightning-Fast Performance',
+        description:
+          'Astro sites load instantly with a zero-JavaScript approach by default, dramatically improving user experience and SEO rankings.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Island Architecture',
+        description:
+          'Astro\'s unique "Islands" architecture allows for targeted interactivity only where needed, ensuring blazing-fast loading times without sacrificing functionality.',
+        icon: 'tabler:layout-dashboard',
+      },
+      {
+        title: 'Framework Agnostic',
+        description:
+          'Work with your preferred UI frameworks (React, Vue, Svelte) or none at all - Astro adapts to your development preferences and existing skills.',
+        icon: 'tabler:apps',
+      },
+      {
+        title: 'SEO Optimized',
+        description:
+          'Content-focused approach and performance-first design principles help your London business rank higher in search results and attract more organic traffic.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Content-Driven',
+        description:
+          'Perfect for blogs, documentation sites, marketing pages, and content-rich websites where fast loading and text content are paramount.',
+        icon: 'tabler:file-text',
+      },
+      {
+        title: 'Future-Proof',
+        description:
+          'Built on modern web standards and designed for the evolving web landscape, Astro ensures your website remains competitive for years to come.',
+        icon: 'tabler:trending-up',
+      },
+    ]}
+  />
+
+  <!-- Features2 Widget: Core Astro Advantages for Business -->
+  <Features2
+    title="The Business Case for Astro"
+    subtitle="Beyond technical excellence, Astro delivers tangible business benefits for London companies seeking competitive advantage online."
+    columns={2}
+    items={[
+      {
+        title: 'Higher Conversion Rates',
+        description:
+          "Studies show that faster websites convert significantly better. Astro's lightning performance can boost your conversion rates by reducing bounce rates and increasing user engagement.",
+        icon: 'tabler:chart-pie',
+      },
+      {
+        title: 'Better SEO Performance',
+        description:
+          'Google heavily weighs page speed and Core Web Vitals in rankings. Astro sites typically achieve perfect Lighthouse scores, helping your London business climb search rankings.',
+        icon: 'tabler:seo',
+      },
+      {
+        title: 'Reduced Hosting Costs',
+        description:
+          'Astro generates static sites that can be hosted on affordable CDN platforms, potentially reducing your hosting costs while improving global performance.',
+        icon: 'tabler:coin-pound',
+      },
+      {
+        title: 'Enhanced User Experience',
+        description:
+          'Near-instant page loads and smooth navigation create a premium user experience that builds trust with your London audience and reflects positively on your brand.',
+        icon: 'tabler:user-check',
+      },
+      {
+        title: 'Improved Accessibility',
+        description:
+          "Astro's reduced JavaScript approach and focus on content-first design principles naturally lead to more accessible websites that reach a wider audience.",
+        icon: 'tabler:accessible',
+      },
+      {
+        title: 'Future-Ready Technology',
+        description:
+          'Invest in a website built on modern principles that will continue to perform exceptionally as web standards evolve, protecting your digital investment.',
+        icon: 'tabler:device-laptop',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Content Widget: Our Astro Services -->
+  <Content
+    title="Our Expert Astro Development Services"
+    subtitle="From concept to launch and beyond, we provide comprehensive Astro solutions for London businesses."
+    items={[
+      {
+        title: 'New Astro Website Builds',
+        description:
+          'Crafting bespoke, high-performance websites from the ground up using the Astro framework, tailored to your specific London business needs and brand identity.',
+      },
+      {
+        title: 'Migration from WordPress to Astro',
+        description:
+          'Modernise your existing WordPress website by migrating to Astro for improved speed, security, and maintainability, while preserving your valuable content and SEO equity.',
+      },
+      {
+        title: 'Astro Performance Optimization',
+        description:
+          'Already have an Astro site? We can audit and optimize it for maximum speed, SEO performance, and user experience, ensuring you stay ahead in the London market.',
+      },
+      {
+        title: 'Headless CMS Integration',
+        description:
+          'Seamlessly integrate Astro with leading headless CMS platforms (like DecapCMS, Strapi, Contentful) for flexible and powerful content management capabilities.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
+      alt: 'Team discussing Astro web development project',
+    }}
+  >
+    <Fragment slot="actions">
+      <a href="/services" class="btn btn-secondary">Explore All Services</a>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget: Development Process -->
+  <Content
+    isReversed
+    title="Our Astro Development Process"
+    subtitle="We follow a structured, collaborative approach to deliver exceptional Astro websites for London businesses."
+    items={[
+      {
+        title: '1. Discovery & Strategy',
+        description:
+          'We begin by understanding your business goals, target audience, and unique requirements to develop a tailored Astro implementation strategy.',
+      },
+      {
+        title: '2. Design & Architecture',
+        description:
+          'Our team creates wireframes and visual designs while planning the technical architecture of your Astro site for optimal performance and scalability.',
+      },
+      {
+        title: '3. Development & Integration',
+        description:
+          'We build your Astro website with clean, maintainable code, integrating any required CMS systems, APIs, or third-party services.',
+      },
+      {
+        title: '4. Testing & Optimization',
+        description:
+          'Rigorous testing across devices and browsers ensures your site performs flawlessly, with special attention to Core Web Vitals and accessibility standards.',
+      },
+      {
+        title: '5. Deployment & Training',
+        description:
+          'We deploy your Astro site to production and provide comprehensive training so your team can confidently manage content and basic site operations.',
+      },
+      {
+        title: '6. Ongoing Support',
+        description:
+          'Our relationship continues with reliable support, performance monitoring, and strategic guidance to help your London business maximize ROI from your Astro website.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Astro development process',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget: Why Choose Criztec for Astro -->
+  <Content
+    title="Your Trusted Astro Partner in London"
+    subtitle="Combining local understanding with global expertise for exceptional Astro development."
+    items={[
+      {
+        title: 'UK-Based Strategy & Management',
+        description:
+          'Benefit from clear communication and strategic oversight from our UK base near London, ensuring your project aligns perfectly with your business goals.',
+      },
+      {
+        title: 'Expert Development Team',
+        description:
+          'Leverage the technical prowess of our skilled developers, experienced in delivering high-quality, complex Astro projects efficiently.',
+      },
+      {
+        title: 'Focus on Results',
+        description:
+          'We build websites designed to perform. Our focus is on delivering measurable results – faster speeds, better SEO, and improved conversions for your London business.',
+      },
+      {
+        title: 'Transparent & Collaborative',
+        description:
+          'We believe in open communication and partnership throughout the development process, keeping you informed and involved every step of the way.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Criztec team collaborating on Astro project',
+    }}
+  >
+    <Fragment slot="actions">
+      <a href="/about" class="btn btn-secondary">Learn More About Us</a>
+    </Fragment>
+  </Content>
+
+  <!-- Features2 Widget: Astro vs WordPress -->
+  <Features2
+    title="Astro vs WordPress: Making the Right Choice"
+    subtitle="Many London businesses are migrating from WordPress to Astro. Here's why it might be right for you too."
+    columns={2}
+    items={[
+      {
+        title: 'Performance',
+        description:
+          'Astro delivers dramatically faster load times than WordPress, with minimal JavaScript and optimized assets. This translates to better user experience and improved SEO rankings.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Security',
+        description:
+          "WordPress sites are frequent targets for hackers due to their popularity and plugin vulnerabilities. Astro's static nature dramatically reduces security risks and attack surfaces.",
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Maintenance',
+        description:
+          'WordPress requires constant updates, plugin management, and security patches. Astro sites are simpler to maintain with fewer moving parts and dependencies.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Hosting Costs',
+        description:
+          'WordPress typically requires more expensive hosting for good performance. Astro sites can be hosted on affordable CDNs, potentially saving London businesses significant costs.',
+        icon: 'tabler:cash',
+      },
+      {
+        title: 'Flexibility',
+        description:
+          'While WordPress offers many plugins, Astro provides unmatched flexibility for developers to create exactly what you need without the bloat, using modern web technologies.',
+        icon: 'tabler:puzzle',
+      },
+      {
+        title: 'SEO Advantage',
+        description:
+          "Google increasingly rewards fast, technically excellent websites. Astro's superior Core Web Vitals scores give your London business a significant edge in search rankings.",
+        icon: 'tabler:chart-arrows',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- FAQs Widget -->
+  <FAQs
+    title="Astro Development FAQs for London Businesses"
+    subtitle="Common questions about building websites with Astro."
+    columns={1}
+    items={[
+      {
+        title: 'Is Astro suitable for e-commerce websites?',
+        description:
+          'Yes, Astro is excellent for building fast e-commerce storefronts, especially when paired with headless commerce platforms like Shopify, BigCommerce, or custom solutions. Its performance focus enhances user experience and conversions. For London retailers, this can provide a significant competitive advantage in the crowded online marketplace.',
+      },
+      {
+        title: 'How does content management work with Astro?',
+        description:
+          "Astro works beautifully with various content management approaches. For non-technical teams, we typically implement a user-friendly headless CMS (like Strapi, Sanity, or DecapCMS) with a visual editor. For more technical users, content can be managed through Markdown files in a git-based workflow. We'll recommend the best approach based on your London team's specific needs and technical comfort level.",
+      },
+      {
+        title: 'Will an Astro website help our SEO?',
+        description:
+          "Absolutely. Astro websites typically achieve perfect or near-perfect Google Lighthouse scores for performance, accessibility, and SEO best practices. Google's ranking algorithm heavily favors fast-loading sites with good Core Web Vitals scores, which Astro excels at. For competitive London markets, this performance advantage can translate to significantly improved search rankings and organic traffic.",
+      },
+      {
+        title: 'How difficult is migrating from WordPress to Astro?',
+        description:
+          'With the right partner, migration can be smooth and methodical. We handle the entire process for London businesses, including content transfer, URL structure preservation (for SEO), and design implementation. The migration is typically done in phases to ensure minimal disruption to your business. The performance, security, and maintenance benefits after migration make it a worthwhile investment for most businesses.',
+      },
+      {
+        title: 'How long does it take to build an Astro website?',
+        description:
+          "Project timelines vary based on complexity. A basic informational site might take 4-6 weeks, while more complex projects with custom functionality could take 8-12 weeks or more. Our hybrid UK-India model allows us to work efficiently, providing London businesses with a cost-effective solution without compromising quality. We'll provide a detailed timeline after understanding your specific requirements.",
+      },
+      {
+        title: 'What happens if we need to make changes to our Astro site?',
+        description:
+          'We provide several options for London businesses to manage their Astro sites. For content updates, we implement user-friendly CMS solutions that non-technical staff can easily use. For design or functional changes, our support packages include regular update hours, or we can train your team if you have in-house developers. The modular nature of Astro makes future enhancements straightforward and cost-effective.',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget -->
+  <CallToAction
+    title="Ready to Build a Faster Website for Your London Business?"
+    subtitle="Experience the speed and power of Astro. Contact Criztec Technologies today for a free consultation and discover how we can elevate your online presence in London."
+    actions={[{ variant: 'primary', text: 'Request Free Consultation', href: '/contact' }]}
+  />
+</Layout>

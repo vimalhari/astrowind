@@ -1,0 +1,388 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Faqs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+
+const metadata = {
+  title: 'Content Marketing Services London | Criztec Technologies',
+  description:
+    'Transform your online presence with expert content marketing services in London. Create impactful content that engages your audience, builds brand authority, and drives business growth.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget -->
+  <Hero
+    tagline="Engage Your Audience"
+    title="Content Marketing Services in London"
+    subtitle="Our content marketing strategies help London businesses create impactful, relevant content that captures audience attention, strengthens brand authority, and drives meaningful business results."
+    actions={[{ variant: 'primary', target: '', text: 'Discuss Your Content Strategy', href: '/contact' }]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Content Marketing Services London Hero Image',
+    }}
+  />
+
+  <!-- Stats Widget -->
+  <Stats
+    title="Why Content Marketing Matters for Your London Business"
+    stats={[
+      { title: 'More Leads Generated', amount: '67%' },
+      { title: 'Businesses Increasing Content Efforts', amount: '54%' },
+      { title: 'Using Video Content', amount: '91%' },
+      { title: 'Higher Brand Recall', amount: '82%' },
+    ]}
+  />
+
+  <!-- Features2 Widget (Our Services) -->
+  <Features2
+    title="Our Comprehensive Content Marketing Solutions"
+    subtitle="We help London businesses create content that resonates with target audiences, enhances brand visibility, and drives meaningful engagement in today's competitive digital landscape."
+    columns={3}
+    items={[
+      {
+        title: 'Content Strategy',
+        description:
+          'We develop data-driven content strategies tailored to your London business goals, target audience, and market position to ensure maximum impact and ROI.',
+        icon: 'tabler:chart-dots',
+      },
+      {
+        title: 'Content Creation',
+        description:
+          'From blog posts and whitepapers to videos and podcasts, we create compelling multi-format content that engages your audience and builds brand authority.',
+        icon: 'tabler:pencil',
+      },
+      {
+        title: 'Email Marketing',
+        description:
+          'Build a loyal community with strategic email communications that nurture leads, retain customers, and drive consistent engagement with your London brand.',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Copywriting',
+        description:
+          'Our London-based copywriters craft persuasive website copy, product descriptions, and marketing materials that convert visitors into customers.',
+        icon: 'tabler:writing',
+      },
+      {
+        title: 'Digital PR',
+        description:
+          'Increase your brand visibility and reputation in the competitive London market through strategic content placement and digital relationship building.',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Content Optimization',
+        description:
+          'Ensure your existing content performs at its best with SEO enhancements, readability improvements, and strategic updates tailored to the London audience.',
+        icon: 'tabler:zoom-check',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Content Widget (Our Process) -->
+  <Content
+    classes={{ container: 'content-image-bg-white' }}
+    title="Our Content Marketing Process"
+    subtitle="A structured approach to create, deliver, and optimize content that connects with your London audience and achieves your business objectives."
+    items={[
+      {
+        title: '1. Research & Discovery',
+        description:
+          'We analyze your London market position, audience needs, and competitors to identify content opportunities that will set you apart.',
+      },
+      {
+        title: '2. Strategy Development',
+        description:
+          'Creating a comprehensive content plan aligned with your specific business goals, selecting the optimal channels and content types for your London target market.',
+      },
+      {
+        title: '3. Content Creation & Delivery',
+        description:
+          'Our skilled team produces high-quality, SEO-optimized content with London market insights, maintaining consistent brand voice while ensuring timely publishing.',
+      },
+      {
+        title: '4. Measurement & Optimization',
+        description:
+          'We track performance metrics, analyze user engagement, and continually refine your content strategy to maximize results and ROI.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
+      alt: 'Our Content Marketing Process',
+    }}
+  >
+    <Fragment slot="actions">
+      <a href="/contact" class="btn btn-primary"> Discuss Your Content Needs </a>
+    </Fragment>
+  </Content>
+
+  <!-- Content Section for Blog and Article Creation -->
+  <Content
+    isReversed
+    image={{
+      src: 'https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/content-creation.webp',
+      alt: 'Blog and Article Creation Services',
+      loading: 'lazy',
+    }}
+  >
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-4">
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Blog & Article Creation</h2>
+          <p>
+            High-quality blog content and articles are essential for establishing thought leadership and driving organic
+            traffic in the competitive London market. Our expert content team creates engaging, informative content that
+            resonates with your target audience.
+          </p>
+          <p class="mt-4">
+            We combine SEO best practices, market research, and compelling storytelling to ensure your blog posts and
+            articles not only attract visitors but convert them into customers.
+          </p>
+
+          <ul class="list-none pl-4 mt-4">
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Industry-Specific Content</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> SEO-Optimized Articles</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Thought Leadership Pieces</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Content Calendars</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Localized London Content</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Performance Analytics</li>
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/contact" class="btn btn-primary"> Get Started </a>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Section for Video Content -->
+  <Content
+    image={{
+      src: 'https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1970&q=80',
+      alt: 'Video Content Creation',
+      loading: 'lazy',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-4">
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Video Content Strategy</h2>
+          <p>
+            With 91% of businesses now using video as a marketing tool, compelling video content is no longer optional.
+            Our London-based video content specialists help you connect with your audience through engaging visual
+            storytelling.
+          </p>
+          <p class="mt-4">
+            From concept development to production and distribution, we create video content that captures attention,
+            explains complex ideas simply, and drives your audience to take action.
+          </p>
+
+          <ul class="list-none pl-4 mt-4">
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Promotional Videos</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> How-To Guides & Tutorials</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Customer Testimonials</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Product Demonstrations</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Social Media Video Content</li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Animation & Motion Graphics
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/contact" class="btn btn-primary"> Explore Video Content </a>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Section for Email Marketing -->
+  <Content
+    isReversed
+    image={{
+      src: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+      alt: 'Email Marketing Services',
+      loading: 'lazy',
+    }}
+  >
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-4">
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Strategic Email Marketing</h2>
+          <p>
+            Email remains one of the most effective channels for nurturing leads and building customer relationships.
+            Our email marketing services help London businesses create campaigns that get opened, read, and acted upon.
+          </p>
+          <p class="mt-4">
+            We combine persuasive copywriting, strategic segmentation, and performance analytics to ensure your emails
+            deliver maximum value to both your business and your subscribers.
+          </p>
+
+          <ul class="list-none pl-4 mt-4">
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Newsletter Campaigns</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Lead Nurturing Sequences</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Audience Segmentation</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> A/B Testing</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Automated Email Workflows</li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Performance Reporting</li>
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/contact" class="btn btn-primary"> Enhance Your Email Strategy </a>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Section for Digital PR -->
+  <Content
+    image={{
+      src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+      alt: 'Digital PR Services',
+      loading: 'lazy',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-4">
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">
+            Digital PR & Brand Authority
+          </h2>
+          <p>
+            Stand out in London's competitive marketplace by building credibility and visibility through strategic
+            digital PR. We help you get featured in relevant publications, create shareable content, and build valuable
+            relationships with industry influencers.
+          </p>
+          <p class="mt-4">
+            Our digital PR strategies are designed to increase your brand's visibility, enhance your reputation, and
+            create valuable backlinks that boost your SEO performance.
+          </p>
+
+          <ul class="list-none pl-4 mt-4">
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Media Outreach</li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Thought Leadership Placement
+            </li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Industry Partnerships</li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Newsworthy Content Creation
+            </li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Influencer Collaborations</li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Digital Reputation Management
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/contact" class="btn btn-primary"> Boost Your Brand Authority </a>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Why Choose Us Section -->
+  <Content
+    isReversed
+    classes={{ container: 'content-image-bg-white' }}
+    title="Why Choose Criztec for Content Marketing"
+    subtitle="Partner with a team that delivers content strategies designed for London's unique business landscape."
+    items={[
+      {
+        title: 'London Market Expertise',
+        description:
+          'Our team understands the London market dynamics and consumer behavior, creating content that resonates with your specific audience.',
+      },
+      {
+        title: 'Data-Driven Approach',
+        description:
+          'We base our content strategies on solid research and analytics, ensuring measurable results and continuous improvement.',
+      },
+      {
+        title: 'Multi-Format Capabilities',
+        description:
+          'From written content to videos, podcasts, and interactive experiences, we deliver content in formats that best engage your audience.',
+      },
+      {
+        title: 'SEO Integration',
+        description:
+          "All our content is created with search optimization in mind, increasing your visibility in London's competitive online marketplace.",
+      },
+      {
+        title: 'Transparent Reporting',
+        description:
+          'Receive clear, comprehensive reports on your content performance and the impact on your business objectives.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+      alt: 'Criztec Content Marketing Team',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+    <Fragment slot="actions">
+      <a href="/about" class="btn btn-secondary"> Learn More About Our Team </a>
+    </Fragment>
+  </Content>
+
+  <!-- FAQs Widget -->
+  <Faqs
+    title="Frequently Asked Content Marketing Questions"
+    subtitle="Answers to common questions about content marketing and how it can benefit your London business."
+    columns={1}
+    items={[
+      {
+        title: 'How does content marketing benefit my London business?',
+        description:
+          'Content marketing helps London businesses establish authority, increase brand visibility, generate quality leads, and build customer trust. Well-executed content strategies improve SEO rankings, drive organic traffic, and provide value to your audience, ultimately leading to higher conversion rates and customer loyalty in the competitive London market.',
+      },
+      {
+        title: 'How long before I see results from content marketing?',
+        description:
+          'Content marketing is a long-term strategy that typically shows initial results within 3-6 months. While some metrics like engagement may improve quickly, meaningful business outcomes such as lead generation and revenue growth usually require 6-12 months of consistent effort. We set clear expectations and track progress metrics throughout the journey to demonstrate the growing value of your content investment.',
+      },
+      {
+        title: 'What types of content should my business create?',
+        description:
+          'The best content mix depends on your industry, audience preferences, and business goals. For London businesses, we typically recommend a diverse approach including blog posts, case studies, videos, infographics, email newsletters, and social media content. Our team analyzes your specific situation to recommend and create the most effective content formats for engaging your target audience.',
+      },
+      {
+        title: 'How do you measure content marketing success?',
+        description:
+          'We track both engagement metrics (traffic, time on page, social shares) and business metrics (leads generated, conversions, sales). Each content campaign begins with defined objectives and key performance indicators. We provide regular reports showing how content is performing and contributing to your business goals, with insights for continuous improvement.',
+      },
+      {
+        title: 'How is content marketing different from social media marketing?',
+        description:
+          'Content marketing focuses on creating valuable, relevant content that attracts and engages a clearly defined audience, while social media marketing is about promoting and distributing that content through social platforms. A comprehensive digital strategy integrates both: content marketing provides substance and value, while social media amplifies reach and fosters community engagement.',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget -->
+  <CallToAction
+    title="Ready to Transform Your Content Strategy?"
+    subtitle="Partner with London's content marketing experts to create engaging content that builds your brand authority, attracts your ideal audience, and drives business growth. Contact us today for a free content audit and strategy consultation."
+    actions={[{ variant: 'primary', text: 'Get Your Free Content Audit', href: '/contact' }]}
+  />
+</Layout>

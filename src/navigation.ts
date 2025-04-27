@@ -38,13 +38,13 @@ export const headerData = {
       links: [
         { text: 'Website Development', href: getPermalink('/website-development') },
         { text: 'Mobile App Development', href: getPermalink('/mobile-app') },
-        { text: 'Software Development', href: getPermalink('/software-development') },
-        { text: 'Ecommerce Solutions', href: getPermalink('/ecommerce-solutions') },
-        { text: 'Hugo Static Site', href: getPermalink('/hugo-static-site') },
-        { text: 'Astro Site', href: getPermalink('/astro-site') },
-        { text: 'WordPress', href: getPermalink('/wordpress') },
-        { text: 'Automation', href: getPermalink('/automation') },
-        { text: 'ETL / Data Processing', href: getPermalink('/etl-data-processing') },
+        // { text: 'Software Development', href: getPermalink('/software-development') },
+        // { text: 'Ecommerce Solutions', href: getPermalink('/ecommerce-solutions') },
+        // { text: 'Hugo Static Site', href: getPermalink('/hugo-static-site') },
+        { text: 'Astro Site Development', href: getPermalink('/astro-site') },
+        // { text: 'WordPress', href: getPermalink('/wordpress') },
+        // { text: 'Automation', href: getPermalink('/automation') },
+        // { text: 'ETL / Data Processing', href: getPermalink('/etl-data-processing') },
       ],
     },
     {
@@ -58,16 +58,15 @@ export const headerData = {
     },
     {
       text: 'Technical',
-    links: [
-      { text: 'IT Support', href: getPermalink('/it-support') },
-      { text: 'IT Solutions', href: getPermalink('/it-solutions') },
-      { text: 'Cloud Services', href: getPermalink('/cloud-services') },
-      { text: 'Cybersecurity', href: getPermalink('/cyber-security') },
-      { text: 'Cloud Infrastructure', href: getPermalink('/cloud-infrastructure') },
-      { text: 'Office 365', href: getPermalink('/office-365') },
-    ],
+      links: [
+        { text: 'IT Support', href: getPermalink('/it-support') },
+        // { text: 'IT Solutions', href: getPermalink('/it-solutions') },
+        // { text: 'Cloud Services', href: getPermalink('/cloud-services') },
+        // { text: 'Cybersecurity', href: getPermalink('/cyber-security') },
+        // { text: 'Cloud Infrastructure', href: getPermalink('/cloud-infrastructure') },
+        // { text: 'Office 365', href: getPermalink('/office-365') },
+      ],
     },
-    
   ],
   actions: [{ text: 'Get in Touch', href: getPermalink('/contact'), target: '_blank' }],
 };

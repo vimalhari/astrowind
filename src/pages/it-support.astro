@@ -1,0 +1,292 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+
+const metadata = {
+  title: 'Managed IT Support London',
+  description:
+    'Reliable managed IT support services for London businesses. 24/7 support, proactive maintenance, and tailored IT solutions for your growing business.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="London's Premier IT Support"
+    title="Managed IT Support Services"
+    subtitle="Keep your business running smoothly with our comprehensive managed IT support solutions tailored to London businesses of all sizes."
+    actions={[{ variant: 'primary', target: '', text: 'Get Support Now', href: '/contact' }]}
+    image={{ src: '', alt: 'Managed IT Support Services Hero Image' }}
+  />
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="Why Content Marketing Matters for Your London Business"
+    stats={[
+      { amount: '99.9%', title: 'Uptime guarantee' },
+      { amount: '15+', title: 'Years in business' },
+      { amount: '20+', title: 'London businesses served' },
+      { amount: '24/7', title: 'Support availability' },
+    ]}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Comprehensive IT Support for London Businesses"
+    subtitle="Our managed IT services are designed to provide London businesses with reliable, cost-effective support tailored to the unique challenges of the UK market."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    columns={3}
+    items={[
+      {
+        title: '24/7 Remote Support',
+        description:
+          'Round-the-clock remote monitoring and assistance ensuring your systems remain operational day and night.',
+        icon: 'tabler:headset',
+      },
+      {
+        title: 'Proactive Maintenance',
+        description:
+          'Regular updates, patches, and system health checks to prevent issues before they affect your business.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Cyber Security',
+        description:
+          'Comprehensive security solutions compliant with UK regulations including GDPR and NIS2 Directive protection.',
+        icon: 'tabler:shield',
+      },
+      {
+        title: 'Cloud Solutions',
+        description:
+          'Secure cloud migration and management services optimised for London businesses with UK data sovereignty.',
+        icon: 'tabler:cloud',
+      },
+      {
+        title: 'Disaster Recovery',
+        description: 'Robust backup and recovery solutions ensuring business continuity in all circumstances.',
+        icon: 'tabler:refresh',
+      },
+      {
+        title: 'On-Site Support',
+        description:
+          "Rapid response on-site technical support across Greater London when remote assistance isn't sufficient.",
+        icon: 'tabler:map-pin',
+      },
+    ]}
+  />
+
+  <!-- Content Section 1 ************ -->
+
+  <Content
+    image={{
+      src: 'https://images.unsplash.com/photo-1600267204091-5c1ab8b10c02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'London IT Support Team',
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-4">
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">
+            Why London Businesses Choose Us
+          </h2>
+          <p>
+            As a London-based business, you face unique challenges in a fast-paced, competitive environment. Our IT
+            support services are specifically designed for the London market.
+          </p>
+          <p class="mt-4">
+            We understand the specific requirements of businesses operating in the UK capital, from financial services
+            in the City to creative startups in Shoreditch.
+          </p>
+
+          <ul class="list-none pl-4 mt-4">
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> UK-based support team with deep local knowledge
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Expertise in UK compliance and data protection
+              regulations
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Fast on-site response times across Greater London
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Experience across all London business sectors
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Flexible support packages for businesses of all
+              sizes
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/contact" class="btn btn-primary"> Book a Consultation </a>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Section 2 ************ -->
+
+  <Content
+    isReversed
+    image={{
+      src: 'https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'IT Infrastructure Management',
+      loading: 'lazy',
+    }}
+  >
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-4">
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Our Approach to IT Support</h2>
+          <p>
+            We believe that effective IT support is proactive, not reactive. Our team monitors your systems 24/7 to
+            identify and resolve issues before they impact your business.
+          </p>
+          <p class="mt-4">
+            Our service is tailored to the unique needs of UK businesses, with special consideration for London's
+            competitive business environment and high expectations for digital infrastructure.
+          </p>
+          <ul class="list-none pl-4 mt-4">
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Strategic IT planning aligned with your business
+              goals
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Proactive monitoring and maintenance
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Regular security audits and updates
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Transparent fixed monthly pricing
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Dedicated account manager for your business
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/pricing" class="btn btn-primary"> View Support Packages </a>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Testimonials Widget *********** -->
+
+  <Testimonials
+    title="What London Businesses Say About Our IT Support"
+    testimonials={[
+      {
+        testimonial:
+          'The responsive support we receive has dramatically reduced our downtime and increased productivity across our London offices. Their understanding of our sector-specific requirements has been invaluable.',
+        name: 'Sarah Thompson',
+        job: 'Operations Director, London Financial Services Firm',
+        image: {
+          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
+          alt: 'Sarah Thompson Image',
+        },
+      },
+      {
+        testimonial:
+          'As a rapidly growing London startup, we needed IT support that could scale with us while maintaining security and compliance. Their team has been a true partner in our growth journey.',
+        name: 'James Wilson',
+        job: 'CEO, Tech Startup in Shoreditch',
+        image: {
+          src: 'https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
+          alt: 'James Wilson Image',
+        },
+      },
+      {
+        testimonial:
+          "Their on-site support team in London is outstanding. We've had technicians at our doorstep within hours when needed, which is crucial for our business operations.",
+        name: 'Emma Clarke',
+        job: 'IT Manager, Retail Chain across London',
+        image: {
+          src: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+          alt: 'Emma Clarke Image',
+        },
+      },
+    ]}
+  />
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Get answers to common questions about our managed IT support services for London businesses."
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'What areas of London do you provide on-site support for?',
+        description:
+          'We provide on-site IT support across all London boroughs and the Greater London area. Our technicians are strategically located to ensure rapid response times to any location within the M25.',
+      },
+      {
+        title: 'How do you handle UK data protection compliance?',
+        description:
+          'We ensure all our services are fully compliant with UK GDPR and the Data Protection Act 2018. Our team includes certified data protection specialists who can help your business maintain compliance while implementing IT solutions.',
+      },
+      {
+        title: 'Can you support businesses with hybrid work environments?',
+        description:
+          'Absolutely. We specialise in supporting London businesses with hybrid work environments, ensuring secure and efficient connectivity between office and remote workers. Our solutions include secure VPN setups, cloud collaboration tools, and endpoint security for remote devices.',
+      },
+      {
+        title: 'What are your support hours?',
+        description:
+          'We offer 24/7/365 support for critical systems with guaranteed response times based on your service level agreement. Our standard business hours support operates from 8am to 6pm Monday to Friday, with extended options available.',
+      },
+      {
+        title: 'Do you offer support for specific industries?',
+        description:
+          'Yes, we have specialised expertise in several key London industries including financial services, legal, creative/media, healthcare, and professional services. We understand the unique IT requirements and compliance needs of each sector.',
+      },
+      {
+        title: 'How quickly can you respond to critical issues?',
+        description:
+          'For businesses on our premium support packages, we guarantee a 15-minute response time for critical issues, with on-site support within 2 hours when required in the London area.',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get a Free IT Assessment',
+        href: '/contact',
+      },
+    ]}
+    title="Ready for Reliable IT Support in London?"
+    subtitle="Contact us today for a free IT infrastructure assessment and discover how our managed IT support can help your London business thrive."
+  />
+</Layout>
