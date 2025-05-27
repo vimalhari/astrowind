@@ -1,0 +1,181 @@
+---
+import Button from '~/components/ui/Button.astro';
+
+const accessKey = 'ced19947-dbea-4cc7-8187-f3b698a668d2';
+---
+
+<form
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  class="max-w-2xl mx-auto p-6 rounded-lg bg-white dark:bg-slate-900 shadow-md"
+>
+  <input type="hidden" name="access_key" value={accessKey} />
+
+  <div class="mb-6">
+    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+      >Your Name <span class="text-red-600">*</span></label
+    >
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-slate-800 dark:text-white"
+      placeholder="Enter your name"
+    />
+  </div>
+
+  <div class="mb-6">
+    <label for="business" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+      >Business Name <span class="text-red-600">*</span></label
+    >
+    <input
+      type="text"
+      id="business"
+      name="business"
+      required
+      class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-slate-800 dark:text-white"
+      placeholder="Enter your business name"
+    />
+  </div>
+
+  <div class="mb-6">
+    <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+      >Contact Number <span class="text-red-600">*</span></label
+    >
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      required
+      class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-slate-800 dark:text-white"
+      placeholder="Enter your contact number"
+    />
+  </div>
+
+  <div class="mb-6">
+    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+      >Email Address <span class="text-red-600">*</span></label
+    >
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-slate-800 dark:text-white"
+      placeholder="Enter your email"
+    />
+  </div>
+
+  <div class="mb-6">
+    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+      >Type of Project <span class="text-red-600">*</span></label
+    >
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {
+        [
+          'Websites',
+          'Design / Branding',
+          'Software / Mobile Applications',
+          'Digital Marketing',
+          'Cyber Security',
+          'Consultancy / Compliance',
+          'Hosting / Infrastructure',
+          'IT / Technical',
+          'Video / Photography',
+          'All of the above',
+        ].map((option) => (
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id={option.toLowerCase().replace(/\s+/g, '-')}
+              name="project_type[]"
+              value={option}
+              class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+            />
+            <label
+              for={option.toLowerCase().replace(/\s+/g, '-')}
+              class="ml-2 text-sm text-gray-700 dark:text-gray-300"
+            >
+              {option}
+            </label>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="mb-6">
+    <label for="source" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+      >How Did You Hear About Us? <span class="text-red-600">*</span></label
+    >
+    <select
+      id="source"
+      name="source"
+      required
+      class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-slate-800 dark:text-white"
+    >
+      <option value="">Please select...</option>
+      <option value="Search Engine">Search Engine</option>
+      <option value="Social Media">Social Media</option>
+      <option value="Referral">Referral</option>
+      <option value="Advertisement">Advertisement</option>
+      <option value="Event / Conference">Event / Conference</option>
+      <option value="Friend / Colleague">Friend / Colleague</option>
+      <option value="Existing Client">Existing Client</option>
+      <option value="Newsletter / Email">Newsletter / Email</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <div class="mb-6">
+    <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+      >Tell us about your project <span class="text-red-600">*</span></label
+    >
+    <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+      Please include any details you feel would be beneficial for us to know, including scope, timelines, budget, any
+      integrations, etc.
+    </p>
+    <textarea
+      id="message"
+      name="message"
+      required
+      rows="4"
+      class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-slate-800 dark:text-white"
+      placeholder="Please detail your requirements here"></textarea>
+  </div>
+
+  <div class="mb-6">
+    <div class="flex items-start">
+      <input
+        type="checkbox"
+        id="privacy-consent"
+        name="privacy-consent"
+        required
+        class="h-4 w-4 mt-1 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+      />
+      <label for="privacy-consent" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+        I agree to the terms of the <a href="/privacy" class="text-primary-600 hover:underline">privacy policy</a>. This
+        provides all the information regarding data protection and Criztec Technologies, and may be updated from time to
+        time. <span class="text-red-600">*</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <Button type="submit" variant="primary" class="w-full sm:w-auto">Submit</Button>
+  </div>
+</form>
+
+<style>
+  form {
+    transition: all 0.3s ease;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--color-primary-500), 0.3);
+  }
+</style>

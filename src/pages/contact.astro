@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import ContactForm from '~/components/widgets/ContactForm.astro';
 
 const metadata = {
   title: 'Contact',
@@ -11,14 +12,15 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <HeroText tagline="Contact" title="Want to discuss a project?" />
+  <p class="max-w-2xl mx-auto text-center text-lg text-gray-600 dark:text-gray-400 mt-4">
+    We are here to help you with your project needs. Whether you have a question, need support, or want to discuss a
+    potential collaboration, feel free to reach out to us. Our team is ready to assist you with any inquiries you may
+    have. We look forward to hearing from you!
+  </p>
 
-  <div id="form-container">
-    <iframe
-      src="https://forms.office.com/Pages/ResponsePage.aspx?id=9Tx_8ertr06M3TrVZD7biKqgAITMzgVDrkcmylHSritUQ1dWR1AyTkdGUzQxREFRMFZZVzlKUkFWRS4u&embed=true"
-      style="border: none; width: 100%; height: 100%"
-    >
-    </iframe>
+  <div class="py-10">
+    <ContactForm />
   </div>
 
   <!-- Features2 Widget ************** -->
@@ -59,18 +61,3 @@ const metadata = {
     ]}
   />
 </Layout>
-
-<style>
-  #form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* min-height: 100vh;  No need for this if you don't want the container to fill the screen */
-    height: 2200px; /* Set the container height to match the iframe height */
-  }
-
-  #form-container iframe {
-    width: 100%; /* Make the iframe take up the full width of its container */
-    height: 100%; /* Make the iframe take up the full height of its container */
-  }
-</style>
