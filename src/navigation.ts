@@ -111,7 +111,7 @@ export const footerData = {
         { text: 'Website Development', href: '/website-development' },
         { text: 'Digital Marketing', href: '/digital-marketing' },
         { text: 'Social Media Marketing', href: '/socialmedia-marketing' },
-        //     { text: 'Enterprise', href: '#' },
+        { text: 'Content Marketing', href: getPermalink('/content-marketing') },
         //     { text: 'Customer stories', href: '#' },
         //     { text: 'Pricing', href: '#' },
         //     { text: 'Resources', href: '#' },
