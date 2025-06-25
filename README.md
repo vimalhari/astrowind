@@ -1,6 +1,6 @@
-# AstroWind - Astro Website Template
+# Criztec Technologies Website
 
-A free and open-source template using **Astro 5.0** and **Tailwind CSS**. Perfect for creating fast, modern websites.
+Professional website for Criztec Technologies, built with **Astro 5.0** and **Tailwind CSS**. Fast, modern, and responsive.
 
 ## 🚀 Quick Start
 

@@ -80,7 +80,7 @@ export const footerData = {
     //     { text: 'Partners', href: '#' },
     //     { text: 'Atom', href: '#' },
     //     { text: 'Electron', href: '#' },
-    //     { text: 'AstroWind Desktop', href: '#' },
+    //     { text: 'Criztec Desktop', href: '#' },
     //   ],
     // },
     // {
@@ -127,7 +127,7 @@ export const footerData = {
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/criztec_technologies' },
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/criztec.technologies' },
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    // { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+    // { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/criztec/website' },
   ],
   footNote: `© 2024 Crizaze Business Services Ltd. All rights reserved. <br>Registered in England & Wales. Company No. <a class="text-blue-600 underline dark:text-muted" href="https://find-and-update.company-information.service.gov.uk/company/15494238"> 15494238. </a>`,
 };
@@ -135,4 +135,4 @@ export const footerData = {
 // class="text-blue-600 underline dark:text-muted" href="https://criztec.com/"
 
 // the below line is to add image in front of footer notes
-// <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img>
+// <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://criztec.com/favicon/favicon-32x32.png" alt="Criztec logo" loading="lazy"></img>
