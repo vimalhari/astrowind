@@ -13,11 +13,13 @@ npm install -g pnpm
 ### Development
 
 1. **Install dependencies:**
+
    ```bash
    pnpm install
    ```
 
 2. **Start the development server:**
+
    ```bash
    pnpm dev
    ```
@@ -79,6 +81,16 @@ pnpm remove <package-name>
 ├── pnpm-lock.yaml
 └── tailwind.config.js
 ```
+
+## 🚀 Deployment
+
+This project is configured for **Netlify** deployment:
+
+- **Build Command:** `pnpm run build`
+- **Publish Directory:** `dist`
+- **Node Version:** 18+ (configured in `package.json` engines)
+
+The `netlify.toml` file contains the deployment configuration. Simply connect your repository to Netlify for automatic deployments.
 
 ## 📚 Learn More
 
