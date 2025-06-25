@@ -7,7 +7,76 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
-  title: 'Services',
+  title: 'Our Services | Web Development & Digital Marketing | Criztec Technologies',
+  description:
+    'Comprehensive web development and digital marketing services in London. From custom websites to SEO, mobile apps to social media marketing - we deliver results that grow your business.',
+  keywords:
+    'web development services London, digital marketing services, custom website development, mobile app development, SEO services, e-commerce development, social media marketing, IT support London',
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Web Development and Digital Marketing Services',
+    description: 'Comprehensive digital services including web development, mobile apps, SEO, and digital marketing',
+    provider: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies',
+      url: 'https://criztec.com',
+    },
+    areaServed: {
+      '@type': 'Place',
+      name: 'London, UK',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Digital Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Web Development',
+            description: 'Custom website development and web applications',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Digital Marketing',
+            description: 'SEO, PPC, and social media marketing services',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Mobile App Development',
+            description: 'iOS and Android mobile application development',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'E-commerce Solutions',
+            description: 'Online store development and e-commerce platforms',
+          },
+        },
+      ],
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    images: [
+      {
+        url: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=630&q=80',
+        width: 1200,
+        height: 630,
+        alt: 'Criztec Technologies Services - Web Development & Digital Marketing',
+      },
+    ],
+  },
 };
 ---
 
@@ -15,13 +84,16 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    tagline="Services"
-    title="Elevate your projects with our stunning templates"
-    subtitle="Explore our meticulously crafted templates tailored to various industries and purposes. From captivating presentations to functional website designs, we offer the tools you need to succeed."
-    actions={[{ variant: 'primary', target: '_blank', text: 'Start exploring', href: '/' }]}
+    tagline="Our Services"
+    title="Comprehensive Digital Solutions for London Businesses"
+    subtitle="From custom web development to strategic digital marketing, we provide the complete range of services your business needs to thrive online. Our expert team delivers results-driven solutions tailored to your goals."
+    actions={[
+      { variant: 'primary', text: 'Get Free Consultation', href: '/contact' },
+      { text: 'View Our Work', href: '/about' },
+    ]}
     image={{
       src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Criztec Hero Image',
+      alt: 'Professional team working on digital solutions - Criztec Technologies Services',
     }}
   />
 

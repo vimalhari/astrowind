@@ -3,9 +3,63 @@ import Layout from '../layouts/Layout.astro';
 import { cities } from '../data/cities';
 
 const metadata = {
-  title: 'Web Development Services - All Locations | Criztec Technologies',
-  description: 'Professional web development services across London, Berkshire, Buckinghamshire, and Surrey. Find local expertise in your area.',
+  title: 'Professional Web Development Services - London & South East | Criztec Technologies',
+  description:
+    'Expert web development services across London, Berkshire, Buckinghamshire, and Surrey. Custom websites, e-commerce solutions, and web applications. Contact local web developers today.',
+  keywords:
+    'web development London, website development, custom web applications, e-commerce development, responsive web design, React development, Node.js development, WordPress development, web developers London',
   canonical: `${Astro.site}web-development/`,
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Web Development Services',
+    description: 'Professional web development and digital solutions across London and South East England',
+    provider: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies',
+      url: 'https://criztec.com',
+    },
+    areaServed: [
+      {
+        '@type': 'Place',
+        name: 'London, UK',
+      },
+      {
+        '@type': 'Place',
+        name: 'Berkshire, UK',
+      },
+      {
+        '@type': 'Place',
+        name: 'Buckinghamshire, UK',
+      },
+      {
+        '@type': 'Place',
+        name: 'Surrey, UK',
+      },
+    ],
+    serviceType: 'Web Development',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Custom Website Development',
+        description: 'Bespoke website development tailored to your business needs',
+      },
+      {
+        '@type': 'Offer',
+        name: 'E-commerce Development',
+        description: 'Online store development with secure payment processing',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Web Application Development',
+        description: 'Complex web applications and software solutions',
+      },
+    ],
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+  },
 };
 ---
 
@@ -15,74 +69,178 @@ const metadata = {
       <!-- Header -->
       <div class="text-center mb-16">
         <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl mb-6">
-          Web Development Services
+          Professional Web Development Services
         </h1>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Professional web development and digital marketing services across London, Berkshire, Buckinghamshire, and Surrey.
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+          Expert web development and <a href="/digital-marketing" class="text-blue-600 hover:text-blue-800 underline"
+            >digital marketing services</a
+          > across London, Berkshire, Buckinghamshire, and Surrey. We create custom websites, e-commerce solutions, and web
+          applications that drive business growth.
         </p>
+        <div class="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
+          <p class="mb-4">
+            Our experienced team of web developers specializes in modern technologies including React, Node.js, and
+            WordPress. Whether you need a simple business website, complex web application, or comprehensive <a
+              href="/seo"
+              class="text-blue-600 hover:text-blue-800 underline">SEO optimization</a
+            >, we deliver solutions that exceed expectations.
+          </p>
+          <p class="mb-6">
+            From responsive web design to advanced e-commerce platforms, we serve businesses across the South East of
+            England with reliable, scalable web solutions. <a
+              href="/contact"
+              class="text-blue-600 hover:text-blue-800 underline">Contact our local web development team</a
+            > to discuss your project requirements.
+          </p>
+        </div>
       </div>
+
+      <!-- Services Section -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Our Web Development Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Custom Website Development</h3>
+            <p class="text-gray-600">
+              Bespoke websites tailored to your business needs with modern design and functionality.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">E-commerce Solutions</h3>
+            <p class="text-gray-600">
+              Secure online stores with payment processing, inventory management, and customer portals.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Web Applications</h3>
+            <p class="text-gray-600">
+              Complex web applications and software solutions for business automation and efficiency.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Choose Our Web Development Services -->
+      <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Why Choose Criztec for Web Development?</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div>
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">Modern Technology Stack</h3>
+              <p class="text-gray-600 mb-4">
+                We use cutting-edge technologies including React, Vue.js, Node.js, and cloud platforms to ensure your
+                website is fast, secure, and scalable. Our development approach follows industry best practices for
+                performance optimization and search engine visibility.
+              </p>
+              <p class="text-gray-600">
+                All websites are built with mobile-first responsive design, ensuring perfect functionality across all
+                devices and browsers.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">Local Expertise, Global Standards</h3>
+              <p class="text-gray-600 mb-4">
+                With deep understanding of the London and South East business landscape, we create websites that
+                resonate with your local audience while meeting international web standards.
+              </p>
+              <p class="text-gray-600">
+                Our team combines local market knowledge with global technical expertise to deliver solutions that drive
+                real business results.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-8 rounded-lg">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4 text-center">Our Web Development Process</h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div class="text-center">
+                <div
+                  class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 font-bold"
+                >
+                  1
+                </div>
+                <h4 class="font-semibold text-gray-900 mb-2">Discovery & Planning</h4>
+                <p class="text-sm text-gray-600">Understanding your business goals and technical requirements</p>
+              </div>
+              <div class="text-center">
+                <div
+                  class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 font-bold"
+                >
+                  2
+                </div>
+                <h4 class="font-semibold text-gray-900 mb-2">Design & Prototyping</h4>
+                <p class="text-sm text-gray-600">Creating user-centered designs and interactive prototypes</p>
+              </div>
+              <div class="text-center">
+                <div
+                  class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 font-bold"
+                >
+                  3
+                </div>
+                <h4 class="font-semibold text-gray-900 mb-2">Development & Testing</h4>
+                <p class="text-sm text-gray-600">Building robust, scalable solutions with comprehensive testing</p>
+              </div>
+              <div class="text-center">
+                <div
+                  class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 font-bold"
+                >
+                  4
+                </div>
+                <h4 class="font-semibold text-gray-900 mb-2">Launch & Support</h4>
+                <p class="text-sm text-gray-600">Seamless deployment with ongoing maintenance and support</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Cities Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {cities.map((city) => (
-          <a 
-            href={`/web-development/${city.slug}`}
-            class="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-          >
-            <div class="p-8">
-              <!-- Location Badge -->
-              <div class="flex items-center mb-4">
-                <svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                </svg>
-                <span class="text-sm font-medium text-blue-600">{city.region}</span>
-              </div>
-
-              <!-- City Name -->
-              <h2 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
-                {city.name}
-              </h2>
-
-              <!-- Description -->
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                {city.subheading}
-              </p>
-
-              <!-- Key Industries -->
-              <div class="mb-6">
-                <div class="flex flex-wrap gap-2">
-                  {city.keyIndustries.slice(0, 3).map((industry) => (
-                    <span class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs text-blue-800">
-                      {industry}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Stats -->
-              <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="text-center p-3 bg-gray-50 rounded-lg">
-                  <div class="text-lg font-bold text-gray-900">{city.demographics.businessCount?.toLocaleString()}+</div>
-                  <div class="text-xs text-gray-600">Businesses</div>
-                </div>
-                <div class="text-center p-3 bg-gray-50 rounded-lg">
-                  <div class="text-lg font-bold text-gray-900">{city.demographics.population?.toLocaleString()}</div>
-                  <div class="text-xs text-gray-600">Population</div>
-                </div>
-              </div>
-
-              <!-- CTA -->
-              <div class="text-center">
-                <span class="inline-flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
-                  View Services
-                  <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        {
+          cities.map((city) => (
+            <a
+              href={`/web-development/${city.slug}`}
+              class="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+            >
+              <div class="p-8">
+                <div class="flex items-center mb-4">
+                  <svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                      clip-rule="evenodd"
+                    />
                   </svg>
-                </span>
+                  <span class="text-sm font-medium text-blue-600">{city.region}</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                  {city.name}
+                </h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">{city.subheading}</p>
+                <div class="text-center">
+                  <span class="inline-flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                    View Services
+                    <svg
+                      class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </span>
+                </div>
               </div>
-            </div>
-          </a>
-        ))}
+            </a>
+          ))
+        }
       </div>
 
       <!-- Contact Section -->
@@ -90,10 +248,11 @@ const metadata = {
         <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
           <h3 class="text-2xl font-bold mb-4">Don't See Your Area?</h3>
           <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
-            We serve businesses throughout London, Home Counties, and surrounding areas. Contact us to discuss your project wherever you're located.
+            We serve businesses throughout London, Home Counties, and surrounding areas. Contact us to discuss your
+            project wherever you're located.
           </p>
-          <a 
-            href="/contact" 
+          <a
+            href="/contact"
             class="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
           >
             Get Your Free Quote

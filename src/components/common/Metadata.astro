@@ -12,6 +12,11 @@ import { adaptOpenGraphImages } from '~/utils/images';
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
+  structuredData?: object;
+  keywords?: string;
+  author?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 const {
@@ -22,6 +27,11 @@ const {
   description,
   openGraph = {},
   twitter = {},
+  structuredData,
+  keywords,
+  author = 'Criztec Technologies',
+  publishedTime,
+  modifiedTime,
 } = Astro.props;
 
 const seoProps: AstroSeoProps = merge(
@@ -66,3 +76,28 @@ const seoProps: AstroSeoProps = merge(
 ---
 
 <AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
+
+<!-- Enhanced SEO Meta Tags -->
+{keywords && <meta name="keywords" content={keywords} />}
+{author && <meta name="author" content={author} />}
+{publishedTime && <meta name="article:published_time" content={publishedTime} />}
+{modifiedTime && <meta name="article:modified_time" content={modifiedTime} />}
+
+<!-- Structured Data -->
+{structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
+
+<!-- Additional SEO Meta Tags -->
+<meta
+  name="robots"
+  content={`${seoProps.noindex ? 'noindex' : 'index'}, ${seoProps.nofollow ? 'nofollow' : 'follow'}`}
+/>
+<meta name="theme-color" content="#3b82f6" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+<!-- Enhanced Open Graph Meta Tags -->
+{seoProps.openGraph?.locale && <meta property="og:locale" content={seoProps.openGraph.locale} />}
+{seoProps.openGraph?.site_name && <meta property="og:site_name" content={seoProps.openGraph.site_name} />}
+
+<!-- Enhanced Twitter Card Meta Tags -->
+{seoProps.twitter?.site && <meta name="twitter:site" content={seoProps.twitter.site} />}

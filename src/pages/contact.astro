@@ -5,7 +5,48 @@ import Features2 from '~/components/widgets/Features2.astro';
 import ContactForm from '~/components/widgets/ContactForm.astro';
 
 const metadata = {
-  title: 'Contact',
+  title: 'Contact Criztec Technologies | Web Development & Digital Marketing London',
+  description:
+    'Contact Criztec Technologies for expert web development and digital marketing services in London. Get a free consultation and quote for your project. Call +44 (0) 74049 79307',
+  keywords:
+    'contact Criztec Technologies, web development London contact, digital marketing consultation, free quote London, SEO consultation London',
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact Criztec Technologies',
+    description: 'Get in touch with Criztec Technologies for web development and digital marketing services',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies',
+      telephone: '+44-740-4979-307',
+      email: 'info@criztec.com',
+      url: 'https://criztec.com',
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'GB',
+        addressRegion: 'England',
+        addressLocality: 'London',
+      },
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+44-740-4979-307',
+          contactType: 'customer service',
+          areaServed: 'GB',
+          availableLanguage: 'English',
+        },
+        {
+          '@type': 'ContactPoint',
+          email: 'info@criztec.com',
+          contactType: 'customer service',
+        },
+      ],
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+  },
 };
 ---
 

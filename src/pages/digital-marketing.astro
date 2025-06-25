@@ -8,9 +8,55 @@ import Layout from '~/layouts/PageLayout.astro';
 const metadata = {
   title: 'Digital Marketing Services London | Criztec Technologies',
   description:
-    'Criztec Technologies offers comprehensive digital marketing services in London, including SEO, PPC, social media, and content marketing. Grow your business with our expert strategies.',
+    'Expert digital marketing services in London. Boost your online presence with our SEO, PPC, social media marketing, and content marketing strategies. Get more leads and grow your business.',
   keywords:
-    'digital marketing London, SEO services London, PPC London, social media marketing London, Criztec Technologies',
+    'digital marketing London, SEO services London, PPC London, social media marketing London, content marketing, online advertising, Google Ads, Facebook marketing, Instagram marketing, LinkedIn marketing, email marketing, conversion optimization',
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Digital Marketing Services',
+    description:
+      'Comprehensive digital marketing services including SEO, PPC, social media marketing, and content creation',
+    provider: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies',
+      url: 'https://criztec.com',
+    },
+    areaServed: {
+      '@type': 'Place',
+      name: 'London, UK',
+    },
+    serviceType: 'Digital Marketing',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'SEO Services',
+        description: 'Search Engine Optimization to improve organic rankings',
+      },
+      {
+        '@type': 'Offer',
+        name: 'PPC Advertising',
+        description: 'Pay-per-click advertising campaigns on Google and social media',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Social Media Marketing',
+        description: 'Social media strategy and management across all platforms',
+      },
+    ],
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '~/assets/images/digital-marketing.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Digital Marketing Services London - Criztec Technologies',
+      },
+    ],
+  },
 };
 ---
 

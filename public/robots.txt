@@ -1,3 +1,37 @@
 User-agent: *
 Allow: /
+
+# Disallow specific paths for better crawl budget
+Disallow: /api/
+Disallow: /_*
+Disallow: /admin/
+Disallow: /.well-known/
+Disallow: /temp/
+Disallow: /private/
+
+# Allow important bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Crawl delay for aggressive crawlers
+User-agent: *
+Crawl-delay: 1
+
+# Sitemaps
 Sitemap: https://criztec.com/sitemap-index.xml
+Sitemap: https://criztec.com/sitemap-enhanced.xml
+
+# Host directive
+Host: https://criztec.com

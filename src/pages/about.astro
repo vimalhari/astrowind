@@ -7,11 +7,71 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Features from '~/components/widgets/Features.astro'; // Import Features for variety
 
-// SEO Metadata: Added a descriptive meta description.
+// SEO Metadata: Enhanced metadata with structured data
 const metadata = {
   title: 'About Criztec Technologies | UK & India Web Development Experts',
   description:
-    'Learn about Criztec Technologies, a UK-based web design and development company with expert teams in the UK and India, offering high-quality, cost-effective web solutions, driven by innovation and client success.',
+    'Learn about Criztec Technologies, a UK-based web design and development company with expert teams in the UK and India. We deliver high-quality, cost-effective web solutions with innovation and client success at our core.',
+  keywords:
+    'about Criztec Technologies, UK web development company, web design agency London, software development team, digital agency UK, web development India',
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies',
+      description: 'UK-based web design and development company with teams in UK and India',
+      url: 'https://criztec.com',
+      foundingDate: '2020',
+      founders: [
+        {
+          '@type': 'Person',
+          name: 'Criztec Technologies Team',
+        },
+      ],
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'GB',
+        addressRegion: 'England',
+        addressLocality: 'London',
+      },
+      sameAs: ['https://x.com/criztec_it'],
+      speciality: [
+        'Web Development',
+        'Digital Marketing',
+        'E-commerce Solutions',
+        'Mobile App Development',
+        'SEO Services',
+      ],
+      areaServed: ['United Kingdom', 'London', 'Europe'],
+      employee: [
+        {
+          '@type': 'OrganizationRole',
+          roleName: 'Web Developers',
+        },
+        {
+          '@type': 'OrganizationRole',
+          roleName: 'Digital Marketers',
+        },
+        {
+          '@type': 'OrganizationRole',
+          roleName: 'UI/UX Designers',
+        },
+      ],
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    images: [
+      {
+        url: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=630&q=80',
+        width: 1200,
+        height: 630,
+        alt: 'About Criztec Technologies - Web Development Company',
+      },
+    ],
+  },
 };
 ---
 

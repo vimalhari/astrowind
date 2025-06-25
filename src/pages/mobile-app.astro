@@ -8,9 +8,61 @@ import Faqs from '~/components/widgets/FAQs.astro';
 import Steps from '~/components/widgets/Steps.astro';
 
 const metadata = {
-  title: 'Mobile App Development UK | iOS & Android App Developers',
+  title: 'Mobile App Development UK | iOS & Android App Developers | Criztec Technologies',
   description:
-    'Custom mobile app development services in the UK for iOS, Android, and cross-platform applications. Our expert developers create innovative, user-friendly mobile apps that drive business growth.',
+    'Expert mobile app development services in London and UK. We create custom iOS, Android, and cross-platform mobile applications that engage users and drive business growth. Get your free consultation today.',
+  keywords:
+    'mobile app development UK, iOS app development London, Android app development, React Native development, Flutter development, custom mobile apps, mobile app design, app store optimization, mobile app consulting',
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Mobile App Development',
+    description: 'Custom mobile application development for iOS, Android, and cross-platform solutions',
+    provider: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies',
+      url: 'https://criztec.com',
+    },
+    areaServed: {
+      '@type': 'Place',
+      name: 'United Kingdom',
+    },
+    serviceType: 'Mobile App Development',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'iOS App Development',
+        description: 'Native iOS applications for iPhone and iPad',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Android App Development',
+        description: 'Native Android applications for smartphones and tablets',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Cross-Platform Development',
+        description: 'React Native and Flutter apps for multiple platforms',
+      },
+      {
+        '@type': 'Offer',
+        name: 'App Store Optimization',
+        description: 'Optimization for App Store and Google Play visibility',
+      },
+    ],
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '~/assets/images/hero-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Mobile App Development Services - Criztec Technologies',
+      },
+    ],
+  },
 };
 ---
 

@@ -10,9 +10,55 @@ import Stats from '~/components/widgets/Stats.astro';
 const metadata = {
   title: 'Expert SEO Services London | Boost Your Rankings | Criztec Technologies',
   description:
-    'Drive organic traffic and achieve top search engine rankings with our expert SEO services in London, UK. Criztec Technologies offers tailored strategies for sustainable growth.',
+    'Drive organic traffic and achieve top search engine rankings with our expert SEO services in London, UK. Proven SEO strategies that deliver measurable results and ROI for your business.',
   keywords:
-    'SEO services London, SEO agency London, local SEO London, Criztec Technologies, search engine optimisation UK',
+    'SEO services London, SEO agency London, local SEO London, search engine optimization, Google ranking, organic traffic, keyword research, on-page SEO, off-page SEO, technical SEO, SEO audit, link building London',
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'SEO Services London',
+    description: 'Expert search engine optimization services to improve Google rankings and organic traffic',
+    provider: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies',
+      url: 'https://criztec.com',
+    },
+    areaServed: {
+      '@type': 'Place',
+      name: 'London, UK',
+    },
+    serviceType: 'Search Engine Optimization',
+    priceRange: '££',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'SEO Audit & Consultancy',
+        description: 'Comprehensive SEO audit and strategic recommendations',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Local SEO',
+        description: 'Local search optimization for London businesses',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Technical SEO',
+        description: 'Website optimization for search engine crawling and indexing',
+      },
+    ],
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    images: [
+      {
+        url: 'https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/check-seo-banner-art-1.webp',
+        width: 1200,
+        height: 630,
+        alt: 'SEO Services London - Criztec Technologies',
+      },
+    ],
+  },
 };
 ---
 

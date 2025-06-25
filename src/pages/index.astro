@@ -13,8 +13,64 @@ const metadata = {
   title: 'Criztec Technologies - Web Development & Digital Marketing London',
   description:
     'Criztec Technologies: Your trusted partner for web development and digital marketing in London. We deliver innovative solutions to boost your online presence and drive growth.',
-  keywords: 'web development London, digital marketing London, SEO London, Criztec Technologies, IT solutions London',
+  keywords:
+    'web development London, digital marketing London, SEO London, Criztec Technologies, IT solutions London, website design London, e-commerce development, mobile app development',
   ignoreTitleTemplate: true,
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Criztec Technologies',
+    description: 'Professional web development and digital marketing services in London',
+    url: 'https://criztec.com',
+    logo: 'https://criztec.com/CriztecLogo.png',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'GB',
+      addressRegion: 'England',
+      addressLocality: 'London',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+44-20-XXXX-XXXX',
+      contactType: 'customer service',
+      availableLanguage: 'English',
+    },
+    sameAs: ['https://twitter.com/Criztec_IT'],
+    service: [
+      {
+        '@type': 'Service',
+        name: 'Web Development',
+        description: 'Custom website development and web applications',
+      },
+      {
+        '@type': 'Service',
+        name: 'Digital Marketing',
+        description: 'SEO, PPC, and social media marketing services',
+      },
+      {
+        '@type': 'Service',
+        name: 'Mobile App Development',
+        description: 'iOS and Android mobile application development',
+      },
+    ],
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '~/assets/images/hero-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Criztec Technologies - Web Development & Digital Marketing London',
+      },
+    ],
+  },
+  twitter: {
+    handle: '@Criztec_IT',
+    site: '@Criztec_IT',
+    cardType: 'summary_large_image',
+  },
 };
 ---
 
