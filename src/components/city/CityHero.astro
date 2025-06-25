@@ -1,0 +1,163 @@
+---
+import type { CityData } from '../../data/cities';
+import Button from '../ui/Button.astro';
+import Image from '../common/Image.astro';
+
+export interface Props {
+  city: CityData;
+}
+
+const { city } = Astro.props;
+---
+
+<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-black/20"></div>
+  <div class="absolute inset-0 opacity-5">
+    <div
+      class="h-full w-full"
+      style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px;"
+    >
+    </div>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+      <!-- Content -->
+      <div class="lg:pr-8">
+        <!-- Location Badge -->
+        <div class="mb-6">
+          <span
+            class="inline-flex items-center rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm border border-white/20"
+          >
+            <svg class="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+              ></path>
+            </svg>
+            {city.name}, {city.region} ({city.postcode})
+          </span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-6">
+          <span class="block text-white">{city.headline}</span>
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+          {city.subheading}
+        </p>
+
+        <!-- Hero Description -->
+        <p class="text-lg text-blue-50 mb-10 leading-relaxed max-w-2xl">
+          {city.heroDescription}
+        </p>
+
+        <!-- Key Industries Pills -->
+        <div class="mb-10">
+          <p class="text-sm font-semibold text-blue-200 mb-3">Specializing in:</p>
+          <div class="flex flex-wrap gap-2">
+            {
+              city.keyIndustries
+                .slice(0, 4)
+                .map((industry) => (
+                  <span class="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-sm text-white backdrop-blur-sm border border-white/20">
+                    {industry}
+                  </span>
+                ))
+            }
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button
+            variant="primary"
+            class="bg-white text-blue-900 hover:bg-blue-50 font-semibold px-8 py-4 text-lg shadow-xl"
+            href="/contact"
+          >
+            Get Free Quote
+          </Button>
+          <Button
+            variant="secondary"
+            class="border-white text-white hover:bg-white hover:text-blue-900 font-semibold px-8 py-4 text-lg backdrop-blur-sm"
+            href="/services"
+          >
+            View Services
+          </Button>
+        </div>
+
+        <!-- Trust Indicators -->
+        <div class="mt-12 pt-8 border-t border-white/20">
+          <div class="grid grid-cols-3 gap-6 text-center">
+            <div>
+              <div class="text-2xl font-bold text-white">{city.demographics.businessCount?.toLocaleString()}+</div>
+              <div class="text-sm text-blue-200">Local Businesses</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-white">5+ Years</div>
+              <div class="text-sm text-blue-200">Local Experience</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-white">50+</div>
+              <div class="text-sm text-blue-200">Projects Delivered</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="relative lg:pl-8">
+        <div class="relative">
+          <!-- Main Hero Image -->
+          <div
+            class="relative rounded-2xl overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl"
+          >
+            <Image
+              src="https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/websitedevelopment.avif"
+              alt={`Web development services in ${city.name}`}
+              width={600}
+              height={400}
+              class="w-full h-auto"
+              loading="eager"
+              decoding="async"
+            />
+            <!-- Overlay with city info -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="bg-white/90 backdrop-blur-sm rounded-lg p-4">
+                <h3 class="font-semibold text-gray-900 mb-1">Serving {city.name} Since 2019</h3>
+                <p class="text-sm text-gray-600">Trusted by {city.testimonialFocus || 'local businesses'}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Stats Cards -->
+          <div class="absolute -top-4 -right-4 bg-white rounded-lg shadow-xl p-4 transform rotate-3">
+            <div class="text-center">
+              <div class="text-2xl font-bold text-blue-900">98%</div>
+              <div class="text-xs text-gray-600">Client Satisfaction</div>
+            </div>
+          </div>
+
+          <div class="absolute -bottom-4 -left-4 bg-green-500 text-white rounded-lg shadow-xl p-4 transform -rotate-3">
+            <div class="text-center">
+              <div class="text-lg font-bold">24/7</div>
+              <div class="text-xs">Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+    <div class="animate-bounce">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </div>
+</section>

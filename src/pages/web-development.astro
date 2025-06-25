@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { cities } from '../data/cities';
+
+const metadata = {
+  title: 'Web Development Services - All Locations | Criztec Technologies',
+  description: 'Professional web development services across London, Berkshire, Buckinghamshire, and Surrey. Find local expertise in your area.',
+  canonical: `${Astro.site}web-development/`,
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="py-16 sm:py-24 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl mb-6">
+          Web Development Services
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Professional web development and digital marketing services across London, Berkshire, Buckinghamshire, and Surrey.
+        </p>
+      </div>
+
+      <!-- Cities Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {cities.map((city) => (
+          <a 
+            href={`/web-development/${city.slug}`}
+            class="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+          >
+            <div class="p-8">
+              <!-- Location Badge -->
+              <div class="flex items-center mb-4">
+                <svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-sm font-medium text-blue-600">{city.region}</span>
+              </div>
+
+              <!-- City Name -->
+              <h2 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                {city.name}
+              </h2>
+
+              <!-- Description -->
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                {city.subheading}
+              </p>
+
+              <!-- Key Industries -->
+              <div class="mb-6">
+                <div class="flex flex-wrap gap-2">
+                  {city.keyIndustries.slice(0, 3).map((industry) => (
+                    <span class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs text-blue-800">
+                      {industry}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Stats -->
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                  <div class="text-lg font-bold text-gray-900">{city.demographics.businessCount?.toLocaleString()}+</div>
+                  <div class="text-xs text-gray-600">Businesses</div>
+                </div>
+                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                  <div class="text-lg font-bold text-gray-900">{city.demographics.population?.toLocaleString()}</div>
+                  <div class="text-xs text-gray-600">Population</div>
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <div class="text-center">
+                <span class="inline-flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                  View Services
+                  <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- Contact Section -->
+      <div class="mt-20 text-center">
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+          <h3 class="text-2xl font-bold mb-4">Don't See Your Area?</h3>
+          <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+            We serve businesses throughout London, Home Counties, and surrounding areas. Contact us to discuss your project wherever you're located.
+          </p>
+          <a 
+            href="/contact" 
+            class="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+          >
+            Get Your Free Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

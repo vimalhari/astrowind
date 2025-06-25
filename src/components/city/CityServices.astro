@@ -1,0 +1,236 @@
+---
+import type { CityData } from '../../data/cities';
+import Button from '../ui/Button.astro';
+
+export interface Props {
+  city: CityData;
+}
+
+const { city } = Astro.props;
+
+// Service offerings tailored to city demographics
+const services = [
+  {
+    icon: '🌐',
+    title: 'Custom Website Development',
+    description: `Bespoke websites tailored for ${city.name} businesses, built with modern technologies and optimized for your local market.`,
+    features: ['Responsive Design', 'SEO Optimized', 'Fast Loading', 'Mobile-First'],
+    emphasized: city.serviceEmphasis?.includes('Custom Web Applications'),
+  },
+  {
+    icon: '🛒',
+    title: 'E-commerce Solutions',
+    description: `Powerful online stores designed to capture the ${city.region} market and drive sales for your ${city.name} business.`,
+    features: ['Payment Integration', 'Inventory Management', 'Order Tracking', 'Analytics'],
+    emphasized: city.serviceEmphasis?.includes('E-commerce Solutions'),
+  },
+  {
+    icon: '📱',
+    title: 'Mobile-Responsive Design',
+    description: `Ensure your website looks perfect on all devices, crucial for reaching customers throughout ${city.name} and beyond.`,
+    features: ['Touch-Friendly', 'Fast Mobile Load', 'App-Like Experience', 'Offline Capability'],
+    emphasized: false,
+  },
+  {
+    icon: '🔍',
+    title: 'Local SEO Optimization',
+    description: `Dominate local search results in ${city.name} and surrounding areas like ${city.nearbyAreas.slice(0, 2).join(' and ')}.`,
+    features: ['Google My Business', 'Local Keywords', 'Citation Building', 'Review Management'],
+    emphasized: false,
+  },
+  {
+    icon: '⚡',
+    title: 'Performance Optimization',
+    description: `Lightning-fast websites that keep your ${city.name} customers engaged and boost your search rankings.`,
+    features: ['Speed Optimization', 'Image Compression', 'CDN Setup', 'Core Web Vitals'],
+    emphasized: false,
+  },
+  {
+    icon: '🔒',
+    title: 'Security & Maintenance',
+    description: `Keep your website secure and up-to-date with our comprehensive maintenance services for ${city.name} businesses.`,
+    features: ['SSL Certificates', 'Regular Backups', 'Security Monitoring', '24/7 Support'],
+    emphasized: false,
+  },
+];
+
+// Industry-specific services based on city's key industries
+const industryServices = city.keyIndustries.slice(0, 3).map((industry) => {
+  switch (industry.toLowerCase()) {
+    case 'technology':
+    case 'tech':
+      return {
+        title: 'Tech Company Websites',
+        description: 'Showcase your innovations with cutting-edge web platforms',
+        icon: '💻',
+      };
+    case 'tourism':
+      return {
+        title: 'Tourism & Hospitality',
+        description: 'Attract visitors with stunning, booking-enabled websites',
+        icon: '🏨',
+      };
+    case 'manufacturing':
+      return {
+        title: 'Manufacturing Portals',
+        description: 'B2B platforms that showcase your capabilities and processes',
+        icon: '🏭',
+      };
+    case 'professional services':
+      return {
+        title: 'Professional Services',
+        description: 'Build trust and attract clients with professional web presence',
+        icon: '💼',
+      };
+    case 'retail':
+      return {
+        title: 'Retail E-commerce',
+        description: 'Convert browsers to buyers with optimized online stores',
+        icon: '🛍️',
+      };
+    case 'education':
+      return {
+        title: 'Educational Platforms',
+        description: 'Engage students and faculty with modern learning environments',
+        icon: '🎓',
+      };
+    default:
+      return {
+        title: `${industry} Solutions`,
+        description: `Specialized websites designed for the ${industry.toLowerCase()} sector`,
+        icon: '🏢',
+      };
+  }
+});
+---
+
+<section id="services" class="py-16 sm:py-24 bg-gray-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl mb-6">
+        Web Development Services in {city.name}
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        {city.servicesIntro}
+      </p>
+
+      <!-- Location Context -->
+      <div class="mt-8 flex flex-wrap justify-center gap-2">
+        <span class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800">
+          📍 Serving {city.name}
+        </span>
+        {
+          city.nearbyAreas
+            .slice(0, 3)
+            .map((area) => (
+              <span class="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-600">
+                {area}
+              </span>
+            ))
+        }
+      </div>
+    </div>
+
+    <!-- Main Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      {
+        services.map((service) => (
+          <div
+            class={`relative bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 ${service.emphasized ? 'ring-2 ring-blue-500' : ''}`}
+          >
+            {service.emphasized && (
+              <div class="absolute -top-3 left-6 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                Popular in {city.name}
+              </div>
+            )}
+
+            <div class="text-4xl mb-4">{service.icon}</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+
+            <ul class="space-y-2 mb-6">
+              {service.features.map((feature) => (
+                <li class="flex items-center text-sm text-gray-600">
+                  <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <Button variant="secondary" class="w-full border-blue-200 text-blue-600 hover:bg-blue-50" href="/contact">
+              Learn More
+            </Button>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Industry-Specific Services -->
+    <div class="bg-white rounded-2xl shadow-lg p-8 lg:p-12">
+      <div class="text-center mb-12">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">
+          Specialized Solutions for {city.name}'s Key Industries
+        </h3>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          We understand the unique needs of {city.name}'s business landscape, from {
+            city.keyIndustries.slice(0, 2).join(' to ')
+          }.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {
+          industryServices.map((service) => (
+            <div class="text-center p-6 rounded-lg bg-gray-50 hover:bg-blue-50 transition-colors duration-300">
+              <div class="text-3xl mb-4">{service.icon}</div>
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">{service.title}</h4>
+              <p class="text-gray-600 text-sm">{service.description}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Process Overview -->
+      <div class="border-t border-gray-200 pt-12">
+        <h4 class="text-xl font-bold text-gray-900 text-center mb-8">Our {city.name} Web Development Process</h4>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {
+            [
+              { step: '01', title: 'Consultation', desc: `Understanding your ${city.name} business needs` },
+              { step: '02', title: 'Design', desc: 'Creating wireframes and visual designs' },
+              { step: '03', title: 'Development', desc: 'Building your website with modern technologies' },
+              { step: '04', title: 'Launch', desc: 'Going live and ongoing support' },
+            ].map((phase) => (
+              <div class="text-center">
+                <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mx-auto mb-4">
+                  {phase.step}
+                </div>
+                <h5 class="font-semibold text-gray-900 mb-2">{phase.title}</h5>
+                <p class="text-sm text-gray-600">{phase.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center mt-12">
+        <Button
+          variant="primary"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold shadow-lg"
+          href="/contact"
+        >
+          Start Your {city.name} Project Today
+        </Button>
+        <p class="text-sm text-gray-500 mt-4">Free consultation • No obligation • Quick response</p>
+      </div>
+    </div>
+  </div>
+</section>

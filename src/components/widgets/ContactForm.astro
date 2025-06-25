@@ -1,6 +1,11 @@
 ---
 import Button from '~/components/ui/Button.astro';
 
+export interface Props {
+  city?: string;
+}
+
+const { city } = Astro.props;
 const accessKey = 'ced19947-dbea-4cc7-8187-f3b698a668d2';
 ---
 
@@ -10,6 +15,7 @@ const accessKey = 'ced19947-dbea-4cc7-8187-f3b698a668d2';
   class="max-w-2xl mx-auto p-6 rounded-lg bg-white dark:bg-slate-900 shadow-md"
 >
   <input type="hidden" name="access_key" value={accessKey} />
+  {city && <input type="hidden" name="source_city" value={city} />}
 
   <div class="mb-6">
     <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"

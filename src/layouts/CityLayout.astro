@@ -1,0 +1,113 @@
+---
+import Layout from './Layout.astro';
+import type { CityData } from '../data/cities';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  city: CityData;
+}
+
+const { title, description, canonical, city } = Astro.props;
+
+// Generate structured data for local business
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: `Criztec Technologies - ${city.name} Web Development`,
+  description: description,
+  url: canonical,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: city.name,
+    addressRegion: city.region,
+    postalCode: city.postcode,
+    addressCountry: 'UK',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: city.coordinates.lat,
+    longitude: city.coordinates.lng,
+  },
+  areaServed: {
+    '@type': 'Place',
+    name: city.name,
+  },
+  serviceArea: {
+    '@type': 'Place',
+    name: city.region,
+  },
+  priceRange: '££',
+  telephone: '+44 20 1234 5678',
+  email: 'info@criztec.com',
+  sameAs: ['https://twitter.com/Criztec_IT', 'https://linkedin.com/company/criztec-technologies'],
+};
+
+// SEO metadata specific to city pages
+const seoMeta = {
+  title,
+  description,
+  canonical,
+  keywords: city.metaKeywords.join(', '),
+  openGraph: {
+    title: `${city.name} Web Development Services | Criztec Technologies`,
+    description,
+    type: 'website',
+    url: canonical,
+    siteName: 'Criztec Technologies',
+    images: [
+      {
+        url: '~/assets/images/hero-image.webp',
+        width: 1200,
+        height: 630,
+        alt: `Web Development Services in ${city.name}`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@Criztec_IT',
+    creator: '@Criztec_IT',
+    title: `${city.name} Web Development | Criztec Technologies`,
+    description,
+    image: '~/assets/images/hero-image.webp',
+  },
+};
+---
+
+<Layout metadata={seoMeta}>
+  <Fragment slot="head">
+    <!-- Local Business Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+    <!-- Additional city-specific meta tags -->
+    <meta name="geo.region" content={`UK-${city.region}`} />
+    <meta name="geo.placename" content={city.name} />
+    <meta name="geo.position" content={`${city.coordinates.lat};${city.coordinates.lng}`} />
+    <meta name="ICBM" content={`${city.coordinates.lat}, ${city.coordinates.lng}`} />
+
+    <!-- Local SEO -->
+    <meta name="DC.title" content={title} />
+    <meta name="DC.subject" content={`Web Development Services in ${city.name}`} />
+    <meta name="DC.description" content={description} />
+    <meta name="DC.coverage" content={`${city.name}, ${city.region}, UK`} />
+
+    <!-- Additional Open Graph tags for local business -->
+    <meta property="place:location:latitude" content={city.coordinates.lat.toString()} />
+    <meta property="place:location:longitude" content={city.coordinates.lng.toString()} />
+    <meta property="business:contact_data:locality" content={city.name} />
+    <meta property="business:contact_data:region" content={city.region} />
+    <meta property="business:contact_data:postal_code" content={city.postcode} />
+    <meta property="business:contact_data:country_name" content="United Kingdom" />
+  </Fragment>
+
+  <slot />
+</Layout>
+
+<style>
+  /* City-specific styling overrides if needed */
+  :global(.city-layout) {
+    /* Any city-specific layout styles */
+  }
+</style>

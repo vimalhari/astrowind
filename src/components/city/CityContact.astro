@@ -1,0 +1,183 @@
+---
+import type { CityData } from '../../data/cities';
+import ContactForm from '../widgets/ContactForm.astro';
+
+export interface Props {
+  city: CityData;
+}
+
+const { city } = Astro.props;
+
+// Contact methods
+const contactMethods = [
+  {
+    icon: '📞',
+    title: 'Phone',
+    value: '+44 7404 979307',
+    description: `Call us for immediate assistance with your ${city.name} project`,
+    action: 'tel:+447404979307',
+  },
+  {
+    icon: '✉️',
+    title: 'Email',
+    value: 'info@criztec.com',
+    description: "Send us your project details and we'll respond within 24 hours",
+    action: 'mailto:info@criztec.com',
+  },
+  {
+    icon: '💬',
+    title: 'Live Chat',
+    value: 'Available 9am-6pm',
+    description: 'Chat with our team during business hours',
+    action: '/contact',
+  },
+];
+
+// Local business hours
+
+// Nearby areas we serve
+const serviceAreas = city.nearbyAreas.slice(0, 6);
+---
+
+<section id="contact" class="py-16 sm:py-24 bg-gray-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl mb-6">
+        Get Your Free {city.name} Web Development Quote
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Ready to transform your business with a professional website? Contact our {city.name} team today for a free consultation
+        and quote.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <!-- Contact Form -->
+      <div class="lg:col-span-2">
+        <div class="mb-8 text-center">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Start Your {city.name} Project</h3>
+          <p class="text-gray-600">
+            Tell us about your project and we'll provide a custom quote tailored to your {city.name} business needs.
+          </p>
+        </div>
+
+        <ContactForm city={city.name} />
+      </div>
+
+      <!-- Contact Information -->
+      <div class="lg:col-span-1 space-y-8">
+        <!-- Contact Methods -->
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Get In Touch</h3>
+          <div class="space-y-6">
+            {
+              contactMethods.map((method) => (
+                <a
+                  href={method.action}
+                  class="flex items-start p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200 group"
+                >
+                  <div class="text-2xl mr-4">{method.icon}</div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                      {method.title}
+                    </h4>
+                    <p class="text-blue-600 font-medium mb-1">{method.value}</p>
+                    <p class="text-sm text-gray-600">{method.description}</p>
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Service Areas -->
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Areas We Serve</h3>
+          <div class="space-y-2">
+            <div class="flex items-center text-blue-600 font-medium">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              {city.name} (Primary)
+            </div>
+            {
+              serviceAreas.map((area) => (
+                <div class="flex items-center text-gray-600">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  {area}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Quick Links</h3>
+          <div class="space-y-3">
+            <a href="/services" class="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+              <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+              All Services
+            </a>
+            <a href="/pricing" class="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+              <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+              Pricing
+            </a>
+            <a href="/about" class="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+              <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+              About Us
+            </a>
+            <a href="/blog" class="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+              <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+              Blog
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="mt-16">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="p-8 border-b border-gray-200">
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">Find Us in {city.name}</h3>
+          <p class="text-gray-600">
+            We're proud to serve businesses across {city.name} and the wider {city.region} area.
+          </p>
+        </div>
+        <div class="relative h-96">
+          <iframe
+            src={city.mapEmbedUrl}
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={`Map of ${city.name}, ${city.region}`}
+            class="w-full h-full"
+          >
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
