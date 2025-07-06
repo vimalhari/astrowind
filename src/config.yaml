@@ -71,3 +71,8 @@ analytics:
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+
+contact:
+  whatsapp:
+    number: '+447404979307'
+    enabled: true
