@@ -1,5 +1,13 @@
 import type { CookieConsentConfig } from 'vanilla-cookieconsent';
 
+// Declare gtag function for TypeScript
+declare global {
+  interface Window {
+    gtag: (command: string, action: string, params?: Record<string, string>) => void;
+  }
+  const gtag: (command: string, action: string, params?: Record<string, string>) => void;
+}
+
 export const config: CookieConsentConfig = {
   guiOptions: {
     consentModal: {
@@ -25,10 +33,21 @@ export const config: CookieConsentConfig = {
             '<a href="https://marketingplatform.google.com/about/analytics/terms/us/" target="_blank">Google Analytics 4</a>',
           onAccept: () => {
             console.log('ga4 accepted');
-            // TODO: load ga4
+            // Enable Google Analytics tracking
+            if (typeof gtag !== 'undefined') {
+              gtag('consent', 'update', {
+                analytics_storage: 'granted',
+              });
+            }
           },
           onReject: () => {
             console.log('ga4 rejected');
+            // Disable Google Analytics tracking
+            if (typeof gtag !== 'undefined') {
+              gtag('consent', 'update', {
+                analytics_storage: 'denied',
+              });
+            }
           },
           cookies: [
             {
