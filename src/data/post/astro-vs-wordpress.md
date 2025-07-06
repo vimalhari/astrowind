@@ -18,7 +18,7 @@ The digital landscape is a battlefield. Every day, websites fight for visibility
 
 This comprehensive guide dives deep into the Astro vs WordPress debate, dissecting their strengths, weaknesses, and ideal battlegrounds. By the end, you'll be equipped to choose the perfect weapon for your online conquest.
 
-## WordPress: The Heavyweight Champion Showing Its Age
+## WordPress: The Heavyweight Champion Showing its Age
 
 WordPress has dominated the web for nearly two decades. Its user-friendly interface, massive plugin arsenal, and vast community have made it the go-to choice for millions, from bloggers to global enterprises. But beneath the familiar exterior, WordPress carries the baggage of legacy code and architectural limitations that increasingly hinder its performance and flexibility in the modern web arena.
 
