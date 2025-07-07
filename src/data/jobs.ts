@@ -156,7 +156,8 @@ export const jobListings: JobListing[] = [
     experience: '2-4 years',
     isActive: true,
     postedDate: '2025-01-07',
-    description: 'We are looking for a creative UI/UX Designer to join our design team. You will be responsible for creating user-centered designs and improving user experiences across our digital products.',
+    description:
+      'We are looking for a creative UI/UX Designer to join our design team. You will be responsible for creating user-centered designs and improving user experiences across our digital products.',
     requirements: [
       'Proficiency in design tools like Figma, Adobe XD, or Sketch',
       'Strong understanding of user-centered design principles',
@@ -165,7 +166,7 @@ export const jobListings: JobListing[] = [
       'Understanding of accessibility standards (WCAG)',
       'Basic knowledge of HTML/CSS is a plus',
       'Portfolio showcasing UI/UX projects',
-      'Excellent communication and collaboration skills'
+      'Excellent communication and collaboration skills',
     ],
     responsibilities: [
       'Create wireframes, mockups, and interactive prototypes',
@@ -175,7 +176,7 @@ export const jobListings: JobListing[] = [
       'Maintain and evolve design systems and style guides',
       'Present design concepts to stakeholders',
       'Stay updated with latest design trends and best practices',
-      'Optimize user journeys and conversion funnels'
+      'Optimize user journeys and conversion funnels',
     ],
     benefits: [
       'Competitive salary package',
@@ -185,10 +186,10 @@ export const jobListings: JobListing[] = [
       'Flexible working arrangements',
       '25 days annual leave plus bank holidays',
       'Health insurance coverage',
-      'Team building activities and design workshops'
+      'Team building activities and design workshops',
     ],
-    salaryRange: '£35,000 - £50,000'
-  }
+    salaryRange: '£35,000 - £50,000',
+  },
 ];
 
 // =============================================================================
