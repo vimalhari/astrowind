@@ -1,0 +1,246 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import JobFilter from '~/components/careers/JobFilter.astro';
+import JobListing from '~/components/careers/JobListing.astro';
+import { getActiveJobs } from '~/data/jobs';
+
+const metadata = {
+  title: 'Careers - Join Our Team | Criztec Technologies',
+  description:
+    'Join Criztec Technologies and advance your career in web development and digital marketing. Explore exciting opportunities in London and remote positions.',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: 'website',
+    title: 'Careers at Criztec Technologies',
+    description:
+      'Join our dynamic team of developers and digital marketing experts. Competitive salaries, flexible work arrangements, and growth opportunities.',
+  },
+};
+
+const activeJobs = getActiveJobs();
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Join Our Team"
+    title="Build Your Career with Criztec Technologies"
+    subtitle="We're looking for talented individuals who are passionate about technology and innovation. Join our dynamic team and help us create exceptional digital experiences for our clients."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'View Open Positions',
+        href: '#open-positions',
+        icon: 'tabler:briefcase',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/hero-image.webp',
+      alt: 'Team collaboration at Criztec Technologies',
+    }}
+  />
+
+  <!-- Company Culture Section -->
+  <Content
+    id="culture"
+    title="Why Work at Criztec?"
+    subtitle="Discover what makes Criztec Technologies a great place to build your career"
+    isReversed
+    items={[
+      {
+        title: 'Innovation First',
+        description:
+          'Work with cutting-edge technologies and contribute to innovative solutions that make a real impact.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Growth Opportunities',
+        description: 'Continuous learning and development programs to help you advance your career and skills.',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Work-Life Balance',
+        description:
+          'Flexible working hours, remote work options, and a supportive environment that values your well-being.',
+        icon: 'tabler:scale',
+      },
+      {
+        title: 'Collaborative Team',
+        description: 'Join a diverse, talented team that values collaboration, creativity, and mutual respect.',
+        icon: 'tabler:users',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/web-design-hero.webp',
+      alt: 'Team working together',
+    }}
+  />
+
+  <!-- Benefits Section -->
+  <Content
+    id="benefits"
+    title="Employee Benefits"
+    subtitle="We believe in taking care of our team members"
+    items={[
+      {
+        title: 'Competitive Compensation',
+        description: 'Market-competitive salaries with performance-based bonuses and equity options.',
+        icon: 'tabler:coins',
+      },
+      {
+        title: 'Health & Wellness',
+        description: 'Comprehensive health insurance, dental coverage, and wellness programs.',
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'Professional Development',
+        description: 'Learning budget, conference attendance, certification support, and mentorship programs.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Flexible Work',
+        description: 'Hybrid work model, flexible hours, and generous paid time off policy.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Modern Office',
+        description: 'State-of-the-art office in Central London with modern equipment and amenities.',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Team Events',
+        description: 'Regular team building activities, social events, and company retreats.',
+        icon: 'tabler:calendar-event',
+      },
+    ]}
+  />
+
+  <!-- Job Filter and Listings -->
+  <section id="open-positions" class="px-4 py-16 mx-auto max-w-7xl lg:px-8 lg:py-20">
+    <div class="mb-8 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
+        Open Positions
+      </h2>
+      <p class="text-xl text-muted dark:text-slate-400 mx-auto max-w-3xl">
+        Explore exciting career opportunities and find the perfect role to advance your career.
+      </p>
+    </div>
+
+    <!-- Job Filter Component -->
+    <JobFilter />
+
+    <!-- Job Listings -->
+    <div id="job-listings" class="mt-12 space-y-6">
+      {activeJobs.map((job) => <JobListing job={job} />)}
+    </div>
+
+    {
+      activeJobs.length === 0 && (
+        <div class="text-center py-12">
+          <div class="text-6xl mb-4">💼</div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">No open positions at the moment</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">
+            We're always looking for talented individuals. Send us your resume and we'll keep you in mind for future
+            opportunities.
+          </p>
+          <a
+            href="mailto:careers@criztec.com"
+            class="inline-flex items-center justify-center rounded-lg bg-primary-600 px-6 py-3 text-white font-medium hover:bg-primary-700 transition-colors"
+          >
+            Send Resume
+          </a>
+        </div>
+      )
+    }
+  </section>
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Ready to Join Our Team?"
+    subtitle="Don't see a position that fits? We're always interested in hearing from talented individuals."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Send Your Resume',
+        href: 'mailto:careers@criztec.com',
+        icon: 'tabler:mail',
+      },
+      {
+        variant: 'secondary',
+        text: 'Contact HR',
+        href: '/contact',
+        icon: 'tabler:phone',
+      },
+    ]}
+  />
+</Layout>
+
+<style>
+  /* Custom styles for careers page */
+  .job-card {
+    transition: all 0.3s ease;
+  }
+
+  .job-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<script>
+  // Job filtering functionality
+  document.addEventListener('DOMContentLoaded', function () {
+    const statusFilter = document.getElementById('status-filter') as HTMLSelectElement;
+    const locationFilter = document.getElementById('location-filter') as HTMLSelectElement;
+    const departmentFilter = document.getElementById('department-filter') as HTMLSelectElement;
+    const jobListings = document.getElementById('job-listings');
+
+    function filterJobs() {
+      const status = statusFilter?.value || 'all';
+      const location = locationFilter?.value || 'all';
+      const department = departmentFilter?.value || 'all';
+
+      if (!jobListings) return;
+
+      const jobs = jobListings.querySelectorAll('.job-card');
+
+      jobs.forEach((job) => {
+        const jobElement = job as HTMLElement;
+        const jobStatus = jobElement.dataset.status;
+        const jobLocation = jobElement.dataset.location;
+        const jobDepartment = jobElement.dataset.department;
+
+        let showJob = true;
+
+        if (status !== 'all' && jobStatus !== status) {
+          showJob = false;
+        }
+
+        if (location !== 'all' && !jobLocation?.toLowerCase().includes(location.toLowerCase())) {
+          showJob = false;
+        }
+
+        if (department !== 'all' && jobDepartment?.toLowerCase() !== department.toLowerCase()) {
+          showJob = false;
+        }
+
+        if (showJob) {
+          jobElement.style.display = 'block';
+        } else {
+          jobElement.style.display = 'none';
+        }
+      });
+    }
+
+    // Add event listeners to filters
+    statusFilter?.addEventListener('change', filterJobs);
+    locationFilter?.addEventListener('change', filterJobs);
+    departmentFilter?.addEventListener('change', filterJobs);
+  });
+</script>

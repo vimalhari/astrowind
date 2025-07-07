@@ -1,0 +1,87 @@
+---
+// JobFilter.astro - Filter component for job listings
+---
+
+<div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 mb-8">
+  <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Filter Jobs</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- Status Filter -->
+    <div>
+      <label for="status-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        Hiring Status
+      </label>
+      <select
+        id="status-filter"
+        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-slate-700 dark:text-gray-100"
+      >
+        <option value="all">All Positions</option>
+        <option value="true">Currently Hiring</option>
+        <option value="false">Not Hiring</option>
+      </select>
+    </div>
+
+    <!-- Location Filter -->
+    <div>
+      <label for="location-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        Location
+      </label>
+      <select
+        id="location-filter"
+        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-slate-700 dark:text-gray-100"
+      >
+        <option value="all">All Locations</option>
+        <option value="london">London, UK</option>
+        <option value="remote">Remote</option>
+        <option value="hybrid">Hybrid</option>
+      </select>
+    </div>
+
+    <!-- Department Filter -->
+    <div>
+      <label for="department-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        Department
+      </label>
+      <select
+        id="department-filter"
+        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-slate-700 dark:text-gray-100"
+      >
+        <option value="all">All Departments</option>
+        <option value="development">Development</option>
+        <option value="design">Design</option>
+        <option value="marketing">Marketing</option>
+        <option value="sales">Sales</option>
+        <option value="operations">Operations</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Clear Filters Button -->
+  <div class="mt-4 flex justify-end">
+    <button
+      id="clear-filters"
+      class="px-4 py-2 text-sm text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium transition-colors"
+    >
+      Clear Filters
+    </button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const clearButton = document.getElementById('clear-filters');
+
+    clearButton?.addEventListener('click', function () {
+      const statusFilter = document.getElementById('status-filter') as HTMLSelectElement;
+      const locationFilter = document.getElementById('location-filter') as HTMLSelectElement;
+      const departmentFilter = document.getElementById('department-filter') as HTMLSelectElement;
+
+      if (statusFilter) statusFilter.value = 'all';
+      if (locationFilter) locationFilter.value = 'all';
+      if (departmentFilter) departmentFilter.value = 'all';
+
+      // Trigger change event to update the job listings
+      statusFilter?.dispatchEvent(new Event('change'));
+    });
+  });
+</script>

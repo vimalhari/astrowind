@@ -1,0 +1,411 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { jobListings } from '~/data/jobs';
+
+export async function getStaticPaths() {
+  return jobListings.map((job) => ({
+    params: { id: job.id },
+    props: { job },
+  }));
+}
+
+const { job } = Astro.props;
+
+if (!job) {
+  return Astro.redirect('/careers');
+}
+
+// Format date for display
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+
+const getJobTypeColor = (type: string) => {
+  switch (type) {
+    case 'full-time':
+      return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
+    case 'part-time':
+      return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
+    case 'contract':
+      return 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200';
+    case 'internship':
+      return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200';
+    default:
+      return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
+  }
+};
+
+const metadata = {
+  title: `${job.title} - Careers | Criztec Technologies`,
+  description: job.description,
+  robots: {
+    index: job.isActive,
+    follow: true,
+  },
+  openGraph: {
+    type: 'website',
+    title: `${job.title} at Criztec Technologies`,
+    description: job.description,
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Job Header -->
+  <section class="px-4 py-16 mx-auto max-w-7xl lg:px-8 lg:py-20">
+    <div class="max-w-4xl mx-auto">
+      <!-- Back to Careers Link -->
+      <div class="mb-8">
+        <a
+          href="/careers"
+          class="inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
+        >
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Back to Careers
+        </a>
+      </div>
+
+      <!-- Job Title and Meta -->
+      <div class="mb-8">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
+            {job.title}
+          </h1>
+          <span class={`px-3 py-1 rounded-full text-sm font-medium ${getJobTypeColor(job.type)}`}>
+            {job.type.charAt(0).toUpperCase() + job.type.slice(1).replace('-', ' ')}
+          </span>
+          {
+            job.isActive ? (
+              <span class="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                Currently Hiring
+              </span>
+            ) : (
+              <span class="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                Position Closed
+              </span>
+            )
+          }
+        </div>
+
+        <div class="flex flex-wrap items-center gap-6 text-gray-600 dark:text-gray-400">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              ></path>
+            </svg>
+            <span>{job.department}</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              ></path>
+            </svg>
+            <span>{job.location}</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>{job.experience}</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            <span>Posted {formatDate(job.postedDate)}</span>
+          </div>
+        </div>
+
+        {
+          job.salaryRange && (
+            <div class="flex items-center gap-2 mt-4">
+              <svg
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+                />
+              </svg>
+              <span class="text-lg font-semibold text-primary-600 dark:text-primary-400">{job.salaryRange}</span>
+            </div>
+          )
+        }
+      </div>
+
+      <!-- Job Description -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">About This Role</h2>
+        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          {job.description}
+        </p>
+      </div>
+
+      <!-- Two Column Layout for Details -->
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-8">
+          <!-- Requirements -->
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Requirements</h3>
+            <ul class="space-y-3">
+              {
+                job.requirements.map((req) => (
+                  <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                    <svg
+                      class="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 flex-shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span>{req}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <!-- Responsibilities -->
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Key Responsibilities</h3>
+            <ul class="space-y-3">
+              {
+                job.responsibilities.map((resp) => (
+                  <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                    <svg
+                      class="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 flex-shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span>{resp}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <!-- Benefits -->
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Benefits & Perks</h3>
+            <ul class="space-y-3">
+              {
+                job.benefits.map((benefit) => (
+                  <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                    <svg
+                      class="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 flex-shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span>{benefit}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          <div class="bg-gray-50 dark:bg-slate-800 rounded-lg p-6 sticky top-8">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">Quick Actions</h3>
+
+            {
+              job.isActive ? (
+                <div class="space-y-3">
+                  <a
+                    href={`mailto:careers@criztec.com?subject=Application for ${job.title}&body=Hello,%0D%0A%0D%0AI am interested in applying for the ${job.title} position (Job ID: ${job.id}).%0D%0A%0D%0APlease find my resume attached.%0D%0A%0D%0ABest regards`}
+                    class="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center block"
+                  >
+                    Apply for This Position
+                  </a>
+
+                  <button
+                    id="share-job"
+                    class="w-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium py-3 px-4 rounded-lg transition-colors"
+                  >
+                    Share This Job
+                  </button>
+
+                  <a
+                    href="/careers"
+                    class="w-full text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium py-3 px-4 rounded-lg transition-colors text-center block"
+                  >
+                    View All Positions
+                  </a>
+                </div>
+              ) : (
+                <div class="space-y-3">
+                  <div class="w-full bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 font-medium py-3 px-4 rounded-lg text-center">
+                    Position Currently Closed
+                  </div>
+
+                  <a
+                    href="mailto:careers@criztec.com?subject=Interest in Future Opportunities&body=Hello,%0D%0A%0D%0AI am interested in future opportunities similar to the ${job.title} position.%0D%0A%0D%0APlease keep me in mind for upcoming openings.%0D%0A%0D%0ABest regards"
+                    class="w-full border border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900 font-medium py-3 px-4 rounded-lg transition-colors text-center block"
+                  >
+                    Express Interest
+                  </a>
+
+                  <a
+                    href="/careers"
+                    class="w-full text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium py-3 px-4 rounded-lg transition-colors text-center block"
+                  >
+                    View Open Positions
+                  </a>
+                </div>
+              )
+            }
+
+            <!-- Job Details -->
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+              <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-3">Job Details</h4>
+              <dl class="space-y-2 text-sm">
+                <div>
+                  <dt class="text-gray-600 dark:text-gray-400">Job ID</dt>
+                  <dd class="font-medium text-gray-900 dark:text-gray-100">{job.id}</dd>
+                </div>
+                <div>
+                  <dt class="text-gray-600 dark:text-gray-400">Department</dt>
+                  <dd class="font-medium text-gray-900 dark:text-gray-100">{job.department}</dd>
+                </div>
+                <div>
+                  <dt class="text-gray-600 dark:text-gray-400">Employment Type</dt>
+                  <dd class="font-medium text-gray-900 dark:text-gray-100">
+                    {job.type.charAt(0).toUpperCase() + job.type.slice(1).replace('-', ' ')}
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-gray-600 dark:text-gray-400">Experience Level</dt>
+                  <dd class="font-medium text-gray-900 dark:text-gray-100">{job.experience}</dd>
+                </div>
+                <div>
+                  <dt class="text-gray-600 dark:text-gray-400">Location</dt>
+                  <dd class="font-medium text-gray-900 dark:text-gray-100">{job.location}</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Ready to Join Our Team?"
+    subtitle="Take the next step in your career with Criztec Technologies."
+    actions={job.isActive
+      ? [
+          {
+            variant: 'primary',
+            text: 'Apply Now',
+            href: `mailto:careers@criztec.com?subject=Application for ${job.title}&body=Hello,%0D%0A%0D%0AI am interested in applying for the ${job.title} position (Job ID: ${job.id}).%0D%0A%0D%0APlease find my resume attached.%0D%0A%0D%0ABest regards`,
+            icon: 'tabler:send',
+          },
+          {
+            variant: 'secondary',
+            text: 'View All Jobs',
+            href: '/careers',
+            icon: 'tabler:briefcase',
+          },
+        ]
+      : [
+          {
+            variant: 'primary',
+            text: 'Express Interest',
+            href: `mailto:careers@criztec.com?subject=Interest in Future Opportunities&body=Hello,%0D%0A%0D%0AI am interested in future opportunities similar to the ${job.title} position.%0D%0A%0D%0APlease keep me in mind for upcoming openings.%0D%0A%0D%0ABest regards`,
+            icon: 'tabler:heart',
+          },
+          {
+            variant: 'secondary',
+            text: 'View Open Positions',
+            href: '/careers',
+            icon: 'tabler:briefcase',
+          },
+        ]}
+  />
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const shareButton = document.getElementById('share-job');
+
+    shareButton?.addEventListener('click', function () {
+      const jobTitle = document.querySelector('h1')?.textContent || 'Job Position';
+      const jobUrl = window.location.href;
+
+      if (navigator.share) {
+        navigator
+          .share({
+            title: `${jobTitle} - Criztec Technologies`,
+            text: `Check out this job opportunity: ${jobTitle}`,
+            url: jobUrl,
+          })
+          .catch(console.error);
+      } else {
+        // Fallback to copying URL to clipboard
+        navigator.clipboard
+          .writeText(jobUrl)
+          .then(() => {
+            // Show feedback
+            const originalText = shareButton.textContent;
+            shareButton.textContent = 'Link Copied!';
+            setTimeout(() => {
+              shareButton.textContent = originalText;
+            }, 2000);
+          })
+          .catch(console.error);
+      }
+    });
+  });
+</script>
