@@ -79,7 +79,7 @@ const seoMeta = {
 <Layout metadata={seoMeta}>
   <Fragment slot="head">
     <!-- Local Business Schema -->
-    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
 
     <!-- Additional city-specific meta tags -->
     <meta name="geo.region" content={`UK-${city.region}`} />

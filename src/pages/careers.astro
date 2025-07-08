@@ -1,7 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import JobFilter from '~/components/careers/JobFilter.astro';
 import JobListing from '~/components/careers/JobListing.astro';
@@ -41,85 +40,371 @@ const activeJobs = getActiveJobs();
       },
     ]}
     image={{
-      src: '~/assets/images/hero-image.webp',
+      src: 'https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/business-people-working-together.webp',
       alt: 'Team collaboration at Criztec Technologies',
     }}
   />
 
-  <!-- Company Culture Section -->
-  <Content
+  <!-- Company Culture Section - Redesigned -->
+  <section
     id="culture"
-    title="Why Work at Criztec?"
-    subtitle="Discover what makes Criztec Technologies a great place to build your career"
-    isReversed
-    items={[
-      {
-        title: 'Innovation First',
-        description:
-          'Work with cutting-edge technologies and contribute to innovative solutions that make a real impact.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Growth Opportunities',
-        description: 'Continuous learning and development programs to help you advance your career and skills.',
-        icon: 'tabler:trending-up',
-      },
-      {
-        title: 'Work-Life Balance',
-        description:
-          'Flexible working hours, remote work options, and a supportive environment that values your well-being.',
-        icon: 'tabler:scale',
-      },
-      {
-        title: 'Collaborative Team',
-        description: 'Join a diverse, talented team that values collaboration, creativity, and mutual respect.',
-        icon: 'tabler:users',
-      },
-    ]}
-    image={{
-      src: '~/assets/images/web-design-hero.webp',
-      alt: 'Team working together',
-    }}
-  />
+    class="relative px-4 py-16 mx-auto max-w-7xl lg:px-8 lg:py-20 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800"
+  >
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
+        Why Work at <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"
+          >Criztec?</span
+        >
+      </h2>
+      <p class="text-xl text-muted dark:text-slate-400 mx-auto max-w-3xl">
+        Discover what makes Criztec Technologies a great place to build your career
+      </p>
+    </div>
 
-  <!-- Benefits Section -->
-  <Content
-    id="benefits"
-    title="Employee Benefits"
-    subtitle="We believe in taking care of our team members"
-    items={[
-      {
-        title: 'Competitive Compensation',
-        description: 'Market-competitive salaries with performance-based bonuses and equity options.',
-        icon: 'tabler:coins',
-      },
-      {
-        title: 'Health & Wellness',
-        description: 'Comprehensive health insurance, dental coverage, and wellness programs.',
-        icon: 'tabler:heart',
-      },
-      {
-        title: 'Professional Development',
-        description: 'Learning budget, conference attendance, certification support, and mentorship programs.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'Flexible Work',
-        description: 'Hybrid work model, flexible hours, and generous paid time off policy.',
-        icon: 'tabler:clock',
-      },
-      {
-        title: 'Modern Office',
-        description: 'State-of-the-art office in Central London with modern equipment and amenities.',
-        icon: 'tabler:building',
-      },
-      {
-        title: 'Team Events',
-        description: 'Regular team building activities, social events, and company retreats.',
-        icon: 'tabler:calendar-event',
-      },
-    ]}
-  />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+      <div
+        class="group relative bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-slate-700"
+      >
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl"></div>
+        <div class="relative z-10">
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+          >
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Innovation First</h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Work with cutting-edge technologies and contribute to innovative solutions that make a real impact.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="group relative bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-slate-700"
+      >
+        <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 rounded-2xl"></div>
+        <div class="relative z-10">
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+          >
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Growth Opportunities</h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Continuous learning and development programs to help you advance your career and skills.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="group relative bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-slate-700"
+      >
+        <div class="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-orange-500/5 rounded-2xl"></div>
+        <div class="relative z-10">
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+          >
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Work-Life Balance</h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Flexible working hours, remote work options, and a supportive environment that values your well-being.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="group relative bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-slate-700"
+      >
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-2xl"></div>
+        <div class="relative z-10">
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+          >
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Collaborative Team</h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Join a diverse, talented team that values collaboration, creativity, and mutual respect.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team Image Section -->
+    <div class="relative max-w-4xl mx-auto">
+      <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+        <img
+          src="https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/benefits-for-workers-and-employers-who-return-to-work-header.webp"
+          alt="Team working together"
+          class="w-full h-64 md:h-80 object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        <div class="absolute bottom-8 left-8 right-8 text-white">
+          <h3 class="text-2xl font-bold mb-2">Join Our Amazing Team</h3>
+          <p class="text-gray-200">Be part of something extraordinary and build the future of technology</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section - Redesigned -->
+  <section id="benefits" class="relative px-4 py-16 mx-auto max-w-7xl lg:px-8 lg:py-20 bg-white dark:bg-slate-900">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
+        Employee <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Benefits</span>
+      </h2>
+      <p class="text-xl text-muted dark:text-slate-400 mx-auto max-w-3xl">
+        We believe in taking care of our team members with comprehensive benefits and perks
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Compensation Card -->
+      <div
+        class="group relative bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-8 border border-green-200 dark:border-green-800 hover:border-green-300 dark:hover:border-green-700 transition-all duration-300 hover:shadow-xl"
+      >
+        <div class="flex items-center mb-6">
+          <div
+            class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-4"
+          >
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Competitive Compensation</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          Market-competitive salaries with performance-based bonuses and equity options.
+        </p>
+        <div class="flex items-center text-green-600 dark:text-green-400 font-medium">
+          <span class="text-sm">Learn more</span>
+          <svg
+            class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Health & Wellness Card -->
+      <div
+        class="group relative bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-900/20 dark:to-pink-900/20 rounded-2xl p-8 border border-rose-200 dark:border-rose-800 hover:border-rose-300 dark:hover:border-rose-700 transition-all duration-300 hover:shadow-xl"
+      >
+        <div class="flex items-center mb-6">
+          <div
+            class="w-14 h-14 bg-gradient-to-br from-rose-500 to-pink-600 rounded-xl flex items-center justify-center mr-4"
+          >
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Health & Wellness</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          Comprehensive health insurance, dental coverage, and wellness programs.
+        </p>
+        <div class="flex items-center text-rose-600 dark:text-rose-400 font-medium">
+          <span class="text-sm">Learn more</span>
+          <svg
+            class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Professional Development Card -->
+      <div
+        class="group relative bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-8 border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 hover:shadow-xl"
+      >
+        <div class="flex items-center mb-6">
+          <div
+            class="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mr-4"
+          >
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Professional Development</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          Learning budget, conference attendance, certification support, and mentorship programs.
+        </p>
+        <div class="flex items-center text-blue-600 dark:text-blue-400 font-medium">
+          <span class="text-sm">Learn more</span>
+          <svg
+            class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Flexible Work Card -->
+      <div
+        class="group relative bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 rounded-2xl p-8 border border-purple-200 dark:border-purple-800 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300 hover:shadow-xl"
+      >
+        <div class="flex items-center mb-6">
+          <div
+            class="w-14 h-14 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl flex items-center justify-center mr-4"
+          >
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Flexible Work</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          Hybrid work model, flexible hours, and generous paid time off policy.
+        </p>
+        <div class="flex items-center text-purple-600 dark:text-purple-400 font-medium">
+          <span class="text-sm">Learn more</span>
+          <svg
+            class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Modern Office Card -->
+      <div
+        class="group relative bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-8 border border-amber-200 dark:border-amber-800 hover:border-amber-300 dark:hover:border-amber-700 transition-all duration-300 hover:shadow-xl"
+      >
+        <div class="flex items-center mb-6">
+          <div
+            class="w-14 h-14 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center mr-4"
+          >
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Modern Office</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          State-of-the-art office in Central London with modern equipment and amenities.
+        </p>
+        <div class="flex items-center text-amber-600 dark:text-amber-400 font-medium">
+          <span class="text-sm">Learn more</span>
+          <svg
+            class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Team Events Card -->
+      <div
+        class="group relative bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-2xl p-8 border border-teal-200 dark:border-teal-800 hover:border-teal-300 dark:hover:border-teal-700 transition-all duration-300 hover:shadow-xl"
+      >
+        <div class="flex items-center mb-6">
+          <div
+            class="w-14 h-14 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl flex items-center justify-center mr-4"
+          >
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Team Events</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          Regular team building activities, social events, and company retreats.
+        </p>
+        <div class="flex items-center text-teal-600 dark:text-teal-400 font-medium">
+          <span class="text-sm">Learn more</span>
+          <svg
+            class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Benefits Banner -->
+    <div class="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 md:p-12 text-white text-center">
+      <h3 class="text-2xl md:text-3xl font-bold mb-4">And Much More!</h3>
+      <p class="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
+        Free snacks, gym membership, mental health support, stock options, and a culture that truly values work-life
+        balance.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 text-sm">
+        <span class="bg-white/20 px-4 py-2 rounded-full">🍕 Free Meals</span>
+        <span class="bg-white/20 px-4 py-2 rounded-full">🏋️ Gym Membership</span>
+        <span class="bg-white/20 px-4 py-2 rounded-full">🧠 Mental Health</span>
+        <span class="bg-white/20 px-4 py-2 rounded-full">📈 Stock Options</span>
+        <span class="bg-white/20 px-4 py-2 rounded-full">🌴 Unlimited PTO</span>
+      </div>
+    </div>
+  </section>
 
   <!-- Job Filter and Listings -->
   <section id="open-positions" class="px-4 py-16 mx-auto max-w-7xl lg:px-8 lg:py-20">

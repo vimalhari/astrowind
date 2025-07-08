@@ -84,7 +84,7 @@ const seoProps: AstroSeoProps = merge(
 {modifiedTime && <meta name="article:modified_time" content={modifiedTime} />}
 
 <!-- Structured Data -->
-{structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
+{structuredData && <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
 
 <!-- Additional SEO Meta Tags -->
 <meta
