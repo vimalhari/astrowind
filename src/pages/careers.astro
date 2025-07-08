@@ -415,116 +415,132 @@ const activeJobs = getActiveJobs();
 
 <script>
   // Job filtering functionality
+  function initializeJobToggle() {
+    // Job details toggle functionality
+    document.querySelectorAll('.job-details-toggle').forEach((button) => {
+      // Remove existing event listeners to prevent duplicates
+      button.replaceWith(button.cloneNode(true));
+    });
+
+    document.querySelectorAll('.job-details-toggle').forEach((button) => {
+      button.addEventListener('click', function (this: HTMLButtonElement) {
+        const details = this.parentElement?.querySelector('.job-details') as HTMLElement;
+        const chevron = this.querySelector('.job-chevron');
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        const expandText = this.querySelector('span') as HTMLElement;
+        const hintText = this.querySelector('.text-gray-500') as HTMLElement;
+
+        if (details) {
+          if (isExpanded) {
+            details.style.display = 'none';
+            this.setAttribute('aria-expanded', 'false');
+            expandText.textContent = 'View Job Details';
+            hintText.textContent = 'Click to expand';
+            chevron?.classList.remove('rotate-180');
+          } else {
+            details.style.display = 'block';
+            this.setAttribute('aria-expanded', 'true');
+            expandText.textContent = 'Hide Job Details';
+            hintText.textContent = 'Click to collapse';
+            chevron?.classList.add('rotate-180');
+          }
+        }
+      });
+    });
+
+    // Share job functionality
+    document.querySelectorAll('.share-job').forEach((button) => {
+      // Remove existing event listeners to prevent duplicates
+      button.replaceWith(button.cloneNode(true));
+    });
+
+    document.querySelectorAll('.share-job').forEach((button) => {
+      button.addEventListener('click', function (this: HTMLButtonElement) {
+        const jobTitle = this.getAttribute('data-job-title');
+        const jobUrl = this.getAttribute('data-job-url');
+
+        if (navigator.share) {
+          navigator
+            .share({
+              title: `${jobTitle} - Criztec Technologies`,
+              text: `Check out this job opportunity: ${jobTitle}`,
+              url: jobUrl || window.location.href,
+            })
+            .catch(console.error);
+        } else {
+          // Fallback to copying URL to clipboard
+          if (jobUrl) {
+            navigator.clipboard
+              .writeText(jobUrl)
+              .then(() => {
+                // Show feedback
+                const originalText = this.textContent;
+                this.textContent = '✅ Copied!';
+                setTimeout(() => {
+                  this.textContent = originalText;
+                }, 2000);
+              })
+              .catch(console.error);
+          }
+        }
+      });
+    });
+  }
+
+  function filterJobs() {
+    const statusFilter = document.getElementById('status-filter') as HTMLSelectElement;
+    const locationFilter = document.getElementById('location-filter') as HTMLSelectElement;
+    const departmentFilter = document.getElementById('department-filter') as HTMLSelectElement;
+    const jobListings = document.getElementById('job-listings');
+
+    const status = statusFilter?.value || 'all';
+    const location = locationFilter?.value || 'all';
+    const department = departmentFilter?.value || 'all';
+
+    if (!jobListings) return;
+
+    const jobs = jobListings.querySelectorAll('.job-card');
+
+    jobs.forEach((job) => {
+      const jobElement = job as HTMLElement;
+      const jobStatus = jobElement.dataset.status;
+      const jobLocation = jobElement.dataset.location;
+      const jobDepartment = jobElement.dataset.department;
+
+      let showJob = true;
+
+      if (status !== 'all' && jobStatus !== status) {
+        showJob = false;
+      }
+
+      if (location !== 'all' && !jobLocation?.toLowerCase().includes(location.toLowerCase())) {
+        showJob = false;
+      }
+
+      if (department !== 'all' && jobDepartment?.toLowerCase() !== department.toLowerCase()) {
+        showJob = false;
+      }
+
+      if (showJob) {
+        jobElement.style.display = 'block';
+      } else {
+        jobElement.style.display = 'none';
+      }
+    });
+
+    // Re-initialize toggle functionality after filtering
+    setTimeout(initializeJobToggle, 100);
+  }
+
+  // Initialize when DOM is loaded
   document.addEventListener('DOMContentLoaded', function () {
     const statusFilter = document.getElementById('status-filter') as HTMLSelectElement;
     const locationFilter = document.getElementById('location-filter') as HTMLSelectElement;
     const departmentFilter = document.getElementById('department-filter') as HTMLSelectElement;
     const jobListings = document.getElementById('job-listings');
 
-    function initializeJobToggle() {
-      // Job details toggle functionality
-      document.querySelectorAll('.job-details-toggle').forEach((button) => {
-        button.addEventListener('click', function (this: HTMLButtonElement) {
-          const details = this.parentElement?.querySelector('.job-details') as HTMLElement;
-          const chevron = this.querySelector('.job-chevron');
-          const isExpanded = this.getAttribute('aria-expanded') === 'true';
-          const expandText = this.querySelector('span') as HTMLElement;
-          const hintText = this.querySelector('.text-gray-500') as HTMLElement;
-
-          if (details) {
-            if (isExpanded) {
-              details.style.display = 'none';
-              this.setAttribute('aria-expanded', 'false');
-              expandText.textContent = 'View Job Details';
-              hintText.textContent = 'Click to expand';
-              chevron?.classList.remove('rotate-180');
-            } else {
-              details.style.display = 'block';
-              this.setAttribute('aria-expanded', 'true');
-              expandText.textContent = 'Hide Job Details';
-              hintText.textContent = 'Click to collapse';
-              chevron?.classList.add('rotate-180');
-            }
-          }
-        });
-      });
-
-      // Share job functionality
-      document.querySelectorAll('.share-job').forEach((button) => {
-        button.addEventListener('click', function (this: HTMLButtonElement) {
-          const jobTitle = this.getAttribute('data-job-title');
-          const jobUrl = this.getAttribute('data-job-url');
-
-          if (navigator.share) {
-            navigator
-              .share({
-                title: `${jobTitle} - Criztec Technologies`,
-                text: `Check out this job opportunity: ${jobTitle}`,
-                url: jobUrl || window.location.href,
-              })
-              .catch(console.error);
-          } else {
-            // Fallback to copying URL to clipboard
-            if (jobUrl) {
-              navigator.clipboard
-                .writeText(jobUrl)
-                .then(() => {
-                  // Show feedback
-                  const originalText = this.textContent;
-                  this.textContent = '✅ Copied!';
-                  setTimeout(() => {
-                    this.textContent = originalText;
-                  }, 2000);
-                })
-                .catch(console.error);
-            }
-          }
-        });
-      });
-    }
-
-    function filterJobs() {
-      const status = statusFilter?.value || 'all';
-      const location = locationFilter?.value || 'all';
-      const department = departmentFilter?.value || 'all';
-
-      if (!jobListings) return;
-
-      const jobs = jobListings.querySelectorAll('.job-card');
-
-      jobs.forEach((job) => {
-        const jobElement = job as HTMLElement;
-        const jobStatus = jobElement.dataset.status;
-        const jobLocation = jobElement.dataset.location;
-        const jobDepartment = jobElement.dataset.department;
-
-        let showJob = true;
-
-        if (status !== 'all' && jobStatus !== status) {
-          showJob = false;
-        }
-
-        if (location !== 'all' && !jobLocation?.toLowerCase().includes(location.toLowerCase())) {
-          showJob = false;
-        }
-
-        if (department !== 'all' && jobDepartment?.toLowerCase() !== department.toLowerCase()) {
-          showJob = false;
-        }
-
-        if (showJob) {
-          jobElement.style.display = 'block';
-        } else {
-          jobElement.style.display = 'none';
-        }
-      });
-
-      // Re-initialize toggle functionality after filtering
-      initializeJobToggle();
-    }
-
-    // Initialize toggle functionality on page load
-    initializeJobToggle();
+    // Initialize toggle functionality
+    setTimeout(initializeJobToggle, 100);
 
     // Add event listeners to filters
     statusFilter?.addEventListener('change', filterJobs);
@@ -535,7 +551,7 @@ const activeJobs = getActiveJobs();
     const observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
         if (mutation.type === 'childList') {
-          initializeJobToggle();
+          setTimeout(initializeJobToggle, 50);
         }
       });
     });
@@ -544,4 +560,13 @@ const activeJobs = getActiveJobs();
       observer.observe(jobListings, { childList: true, subtree: true });
     }
   });
+
+  // Fallback initialization for immediate execution
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      setTimeout(initializeJobToggle, 200);
+    });
+  } else {
+    setTimeout(initializeJobToggle, 100);
+  }
 </script>
