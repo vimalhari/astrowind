@@ -21,12 +21,18 @@ export default {
 
       animation: {
         fade: 'fadeInUp 1s both',
+        'fade-in-up': 'fadeInUp 0.8s ease-out both',
+        'pulse-subtle': 'pulseSubtle 2s infinite',
       },
 
       keyframes: {
         fadeInUp: {
           '0%': { opacity: 0, transform: 'translateY(2rem)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        pulseSubtle: {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: 0.8 },
         },
       },
     },

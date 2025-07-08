@@ -126,11 +126,15 @@ export const footerData = {
     { text: 'Accessibility', href: getPermalink('/contact') },
   ],
   socialLinks: [
-    { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/criztec-technologies' },
+    {
+      ariaLabel: 'LinkedIn',
+      icon: 'tabler:brand-linkedin',
+      href: 'https://www.linkedin.com/company/criztec-technologies',
+    },
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://x.com/criztec_it' },
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/criztec_technologies' },
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/criztec.technologies' },
-    { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/criztec' },
+    { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/vimalhari' },
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
   ],
   footNote: `© 2025 Crizaze Business Services Ltd. All rights reserved. <br>Registered in England & Wales. Company No. <a class="text-blue-600 underline dark:text-muted" href="https://find-and-update.company-information.service.gov.uk/company/15494238" target="_blank" rel="noopener noreferrer">15494238</a>. <br class="block sm:hidden"><span class="hidden sm:inline">|</span> Professional web development, digital marketing & IT services.`,

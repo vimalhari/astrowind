@@ -27,7 +27,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
 ---
 
 <footer
-  class:list={[{ dark: theme === 'dark' }, 'relative not-prose bg-gray-50 dark:bg-slate-900']}
+  class:list={[{ dark: theme === 'dark' }, 'relative not-prose bg-gray-50 dark:bg-slate-900 animate-fade-in-up']}
   role="contentinfo"
   aria-label="Site footer"
 >
@@ -75,10 +75,10 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
                 <Icon name="tabler:phone" class="w-4 h-4 text-green-600 dark:text-green-400" />
               </div>
               <a
-                href="tel:+442071830184"
+                href="tel:+447404979307"
                 class="text-gray-700 dark:text-slate-300 hover:text-primary transition-colors duration-200"
               >
-                +44 207 183 0184
+                +44 7404 979307
               </a>
             </div>
             <div class="flex items-center space-x-3">
@@ -127,9 +127,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
       </div>
 
       {/* Enhanced Bottom Section */}
-      <div
-        class="mt-12 pt-6 border-t border-gradient-to-r from-transparent via-gray-200 to-transparent dark:via-slate-700"
-      >
+      <div class="mt-12 pt-6 border-t border-gray-200 dark:border-slate-700">
         <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-8 lg:space-y-0">
           {/* Social Media Links */}
           {
@@ -208,113 +206,13 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
   </div>
 </footer>
 
-<style>
-  /* Modern footer animations */
-  footer {
-    animation: fadeInUp 0.8s ease-out;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Enhanced hover effects */
-  .group:hover .group-hover\:scale-110 {
-    transform: scale(1.1);
-  }
-
-  /* Custom gradient border */
-  .border-gradient-to-r {
-    border-image: linear-gradient(to right, transparent, rgb(156 163 175), transparent) 1;
-  } /* Smooth transitions for all interactive elements */
-  footer a,
-  footer button {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Back to top button */
-  .back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 3rem;
-    height: 3rem;
-    background: linear-gradient(135deg, var(--aw-color-primary), #3b82f6);
-    border: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 1.25rem;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  }
-
-  .back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .back-to-top:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
-  }
-
-  .back-to-top:active {
-    transform: translateY(0);
-  }
-
-  /* Pulse animation for important elements */
-  @keyframes pulse-subtle {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.8;
-    }
-  }
-
-  .pulse-on-hover:hover {
-    animation: pulse-subtle 2s infinite;
-  }
-</style>
-
 <script>
-  // Enhanced footer interactions
+  // Enhanced footer interactions with pure Tailwind
   document.addEventListener('DOMContentLoaded', () => {
-    // Scroll reveal animation
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px',
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
-    }, observerOptions);
-
-    // Observe footer sections
-    const footerSections = document.querySelectorAll('.scroll-reveal');
-    footerSections.forEach((section) => observer.observe(section));
-
-    // Back to top button
+    // Back to top button with Tailwind classes
     const backToTopButton = document.createElement('button');
-    backToTopButton.className = 'back-to-top';
+    backToTopButton.className =
+      'fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-br from-primary to-blue-600 border-0 rounded-full text-white text-xl cursor-pointer opacity-0 invisible translate-y-2 transition-all duration-300 ease-out z-[1000] shadow-lg hover:shadow-xl hover:-translate-y-1 hover:scale-105 active:translate-y-0';
     backToTopButton.innerHTML = '↑';
     backToTopButton.setAttribute('aria-label', 'Back to top');
     document.body.appendChild(backToTopButton);
@@ -322,9 +220,11 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
     // Show/hide back to top button
     window.addEventListener('scroll', () => {
       if (window.scrollY > 500) {
-        backToTopButton.classList.add('visible');
+        backToTopButton.classList.remove('opacity-0', 'invisible', 'translate-y-2');
+        backToTopButton.classList.add('opacity-100', 'visible', 'translate-y-0');
       } else {
-        backToTopButton.classList.remove('visible');
+        backToTopButton.classList.add('opacity-0', 'invisible', 'translate-y-2');
+        backToTopButton.classList.remove('opacity-100', 'visible', 'translate-y-0');
       }
     });
 
@@ -333,19 +233,6 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
-      });
-    });
-
-    // Add subtle hover effects to contact cards
-    const contactCards = document.querySelectorAll('.group:has(.w-12.h-12)');
-    contactCards.forEach((card) => {
-      const htmlCard = card as HTMLElement;
-      card.addEventListener('mouseenter', () => {
-        htmlCard.style.transform = 'translateY(-2px)';
-      });
-
-      card.addEventListener('mouseleave', () => {
-        htmlCard.style.transform = 'translateY(0)';
       });
     });
   });
