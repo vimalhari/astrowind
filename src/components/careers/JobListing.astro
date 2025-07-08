@@ -34,143 +34,174 @@ const getJobTypeColor = (type: string) => {
 ---
 
 <div
-  class="job-card bg-white dark:bg-slate-800 rounded-lg shadow-md hover:shadow-lg p-6 border border-gray-200 dark:border-gray-700"
+  class="job-card group relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-2xl p-8 border border-gray-100 dark:border-slate-700 hover:border-primary-200 dark:hover:border-primary-700 transition-all duration-300 transform hover:-translate-y-1"
   data-status={job.isActive.toString()}
   data-location={job.location}
   data-department={job.department}
 >
-  <div class="flex justify-between items-start mb-4">
+  <div class="flex justify-between items-start mb-6">
     <div class="flex-1">
-      <div class="flex items-center gap-3 mb-2">
-        <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">
+      <div class="flex items-center gap-3 mb-3">
+        <h3
+          class="text-2xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"
+        >
           {job.title}
         </h3>
-        <span class={`px-2 py-1 rounded-full text-xs font-medium ${getJobTypeColor(job.type)}`}>
+        <span class={`px-3 py-1 rounded-full text-sm font-semibold ${getJobTypeColor(job.type)}`}>
           {job.type.charAt(0).toUpperCase() + job.type.slice(1).replace('-', ' ')}
         </span>
         {
           job.isActive ? (
-            <span class="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-              Hiring
+            <span class="px-3 py-1 rounded-full text-sm font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
+              ✨ Hiring Now
             </span>
           ) : (
-            <span class="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
-              Not Hiring
+            <span class="px-3 py-1 rounded-full text-sm font-semibold bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
+              Position Closed
             </span>
           )
         }
       </div>
 
-      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-3">
-        <div class="flex items-center gap-1">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-            ></path>
-          </svg>
-          <span>{job.department}</span>
+      <div class="flex flex-wrap items-center gap-6 text-sm text-gray-600 dark:text-gray-400 mb-4">
+        <div class="flex items-center gap-2">
+          <div
+            class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center"
+          >
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              ></path>
+            </svg>
+          </div>
+          <span class="font-medium">{job.department}</span>
         </div>
 
-        <div class="flex items-center gap-1">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-            ></path>
-          </svg>
-          <span>{job.location}</span>
+        <div class="flex items-center gap-2">
+          <div
+            class="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center"
+          >
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              ></path>
+            </svg>
+          </div>
+          <span class="font-medium">{job.location}</span>
         </div>
 
-        <div class="flex items-center gap-1">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
-          <span>{job.experience}</span>
+        <div class="flex items-center gap-2">
+          <div
+            class="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center"
+          >
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <span class="font-medium">{job.experience}</span>
         </div>
 
-        <div class="flex items-center gap-1">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-          </svg>
-          <span>Posted {formatDate(job.postedDate)}</span>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-gradient-to-br from-rose-500 to-pink-600 rounded-lg flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <span class="font-medium">Posted {formatDate(job.postedDate)}</span>
         </div>
       </div>
 
       {
         job.salaryRange && (
-          <div class="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 mb-3">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
-              />
-            </svg>
-            <span class="font-semibold text-primary-600 dark:text-primary-400">{job.salaryRange}</span>
+          <div class="flex items-center gap-2 text-sm mb-4">
+            <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+                />
+              </svg>
+            </div>
+            <span class="font-bold text-lg text-green-600 dark:text-green-400">{job.salaryRange}</span>
           </div>
         )
       }
     </div>
   </div>
 
-  <div class="mb-4">
-    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+  <div class="mb-6">
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
       {job.description}
     </p>
   </div>
 
   <!-- Collapsible Job Details -->
-  <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+  <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
     <button
-      class="job-details-toggle w-full flex items-center justify-between text-left font-medium text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+      class="job-details-toggle w-full flex items-center justify-between text-left font-semibold text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group"
       aria-expanded="false"
     >
-      <span>View Job Details</span>
-      <svg
-        class="job-chevron w-5 h-5 transform transition-transform"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-      </svg>
+      <span class="text-lg">View Job Details</span>
+      <div class="flex items-center gap-2">
+        <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-primary-500">Click to expand</span>
+        <svg
+          class="job-chevron w-6 h-6 transform transition-transform duration-200"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
     </button>
 
-    <div class="job-details mt-4 space-y-6" style="display: none;">
+    <div class="job-details mt-6 space-y-8 bg-gray-50 dark:bg-slate-700/50 rounded-xl p-6" style="display: none;">
       <!-- Requirements -->
       <div>
-        <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-3">Requirements</h4>
-        <ul class="space-y-2">
+        <h4 class="font-bold text-gray-900 dark:text-gray-100 mb-4 text-lg flex items-center gap-2">
+          <div
+            class="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center"
+          >
+            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          Requirements
+        </h4>
+        <ul class="space-y-3">
           {
             job.requirements.map((req) => (
-              <li class="flex items-start gap-2 text-gray-700 dark:text-gray-300">
-                <svg
-                  class="w-4 h-4 text-primary-600 dark:text-primary-400 mt-0.5 flex-shrink-0"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-                <span>{req}</span>
+              <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                <div class="w-5 h-5 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <span class="leading-relaxed">{req}</span>
               </li>
             ))
           }
@@ -179,23 +210,33 @@ const getJobTypeColor = (type: string) => {
 
       <!-- Responsibilities -->
       <div>
-        <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-3">Key Responsibilities</h4>
-        <ul class="space-y-2">
+        <h4 class="font-bold text-gray-900 dark:text-gray-100 mb-4 text-lg flex items-center gap-2">
+          <div
+            class="w-6 h-6 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center"
+          >
+            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          Key Responsibilities
+        </h4>
+        <ul class="space-y-3">
           {
             job.responsibilities.map((resp) => (
-              <li class="flex items-start gap-2 text-gray-700 dark:text-gray-300">
-                <svg
-                  class="w-4 h-4 text-primary-600 dark:text-primary-400 mt-0.5 flex-shrink-0"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-                <span>{resp}</span>
+              <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                <div class="w-5 h-5 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <span class="leading-relaxed">{resp}</span>
               </li>
             ))
           }
@@ -204,23 +245,31 @@ const getJobTypeColor = (type: string) => {
 
       <!-- Benefits -->
       <div>
-        <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-3">Benefits & Perks</h4>
-        <ul class="space-y-2">
+        <h4 class="font-bold text-gray-900 dark:text-gray-100 mb-4 text-lg flex items-center gap-2">
+          <div class="w-6 h-6 bg-gradient-to-br from-rose-500 to-pink-600 rounded-lg flex items-center justify-center">
+            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          Benefits & Perks
+        </h4>
+        <ul class="space-y-3">
           {
             job.benefits.map((benefit) => (
-              <li class="flex items-start gap-2 text-gray-700 dark:text-gray-300">
-                <svg
-                  class="w-4 h-4 text-primary-600 dark:text-primary-400 mt-0.5 flex-shrink-0"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-                <span>{benefit}</span>
+              <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                <div class="w-5 h-5 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <span class="leading-relaxed">{benefit}</span>
               </li>
             ))
           }
@@ -230,28 +279,28 @@ const getJobTypeColor = (type: string) => {
   </div>
 
   <!-- Action Buttons -->
-  <div class="flex gap-3 mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+  <div class="flex gap-4 mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
     {
       job.isActive ? (
         <>
           <a
             href={`mailto:info@criztec.com?subject=Application for ${job.title}&body=Hello,%0D%0A%0D%0AI am interested in applying for the ${job.title} position (Job ID: ${job.id}).%0D%0A%0D%0APlease find my resume attached.%0D%0A%0D%0ABest regards`}
-            class="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-center"
+            class="flex-1 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
-            Apply Now
+            🚀 Apply Now
           </a>
           <button
-            class="share-job px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            class="share-job px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-500 rounded-xl transition-all duration-200 font-medium"
             data-job-title={job.title}
             data-job-url={`${Astro.site?.href}careers#${job.id}`}
           >
-            Share
+            📤 Share
           </button>
         </>
       ) : (
         <button
           disabled
-          class="flex-1 bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 font-medium py-2 px-4 rounded-lg cursor-not-allowed"
+          class="flex-1 bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 font-semibold py-3 px-6 rounded-xl cursor-not-allowed"
         >
           Position Closed
         </button>
@@ -259,63 +308,3 @@ const getJobTypeColor = (type: string) => {
     }
   </div>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Job details toggle functionality
-    document.querySelectorAll('.job-details-toggle').forEach((button) => {
-      button.addEventListener('click', function (this: HTMLButtonElement) {
-        const details = this.parentElement?.querySelector('.job-details') as HTMLElement;
-        const chevron = this.querySelector('.job-chevron');
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
-
-        if (details) {
-          if (isExpanded) {
-            details.style.display = 'none';
-            this.setAttribute('aria-expanded', 'false');
-            this.querySelector('span')!.textContent = 'View Job Details';
-            chevron?.classList.remove('rotate-180');
-          } else {
-            details.style.display = 'block';
-            this.setAttribute('aria-expanded', 'true');
-            this.querySelector('span')!.textContent = 'Hide Job Details';
-            chevron?.classList.add('rotate-180');
-          }
-        }
-      });
-    });
-
-    // Share job functionality
-    document.querySelectorAll('.share-job').forEach((button) => {
-      button.addEventListener('click', function (this: HTMLButtonElement) {
-        const jobTitle = this.getAttribute('data-job-title');
-        const jobUrl = this.getAttribute('data-job-url');
-
-        if (navigator.share) {
-          navigator
-            .share({
-              title: `${jobTitle} - Criztec Technologies`,
-              text: `Check out this job opportunity: ${jobTitle}`,
-              url: jobUrl || window.location.href,
-            })
-            .catch(console.error);
-        } else {
-          // Fallback to copying URL to clipboard
-          if (jobUrl) {
-            navigator.clipboard
-              .writeText(jobUrl)
-              .then(() => {
-                // Show feedback
-                const originalText = this.textContent;
-                this.textContent = 'Copied!';
-                setTimeout(() => {
-                  this.textContent = originalText;
-                }, 2000);
-              })
-              .catch(console.error);
-          }
-        }
-      });
-    });
-  });
-</script>

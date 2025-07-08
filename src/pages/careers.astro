@@ -199,20 +199,9 @@ const activeJobs = getActiveJobs();
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Competitive Compensation</h3>
         </div>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">
+        <p class="text-gray-600 dark:text-gray-400">
           Market-competitive salaries with performance-based bonuses and equity options.
         </p>
-        <div class="flex items-center text-green-600 dark:text-green-400 font-medium">
-          <span class="text-sm">Learn more</span>
-          <svg
-            class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </div>
       </div>
 
       <!-- Health & Wellness Card -->
@@ -234,20 +223,9 @@ const activeJobs = getActiveJobs();
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Health & Wellness</h3>
         </div>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">
+        <p class="text-gray-600 dark:text-gray-400">
           Comprehensive health insurance, dental coverage, and wellness programs.
         </p>
-        <div class="flex items-center text-rose-600 dark:text-rose-400 font-medium">
-          <span class="text-sm">Learn more</span>
-          <svg
-            class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </div>
       </div>
 
       <!-- Professional Development Card -->
@@ -269,20 +247,9 @@ const activeJobs = getActiveJobs();
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Professional Development</h3>
         </div>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">
+        <p class="text-gray-600 dark:text-gray-400">
           Learning budget, conference attendance, certification support, and mentorship programs.
         </p>
-        <div class="flex items-center text-blue-600 dark:text-blue-400 font-medium">
-          <span class="text-sm">Learn more</span>
-          <svg
-            class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </div>
       </div>
 
       <!-- Flexible Work Card -->
@@ -303,20 +270,9 @@ const activeJobs = getActiveJobs();
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Flexible Work</h3>
         </div>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">
+        <p class="text-gray-600 dark:text-gray-400">
           Hybrid work model, flexible hours, and generous paid time off policy.
         </p>
-        <div class="flex items-center text-purple-600 dark:text-purple-400 font-medium">
-          <span class="text-sm">Learn more</span>
-          <svg
-            class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </div>
       </div>
 
       <!-- Modern Office Card -->
@@ -338,20 +294,9 @@ const activeJobs = getActiveJobs();
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Modern Office</h3>
         </div>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">
+        <p class="text-gray-600 dark:text-gray-400">
           State-of-the-art office in Central London with modern equipment and amenities.
         </p>
-        <div class="flex items-center text-amber-600 dark:text-amber-400 font-medium">
-          <span class="text-sm">Learn more</span>
-          <svg
-            class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </div>
       </div>
 
       <!-- Team Events Card -->
@@ -372,20 +317,9 @@ const activeJobs = getActiveJobs();
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Team Events</h3>
         </div>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">
+        <p class="text-gray-600 dark:text-gray-400">
           Regular team building activities, social events, and company retreats.
         </p>
-        <div class="flex items-center text-teal-600 dark:text-teal-400 font-medium">
-          <span class="text-sm">Learn more</span>
-          <svg
-            class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </div>
       </div>
     </div>
 
@@ -486,6 +420,68 @@ const activeJobs = getActiveJobs();
     const departmentFilter = document.getElementById('department-filter') as HTMLSelectElement;
     const jobListings = document.getElementById('job-listings');
 
+    function initializeJobToggle() {
+      // Job details toggle functionality
+      document.querySelectorAll('.job-details-toggle').forEach((button) => {
+        button.addEventListener('click', function (this: HTMLButtonElement) {
+          const details = this.parentElement?.querySelector('.job-details') as HTMLElement;
+          const chevron = this.querySelector('.job-chevron');
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          const expandText = this.querySelector('span') as HTMLElement;
+          const hintText = this.querySelector('.text-gray-500') as HTMLElement;
+
+          if (details) {
+            if (isExpanded) {
+              details.style.display = 'none';
+              this.setAttribute('aria-expanded', 'false');
+              expandText.textContent = 'View Job Details';
+              hintText.textContent = 'Click to expand';
+              chevron?.classList.remove('rotate-180');
+            } else {
+              details.style.display = 'block';
+              this.setAttribute('aria-expanded', 'true');
+              expandText.textContent = 'Hide Job Details';
+              hintText.textContent = 'Click to collapse';
+              chevron?.classList.add('rotate-180');
+            }
+          }
+        });
+      });
+
+      // Share job functionality
+      document.querySelectorAll('.share-job').forEach((button) => {
+        button.addEventListener('click', function (this: HTMLButtonElement) {
+          const jobTitle = this.getAttribute('data-job-title');
+          const jobUrl = this.getAttribute('data-job-url');
+
+          if (navigator.share) {
+            navigator
+              .share({
+                title: `${jobTitle} - Criztec Technologies`,
+                text: `Check out this job opportunity: ${jobTitle}`,
+                url: jobUrl || window.location.href,
+              })
+              .catch(console.error);
+          } else {
+            // Fallback to copying URL to clipboard
+            if (jobUrl) {
+              navigator.clipboard
+                .writeText(jobUrl)
+                .then(() => {
+                  // Show feedback
+                  const originalText = this.textContent;
+                  this.textContent = '✅ Copied!';
+                  setTimeout(() => {
+                    this.textContent = originalText;
+                  }, 2000);
+                })
+                .catch(console.error);
+            }
+          }
+        });
+      });
+    }
+
     function filterJobs() {
       const status = statusFilter?.value || 'all';
       const location = locationFilter?.value || 'all';
@@ -521,11 +517,30 @@ const activeJobs = getActiveJobs();
           jobElement.style.display = 'none';
         }
       });
+
+      // Re-initialize toggle functionality after filtering
+      initializeJobToggle();
     }
+
+    // Initialize toggle functionality on page load
+    initializeJobToggle();
 
     // Add event listeners to filters
     statusFilter?.addEventListener('change', filterJobs);
     locationFilter?.addEventListener('change', filterJobs);
     departmentFilter?.addEventListener('change', filterJobs);
+
+    // Re-initialize after any dynamic content changes
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.type === 'childList') {
+          initializeJobToggle();
+        }
+      });
+    });
+
+    if (jobListings) {
+      observer.observe(jobListings, { childList: true, subtree: true });
+    }
   });
 </script>
