@@ -77,63 +77,63 @@ export const headerData = {
 
 export const footerData = {
   links: [
-    // {
-    //   title: 'Platform',
-    //   links: [
-    //     { text: 'Developer API', href: '#' },
-    //     { text: 'Partners', href: '#' },
-    //     { text: 'Atom', href: '#' },
-    //     { text: 'Electron', href: '#' },
-    //     { text: 'Criztec Desktop', href: '#' },
-    //   ],
-    // },
-    // {
-    //   title: 'Support',
-    //   links: [
-    //     { text: 'Docs', href: '#' },
-    //     { text: 'Community Forum', href: '#' },
-    //     { text: 'Professional Services', href: '#' },
-    //     { text: 'Skills', href: '#' },
-    //     { text: 'Status', href: '#' },
-    //   ],
-    // },
     {
       title: 'Company',
       links: [
-        { text: 'About', href: '/about' },
-        { text: 'Blog', href: '/blog' },
-        // { text: 'Careers', href: '#' },
-        // { text: 'Press', href: '#' },
-        // { text: 'Inclusion', href: '#' },
-        // { text: 'Social Impact', href: '#' },
-        // { text: 'Shop', href: '#' },
+        { text: 'About Us', href: getPermalink('/about') },
+        { text: 'Careers', href: getPermalink('/careers') },
+        { text: 'Contact Us', href: getPermalink('/contact') },
+        { text: 'Blog', href: getBlogPermalink() },
       ],
     },
     {
-      title: 'Services',
+      title: 'Design Services',
       links: [
-        { text: 'Website Development', href: '/website-development' },
-        { text: 'Digital Marketing', href: '/digital-marketing' },
-        { text: 'Social Media Marketing', href: '/socialmedia-marketing' },
+        { text: 'Web Design', href: getPermalink('/web-design') },
+        { text: 'All Services', href: getPermalink('/services') },
+      ],
+    },
+    {
+      title: 'Development',
+      links: [
+        { text: 'Website Development', href: getPermalink('/website-development') },
+        { text: 'Mobile App Development', href: getPermalink('/mobile-app') },
+        { text: 'Astro Site Development', href: getPermalink('/astro-site') },
+      ],
+    },
+    {
+      title: 'Digital Marketing',
+      links: [
+        { text: 'Digital Marketing', href: getPermalink('/digital-marketing') },
+        { text: 'SEO Services', href: getPermalink('/seo') },
+        { text: 'Social Media Marketing', href: getPermalink('/socialmedia-marketing') },
         { text: 'Content Marketing', href: getPermalink('/content-marketing') },
-        //     { text: 'Customer stories', href: '#' },
-        //     { text: 'Pricing', href: '#' },
-        //     { text: 'Resources', href: '#' },
+      ],
+    },
+    {
+      title: 'Support & Resources',
+      links: [
+        { text: 'IT Support', href: getPermalink('/it-support') },
+        { text: 'Pricing', href: getPermalink('/pricing') },
+        { text: 'Help Center', href: getPermalink('/contact') },
       ],
     },
   ],
   secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
+    { text: 'Terms & Conditions', href: getPermalink('/terms') },
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    { text: 'Sitemap', href: getPermalink('/sitemap-enhanced.xml') },
+    { text: 'Accessibility', href: getPermalink('/contact') },
   ],
   socialLinks: [
+    { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/criztec-technologies' },
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://x.com/criztec_it' },
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/criztec_technologies' },
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/criztec.technologies' },
+    { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/criztec' },
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    // { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/criztec/website' },
   ],
-  footNote: `© 2024 Crizaze Business Services Ltd. All rights reserved. <br>Registered in England & Wales. Company No. <a class="text-blue-600 underline dark:text-muted" href="https://find-and-update.company-information.service.gov.uk/company/15494238"> 15494238. </a>`,
+  footNote: `© 2025 Crizaze Business Services Ltd. All rights reserved. <br>Registered in England & Wales. Company No. <a class="text-blue-600 underline dark:text-muted" href="https://find-and-update.company-information.service.gov.uk/company/15494238" target="_blank" rel="noopener noreferrer">15494238</a>. <br class="block sm:hidden"><span class="hidden sm:inline">|</span> Professional web development, digital marketing & IT services.`,
 };
 
 // class="text-blue-600 underline dark:text-muted" href="https://criztec.com/"

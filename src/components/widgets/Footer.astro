@@ -26,96 +26,327 @@ export interface Props {
 const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
 ---
 
-<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
-  {/* Enhanced background styling */}
-  <div
-    class="absolute inset-0 bg-gradient-to-t from-gray-50 to-transparent dark:from-slate-900 dark:to-transparent pointer-events-none"
-    aria-hidden="true"
-  >
-  </div>
+<footer
+  class:list={[{ dark: theme === 'dark' }, 'relative not-prose bg-gray-50 dark:bg-slate-900']}
+  role="contentinfo"
+  aria-label="Site footer"
+>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    {/* Main content container */}
+    <div class="relative">
+      {/* Top section: Logo, Description & Links */}
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        {/* Column 1: Company Brand Section */}
+        <div class="lg:col-span-1">
+          {/* Logo */}
+          <div class="mb-6">
+            <a
+              class="inline-flex items-center font-bold text-xl text-gray-900 dark:text-white hover:text-primary transition-colors duration-200"
+              href={getHomePermalink()}
+            >
+              <span class="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+                {SITE?.name}
+              </span>
+            </a>
+          </div>
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 text-gray-700 dark:text-slate-400">
-    {/* Top section: Logo, secondary links, and main links */}
-    <div class="grid grid-cols-12 gap-6 md:gap-8">
-      {/* Column 1: Logo and Secondary Links */}
-      <div class="col-span-12 lg:col-span-4">
-        <div class="mb-4">
-          <a
-            class="inline-block font-bold text-xl text-gray-900 dark:text-white hover:text-primary-800 dark:hover:text-primary-400 transition duration-150 ease-in-out"
-            href={getHomePermalink()}>{SITE?.name}</a
-          >
+          {/* Company Description */}
+          <div class="mb-6">
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Professional web development, digital marketing & IT support services.
+            </p>
+          </div>
+
+          {/* Contact Info */}
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+                <Icon name="tabler:mail" class="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              </div>
+              <a
+                href="mailto:info@criztec.com"
+                class="text-gray-700 dark:text-slate-300 hover:text-primary transition-colors duration-200"
+              >
+                info@criztec.com
+              </a>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+                <Icon name="tabler:phone" class="w-4 h-4 text-green-600 dark:text-green-400" />
+              </div>
+              <a
+                href="tel:+442071830184"
+                class="text-gray-700 dark:text-slate-300 hover:text-primary transition-colors duration-200"
+              >
+                +44 207 183 0184
+              </a>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+                <Icon name="tabler:map-pin" class="w-4 h-4 text-purple-600 dark:text-purple-400" />
+              </div>
+              <span class="text-gray-700 dark:text-slate-300">London, UK</span>
+            </div>
+          </div>
         </div>
-        <div class="text-sm text-gray-600 dark:text-slate-500 flex flex-wrap gap-x-2 gap-y-1">
-          {
-            secondaryLinks.map(({ text, href }, index) => (
-              <>
-                {index !== 0 && <span class="opacity-50">·</span>}
-                <a
-                  class="hover:text-gray-900 dark:hover:text-slate-300 hover:underline transition duration-150 ease-in-out"
-                  href={href}
-                  set:html={text}
-                />
-              </>
-            ))
-          }
+
+        {/* Navigation Links Grid */}
+        <div class="lg:col-span-3">
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+            {
+              links.map(({ title, links: linkItems }) => (
+                <div>
+                  <nav aria-labelledby={`footer-${title?.toLowerCase().replace(/\s+/g, '-')}-heading`}>
+                    <h3
+                      id={`footer-${title?.toLowerCase().replace(/\s+/g, '-')}-heading`}
+                      class="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider"
+                    >
+                      {title}
+                    </h3>
+                    {linkItems && Array.isArray(linkItems) && linkItems.length > 0 && (
+                      <ul class="space-y-2" role="list">
+                        {linkItems.map(({ text, href, ariaLabel }) => (
+                          <li>
+                            <a
+                              class="text-sm text-gray-600 dark:text-slate-400 hover:text-primary transition-colors duration-200"
+                              href={href}
+                              aria-label={ariaLabel}
+                            >
+                              <Fragment set:html={text} />
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </nav>
+                </div>
+              ))
+            }
+          </div>
         </div>
       </div>
 
-      {/* Columns 2-N: Main Links */}
-      {
-        links.map(({ title, links: linkItems }) => (
-          <div class="col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-2">
-            <div class="text-gray-800 dark:text-slate-300 font-semibold mb-3 text-base">{title}</div>
-            {linkItems && Array.isArray(linkItems) && linkItems.length > 0 && (
-              <ul class="text-sm space-y-2">
-                {linkItems.map(({ text, href, ariaLabel }) => (
-                  <li>
+      {/* Enhanced Bottom Section */}
+      <div
+        class="mt-12 pt-6 border-t border-gradient-to-r from-transparent via-gray-200 to-transparent dark:via-slate-700"
+      >
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-8 lg:space-y-0">
+          {/* Social Media Links */}
+          {
+            socialLinks?.length ? (
+              <div class="order-2 lg:order-1">
+                <h3 class="text-sm font-semibold text-gray-700 dark:text-slate-300 mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                  {socialLinks.map(({ ariaLabel, href, text, icon }) => (
                     <a
-                      class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-slate-300 hover:underline transition duration-150 ease-in-out"
-                      href={href}
+                      class:list={[
+                        'group relative w-12 h-12 rounded-xl flex items-center justify-center transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl text-white',
+                        {
+                          'bg-blue-500 hover:bg-blue-600': icon === 'tabler:brand-twitter',
+                          'bg-blue-600 hover:bg-blue-700': icon === 'tabler:brand-facebook',
+                          'bg-gradient-to-br from-purple-600 via-pink-600 to-yellow-500 hover:from-purple-700 hover:via-pink-700 hover:to-yellow-600':
+                            icon === 'tabler:brand-instagram',
+                          'bg-blue-700 hover:bg-blue-800': icon === 'tabler:brand-linkedin',
+                          'bg-red-600 hover:bg-red-700': icon === 'tabler:brand-youtube',
+                          'bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600':
+                            icon === 'tabler:brand-github',
+                          'bg-green-500 hover:bg-green-600': icon === 'tabler:brand-whatsapp',
+                          'bg-gray-600 hover:bg-gray-700':
+                            !icon ||
+                            ![
+                              'tabler:brand-twitter',
+                              'tabler:brand-facebook',
+                              'tabler:brand-instagram',
+                              'tabler:brand-linkedin',
+                              'tabler:brand-youtube',
+                              'tabler:brand-github',
+                              'tabler:brand-whatsapp',
+                            ].includes(icon),
+                        },
+                      ]}
                       aria-label={ariaLabel}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <Fragment set:html={text} />
+                      <div class="transition-all duration-300 group-hover:scale-110">
+                        {icon && <Icon name={icon} class="w-5 h-5" />}
+                        {!icon && text && <Fragment set:html={text} />}
+                      </div>
+                      <div class="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </a>
-                  </li>
-                ))}
-              </ul>
-            )}
+                  ))}
+                </div>
+              </div>
+            ) : null
+          }
+
+          {/* Secondary Links & Legal */}
+          <div class="order-1 lg:order-2 text-center lg:text-right">
+            <div class="flex flex-wrap justify-center lg:justify-end gap-6 mb-4">
+              {
+                secondaryLinks.map(({ text, href }) => (
+                  <a
+                    class="text-sm text-gray-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200 relative group"
+                    href={href}
+                  >
+                    <span class="relative z-10" set:html={text} />
+                    <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                  </a>
+                ))
+              }
+            </div>
+
+            {/* Enhanced Footer Note */}
+            <div class="text-sm text-gray-600 dark:text-slate-500 leading-relaxed">
+              <Fragment set:html={footNote} />
+            </div>
           </div>
-        ))
-      }
-    </div>
-
-    {/* Bottom section: Social links and Footnote */}
-    <div
-      class="mt-12 md:mt-16 pt-8 border-t border-gray-200 dark:border-slate-800 md:flex md:items-center md:justify-between"
-    >
-      {/* Social Links */}
-      {
-        socialLinks?.length ? (
-          <ul class="flex justify-center md:order-2 md:justify-start mb-4 md:mb-0 space-x-3">
-            {socialLinks.map(({ ariaLabel, href, text, icon }) => (
-              <li>
-                <a
-                  class="text-gray-500 dark:text-slate-500 hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-primary-700 dark:hover:text-primary-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition duration-150 ease-in-out"
-                  aria-label={ariaLabel}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {icon && <Icon name={icon} class="w-5 h-5" />}
-                  {!icon && text && <Fragment set:html={text} />}
-                </a>
-              </li>
-            ))}
-          </ul>
-        ) : null
-      }
-
-      {/* Footnote */}
-      <div class="text-sm text-gray-600 dark:text-slate-500 text-center md:text-left md:order-1">
-        <Fragment set:html={footNote} />
+        </div>
       </div>
     </div>
   </div>
 </footer>
+
+<style>
+  /* Modern footer animations */
+  footer {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Enhanced hover effects */
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+  }
+
+  /* Custom gradient border */
+  .border-gradient-to-r {
+    border-image: linear-gradient(to right, transparent, rgb(156 163 175), transparent) 1;
+  } /* Smooth transitions for all interactive elements */
+  footer a,
+  footer button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Back to top button */
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, var(--aw-color-primary), #3b82f6);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .back-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .back-to-top:active {
+    transform: translateY(0);
+  }
+
+  /* Pulse animation for important elements */
+  @keyframes pulse-subtle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  .pulse-on-hover:hover {
+    animation: pulse-subtle 2s infinite;
+  }
+</style>
+
+<script>
+  // Enhanced footer interactions
+  document.addEventListener('DOMContentLoaded', () => {
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    // Observe footer sections
+    const footerSections = document.querySelectorAll('.scroll-reveal');
+    footerSections.forEach((section) => observer.observe(section));
+
+    // Back to top button
+    const backToTopButton = document.createElement('button');
+    backToTopButton.className = 'back-to-top';
+    backToTopButton.innerHTML = '↑';
+    backToTopButton.setAttribute('aria-label', 'Back to top');
+    document.body.appendChild(backToTopButton);
+
+    // Show/hide back to top button
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+
+    // Add subtle hover effects to contact cards
+    const contactCards = document.querySelectorAll('.group:has(.w-12.h-12)');
+    contactCards.forEach((card) => {
+      const htmlCard = card as HTMLElement;
+      card.addEventListener('mouseenter', () => {
+        htmlCard.style.transform = 'translateY(-2px)';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        htmlCard.style.transform = 'translateY(0)';
+      });
+    });
+  });
+</script>
