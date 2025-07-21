@@ -1,0 +1,23 @@
+---
+import { GoogleAnalytics } from '@astrolib/analytics';
+import { ANALYTICS } from 'criztec:config';
+---
+
+{
+  ANALYTICS?.vendors?.googleAnalytics?.id ? (
+    <GoogleAnalytics
+      id={String(ANALYTICS.vendors.googleAnalytics.id)}
+      partytown={ANALYTICS?.vendors?.googleAnalytics?.partytown}
+    />
+  ) : null
+}
+
+{
+  ANALYTICS?.vendors?.googleAds?.id ? (
+    <script is:inline define:vars={{ googleAdsId: ANALYTICS.vendors.googleAds.id }}>
+      if (typeof gtag !== 'undefined') {
+        gtag('config', googleAdsId);
+      }
+    </script>
+  ) : null
+}

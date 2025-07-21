@@ -77,7 +77,7 @@ const seoMeta = {
 ---
 
 <Layout metadata={seoMeta}>
-  <Fragment slot="head">
+  <div slot="head">
     <!-- Local Business Schema -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
 
@@ -100,7 +100,7 @@ const seoMeta = {
     <meta property="business:contact_data:region" content={city.region} />
     <meta property="business:contact_data:postal_code" content={city.postcode} />
     <meta property="business:contact_data:country_name" content="United Kingdom" />
-  </Fragment>
+  </div>
 
   <slot />
 </Layout>

@@ -68,6 +68,8 @@ analytics:
     googleAnalytics:
       id: 'G-FWD7NG5K08'
       partytown: false
+    googleAds:
+      id: 'AW-17352830948'
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
