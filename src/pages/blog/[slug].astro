@@ -16,7 +16,11 @@ import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 export const prerender = true;
 
 export const getStaticPaths = (async () => {
-  return await getStaticPathsBlogPost();
+  const blogPosts = await getStaticPathsBlogPost();
+  return blogPosts.map((post) => ({
+    params: { slug: post.params.blog },
+    props: post.props,
+  }));
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;

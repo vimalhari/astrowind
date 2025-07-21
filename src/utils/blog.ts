@@ -185,12 +185,40 @@ export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateF
 /** */
 export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
-  return (await fetchPosts()).flatMap((post) => ({
-    params: {
-      blog: post.permalink,
-    },
-    props: { post },
-  }));
+  
+  const posts = await fetchPosts();
+  
+  return posts.flatMap((post) => {
+    // Filter out paths that might conflict with static assets or other routes
+    const excludePatterns = [
+      /^\.well-known\//,
+      /^images\//,
+      /^assets\//,
+      /^public\//,
+      /^static\//,
+      /^api\//,
+      /^_astro\//,
+      /^favicon\./,
+      /^robots\.txt$/,
+      /^sitemap/,
+      /^manifest\./,
+      /^\./,  // Any path starting with a dot
+      /\.(webp|jpg|jpeg|png|gif|svg|css|js|ico|xml|json|txt|pdf|woff|woff2|ttf|eot|map|webmanifest)$/,
+    ];
+    
+    const shouldExclude = excludePatterns.some(pattern => pattern.test(post.permalink));
+    
+    if (shouldExclude) {
+      return [];
+    }
+    
+    return {
+      params: {
+        blog: post.permalink,
+      },
+      props: { post },
+    };
+  });
 };
 
 interface Category {
