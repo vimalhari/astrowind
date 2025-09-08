@@ -185,9 +185,9 @@ export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateF
 /** */
 export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
-  
+
   const posts = await fetchPosts();
-  
+
   return posts.flatMap((post) => {
     // Filter out paths that might conflict with static assets or other routes
     const excludePatterns = [
@@ -202,16 +202,16 @@ export const getStaticPathsBlogPost = async () => {
       /^robots\.txt$/,
       /^sitemap/,
       /^manifest\./,
-      /^\./,  // Any path starting with a dot
+      /^\./, // Any path starting with a dot
       /\.(webp|jpg|jpeg|png|gif|svg|css|js|ico|xml|json|txt|pdf|woff|woff2|ttf|eot|map|webmanifest)$/,
     ];
-    
-    const shouldExclude = excludePatterns.some(pattern => pattern.test(post.permalink));
-    
+
+    const shouldExclude = excludePatterns.some((pattern) => pattern.test(post.permalink));
+
     if (shouldExclude) {
       return [];
     }
-    
+
     return {
       params: {
         blog: post.permalink,

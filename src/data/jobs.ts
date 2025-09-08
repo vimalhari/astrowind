@@ -27,7 +27,7 @@ export const jobListings: JobListing[] = [
     description:
       'We are seeking a dynamic Digital Marketing Specialist to join our India-based remote team. You will be responsible for developing and executing comprehensive digital marketing strategies for our international clients, focusing on SEO, content marketing, social media, and paid advertising campaigns.',
     requirements: [
-      'Bachelor\'s degree in Marketing, Digital Marketing, or related field',
+      "Bachelor's degree in Marketing, Digital Marketing, or related field",
       'Proven experience in digital marketing with measurable results',
       'Strong knowledge of SEO, SEM, and Google Analytics',
       'Experience with social media marketing across multiple platforms',
