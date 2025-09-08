@@ -202,6 +202,7 @@ export const getStaticPathsBlogPost = async () => {
       /^robots\.txt$/,
       /^sitemap/,
       /^manifest\./,
+      /^sw\.js$/,  // Service worker file
       /^\./, // Any path starting with a dot
       /\.(webp|jpg|jpeg|png|gif|svg|css|js|ico|xml|json|txt|pdf|woff|woff2|ttf|eot|map|webmanifest)$/,
     ];
