@@ -4,7 +4,6 @@ Allow: /
 # Disallow specific paths for better crawl budget
 Disallow: /api/
 Disallow: /_*
-Disallow: /admin/
 Disallow: /.well-known/
 Disallow: /temp/
 Disallow: /private/
