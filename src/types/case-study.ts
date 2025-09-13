@@ -51,22 +51,32 @@ export interface Testimonial {
 
 // Filter and sort types
 export type FilterCriteria = {
-  industry?: string;
   category?: string;
   client?: string;
   featured?: boolean;
 };
 
-export type SortCriteria = 'date' | 'client' | 'industry' | 'featured';
+export type SortCriteria = 'date' | 'client' | 'category' | 'featured';
 
-// Industry gradient mapping
-export type IndustryType = 
-  | 'Financial Services'
-  | 'Legal'
-  | 'Healthcare'
-  | 'Technology'
-  | 'E-commerce'
-  | 'Real Estate';
+// Service category mapping for gradients and styling
+export type ServiceCategoryType = 
+  | 'Web Development'
+  | 'Digital Marketing'
+  | 'E-commerce Development'
+  | 'Mobile App Development'
+  | 'Performance Optimization'
+  | 'SEO Services'
+  | 'Content Marketing'
+  | 'Social Media Marketing'
+  | 'IT Support'
+  | 'Migration Services'
+  | 'Website Redesign'
+  | 'Custom Software Development'
+  | 'API Development'
+  | 'Database Design'
+  | 'UI/UX Design'
+  | 'Technical Consulting'
+  | 'Other';
 
 // Color scheme for technologies
 export type TechColorScheme = {

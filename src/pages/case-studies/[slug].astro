@@ -29,7 +29,7 @@ type Props = {
 const { study } = Astro.props;
 const { Content } = await render(study);
 
-// Get related case studies (same industry or category, excluding current)
+// Get related case studies (same category or similar tags, excluding current)
 const allCaseStudies = await getCollection('case-studies', ({ id, data }) => {
   return !data.draft && !id.startsWith('_') && id !== study.id;
 });

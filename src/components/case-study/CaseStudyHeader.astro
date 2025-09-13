@@ -1,6 +1,6 @@
 ---
 import type { CaseStudy } from '../../types/case-study';
-import { getIndustryGradient } from '../../utils/gradient-utils';
+import { getServiceCategoryGradient } from '../../utils/gradient-utils';
 
 export interface Props {
   study: CaseStudy;
@@ -8,7 +8,7 @@ export interface Props {
 }
 
 const { study, index } = Astro.props;
-const gradientClass = getIndustryGradient(study.data.industry);
+const gradientClass = getServiceCategoryGradient(study.data.category);
 ---
 
 <div class={`relative h-48 bg-gradient-to-br ${gradientClass} p-4 overflow-hidden flex-shrink-0`}>

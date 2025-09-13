@@ -1,19 +1,30 @@
-import type { IndustryType, TechColorScheme } from '~/types/case-study';
+import type { ServiceCategoryType, TechColorScheme } from '~/types/case-study';
 
 /**
- * Get industry-specific gradient classes
+ * Get service category-specific gradient classes
  */
-export function getIndustryGradient(industry: string): string {
-  const gradients: Record<IndustryType, string> = {
-    'Financial Services': 'from-emerald-500 via-teal-500 to-blue-600',
-    'Legal': 'from-slate-600 via-gray-700 to-blue-800',
-    'Healthcare': 'from-rose-400 via-pink-500 to-red-500',
-    'Technology': 'from-violet-500 via-purple-600 to-indigo-600',
-    'E-commerce': 'from-orange-400 via-amber-500 to-yellow-500',
-    'Real Estate': 'from-green-500 via-emerald-600 to-teal-600',
+export function getServiceCategoryGradient(category: string): string {
+  const gradients: Record<ServiceCategoryType, string> = {
+    'Web Development': 'from-blue-500 via-indigo-600 to-purple-600',
+    'Digital Marketing': 'from-pink-500 via-red-600 to-orange-600',
+    'E-commerce Development': 'from-green-500 via-emerald-600 to-teal-600',
+    'Mobile App Development': 'from-purple-500 via-violet-600 to-indigo-600',
+    'Performance Optimization': 'from-yellow-500 via-orange-600 to-red-600',
+    'SEO Services': 'from-teal-500 via-cyan-600 to-blue-600',
+    'Content Marketing': 'from-rose-500 via-pink-600 to-purple-600',
+    'Social Media Marketing': 'from-violet-500 via-purple-600 to-pink-600',
+    'IT Support': 'from-gray-500 via-slate-600 to-zinc-600',
+    'Migration Services': 'from-amber-500 via-yellow-600 to-orange-600',
+    'Website Redesign': 'from-indigo-500 via-blue-600 to-cyan-600',
+    'Custom Software Development': 'from-emerald-500 via-green-600 to-teal-600',
+    'API Development': 'from-sky-500 via-blue-600 to-indigo-600',
+    'Database Design': 'from-stone-500 via-gray-600 to-slate-600',
+    'UI/UX Design': 'from-fuchsia-500 via-pink-600 to-rose-600',
+    'Technical Consulting': 'from-cyan-500 via-teal-600 to-emerald-600',
+    'Other': 'from-blue-500 via-indigo-600 to-purple-600',
   };
   
-  return gradients[industry as IndustryType] || 'from-blue-500 via-indigo-600 to-purple-600';
+  return gradients[category as ServiceCategoryType] || 'from-blue-500 via-indigo-600 to-purple-600';
 }
 
 /**
@@ -90,7 +101,7 @@ export function getMetricColorScheme(type: 'performance' | 'business' | 'improve
 }
 
 /**
- * Generate background pattern for industry cards
+ * Generate background pattern for service category cards
  */
 export function generateBackgroundPattern(index: number): string {
   const patterns = [

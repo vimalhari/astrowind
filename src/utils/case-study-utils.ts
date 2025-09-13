@@ -8,9 +8,8 @@ export function filterCaseStudies(
   criteria: FilterCriteria
 ): CaseStudy[] {
   return caseStudies.filter((study) => {
-    const { industry, category, client, featured } = criteria;
+    const { category, client, featured } = criteria;
     
-    if (industry && study.data.industry !== industry) return false;
     if (category && study.data.category !== category) return false;
     if (client && !study.data.client.toLowerCase().includes(client.toLowerCase())) return false;
     if (featured !== undefined && study.data.featured !== featured) return false;
@@ -37,8 +36,8 @@ export function sortCaseStudies(
       case 'client':
         comparison = a.data.client.localeCompare(b.data.client);
         break;
-      case 'industry':
-        comparison = a.data.industry.localeCompare(b.data.industry);
+      case 'category':
+        comparison = a.data.category.localeCompare(b.data.category);
         break;
       case 'featured':
         comparison = (b.data.featured ? 1 : 0) - (a.data.featured ? 1 : 0);
@@ -50,7 +49,7 @@ export function sortCaseStudies(
 }
 
 /**
- * Get related case studies based on industry or category
+ * Get related case studies based on category or tags
  */
 export function getRelatedCaseStudies(
   currentStudy: CaseStudy,
@@ -62,10 +61,10 @@ export function getRelatedCaseStudies(
       // Exclude the current study
       if (study.id === currentStudy.id) return false;
       
-      // Match by industry first, then category
+      // Match by category or overlapping tags
       return (
-        study.data.industry === currentStudy.data.industry ||
-        study.data.category === currentStudy.data.category
+        study.data.category === currentStudy.data.category ||
+        study.data.tags.some(tag => currentStudy.data.tags.includes(tag))
       );
     })
     .slice(0, limit);
@@ -98,7 +97,6 @@ export function searchCaseStudies(
       study.data.subtitle,
       study.data.description,
       study.data.client,
-      study.data.industry,
       study.data.category,
       study.data.projectType,
       ...(study.data.tags || []),
