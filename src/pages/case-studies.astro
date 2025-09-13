@@ -3,7 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import CaseStudyCard from '~/components/CaseStudyCard.astro';
 import { getCollection } from 'astro:content';
-import { filterCaseStudies, sortCaseStudies, getUniqueValues } from '~/utils/case-study-utils';
+import { sortCaseStudies, getUniqueValues } from '~/utils/case-study-utils';
 
 const metadata = {
   title: 'Case Studies - Success Stories | Criztec Technologies',
@@ -28,15 +28,11 @@ const allCaseStudies = await getCollection('case-studies', ({ id, data }) => {
   return !data.draft && !id.startsWith('_');
 });
 
-// Sort by featured first, then by date
-const sortedCaseStudies = sortCaseStudies(sortCaseStudies(allCaseStudies, 'date', false), 'featured', false);
+// Sort by publish date (newest first)
+const sortedCaseStudies = sortCaseStudies(allCaseStudies, 'date', false);
 
-// Get filter options
+// Get filter options - no longer used for filtering, but kept for backwards compatibility
 const industries = getUniqueValues(allCaseStudies, 'industry');
-const categories = getUniqueValues(allCaseStudies, 'category');
-
-// Featured case studies (for hero section)
-const featuredStudies = filterCaseStudies(allCaseStudies, { featured: true }).slice(0, 3);
 ---
 
 <Layout metadata={metadata}>
@@ -78,208 +74,14 @@ const featuredStudies = filterCaseStudies(allCaseStudies, { featured: true }).sl
           </div>
         </div>
       </div>
-
-      <!-- Featured Case Studies Preview -->
-      {
-        featuredStudies.length > 0 && (
-          <div class="mb-16">
-            <h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-8">Featured Projects</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-              {featuredStudies.map((study) => (
-                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                  <div class="mb-4">
-                    <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-300 bg-blue-900/30 rounded-full border border-blue-700/50">
-                      {study.data.industry}
-                    </span>
-                  </div>
-                  <h3 class="text-lg font-bold text-white mb-2">{study.data.client}</h3>
-                  <p class="text-gray-300 text-sm mb-4 line-clamp-2">{study.data.description}</p>
-                  <div class="flex items-center justify-between">
-                    <div class="text-green-400 font-semibold text-sm">
-                      +{study.data.results.performance[0]?.improvement || '200%'}
-                    </div>
-                    <a
-                      href={`/case-studies/${study.id}`}
-                      class="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors"
-                    >
-                      Read More →
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )
-      }
-    </div>
-  </section>
-
-  <!-- Enhanced Filters Section -->
-  <section class="px-4 py-16 mx-auto max-w-7xl lg:px-8 bg-gray-50 dark:bg-gray-900">
-    <div
-      class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden"
-    >
-      <div class="p-6 lg:p-8">
-        <div class="text-center mb-8">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Explore Our Work</h2>
-          <p class="text-gray-600 dark:text-gray-300">
-            Filter by industry, project type, or search for specific solutions
-          </p>
-        </div>
-
-        <div class="space-y-6">
-          <!-- Search Bar -->
-          <div class="relative max-w-2xl mx-auto">
-            <input
-              type="text"
-              id="search-input"
-              placeholder="Search case studies, technologies, or industries..."
-              class="w-full px-4 py-3 pl-12 pr-4 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-            <div class="absolute inset-y-0 left-0 flex items-center pl-4">
-              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-              </svg>
-            </div>
-          </div>
-
-          <!-- Filter Controls -->
-          <div class="flex flex-wrap items-center justify-center gap-4">
-            <!-- Industry Filter -->
-            <div class="flex items-center space-x-2">
-              <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Industry:</label>
-              <select
-                id="industry-filter"
-                class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300"
-              >
-                <option value="">All Industries</option>
-                {industries.map((industry) => <option value={industry}>{industry}</option>)}
-              </select>
-            </div>
-
-            <!-- Category Filter -->
-            <div class="flex items-center space-x-2">
-              <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Type:</label>
-              <select
-                id="category-filter"
-                class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300"
-              >
-                <option value="">All Types</option>
-                {categories.map((category) => <option value={category}>{category}</option>)}
-              </select>
-            </div>
-
-            <!-- Sort Options -->
-            <div class="flex items-center space-x-2">
-              <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Sort:</label>
-              <select
-                id="sort-select"
-                class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300"
-              >
-                <option value="featured">Featured First</option>
-                <option value="date">Latest First</option>
-                <option value="client">Client A-Z</option>
-                <option value="industry">Industry</option>
-              </select>
-            </div>
-
-            <!-- Items per page -->
-            <div class="flex items-center space-x-2">
-              <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Show:</label>
-              <select
-                id="items-per-page"
-                class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300"
-              >
-                <option value="9">9 per page</option>
-                <option value="18">18 per page</option>
-                <option value="36">36 per page</option>
-                <option value="all">Show All</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Results Counter -->
-          <div class="text-sm text-gray-600 dark:text-gray-400 text-center">
-            Showing <span id="results-count">{allCaseStudies.length}</span> of <span id="total-count"
-              >{allCaseStudies.length}</span
-            > case studies
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- Case Studies Grid -->
   <section class="px-4 py-16 mx-auto max-w-7xl lg:px-8">
-    <!-- Loading Skeleton -->
-    <div id="loading-skeleton" class="hidden">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-        {
-          Array.from({ length: 6 }).map(() => (
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden animate-pulse">
-              <div class="h-48 bg-gray-300 dark:bg-gray-600" />
-              <div class="p-6 space-y-4">
-                <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4" />
-                <div class="space-y-2">
-                  <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded" />
-                  <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-5/6" />
-                </div>
-                <div class="flex justify-between">
-                  <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-16" />
-                  <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-12" />
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <!-- Modern Masonry Grid -->
-    <div id="case-studies-grid" class="masonry-grid transition-opacity duration-500">
+    <!-- Case Studies Grid -->
+    <div id="case-studies-grid" class="masonry-grid">
       {sortedCaseStudies.map((study, index) => <CaseStudyCard study={study} index={index} />)}
-    </div>
-
-    <!-- Load More Button -->
-    <div class="text-center mt-12">
-      <button
-        id="load-more-btn"
-        class="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
-        style="display: none;"
-      >
-        <span>Load More Case Studies</span>
-        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
-      </button>
-    </div>
-
-    <!-- No Results Message -->
-    <div id="no-results" class="text-center py-16 hidden">
-      <div class="max-w-md mx-auto">
-        <svg class="w-24 h-24 mx-auto text-gray-400 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.034 0-3.9.785-5.291 2.291A8 8 0 1115.73 4.688"
-          ></path>
-        </svg>
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No Results Found</h3>
-        <p class="text-gray-600 dark:text-gray-300 mb-6">
-          Try adjusting your search terms or filters to find what you're looking for.
-        </p>
-        <button
-          id="reset-filters"
-          class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300"
-        >
-          Reset Filters
-        </button>
-      </div>
     </div>
   </section>
 
@@ -301,158 +103,6 @@ const featuredStudies = filterCaseStudies(allCaseStudies, { featured: true }).sl
     ]}
   />
 </Layout>
-
-<script>
-  // Initialize page functionality
-  document.addEventListener('DOMContentLoaded', function () {
-    const searchInput = document.getElementById('search-input') as HTMLInputElement;
-    const industryFilter = document.getElementById('industry-filter') as HTMLSelectElement;
-    const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
-    const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
-    const itemsPerPage = document.getElementById('items-per-page') as HTMLSelectElement;
-    const resultsCount = document.getElementById('results-count');
-    const caseStudiesGrid = document.getElementById('case-studies-grid');
-    const loadMoreBtn = document.getElementById('load-more-btn');
-    const noResults = document.getElementById('no-results');
-    const resetFilters = document.getElementById('reset-filters');
-
-    // Store original case studies data
-    const allCaseStudies = Array.from(caseStudiesGrid?.children || []);
-    let filteredStudies = [...allCaseStudies];
-    let currentPage = 1;
-    let studiesPerPage = 9;
-
-    // Debounced search function
-    let searchTimeout;
-    const debouncedSearch = () => {
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(() => {
-        filterAndDisplayStudies();
-      }, 300);
-    };
-
-    // Event listeners
-    searchInput?.addEventListener('input', () => {
-      debouncedSearch();
-    });
-
-    industryFilter?.addEventListener('change', filterAndDisplayStudies);
-    categoryFilter?.addEventListener('change', filterAndDisplayStudies);
-    sortSelect?.addEventListener('change', filterAndDisplayStudies);
-    itemsPerPage?.addEventListener('change', (e) => {
-      const value = (e.target as HTMLSelectElement).value;
-      studiesPerPage = value === 'all' ? Infinity : parseInt(value);
-      currentPage = 1;
-      filterAndDisplayStudies();
-    });
-
-    loadMoreBtn?.addEventListener('click', () => {
-      currentPage++;
-      displayStudies(filteredStudies, false);
-    });
-
-    resetFilters?.addEventListener('click', () => {
-      searchInput.value = '';
-      industryFilter.value = '';
-      categoryFilter.value = '';
-      sortSelect.value = 'featured';
-      filterAndDisplayStudies();
-    });
-
-    function filterAndDisplayStudies() {
-      currentPage = 1;
-      filteredStudies = filterStudies();
-      displayStudies(filteredStudies, true);
-      updateResultsCount();
-    }
-
-    function filterStudies() {
-      return allCaseStudies.filter((study) => {
-        const searchTerm = searchInput?.value.toLowerCase() || '';
-        const industry = industryFilter?.value || '';
-        const category = categoryFilter?.value || '';
-
-        // Search filter
-        if (searchTerm) {
-          const studyText = study.textContent?.toLowerCase() || '';
-          if (!studyText.includes(searchTerm)) return false;
-        }
-
-        // Industry filter
-        if (industry) {
-          const studyIndustry = study.getAttribute('data-industry');
-          if (studyIndustry !== industry) return false;
-        }
-
-        // Category filter
-        if (category) {
-          const studyCategory = study.getAttribute('data-category');
-          if (!studyCategory?.includes(category)) return false;
-        }
-
-        return true;
-      });
-    }
-
-    function displayStudies(studies: Element[], reset: boolean = true) {
-      if (!caseStudiesGrid) return;
-
-      if (reset) {
-        caseStudiesGrid.innerHTML = '';
-      }
-
-      const startIndex = reset ? 0 : (currentPage - 1) * studiesPerPage;
-      const endIndex = currentPage * studiesPerPage;
-      const studiesToShow = studies.slice(startIndex, endIndex);
-
-      studiesToShow.forEach((study) => {
-        caseStudiesGrid.appendChild(study.cloneNode(true));
-      });
-
-      // Show/hide load more button
-      if (loadMoreBtn) {
-        loadMoreBtn.style.display = endIndex >= studies.length ? 'none' : 'inline-flex';
-      }
-
-      // Show/hide no results message
-      if (noResults) {
-        noResults.classList.toggle('hidden', studies.length > 0);
-      }
-
-      // Add fade-in animation
-      caseStudiesGrid.style.opacity = '0';
-      setTimeout(() => {
-        caseStudiesGrid.style.opacity = '1';
-      }, 50);
-    }
-
-    function updateResultsCount() {
-      if (resultsCount) {
-        resultsCount.textContent = filteredStudies.length.toString();
-      }
-    }
-
-    // Initialize lazy loading
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const img = entry.target as HTMLImageElement;
-          if (img.dataset.src) {
-            img.src = img.dataset.src;
-            img.classList.remove('blur-sm');
-            imageObserver.unobserve(img);
-          }
-        }
-      });
-    });
-
-    images.forEach((img) => imageObserver.observe(img));
-
-    // Initialize with default display
-    filterAndDisplayStudies();
-  });
-</script>
 
 <style>
   /* Modern Masonry Layout */
