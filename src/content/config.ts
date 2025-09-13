@@ -142,7 +142,7 @@ const caseStudyCollection = defineCollection({
           metric: z.string().min(1, 'Metric name is required'),
           before: z.string().min(1, 'Before value is required'),
           after: z.string().min(1, 'After value is required'),
-          improvement: z.string().regex(/^\+?\d+%?$|^[A-Za-z\s]+$/, 'Invalid improvement format'),
+          improvement: z.string().min(1, 'Improvement description is required'),
           category: z.enum(['Speed', 'SEO', 'Conversion', 'Traffic', 'User Experience', 'Technical']).optional(),
         })
       ).min(1, 'At least one performance metric required'),

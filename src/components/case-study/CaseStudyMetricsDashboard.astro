@@ -20,7 +20,7 @@ const { study } = Astro.props;
     study.data.results.performance && study.data.results.performance.length > 0 && (
       <div class="mb-12">
         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Website Performance</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {study.data.results.performance.map((result) => (
             <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
               <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{result.metric}</h4>
@@ -32,15 +32,15 @@ const { study } = Astro.props;
                 </div>
               )}
 
-              <div class="mb-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+              <div class="mb-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
                 <span class="text-sm text-green-600 dark:text-green-400 font-medium">Now: </span>
                 <span class="text-sm font-semibold text-green-700 dark:text-green-300">{result.after}</span>
               </div>
 
               <div class="text-center">
-                <span class="inline-flex px-4 py-2 text-sm font-medium text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  {result.improvement}
-                </span>
+                <div class="inline-flex flex-col items-center px-4 py-3 text-sm font-medium text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                  <span class="text-center leading-relaxed">{result.improvement}</span>
+                </div>
               </div>
             </div>
           ))}
@@ -54,11 +54,16 @@ const { study } = Astro.props;
     study.data.results.business && study.data.results.business.length > 0 && (
       <div>
         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Business Impact</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {study.data.results.business.map((result) => (
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
-              <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{result.metric}</h4>
-              <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">{result.improvement}</div>
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+              <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{result.metric}</h4>
+
+              <div class="text-center">
+                <div class="inline-flex flex-col items-center px-4 py-3 text-sm font-medium text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                  <span class="text-center leading-relaxed">{result.improvement}</span>
+                </div>
+              </div>
             </div>
           ))}
         </div>
