@@ -11,6 +11,10 @@ export const headerData = {
           href: getPermalink('/about'),
         },
         {
+          text: 'Case Studies',
+          href: getPermalink('/case-studies'),
+        },
+        {
           text: 'Careers',
           href: getPermalink('/careers'),
         },
@@ -81,6 +85,7 @@ export const footerData = {
       title: 'Company',
       links: [
         { text: 'About Us', href: getPermalink('/about') },
+        { text: 'Case Studies', href: getPermalink('/case-studies') },
         { text: 'Careers', href: getPermalink('/careers') },
         { text: 'Contact Us', href: getPermalink('/contact') },
         { text: 'Blog', href: getBlogPermalink() },

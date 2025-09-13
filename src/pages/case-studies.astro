@@ -1,0 +1,917 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getCollection } from 'astro:content';
+
+const metadata = {
+  title: 'Case Studies - Success Stories | Criztec Technologies',
+  description:
+    'Discover how Criztec Technologies transforms businesses with cutting-edge web development, digital marketing, and technology solutions. Real client success stories and results.',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: 'website',
+    title: 'Client Success Stories - Case Studies | Criztec Technologies',
+    description:
+      'See how we help businesses grow with modern web solutions, from WordPress to Astro migrations, digital marketing campaigns, and performance optimizations.',
+    image: '~/assets/images/hero-image.webp',
+  },
+  canonical: 'https://criztec.com/case-studies',
+};
+
+// Get all case studies from Content Collections
+const allCaseStudies = await getCollection('case-studies', ({ id, data }) => {
+  // Exclude draft studies and template files
+  return !data.draft && !id.startsWith('_');
+});
+
+// Filter featured case studies
+const caseStudies = allCaseStudies.filter(study => study.data.featured);
+
+// Sort by launch date (newest first)
+caseStudies.sort((a, b) => {
+  return parseInt(b.data.launchDate) - parseInt(a.data.launchDate);
+});
+
+// Generate JSON-LD structured data for case studies
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Case Studies - Criztec Technologies',
+  description: 'Success stories and case studies of web development and digital marketing projects',
+  url: 'https://criztec.com/case-studies',
+  publisher: {
+    '@type': 'Organization',
+    name: 'Criztec Technologies',
+    url: 'https://criztec.com',
+  },
+  mainEntity: caseStudies.map(study => ({
+    '@type': 'Article',
+    '@id': `https://criztec.com/case-studies/${study.id}`,
+    headline: study.data.title,
+    description: study.data.description,
+    author: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies'
+    },
+    url: `https://criztec.com/case-studies/${study.id}`
+  }))
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Add JSON-LD structured data -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  <!-- Hero Section -->
+  <section class="relative px-4 py-16 mx-auto max-w-7xl lg:px-8 lg:py-24">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+        Our <span class="text-blue-600">Success Stories</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
+        Discover how we transform businesses with cutting-edge technology solutions, 
+        delivering measurable results and exceptional user experiences.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 text-sm mb-8">
+        <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full">Web Development</span>
+        <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-1 rounded-full">Performance Optimization</span>
+        <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full">Digital Marketing</span>
+        <span class="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-3 py-1 rounded-full">Technology Migration</span>
+      </div>
+      
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-600 mb-1">{allCaseStudies.length}+</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Successful Projects</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-green-600 mb-1">98%</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Client Satisfaction</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-purple-600 mb-1">200%</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Avg Performance Boost</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-orange-600 mb-1">50+</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Technologies Mastered</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Filters Section -->
+  <section class="px-4 py-8 mx-auto max-w-7xl lg:px-8 bg-gray-50 dark:bg-gray-900">
+    <!-- Advanced Filter and Search -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-8 border border-gray-200 dark:border-gray-700">
+      <!-- Search Bar with Autocomplete -->
+      <div class="mb-6">
+        <div class="relative">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search case studies by client, industry, technology, or keyword..."
+            class="w-full px-4 py-3 pl-10 pr-10 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            autocomplete="off"
+            aria-label="Search case studies"
+            aria-describedby="search-description"
+          />
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+          <button
+            id="clear-search"
+            class="absolute inset-y-0 right-0 items-center pr-3 text-gray-400 hover:text-gray-600 hidden clear-search-btn"
+            aria-label="Clear search"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+          <!-- Search Suggestions Dropdown -->
+          <div id="search-suggestions" class="absolute z-10 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg hidden" role="listbox" aria-label="Search suggestions"></div>
+        </div>
+        <div id="search-description" class="sr-only">Search through case studies by client name, industry, category, or technology</div>
+      </div>
+
+      <!-- Filters Row -->
+      <div class="space-y-4">
+        <!-- Category Filters -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category</label>
+          <div class="flex flex-wrap gap-2">
+            <button class="case-study-filter active bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-blue-700 border-2 border-blue-600" data-filter="all" data-type="category" aria-pressed="true" role="button">
+              All Projects
+            </button>
+            <button class="case-study-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Web Development" data-type="category" aria-pressed="false" role="button">
+              Web Development
+            </button>
+            <button class="case-study-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Digital Marketing" data-type="category" aria-pressed="false" role="button">
+              Digital Marketing
+            </button>
+            <button class="case-study-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Migration" data-type="category" aria-pressed="false" role="button">
+              Migration
+            </button>
+            <button class="case-study-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Performance Optimization" data-type="category" aria-pressed="false" role="button">
+              Performance
+            </button>
+          </div>
+        </div>
+
+        <!-- Industry Filters -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Industry</label>
+          <div class="flex flex-wrap gap-2">
+            <button class="industry-filter active bg-green-600 text-white px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-green-700 border border-green-600" data-filter="all">
+              All Industries
+            </button>
+            <button class="industry-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Financial Services">
+              Financial Services
+            </button>
+            <button class="industry-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Legal">
+              Legal
+            </button>
+            <button class="industry-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Healthcare">
+              Healthcare
+            </button>
+            <button class="industry-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Technology">
+              Technology
+            </button>
+          </div>
+        </div>
+
+        <!-- Sort and View Options -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center pt-4 border-t border-gray-200 dark:border-gray-600">
+          <div class="flex items-center gap-4">
+            <div>
+              <label for="sort-select" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Sort by</label>
+              <select id="sort-select" class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="client">Client Name</option>
+                <option value="industry">Industry</option>
+              </select>
+            </div>
+            <div>
+              <label for="items-per-page" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Show</label>
+              <select id="items-per-page" class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                <option value="9">9 per page</option>
+                <option value="18">18 per page</option>
+                <option value="36">36 per page</option>
+                <option value="all">Show All</option>
+              </select>
+            </div>
+          </div>
+          
+          <!-- Results Counter -->
+          <div class="text-sm text-gray-600 dark:text-gray-400">
+            Showing <span id="results-count">0</span> of <span id="total-count">{allCaseStudies.length}</span> case studies
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Grid -->
+  <section class="px-4 py-16 mx-auto max-w-7xl lg:px-8">
+    <!-- Loading Skeleton -->
+    <div id="loading-skeleton" class="case-studies-skeleton hidden">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {Array.from({ length: 6 }).map(() => (
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden animate-pulse">
+            <div class="h-48 bg-gray-300 dark:bg-gray-600"></div>
+            <div class="p-6">
+              <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+              <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4 mb-4"></div>
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="p-3 bg-gray-200 dark:bg-gray-700 rounded-lg">
+                  <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-1"></div>
+                  <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-2/3"></div>
+                </div>
+                <div class="p-3 bg-gray-200 dark:bg-gray-700 rounded-lg">
+                  <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-1"></div>
+                  <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-2/3"></div>
+                </div>
+              </div>
+              <div class="flex gap-1 mb-4">
+                <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded w-16"></div>
+                <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded w-20"></div>
+                <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded w-14"></div>
+              </div>
+              <div class="h-10 bg-gray-300 dark:bg-gray-600 rounded"></div>
+            </div>
+            <div class="px-6 py-3 bg-gray-100 dark:bg-gray-700">
+              <div class="flex justify-between">
+                <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-16"></div>
+                <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-12"></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Actual Case Studies Grid -->
+    <div id="case-studies-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-500">
+      {allCaseStudies.map((study) => (
+        <article class="case-study-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-category={study.data.category} data-industry={study.data.industry} data-client={study.data.client.toLowerCase()}>
+          <!-- Card Header -->
+          <div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 p-6">
+            <div class="absolute top-4 left-4">
+              <span class="inline-block px-3 py-1 text-xs font-semibold text-white bg-white/20 backdrop-blur-sm rounded-full">
+                {study.data.industry}
+              </span>
+            </div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="text-xl font-bold text-white mb-2 line-clamp-2">
+                {study.data.client}
+              </h3>
+              <p class="text-blue-100 text-sm line-clamp-1">
+                {study.data.projectType}
+              </p>
+            </div>
+            {study.data.featured && (
+              <div class="absolute top-4 right-4">
+                <span class="inline-block px-2 py-1 text-xs font-semibold text-yellow-800 bg-yellow-200 rounded-full">
+                  Featured
+                </span>
+              </div>
+            )}
+          </div>
+
+          <!-- Card Content -->
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+              {study.data.description}
+            </p>
+
+            <!-- Key Metrics -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="text-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                <div class="text-lg font-bold text-green-600">
+                  {study.data.results.performance[0]?.after || 'N/A'}
+                </div>
+                <div class="text-xs text-gray-600 dark:text-gray-400">
+                  {study.data.results.performance[0]?.metric || 'Performance'}
+                </div>
+              </div>
+              <div class="text-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                <div class="text-lg font-bold text-blue-600">
+                  {study.data.results.business[0]?.improvement || 'Success'}
+                </div>
+                <div class="text-xs text-gray-600 dark:text-gray-400">
+                  Business Impact
+                </div>
+              </div>
+            </div>
+
+            <!-- Technologies -->
+            <div class="flex flex-wrap gap-1 mb-4">
+              {study.data.technologies.slice(0, 3).map((tech) => (
+                <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">
+                  {tech.name}
+                </span>
+              ))}
+              {study.data.technologies.length > 3 && (
+                <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded">
+                  +{study.data.technologies.length - 3} more
+                </span>
+              )}
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-2">
+              <a 
+                href={`/case-studies/${study.id}`}
+                class="flex-1 text-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                View Details
+              </a>
+              <a 
+                href={study.data.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                title="Visit Live Website"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card Footer -->
+          <div class="px-6 py-3 bg-gray-50 dark:bg-gray-700/50 border-t border-gray-200 dark:border-gray-600">
+            <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+              <span>{study.data.duration}</span>
+              <span>{study.data.launchDate}</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Load More Button -->
+    <div class="text-center mt-12">
+      <button 
+        id="load-more-btn"
+        class="px-8 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors hidden"
+      >
+        Load More Case Studies
+      </button>
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination-container" class="pagination-wrapper justify-center items-center space-x-2 mt-8 hidden">
+      <button id="prev-page" class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:opacity-50 disabled:cursor-not-allowed">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+      
+      <div id="page-numbers" class="flex space-x-1">
+        <!-- Page numbers will be inserted here -->
+      </div>
+      
+      <button id="next-page" class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:opacity-50 disabled:cursor-not-allowed">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- No Results Message -->
+    <div id="no-results" class="text-center py-12 hidden">
+      <div class="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.461.886-6.065 2.349m0 0L21.707 21"></path>
+        </svg>
+      </div>
+      <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">No case studies found</h3>
+      <p class="text-gray-600 dark:text-gray-300">Try adjusting your search or filter criteria.</p>
+    </div>
+  </section>
+
+  <!-- Enhanced JavaScript for Advanced Filtering and Search -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Elements
+      const filters = document.querySelectorAll('.case-study-filter');
+      const industryFilters = document.querySelectorAll('.industry-filter');
+      const searchInput = document.getElementById('search-input');
+      const clearSearchBtn = document.getElementById('clear-search');
+      const sortSelect = document.getElementById('sort-select');
+      const itemsPerPageSelect = document.getElementById('items-per-page');
+      const caseStudyCards = document.querySelectorAll('.case-study-card');
+      const noResults = document.getElementById('no-results');
+      const resultsCount = document.getElementById('results-count');
+      const loadMoreBtn = document.getElementById('load-more-btn');
+      const loadingSkeleton = document.getElementById('loading-skeleton');
+      const caseStudiesGrid = document.getElementById('case-studies-grid');
+      const paginationContainer = document.getElementById('pagination-container');
+      const prevPageBtn = document.getElementById('prev-page');
+      const nextPageBtn = document.getElementById('next-page');
+      const pageNumbers = document.getElementById('page-numbers');
+      
+      // State
+      let currentFilter = 'all';
+      let currentIndustryFilter = 'all';
+      let currentSearch = '';
+      let currentSort = 'newest';
+      let itemsPerPage = 9;
+      let currentPage = 1;
+      let filteredCards = [];
+      
+      // Search suggestions data
+      const suggestions = [];
+      caseStudyCards.forEach(card => {
+        const client = card.dataset.client || '';
+        const category = card.dataset.category || '';
+        const industry = card.dataset.industry || '';
+        suggestions.push(client, category, industry);
+      });
+      const uniqueSuggestions = [...new Set(suggestions)].filter(s => s.length > 0);
+
+      // Enhanced search functionality with suggestions
+      function showSuggestions(query) {
+        if (query.length < 2) {
+          searchSuggestions.classList.add('hidden');
+          return;
+        }
+        
+        const filtered = uniqueSuggestions.filter(suggestion => 
+          suggestion.toLowerCase().includes(query.toLowerCase())
+        ).slice(0, 5);
+        
+        if (filtered.length > 0) {
+          searchSuggestions.innerHTML = filtered.map(suggestion => 
+            `<div class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer text-sm suggestion-item">${suggestion}</div>`
+          ).join('');
+          searchSuggestions.classList.remove('hidden');
+          
+          // Add click handlers to suggestions
+          searchSuggestions.querySelectorAll('.suggestion-item').forEach(item => {
+            item.addEventListener('click', () => {
+              searchInput.value = item.textContent;
+              currentSearch = item.textContent.toLowerCase();
+              searchSuggestions.classList.add('hidden');
+              updateDisplay();
+            });
+          });
+        } else {
+          searchSuggestions.classList.add('hidden');
+        }
+      }
+
+      // Sort functionality
+      function sortCards(cards, sortBy) {
+        return [...cards].sort((a, b) => {
+          switch(sortBy) {
+            case 'newest':
+              return parseInt(b.querySelector('.case-study-card')?.dataset.year || '0') - 
+                     parseInt(a.querySelector('.case-study-card')?.dataset.year || '0');
+            case 'oldest':
+              return parseInt(a.querySelector('.case-study-card')?.dataset.year || '0') - 
+                     parseInt(b.querySelector('.case-study-card')?.dataset.year || '0');
+            case 'client':
+              return (a.dataset.client || '').localeCompare(b.dataset.client || '');
+            case 'industry':
+              return (a.dataset.industry || '').localeCompare(b.dataset.industry || '');
+            default:
+              return 0;
+          }
+        });
+      }
+
+      // Pagination functionality
+      function paginateCards(cards, page, perPage) {
+        if (perPage === 'all') return cards;
+        const start = (page - 1) * parseInt(perPage);
+        const end = start + parseInt(perPage);
+        return cards.slice(start, end);
+      }
+
+      // Generate pagination controls
+      function generatePagination(totalItems, currentPage, itemsPerPage) {
+        if (itemsPerPage === 'all') {
+          paginationContainer.classList.add('hidden');
+          return;
+        }
+
+        const totalPages = Math.ceil(totalItems / parseInt(itemsPerPage));
+        
+        if (totalPages <= 1) {
+          paginationContainer.classList.add('hidden');
+          return;
+        }
+
+        paginationContainer.classList.remove('hidden');
+        paginationContainer.classList.add('flex');
+
+        // Clear existing page numbers
+        pageNumbers.innerHTML = '';
+
+        // Previous button state
+        prevPageBtn.disabled = currentPage === 1;
+        
+        // Next button state  
+        nextPageBtn.disabled = currentPage === totalPages;
+
+        // Generate page numbers (show max 5 pages)
+        let startPage = Math.max(1, currentPage - 2);
+        const endPage = Math.min(totalPages, startPage + 4);
+        
+        if (endPage - startPage < 4) {
+          startPage = Math.max(1, endPage - 4);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+          const pageBtn = document.createElement('button');
+          pageBtn.textContent = i;
+          pageBtn.className = `px-3 py-2 text-sm font-medium border rounded-lg transition-colors ${
+            i === currentPage 
+              ? 'bg-blue-600 text-white border-blue-600' 
+              : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
+          }`;
+          
+          pageBtn.addEventListener('click', () => {
+            currentPage = i;
+            updateDisplay();
+          });
+          
+          pageNumbers.appendChild(pageBtn);
+        }
+      }
+
+      // Main filter and display function
+      function updateDisplay() {
+        // Show loading skeleton temporarily
+        showLoading();
+        
+        // Simulate brief loading delay for better UX
+        setTimeout(() => {
+          // Filter cards
+          filteredCards = Array.from(caseStudyCards).filter(card => {
+            const category = card.dataset.category || '';
+            const industry = card.dataset.industry || '';
+            const client = card.dataset.client || '';
+            
+            // Category filter
+            const categoryMatch = currentFilter === 'all' || 
+                                 category.toLowerCase().includes(currentFilter.toLowerCase());
+            
+            // Industry filter
+            const industryMatch = currentIndustryFilter === 'all' || 
+                                 industry.toLowerCase() === currentIndustryFilter.toLowerCase();
+            
+            // Search filter
+            const searchMatch = currentSearch === '' ||
+                              client.toLowerCase().includes(currentSearch) ||
+                              category.toLowerCase().includes(currentSearch) ||
+                              industry.toLowerCase().includes(currentSearch);
+            
+            return categoryMatch && industryMatch && searchMatch;
+          });
+          
+          // Sort cards
+          const sortedCards = sortCards(filteredCards, currentSort);
+          
+          // Hide all cards first
+          caseStudyCards.forEach(card => card.style.display = 'none');
+          
+          // Show filtered and paginated cards with animation
+          const paginatedCards = paginateCards(sortedCards, currentPage, itemsPerPage);
+          paginatedCards.forEach((card, index) => {
+            card.style.display = 'block';
+            // Stagger animation
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.classList.add('animate-fade-in');
+          });
+          
+          // Update results counter
+          resultsCount.textContent = filteredCards.length;
+          
+          // Show/hide no results message
+          if (filteredCards.length === 0) {
+            noResults.classList.remove('hidden');
+          } else {
+            noResults.classList.add('hidden');
+          }
+          
+          // Show/hide load more button (only for load more mode)
+          if (itemsPerPage !== 'all' && filteredCards.length > currentPage * parseInt(itemsPerPage)) {
+            loadMoreBtn.classList.remove('hidden');
+          } else {
+            loadMoreBtn.classList.add('hidden');
+          }
+          
+          // Generate pagination controls
+          generatePagination(filteredCards.length, currentPage, itemsPerPage);
+          
+          // Update load more button text
+          const remaining = filteredCards.length - (currentPage * parseInt(itemsPerPage));
+          if (remaining > 0 && itemsPerPage !== 'all') {
+            loadMoreBtn.textContent = `Load ${Math.min(remaining, parseInt(itemsPerPage))} More Case Studies`;
+          }
+          
+          // Hide loading skeleton
+          hideLoading();
+        }, 300);
+      }
+
+      // Loading state functions
+      function showLoading() {
+        loadingSkeleton.classList.remove('hidden');
+        caseStudiesGrid.style.opacity = '0.3';
+      }
+
+      function hideLoading() {
+        loadingSkeleton.classList.add('hidden');
+        caseStudiesGrid.style.opacity = '1';
+      }
+
+      // Event listeners
+      
+      // Category filters
+      filters.forEach(filter => {
+        filter.addEventListener('click', function() {
+          // Update ARIA states
+          filters.forEach(f => {
+            f.classList.remove('active', 'bg-blue-600', 'text-white', 'border-blue-600');
+            f.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300', 'border-gray-200', 'dark:border-gray-600');
+            f.setAttribute('aria-pressed', 'false');
+          });
+          
+          this.classList.add('active', 'bg-blue-600', 'text-white', 'border-blue-600');
+          this.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300', 'border-gray-200', 'dark:border-gray-600');
+          this.setAttribute('aria-pressed', 'true');
+          
+          currentFilter = this.dataset.filter;
+          currentPage = 1;
+          updateDisplay();
+        });
+      });
+
+      // Industry filters
+      industryFilters.forEach(filter => {
+        filter.addEventListener('click', function() {
+          industryFilters.forEach(f => {
+            f.classList.remove('active', 'bg-green-600', 'text-white', 'border-green-600');
+            f.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300', 'border-gray-200', 'dark:border-gray-600');
+          });
+          
+          this.classList.add('active', 'bg-green-600', 'text-white', 'border-green-600');
+          this.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300', 'border-gray-200', 'dark:border-gray-600');
+          
+          currentIndustryFilter = this.dataset.filter;
+          currentPage = 1;
+          updateDisplay();
+        });
+      });
+
+      // Search functionality
+      searchInput.addEventListener('input', function() {
+        currentSearch = this.value.toLowerCase();
+        currentPage = 1;
+        
+        // Show/hide clear button
+        if (this.value.length > 0) {
+          clearSearchBtn.classList.remove('hidden');
+          clearSearchBtn.classList.add('flex');
+        } else {
+          clearSearchBtn.classList.add('hidden');
+          clearSearchBtn.classList.remove('flex');
+        }
+        
+        showSuggestions(this.value);
+        updateDisplay();
+      });
+
+      // Clear search
+      clearSearchBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        currentSearch = '';
+        this.classList.add('hidden');
+        this.classList.remove('flex');
+        searchSuggestions.classList.add('hidden');
+        updateDisplay();
+      });
+
+      // Hide suggestions when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
+          searchSuggestions.classList.add('hidden');
+        }
+      });
+
+      // Sort functionality
+      sortSelect.addEventListener('change', function() {
+        currentSort = this.value;
+        currentPage = 1;
+        updateDisplay();
+      });
+
+      // Items per page
+      itemsPerPageSelect.addEventListener('change', function() {
+        itemsPerPage = this.value;
+        currentPage = 1;
+        updateDisplay();
+      });
+
+      // Load more button
+      loadMoreBtn.addEventListener('click', function() {
+        currentPage++;
+        updateDisplay();
+      });
+
+      // Pagination controls
+      prevPageBtn.addEventListener('click', function() {
+        if (currentPage > 1) {
+          currentPage--;
+          updateDisplay();
+        }
+      });
+
+      nextPageBtn.addEventListener('click', function() {
+        const totalPages = Math.ceil(filteredCards.length / parseInt(itemsPerPage));
+        if (currentPage < totalPages) {
+          currentPage++;
+          updateDisplay();
+        }
+      });
+
+      // Initialize display
+      updateDisplay();
+    });
+  </script>
+
+  <!-- Enhanced CSS Styles -->
+  <style>
+    .line-clamp-1 {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .clear-search-btn.hidden {
+      display: none;
+    }
+    
+    .clear-search-btn:not(.hidden) {
+      display: flex;
+    }
+    
+    .case-studies-skeleton.hidden {
+      display: none;
+    }
+    
+    .case-studies-skeleton:not(.hidden) {
+      display: block;
+    }
+    
+    .pagination-wrapper.hidden {
+      display: none;
+    }
+    
+    .pagination-wrapper:not(.hidden) {
+      display: flex;
+    }
+    
+    .case-study-card {
+      transition: all 0.3s ease;
+    }
+    
+    .case-study-card:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideInUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+      }
+    }
+    
+    .animate-fade-in {
+      animation: slideInUp 0.6s ease-out forwards;
+    }
+    
+    .case-study-card {
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    /* Loading skeleton animation */
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+    
+    .animate-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    #search-suggestions {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    
+    .suggestion-item:hover {
+      background-color: var(--tw-gray-100);
+    }
+    
+    .dark .suggestion-item:hover {
+      background-color: var(--tw-gray-700);
+    }
+    
+    /* Smooth transitions for grid changes */
+    #case-studies-grid {
+      transition: opacity 0.5s ease-in-out;
+    }
+    
+    /* Enhanced hover effects */
+    .case-study-filter:hover, 
+    .industry-filter:hover {
+      transform: translateY(-1px);
+    }
+    
+    /* Screen reader only class */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    
+    /* Focus states for accessibility */
+    .case-study-filter:focus,
+    .industry-filter:focus,
+    #search-input:focus,
+    #sort-select:focus,
+    #items-per-page:focus {
+      outline: 2px solid #3B82F6;
+      outline-offset: 2px;
+    }
+  </style>
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Ready to Transform Your Business?"
+    subtitle="Join our growing list of successful clients. Let's discuss how we can help you achieve similar results with our proven approach to web development and digital marketing."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Start Your Project',
+        href: '/contact',
+        icon: 'tabler:rocket',
+      },
+      {
+        variant: 'secondary',
+        text: 'View Our Services',
+        href: '/services',
+        icon: 'tabler:list',
+      },
+    ]}
+  />
+</Layout>
