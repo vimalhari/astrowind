@@ -1,0 +1,92 @@
+---
+import type { CaseStudy } from '../../types/case-study';
+
+export interface Props {
+  study: CaseStudy;
+}
+
+const { study } = Astro.props;
+---
+
+<!-- Enhanced Key Metrics with Visual Indicators -->
+<div class="grid grid-cols-2 gap-2 flex-shrink-0">
+  <!-- Performance Metric -->
+  <div
+    class="group p-2 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg border border-green-200 dark:border-green-800/50 hover:shadow-md transition-all duration-300"
+  >
+    <div class="flex items-center justify-between mb-1">
+      <div
+        class="text-xs font-bold text-green-600 dark:text-green-400 truncate flex-1 min-w-0"
+        style="max-width: 80px;"
+      >
+        {study.data.results.performance[0]?.after || 'N/A'}
+      </div>
+      <div
+        class="w-4 h-4 bg-green-100 dark:bg-green-800/50 rounded-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0 ml-1"
+      >
+        <svg class="w-2 h-2 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+          ></path>
+        </svg>
+      </div>
+    </div>
+    <div class="text-xs text-gray-600 dark:text-gray-400 font-medium mb-1 truncate" style="font-size: 0.625rem;">
+      {study.data.results.performance[0]?.metric || 'Performance'}
+    </div>
+    {
+      study.data.results.performance[0]?.improvement && (
+        <div class="flex items-center gap-1">
+          <div class="w-full bg-green-200 dark:bg-green-800/30 rounded-full h-1 flex-grow min-w-0">
+            <div
+              class="bg-green-500 h-1 rounded-full transition-all duration-1000"
+              style={`width: ${Math.min(parseInt(study.data.results.performance[0].improvement.replace(/\D/g, '')) || 0, 100)}%`}
+            />
+          </div>
+          <span
+            class="text-xs text-green-600 dark:text-green-400 font-semibold flex-shrink-0 whitespace-nowrap"
+            style="font-size: 0.625rem;"
+          >
+            +{study.data.results.performance[0].improvement}
+          </span>
+        </div>
+      )
+    }
+  </div>
+
+  <!-- Business Metric -->
+  <div
+    class="group p-2 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg border border-blue-200 dark:border-blue-800/50 hover:shadow-md transition-all duration-300"
+  >
+    <div class="flex items-center justify-between mb-1">
+      <div class="text-xs font-bold text-blue-600 dark:text-blue-400 truncate flex-1 min-w-0" style="max-width: 80px;">
+        {study.data.results.business[0]?.improvement || 'Success'}
+      </div>
+      <div
+        class="w-4 h-4 bg-blue-100 dark:bg-blue-800/50 rounded-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0 ml-1"
+      >
+        <svg class="w-2 h-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+          ></path>
+        </svg>
+      </div>
+    </div>
+    <div class="text-xs text-gray-600 dark:text-gray-400 font-medium mb-1 truncate" style="font-size: 0.625rem;">
+      {study.data.results.business[0]?.metric || 'Business Impact'}
+    </div>
+    <div class="flex items-center gap-1">
+      <div class="w-full bg-blue-200 dark:bg-blue-800/30 rounded-full h-1 flex-grow min-w-0">
+        <div class="bg-blue-500 h-1 rounded-full transition-all duration-1000" style="width: 85%"></div>
+      </div>
+      <span
+        class="text-xs text-blue-600 dark:text-blue-400 font-semibold flex-shrink-0 whitespace-nowrap"
+        style="font-size: 0.625rem;"
+      >
+        +{study.data.results.business[0]?.improvement || '100%'}
+      </span>
+    </div>
+  </div>
+</div>

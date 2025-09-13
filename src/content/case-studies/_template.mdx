@@ -2,17 +2,27 @@
 # Basic Information
 title: 'Client Name - Project Title'
 subtitle: 'Key Achievement or Technology Focus'
-description: 'Brief description of the project and main results achieved'
+description: 'Brief description of the project and main results achieved (minimum 50 characters)'
 category: 'Web Development | Digital Marketing | E-commerce | Performance Optimization'
 client: 'Client Company Name'
-industry: 'Industry Type (e.g., Financial Services, E-commerce, Healthcare)'
+industry: 'Financial Services' # Must be one of the enum values from schema
 location: 'Location (e.g., United Kingdom, United States)'
 duration: 'X weeks/months'
 projectType: 'Type of Project (e.g., Website Development, Migration, Redesign)'
 website: 'https://clientwebsite.com'
-launchDate: '2024'
-featured: true # Set to true to show on main case studies page
-draft: false # Set to true to hide from production
+launchDate: 'Jan 2024' # Must be in format "Jan 2024"
+featured: false # Set to true to show on main case studies page
+draft: true # Set to true to hide from production
+
+# Optional fields
+heroImage: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600'
+images:
+  - url: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600'
+    alt: 'Client project screenshot 1'
+    caption: 'Main project interface'
+  - url: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600'
+    alt: 'Client project screenshot 2'
+    caption: 'Mobile responsive design'
 
 # Challenge Information
 challenge:
@@ -40,17 +50,17 @@ results:
     - metric: 'Page Load Speed'
       before: 'X seconds'
       after: 'Y seconds'
-      improvement: 'Z% improvement'
+      improvement: '200%' # Use format like "200%" or just "Improved"
     - metric: 'Lighthouse Score'
       before: 'X/100'
       after: 'Y/100'
-      improvement: 'Z% improvement'
+      improvement: '50%' # Use format like "50%" or just "Excellent"
     # Add more performance metrics as needed
   business:
     - metric: 'Conversion Rate'
-      improvement: 'X% increase'
+      improvement: '25%' # Use format like "25%" or just "Increased"
     - metric: 'User Engagement'
-      improvement: 'X% increase in session duration'
+      improvement: '150%' # Use format like "150%" or just "Improved"
     # Add more business metrics as needed
 
 # Technologies Used
@@ -94,12 +104,6 @@ seoKeywords:
   - 'relevant keyword 2'
   - 'relevant keyword 3'
   - 'add more SEO keywords'
-
-# Optional: Images
-heroImage: '/images/case-studies/client-hero.jpg'
-images:
-  - '/images/case-studies/client-screenshot-1.jpg'
-  - '/images/case-studies/client-screenshot-2.jpg'
 
 # SEO Metadata
 metadata:
