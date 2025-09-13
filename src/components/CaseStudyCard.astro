@@ -14,8 +14,7 @@ const { study, index } = Astro.props;
 ---
 
 <article
-  class="case-study-card group bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 hover:border-transparent flex flex-col"
-  style="height: 750px;"
+  class="case-study-card group bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 hover:border-transparent flex flex-col h-auto"
   data-category={study.data.category}
   data-industry={study.data.industry}
   data-client={study.data.client.toLowerCase()}
@@ -44,7 +43,7 @@ const { study, index } = Astro.props;
   </CaseStudyHeader>
 
   <!-- Enhanced Card Content -->
-  <div class="flex-1 flex flex-col p-4 space-y-4 overflow-hidden">
+  <div class="flex-1 flex flex-col p-4 space-y-3 overflow-hidden min-h-0">
     <!-- Description -->
     <div class="flex-shrink-0">
       <p
@@ -56,14 +55,14 @@ const { study, index } = Astro.props;
     </div>
 
     <!-- Key Metrics -->
-    <div class="flex-shrink-0" style="max-height: 120px; overflow: hidden;">
+    <div class="flex-shrink-0">
       <CaseStudyMetrics study={study} />
     </div>
 
     <!-- Technologies Used -->
     <div class="flex-shrink-0">
       <div class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Technologies:</div>
-      <div class="min-h-[50px] mb-4">
+      <div class="min-h-[50px] mb-2">
         <div class="flex flex-wrap gap-2">
           {
             study.data.technologies.slice(0, 8).map((tech, techIndex) => {
@@ -95,7 +94,7 @@ const { study, index } = Astro.props;
     </div>
 
     <!-- Enhanced Card Footer with CTA -->
-    <div class="flex-shrink-0 pt-5 pb-3 mt-auto">
+    <div class="flex-shrink-0 pt-2 pb-3 mt-auto">
       <a
         href={`/case-studies/${study.id}`}
         class="group/cta relative flex items-center justify-center w-full p-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-700 dark:to-indigo-700 dark:hover:from-blue-600 dark:hover:to-indigo-600 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] overflow-hidden"

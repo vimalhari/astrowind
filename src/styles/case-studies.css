@@ -5,6 +5,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Masonry Layout Enhancements */
+.case-study-card {
+  min-height: auto;
+  height: fit-content;
+  align-self: start;
+}
+
+/* Improved card hover for masonry */
+.case-study-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  z-index: 10;
+  position: relative;
+}
+
+/* Ensure proper flex behavior in variable height cards */
+.case-study-card .flex-1 {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 /* Text truncation and wrapping utilities */
 .line-clamp-1 {
   display: -webkit-box;
@@ -47,9 +68,23 @@ html {
 }
 
 .prose-case-study p {
-  color: #4b5563;
+  color: #374151;
   line-height: 1.75;
   margin-bottom: 1rem;
+}
+
+.prose-case-study strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+.prose-case-study ul,
+.prose-case-study ol {
+  color: #374151;
+}
+
+.prose-case-study li {
+  margin-bottom: 0.5rem;
 }
 
 .prose-case-study img {
@@ -98,22 +133,29 @@ html {
 }
 
 /* Dark mode styles */
-@media (prefers-color-scheme: dark) {
-  .prose-case-study h1,
-  .prose-case-study h2,
-  .prose-case-study h3,
-  .prose-case-study h4 {
-    color: #f9fafb;
-  }
+.dark .prose-case-study h1,
+.dark .prose-case-study h2,
+.dark .prose-case-study h3,
+.dark .prose-case-study h4 {
+  color: #f9fafb;
+}
 
-  .prose-case-study p {
-    color: #d1d5db;
-  }
+.dark .prose-case-study p {
+  color: #d1d5db;
+}
 
-  .prose-case-study blockquote {
-    background-color: rgba(59, 130, 246, 0.1);
-    color: #d1d5db;
-  }
+.dark .prose-case-study strong {
+  color: #f9fafb;
+}
+
+.dark .prose-case-study ul,
+.dark .prose-case-study ol {
+  color: #d1d5db;
+}
+
+.dark .prose-case-study blockquote {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #d1d5db;
 }
 
 /* Floating navigation improvements */
@@ -192,14 +234,12 @@ html {
 }
 
 /* Dark mode specific improvements */
-@media (prefers-color-scheme: dark) {
-  .floating-nav {
-    background-color: rgba(31, 41, 55, 0.8);
-  }
-  
-  .case-study-image[data-loaded="false"] {
-    background: linear-gradient(90deg, #374151 25%, transparent 37%, #374151 63%);
-  }
+.dark .floating-nav {
+  background-color: rgba(31, 41, 55, 0.8);
+}
+
+.dark .case-study-image[data-loaded="false"] {
+  background: linear-gradient(90deg, #374151 25%, transparent 37%, #374151 63%);
 }
 
 /* Focus states for accessibility */
@@ -278,14 +318,12 @@ html {
 }
 
 /* Improved contrast for dark mode metrics */
-@media (prefers-color-scheme: dark) {
-  .metric-card {
-    background-color: rgba(31, 41, 55, 0.6);
-    border-color: rgba(75, 85, 99, 0.3);
-  }
-  
-  .metric-card:hover {
-    background-color: rgba(31, 41, 55, 0.8);
-    border-color: rgba(59, 130, 246, 0.5);
-  }
+.dark .metric-card {
+  background-color: rgba(31, 41, 55, 0.6);
+  border-color: rgba(75, 85, 99, 0.3);
+}
+
+.dark .metric-card:hover {
+  background-color: rgba(31, 41, 55, 0.8);
+  border-color: rgba(59, 130, 246, 0.5);
 }
