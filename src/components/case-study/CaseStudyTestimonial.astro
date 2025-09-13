@@ -8,16 +8,13 @@ export interface Props {
 const { study } = Astro.props;
 ---
 
-<!-- Client Testimonial Section -->
-{
+<!-- Client Testimonial Section -->{
   study.data.testimonial && (
     <section id="testimonial" class="px-4 py-20 mx-auto max-w-7xl lg:px-8">
       <div class="max-w-4xl mx-auto text-center">
         <div class="relative">
-          <!-- Quote Background -->
-          <div class="absolute top-6 left-0 w-full h-full bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-3xl"></div>
-          
-          <!-- Decorative Quote Marks -->
+          <div class="absolute top-6 left-0 w-full h-full bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-3xl" />
+
           <div class="relative flex justify-center mb-6">
             <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
               <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -25,16 +22,19 @@ const { study } = Astro.props;
               </svg>
             </div>
           </div>
-          
+
           <div class="relative bg-white dark:bg-gray-800 rounded-3xl p-8 lg:p-12 shadow-xl border border-gray-200 dark:border-gray-700">
             <blockquote class="text-xl md:text-2xl font-medium text-gray-900 dark:text-white leading-relaxed mb-8">
               "{study.data.testimonial.text}"
             </blockquote>
-            
+
             <div class="flex items-center justify-center space-x-4">
               <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
                 <span class="text-white font-bold text-lg">
-                  {study.data.testimonial.author.split(' ').map(name => name[0]).join('')}
+                  {study.data.testimonial.author
+                    .split(' ')
+                    .map((name) => name[0])
+                    .join('')}
                 </span>
               </div>
               <div class="text-left">

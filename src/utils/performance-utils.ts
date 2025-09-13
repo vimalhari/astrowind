@@ -129,7 +129,7 @@ export class VirtualScroller {
     this.container.appendChild(itemContainer);
   }
 
-  private createItemElement(item: CaseStudy, index: number): HTMLElement {
+  private createItemElement(_item: CaseStudy, index: number): HTMLElement {
     // This would be implemented based on your specific case study card structure
     const element = document.createElement('div');
     element.style.height = `${this.itemHeight}px`;
