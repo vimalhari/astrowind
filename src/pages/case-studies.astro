@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import CaseStudyCard from '~/components/CaseStudyCard.astro';
 import { getCollection } from 'astro:content';
 
 const metadata = {
@@ -28,7 +29,7 @@ const allCaseStudies = await getCollection('case-studies', ({ id, data }) => {
 });
 
 // Filter featured case studies
-const caseStudies = allCaseStudies.filter(study => study.data.featured);
+const caseStudies = allCaseStudies.filter((study) => study.data.featured);
 
 // Sort by launch date (newest first)
 caseStudies.sort((a, b) => {
@@ -47,21 +48,21 @@ const structuredData = {
     name: 'Criztec Technologies',
     url: 'https://criztec.com',
   },
-  mainEntity: caseStudies.map(study => ({
+  mainEntity: caseStudies.map((study) => ({
     '@type': 'Article',
     '@id': `https://criztec.com/case-studies/${study.id}`,
     headline: study.data.title,
     description: study.data.description,
     author: {
       '@type': 'Organization',
-      name: 'Criztec Technologies'
+      name: 'Criztec Technologies',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Criztec Technologies'
+      name: 'Criztec Technologies',
     },
-    url: `https://criztec.com/case-studies/${study.id}`
-  }))
+    url: `https://criztec.com/case-studies/${study.id}`,
+  })),
 };
 ---
 
@@ -76,16 +77,24 @@ const structuredData = {
         Our <span class="text-blue-600">Success Stories</span>
       </h1>
       <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-        Discover how we transform businesses with cutting-edge technology solutions, 
-        delivering measurable results and exceptional user experiences.
+        Discover how we transform businesses with cutting-edge technology solutions, delivering measurable results and
+        exceptional user experiences.
       </p>
       <div class="flex flex-wrap justify-center gap-4 text-sm mb-8">
-        <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full">Web Development</span>
-        <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-1 rounded-full">Performance Optimization</span>
-        <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full">Digital Marketing</span>
-        <span class="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-3 py-1 rounded-full">Technology Migration</span>
+        <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full"
+          >Web Development</span
+        >
+        <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-1 rounded-full"
+          >Performance Optimization</span
+        >
+        <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full"
+          >Digital Marketing</span
+        >
+        <span class="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-3 py-1 rounded-full"
+          >Technology Migration</span
+        >
       </div>
-      
+
       <!-- Stats -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
         <div class="text-center">
@@ -126,7 +135,11 @@ const structuredData = {
           />
           <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
           </div>
           <button
@@ -139,9 +152,17 @@ const structuredData = {
             </svg>
           </button>
           <!-- Search Suggestions Dropdown -->
-          <div id="search-suggestions" class="absolute z-10 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg hidden" role="listbox" aria-label="Search suggestions"></div>
+          <div
+            id="search-suggestions"
+            class="absolute z-10 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg hidden"
+            role="listbox"
+            aria-label="Search suggestions"
+          >
+          </div>
         </div>
-        <div id="search-description" class="sr-only">Search through case studies by client name, industry, category, or technology</div>
+        <div id="search-description" class="sr-only">
+          Search through case studies by client name, industry, category, or technology
+        </div>
       </div>
 
       <!-- Filters Row -->
@@ -150,19 +171,49 @@ const structuredData = {
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category</label>
           <div class="flex flex-wrap gap-2">
-            <button class="case-study-filter active bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-blue-700 border-2 border-blue-600" data-filter="all" data-type="category" aria-pressed="true" role="button">
+            <button
+              class="case-study-filter active bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-blue-700 border-2 border-blue-600"
+              data-filter="all"
+              data-type="category"
+              aria-pressed="true"
+              role="button"
+            >
               All Projects
             </button>
-            <button class="case-study-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Web Development" data-type="category" aria-pressed="false" role="button">
+            <button
+              class="case-study-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600"
+              data-filter="Web Development"
+              data-type="category"
+              aria-pressed="false"
+              role="button"
+            >
               Web Development
             </button>
-            <button class="case-study-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Digital Marketing" data-type="category" aria-pressed="false" role="button">
+            <button
+              class="case-study-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600"
+              data-filter="Digital Marketing"
+              data-type="category"
+              aria-pressed="false"
+              role="button"
+            >
               Digital Marketing
             </button>
-            <button class="case-study-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Migration" data-type="category" aria-pressed="false" role="button">
+            <button
+              class="case-study-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600"
+              data-filter="Migration"
+              data-type="category"
+              aria-pressed="false"
+              role="button"
+            >
               Migration
             </button>
-            <button class="case-study-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Performance Optimization" data-type="category" aria-pressed="false" role="button">
+            <button
+              class="case-study-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600"
+              data-filter="Performance Optimization"
+              data-type="category"
+              aria-pressed="false"
+              role="button"
+            >
               Performance
             </button>
           </div>
@@ -172,30 +223,52 @@ const structuredData = {
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Industry</label>
           <div class="flex flex-wrap gap-2">
-            <button class="industry-filter active bg-green-600 text-white px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-green-700 border border-green-600" data-filter="all">
+            <button
+              class="industry-filter active bg-green-600 text-white px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-green-700 border border-green-600"
+              data-filter="all"
+            >
               All Industries
             </button>
-            <button class="industry-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Financial Services">
+            <button
+              class="industry-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600"
+              data-filter="Financial Services"
+            >
               Financial Services
             </button>
-            <button class="industry-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Legal">
+            <button
+              class="industry-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600"
+              data-filter="Legal"
+            >
               Legal
             </button>
-            <button class="industry-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Healthcare">
+            <button
+              class="industry-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600"
+              data-filter="Healthcare"
+            >
               Healthcare
             </button>
-            <button class="industry-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600" data-filter="Technology">
+            <button
+              class="industry-filter bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-gray-200 dark:hover:bg-gray-600"
+              data-filter="Technology"
+            >
               Technology
             </button>
           </div>
         </div>
 
         <!-- Sort and View Options -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center pt-4 border-t border-gray-200 dark:border-gray-600">
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center pt-4 border-t border-gray-200 dark:border-gray-600"
+        >
           <div class="flex items-center gap-4">
             <div>
-              <label for="sort-select" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Sort by</label>
-              <select id="sort-select" class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+              <label for="sort-select" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                >Sort by</label
+              >
+              <select
+                id="sort-select"
+                class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+              >
                 <option value="newest">Newest First</option>
                 <option value="oldest">Oldest First</option>
                 <option value="client">Client Name</option>
@@ -203,8 +276,13 @@ const structuredData = {
               </select>
             </div>
             <div>
-              <label for="items-per-page" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Show</label>
-              <select id="items-per-page" class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+              <label for="items-per-page" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                >Show</label
+              >
+              <select
+                id="items-per-page"
+                class="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+              >
                 <option value="9">9 per page</option>
                 <option value="18">18 per page</option>
                 <option value="36">36 per page</option>
@@ -212,7 +290,7 @@ const structuredData = {
               </select>
             </div>
           </div>
-          
+
           <!-- Results Counter -->
           <div class="text-sm text-gray-600 dark:text-gray-400">
             Showing <span id="results-count">0</span> of <span id="total-count">{allCaseStudies.length}</span> case studies
@@ -227,144 +305,50 @@ const structuredData = {
     <!-- Loading Skeleton -->
     <div id="loading-skeleton" class="case-studies-skeleton hidden">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {Array.from({ length: 6 }).map(() => (
-          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden animate-pulse">
-            <div class="h-48 bg-gray-300 dark:bg-gray-600"></div>
-            <div class="p-6">
-              <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
-              <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4 mb-4"></div>
-              <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="p-3 bg-gray-200 dark:bg-gray-700 rounded-lg">
-                  <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-1"></div>
-                  <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-2/3"></div>
+        {
+          Array.from({ length: 6 }).map(() => (
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden animate-pulse">
+              <div class="h-48 bg-gray-300 dark:bg-gray-600" />
+              <div class="p-6">
+                <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2" />
+                <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4 mb-4" />
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div class="p-3 bg-gray-200 dark:bg-gray-700 rounded-lg">
+                    <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-1" />
+                    <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-2/3" />
+                  </div>
+                  <div class="p-3 bg-gray-200 dark:bg-gray-700 rounded-lg">
+                    <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-1" />
+                    <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-2/3" />
+                  </div>
                 </div>
-                <div class="p-3 bg-gray-200 dark:bg-gray-700 rounded-lg">
-                  <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-1"></div>
-                  <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-2/3"></div>
+                <div class="flex gap-1 mb-4">
+                  <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded w-16" />
+                  <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded w-20" />
+                  <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded w-14" />
+                </div>
+                <div class="h-10 bg-gray-300 dark:bg-gray-600 rounded" />
+              </div>
+              <div class="px-6 py-3 bg-gray-100 dark:bg-gray-700">
+                <div class="flex justify-between">
+                  <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-16" />
+                  <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-12" />
                 </div>
               </div>
-              <div class="flex gap-1 mb-4">
-                <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded w-16"></div>
-                <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded w-20"></div>
-                <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded w-14"></div>
-              </div>
-              <div class="h-10 bg-gray-300 dark:bg-gray-600 rounded"></div>
             </div>
-            <div class="px-6 py-3 bg-gray-100 dark:bg-gray-700">
-              <div class="flex justify-between">
-                <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-16"></div>
-                <div class="h-3 bg-gray-300 dark:bg-gray-600 rounded w-12"></div>
-              </div>
-            </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
 
     <!-- Actual Case Studies Grid -->
-    <div id="case-studies-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-500">
-      {allCaseStudies.map((study) => (
-        <article class="case-study-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-category={study.data.category} data-industry={study.data.industry} data-client={study.data.client.toLowerCase()}>
-          <!-- Card Header -->
-          <div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 p-6">
-            <div class="absolute top-4 left-4">
-              <span class="inline-block px-3 py-1 text-xs font-semibold text-white bg-white/20 backdrop-blur-sm rounded-full">
-                {study.data.industry}
-              </span>
-            </div>
-            <div class="absolute bottom-4 left-4 right-4">
-              <h3 class="text-xl font-bold text-white mb-2 line-clamp-2">
-                {study.data.client}
-              </h3>
-              <p class="text-blue-100 text-sm line-clamp-1">
-                {study.data.projectType}
-              </p>
-            </div>
-            {study.data.featured && (
-              <div class="absolute top-4 right-4">
-                <span class="inline-block px-2 py-1 text-xs font-semibold text-yellow-800 bg-yellow-200 rounded-full">
-                  Featured
-                </span>
-              </div>
-            )}
-          </div>
-
-          <!-- Card Content -->
-          <div class="p-6">
-            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-              {study.data.description}
-            </p>
-
-            <!-- Key Metrics -->
-            <div class="grid grid-cols-2 gap-4 mb-6">
-              <div class="text-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                <div class="text-lg font-bold text-green-600">
-                  {study.data.results.performance[0]?.after || 'N/A'}
-                </div>
-                <div class="text-xs text-gray-600 dark:text-gray-400">
-                  {study.data.results.performance[0]?.metric || 'Performance'}
-                </div>
-              </div>
-              <div class="text-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                <div class="text-lg font-bold text-blue-600">
-                  {study.data.results.business[0]?.improvement || 'Success'}
-                </div>
-                <div class="text-xs text-gray-600 dark:text-gray-400">
-                  Business Impact
-                </div>
-              </div>
-            </div>
-
-            <!-- Technologies -->
-            <div class="flex flex-wrap gap-1 mb-4">
-              {study.data.technologies.slice(0, 3).map((tech) => (
-                <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">
-                  {tech.name}
-                </span>
-              ))}
-              {study.data.technologies.length > 3 && (
-                <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded">
-                  +{study.data.technologies.length - 3} more
-                </span>
-              )}
-            </div>
-
-            <!-- Actions -->
-            <div class="flex gap-2">
-              <a 
-                href={`/case-studies/${study.id}`}
-                class="flex-1 text-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                View Details
-              </a>
-              <a 
-                href={study.data.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                title="Visit Live Website"
-              >
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Card Footer -->
-          <div class="px-6 py-3 bg-gray-50 dark:bg-gray-700/50 border-t border-gray-200 dark:border-gray-600">
-            <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
-              <span>{study.data.duration}</span>
-              <span>{study.data.launchDate}</span>
-            </div>
-          </div>
-        </article>
-      ))}
+    <div id="case-studies-grid" class="grid grid-cols-1 gap-8 transition-opacity duration-500">
+      {allCaseStudies.map((study, index) => <CaseStudyCard study={study} index={index} />)}
     </div>
 
     <!-- Load More Button -->
     <div class="text-center mt-12">
-      <button 
+      <button
         id="load-more-btn"
         class="px-8 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors hidden"
       >
@@ -374,17 +358,23 @@ const structuredData = {
 
     <!-- Pagination -->
     <div id="pagination-container" class="pagination-wrapper justify-center items-center space-x-2 mt-8 hidden">
-      <button id="prev-page" class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:opacity-50 disabled:cursor-not-allowed">
+      <button
+        id="prev-page"
+        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+      >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
         </svg>
       </button>
-      
+
       <div id="page-numbers" class="flex space-x-1">
         <!-- Page numbers will be inserted here -->
       </div>
-      
-      <button id="next-page" class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:opacity-50 disabled:cursor-not-allowed">
+
+      <button
+        id="next-page"
+        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+      >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
         </svg>
@@ -395,7 +385,12 @@ const structuredData = {
     <div id="no-results" class="text-center py-12 hidden">
       <div class="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
         <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.461.886-6.065 2.349m0 0L21.707 21"></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.461.886-6.065 2.349m0 0L21.707 21"
+          ></path>
         </svg>
       </div>
       <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">No case studies found</h3>
@@ -405,7 +400,7 @@ const structuredData = {
 
   <!-- Enhanced JavaScript for Advanced Filtering and Search -->
   <script is:inline>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Elements
       const filters = document.querySelectorAll('.case-study-filter');
       const industryFilters = document.querySelectorAll('.industry-filter');
@@ -423,7 +418,7 @@ const structuredData = {
       const prevPageBtn = document.getElementById('prev-page');
       const nextPageBtn = document.getElementById('next-page');
       const pageNumbers = document.getElementById('page-numbers');
-      
+
       // State
       let currentFilter = 'all';
       let currentIndustryFilter = 'all';
@@ -432,16 +427,16 @@ const structuredData = {
       let itemsPerPage = 9;
       let currentPage = 1;
       let filteredCards = [];
-      
+
       // Search suggestions data
       const suggestions = [];
-      caseStudyCards.forEach(card => {
+      caseStudyCards.forEach((card) => {
         const client = card.dataset.client || '';
         const category = card.dataset.category || '';
         const industry = card.dataset.industry || '';
         suggestions.push(client, category, industry);
       });
-      const uniqueSuggestions = [...new Set(suggestions)].filter(s => s.length > 0);
+      const uniqueSuggestions = [...new Set(suggestions)].filter((s) => s.length > 0);
 
       // Enhanced search functionality with suggestions
       function showSuggestions(query) {
@@ -449,19 +444,22 @@ const structuredData = {
           searchSuggestions.classList.add('hidden');
           return;
         }
-        
-        const filtered = uniqueSuggestions.filter(suggestion => 
-          suggestion.toLowerCase().includes(query.toLowerCase())
-        ).slice(0, 5);
-        
+
+        const filtered = uniqueSuggestions
+          .filter((suggestion) => suggestion.toLowerCase().includes(query.toLowerCase()))
+          .slice(0, 5);
+
         if (filtered.length > 0) {
-          searchSuggestions.innerHTML = filtered.map(suggestion => 
-            `<div class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer text-sm suggestion-item">${suggestion}</div>`
-          ).join('');
+          searchSuggestions.innerHTML = filtered
+            .map(
+              (suggestion) =>
+                `<div class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer text-sm suggestion-item">${suggestion}</div>`
+            )
+            .join('');
           searchSuggestions.classList.remove('hidden');
-          
+
           // Add click handlers to suggestions
-          searchSuggestions.querySelectorAll('.suggestion-item').forEach(item => {
+          searchSuggestions.querySelectorAll('.suggestion-item').forEach((item) => {
             item.addEventListener('click', () => {
               searchInput.value = item.textContent;
               currentSearch = item.textContent.toLowerCase();
@@ -477,13 +475,17 @@ const structuredData = {
       // Sort functionality
       function sortCards(cards, sortBy) {
         return [...cards].sort((a, b) => {
-          switch(sortBy) {
+          switch (sortBy) {
             case 'newest':
-              return parseInt(b.querySelector('.case-study-card')?.dataset.year || '0') - 
-                     parseInt(a.querySelector('.case-study-card')?.dataset.year || '0');
+              return (
+                parseInt(b.querySelector('.case-study-card')?.dataset.year || '0') -
+                parseInt(a.querySelector('.case-study-card')?.dataset.year || '0')
+              );
             case 'oldest':
-              return parseInt(a.querySelector('.case-study-card')?.dataset.year || '0') - 
-                     parseInt(b.querySelector('.case-study-card')?.dataset.year || '0');
+              return (
+                parseInt(a.querySelector('.case-study-card')?.dataset.year || '0') -
+                parseInt(b.querySelector('.case-study-card')?.dataset.year || '0')
+              );
             case 'client':
               return (a.dataset.client || '').localeCompare(b.dataset.client || '');
             case 'industry':
@@ -510,7 +512,7 @@ const structuredData = {
         }
 
         const totalPages = Math.ceil(totalItems / parseInt(itemsPerPage));
-        
+
         if (totalPages <= 1) {
           paginationContainer.classList.add('hidden');
           return;
@@ -524,14 +526,14 @@ const structuredData = {
 
         // Previous button state
         prevPageBtn.disabled = currentPage === 1;
-        
-        // Next button state  
+
+        // Next button state
         nextPageBtn.disabled = currentPage === totalPages;
 
         // Generate page numbers (show max 5 pages)
         let startPage = Math.max(1, currentPage - 2);
         const endPage = Math.min(totalPages, startPage + 4);
-        
+
         if (endPage - startPage < 4) {
           startPage = Math.max(1, endPage - 4);
         }
@@ -540,16 +542,16 @@ const structuredData = {
           const pageBtn = document.createElement('button');
           pageBtn.textContent = i;
           pageBtn.className = `px-3 py-2 text-sm font-medium border rounded-lg transition-colors ${
-            i === currentPage 
-              ? 'bg-blue-600 text-white border-blue-600' 
+            i === currentPage
+              ? 'bg-blue-600 text-white border-blue-600'
               : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
           }`;
-          
+
           pageBtn.addEventListener('click', () => {
             currentPage = i;
             updateDisplay();
           });
-          
+
           pageNumbers.appendChild(pageBtn);
         }
       }
@@ -558,38 +560,39 @@ const structuredData = {
       function updateDisplay() {
         // Show loading skeleton temporarily
         showLoading();
-        
+
         // Simulate brief loading delay for better UX
         setTimeout(() => {
           // Filter cards
-          filteredCards = Array.from(caseStudyCards).filter(card => {
+          filteredCards = Array.from(caseStudyCards).filter((card) => {
             const category = card.dataset.category || '';
             const industry = card.dataset.industry || '';
             const client = card.dataset.client || '';
-            
+
             // Category filter
-            const categoryMatch = currentFilter === 'all' || 
-                                 category.toLowerCase().includes(currentFilter.toLowerCase());
-            
+            const categoryMatch =
+              currentFilter === 'all' || category.toLowerCase().includes(currentFilter.toLowerCase());
+
             // Industry filter
-            const industryMatch = currentIndustryFilter === 'all' || 
-                                 industry.toLowerCase() === currentIndustryFilter.toLowerCase();
-            
+            const industryMatch =
+              currentIndustryFilter === 'all' || industry.toLowerCase() === currentIndustryFilter.toLowerCase();
+
             // Search filter
-            const searchMatch = currentSearch === '' ||
-                              client.toLowerCase().includes(currentSearch) ||
-                              category.toLowerCase().includes(currentSearch) ||
-                              industry.toLowerCase().includes(currentSearch);
-            
+            const searchMatch =
+              currentSearch === '' ||
+              client.toLowerCase().includes(currentSearch) ||
+              category.toLowerCase().includes(currentSearch) ||
+              industry.toLowerCase().includes(currentSearch);
+
             return categoryMatch && industryMatch && searchMatch;
           });
-          
+
           // Sort cards
           const sortedCards = sortCards(filteredCards, currentSort);
-          
+
           // Hide all cards first
-          caseStudyCards.forEach(card => card.style.display = 'none');
-          
+          caseStudyCards.forEach((card) => (card.style.display = 'none'));
+
           // Show filtered and paginated cards with animation
           const paginatedCards = paginateCards(sortedCards, currentPage, itemsPerPage);
           paginatedCards.forEach((card, index) => {
@@ -598,33 +601,33 @@ const structuredData = {
             card.style.animationDelay = `${index * 0.1}s`;
             card.classList.add('animate-fade-in');
           });
-          
+
           // Update results counter
           resultsCount.textContent = filteredCards.length;
-          
+
           // Show/hide no results message
           if (filteredCards.length === 0) {
             noResults.classList.remove('hidden');
           } else {
             noResults.classList.add('hidden');
           }
-          
+
           // Show/hide load more button (only for load more mode)
           if (itemsPerPage !== 'all' && filteredCards.length > currentPage * parseInt(itemsPerPage)) {
             loadMoreBtn.classList.remove('hidden');
           } else {
             loadMoreBtn.classList.add('hidden');
           }
-          
+
           // Generate pagination controls
           generatePagination(filteredCards.length, currentPage, itemsPerPage);
-          
+
           // Update load more button text
-          const remaining = filteredCards.length - (currentPage * parseInt(itemsPerPage));
+          const remaining = filteredCards.length - currentPage * parseInt(itemsPerPage);
           if (remaining > 0 && itemsPerPage !== 'all') {
             loadMoreBtn.textContent = `Load ${Math.min(remaining, parseInt(itemsPerPage))} More Case Studies`;
           }
-          
+
           // Hide loading skeleton
           hideLoading();
         }, 300);
@@ -642,21 +645,35 @@ const structuredData = {
       }
 
       // Event listeners
-      
+
       // Category filters
-      filters.forEach(filter => {
-        filter.addEventListener('click', function() {
+      filters.forEach((filter) => {
+        filter.addEventListener('click', function () {
           // Update ARIA states
-          filters.forEach(f => {
+          filters.forEach((f) => {
             f.classList.remove('active', 'bg-blue-600', 'text-white', 'border-blue-600');
-            f.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300', 'border-gray-200', 'dark:border-gray-600');
+            f.classList.add(
+              'bg-gray-100',
+              'dark:bg-gray-700',
+              'text-gray-700',
+              'dark:text-gray-300',
+              'border-gray-200',
+              'dark:border-gray-600'
+            );
             f.setAttribute('aria-pressed', 'false');
           });
-          
+
           this.classList.add('active', 'bg-blue-600', 'text-white', 'border-blue-600');
-          this.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300', 'border-gray-200', 'dark:border-gray-600');
+          this.classList.remove(
+            'bg-gray-100',
+            'dark:bg-gray-700',
+            'text-gray-700',
+            'dark:text-gray-300',
+            'border-gray-200',
+            'dark:border-gray-600'
+          );
           this.setAttribute('aria-pressed', 'true');
-          
+
           currentFilter = this.dataset.filter;
           currentPage = 1;
           updateDisplay();
@@ -664,16 +681,30 @@ const structuredData = {
       });
 
       // Industry filters
-      industryFilters.forEach(filter => {
-        filter.addEventListener('click', function() {
-          industryFilters.forEach(f => {
+      industryFilters.forEach((filter) => {
+        filter.addEventListener('click', function () {
+          industryFilters.forEach((f) => {
             f.classList.remove('active', 'bg-green-600', 'text-white', 'border-green-600');
-            f.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300', 'border-gray-200', 'dark:border-gray-600');
+            f.classList.add(
+              'bg-gray-100',
+              'dark:bg-gray-700',
+              'text-gray-700',
+              'dark:text-gray-300',
+              'border-gray-200',
+              'dark:border-gray-600'
+            );
           });
-          
+
           this.classList.add('active', 'bg-green-600', 'text-white', 'border-green-600');
-          this.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300', 'border-gray-200', 'dark:border-gray-600');
-          
+          this.classList.remove(
+            'bg-gray-100',
+            'dark:bg-gray-700',
+            'text-gray-700',
+            'dark:text-gray-300',
+            'border-gray-200',
+            'dark:border-gray-600'
+          );
+
           currentIndustryFilter = this.dataset.filter;
           currentPage = 1;
           updateDisplay();
@@ -681,10 +712,10 @@ const structuredData = {
       });
 
       // Search functionality
-      searchInput.addEventListener('input', function() {
+      searchInput.addEventListener('input', function () {
         currentSearch = this.value.toLowerCase();
         currentPage = 1;
-        
+
         // Show/hide clear button
         if (this.value.length > 0) {
           clearSearchBtn.classList.remove('hidden');
@@ -693,13 +724,13 @@ const structuredData = {
           clearSearchBtn.classList.add('hidden');
           clearSearchBtn.classList.remove('flex');
         }
-        
+
         showSuggestions(this.value);
         updateDisplay();
       });
 
       // Clear search
-      clearSearchBtn.addEventListener('click', function() {
+      clearSearchBtn.addEventListener('click', function () {
         searchInput.value = '';
         currentSearch = '';
         this.classList.add('hidden');
@@ -709,41 +740,41 @@ const structuredData = {
       });
 
       // Hide suggestions when clicking outside
-      document.addEventListener('click', function(e) {
+      document.addEventListener('click', function (e) {
         if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
           searchSuggestions.classList.add('hidden');
         }
       });
 
       // Sort functionality
-      sortSelect.addEventListener('change', function() {
+      sortSelect.addEventListener('change', function () {
         currentSort = this.value;
         currentPage = 1;
         updateDisplay();
       });
 
       // Items per page
-      itemsPerPageSelect.addEventListener('change', function() {
+      itemsPerPageSelect.addEventListener('change', function () {
         itemsPerPage = this.value;
         currentPage = 1;
         updateDisplay();
       });
 
       // Load more button
-      loadMoreBtn.addEventListener('click', function() {
+      loadMoreBtn.addEventListener('click', function () {
         currentPage++;
         updateDisplay();
       });
 
       // Pagination controls
-      prevPageBtn.addEventListener('click', function() {
+      prevPageBtn.addEventListener('click', function () {
         if (currentPage > 1) {
           currentPage--;
           updateDisplay();
         }
       });
 
-      nextPageBtn.addEventListener('click', function() {
+      nextPageBtn.addEventListener('click', function () {
         const totalPages = Math.ceil(filteredCards.length / parseInt(itemsPerPage));
         if (currentPage < totalPages) {
           currentPage++;
@@ -776,101 +807,230 @@ const structuredData = {
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    
+
     .clear-search-btn.hidden {
       display: none;
     }
-    
+
     .clear-search-btn:not(.hidden) {
       display: flex;
     }
-    
+
     .case-studies-skeleton.hidden {
       display: none;
     }
-    
+
     .case-studies-skeleton:not(.hidden) {
       display: block;
     }
-    
+
     .pagination-wrapper.hidden {
       display: none;
     }
-    
+
     .pagination-wrapper:not(.hidden) {
       display: flex;
     }
-    
+
+    /* Enhanced Card Animations */
     .case-study-card {
-      transition: all 0.3s ease;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
     }
-    
+
     .case-study-card:hover {
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      box-shadow:
+        0 20px 40px -12px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+      transform: translateY(-8px) scale(1.02);
     }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    /* Staggered animations for grid items */
+    .case-study-card:nth-child(1) {
+      animation-delay: 0ms;
     }
-    
+    .case-study-card:nth-child(2) {
+      animation-delay: 100ms;
+    }
+    .case-study-card:nth-child(3) {
+      animation-delay: 200ms;
+    }
+    .case-study-card:nth-child(4) {
+      animation-delay: 300ms;
+    }
+    .case-study-card:nth-child(5) {
+      animation-delay: 400ms;
+    }
+    .case-study-card:nth-child(6) {
+      animation-delay: 500ms;
+    }
+
+    /* Card header animation effects */
+    .case-study-card .group:hover .absolute {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Progress bar animations */
+    .case-study-card .bg-green-500,
+    .case-study-card .bg-blue-500 {
+      transition: width 1s ease-out;
+      animation: progressGrow 1.5s ease-out;
+    }
+
+    /* Technology badge hover effects */
+    .case-study-card [class*='tech'] {
+      transition: all 0.2s ease;
+    }
+
+    .case-study-card [class*='tech']:hover {
+      transform: scale(1.1) rotate(2deg);
+      z-index: 10;
+    }
+
+    /* Floating animation for decorative elements */
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      33% {
+        transform: translateY(-10px) rotate(1deg);
+      }
+      66% {
+        transform: translateY(5px) rotate(-1deg);
+      }
+    }
+
+    /* Progress bar growth animation */
+    @keyframes progressGrow {
+      from {
+        width: 0%;
+      }
+      to {
+        width: var(--progress-width, 80%);
+      }
+    }
+
+    /* Fade in animation for cards */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
     @keyframes slideInUp {
-      from { 
-        opacity: 0; 
-        transform: translateY(30px) scale(0.95); 
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
       }
-      to { 
-        opacity: 1; 
-        transform: translateY(0) scale(1); 
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
       }
     }
-    
+
     .animate-fade-in {
       animation: slideInUp 0.6s ease-out forwards;
     }
-    
+
     .case-study-card {
-      animation: fadeIn 0.5s ease-out;
+      animation: fadeInUp 0.8s ease-out;
     }
-    
+
     /* Loading skeleton animation */
     @keyframes pulse {
-      0%, 100% {
+      0%,
+      100% {
         opacity: 1;
       }
       50% {
         opacity: 0.5;
       }
     }
-    
+
     .animate-pulse {
       animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
-    
+
+    /* Search suggestions styling */
     #search-suggestions {
       max-height: 200px;
       overflow-y: auto;
+      backdrop-filter: blur(8px);
     }
-    
+
     .suggestion-item:hover {
       background-color: var(--tw-gray-100);
     }
-    
+
     .dark .suggestion-item:hover {
       background-color: var(--tw-gray-700);
     }
-    
+
     /* Smooth transitions for grid changes */
     #case-studies-grid {
-      transition: opacity 0.5s ease-in-out;
+      transition:
+        opacity 0.5s ease-in-out,
+        transform 0.3s ease;
     }
-    
-    /* Enhanced hover effects */
-    .case-study-filter:hover, 
+
+    /* Enhanced hover effects for interactive elements */
+    .case-study-filter:hover,
     .industry-filter:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-    
+
+    /* Gradient text animation */
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .gradient-animate {
+      background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
+      background-size: 400% 400%;
+      animation: gradientShift 3s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Card content spacing improvements */
+    .case-study-card .space-y-6 > * + * {
+      margin-top: 1.5rem;
+    }
+
+    /* Enhanced button animations */
+    .case-study-card button:hover,
+    .case-study-card a:hover {
+      animation: buttonPulse 0.6s ease;
+    }
+
+    @keyframes buttonPulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
     /* Screen reader only class */
     .sr-only {
       position: absolute;
@@ -883,15 +1043,63 @@ const structuredData = {
       white-space: nowrap;
       border: 0;
     }
-    
+
     /* Focus states for accessibility */
     .case-study-filter:focus,
     .industry-filter:focus,
     #search-input:focus,
     #sort-select:focus,
-    #items-per-page:focus {
-      outline: 2px solid #3B82F6;
+    #items-per-page:focus,
+    .case-study-card a:focus {
+      outline: 2px solid #3b82f6;
       outline-offset: 2px;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    }
+
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+      .case-study-card {
+        margin-bottom: 1rem;
+      }
+
+      .case-study-card:hover {
+        transform: translateY(-4px) scale(1.01);
+      }
+
+      .case-study-card .absolute {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+      }
+    }
+
+    /* Dark mode enhancements */
+    .dark .case-study-card {
+      background: linear-gradient(145deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.9));
+      backdrop-filter: blur(8px);
+    }
+
+    .dark .case-study-card:hover {
+      box-shadow:
+        0 20px 40px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Performance optimizations */
+    .case-study-card * {
+      will-change: transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .case-study-card,
+      .case-study-card *,
+      .animate-fade-in,
+      .animate-pulse {
+        animation: none !important;
+        transition: none !important;
+      }
     }
   </style>
 
