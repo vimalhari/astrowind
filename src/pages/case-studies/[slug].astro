@@ -1221,7 +1221,7 @@ const structuredData = {
       const progress = Math.min(scrollTop / documentHeight, 1);
       
       // Update navigation progress bar
-      const navProgressBar = document.querySelector('.nav-progress-bar');
+      const navProgressBar = document.querySelector('.nav-progress-bar') as HTMLElement;
       if (navProgressBar) {
         navProgressBar.style.width = `${progress * 100}%`;
       }

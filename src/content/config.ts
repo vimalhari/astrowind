@@ -82,63 +82,71 @@ const caseStudyCollection = defineCollection({
     launchDate: z.string(),
     featured: z.boolean().default(false),
     draft: z.boolean().optional().default(false),
-    
+
     // Challenge Information
     challenge: z.object({
       title: z.string(),
       description: z.string(),
       points: z.array(z.string()),
     }),
-    
+
     // Solution Information
     solution: z.object({
       title: z.string(),
       description: z.string(),
       approach: z.array(z.string()),
     }),
-    
+
     // Results and Metrics
     results: z.object({
-      performance: z.array(z.object({
-        metric: z.string(),
-        before: z.string(),
-        after: z.string(),
-        improvement: z.string(),
-      })),
-      business: z.array(z.object({
-        metric: z.string(),
-        improvement: z.string(),
-      })),
+      performance: z.array(
+        z.object({
+          metric: z.string(),
+          before: z.string(),
+          after: z.string(),
+          improvement: z.string(),
+        })
+      ),
+      business: z.array(
+        z.object({
+          metric: z.string(),
+          improvement: z.string(),
+        })
+      ),
     }),
-    
+
     // Technologies Used
-    technologies: z.array(z.object({
-      name: z.string(),
-      description: z.string(),
-    })),
-    
+    technologies: z.array(
+      z.object({
+        name: z.string(),
+        description: z.string(),
+      })
+    ),
+
     // Key Features
-    features: z.array(z.object({
-      title: z.string(),
-      description: z.string(),
-      benefits: z.array(z.string()),
-    })),
-    
+    features: z.array(
+      z.object({
+        title: z.string(),
+        description: z.string(),
+        benefits: z.array(z.string()),
+      })
+    ),
+
     // Client Testimonial
     testimonial: z.object({
       text: z.string(),
       author: z.string(),
       position: z.string(),
     }),
-    
+
     // SEO and Tags
     tags: z.array(z.string()),
     seoKeywords: z.array(z.string()),
-    
+
     // Images (optional)
     heroImage: z.string().optional(),
     images: z.array(z.string()).optional(),
-    
+
     // Metadata for SEO
     metadata: metadataDefinition(),
   }),
