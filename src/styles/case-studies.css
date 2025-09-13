@@ -192,7 +192,9 @@ html {
 
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Loading states for images */
@@ -200,7 +202,7 @@ html {
   transition: opacity 0.3s ease-in-out;
 }
 
-.case-study-image[data-loaded="false"] {
+.case-study-image[data-loaded='false'] {
   opacity: 0.7;
   background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
   background-size: 400% 100%;
@@ -238,7 +240,7 @@ html {
   background-color: rgba(31, 41, 55, 0.8);
 }
 
-.dark .case-study-image[data-loaded="false"] {
+.dark .case-study-image[data-loaded='false'] {
   background: linear-gradient(90deg, #374151 25%, transparent 37%, #374151 63%);
 }
 
@@ -254,17 +256,17 @@ html {
   .floating-nav {
     display: none;
   }
-  
+
   .case-study-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .case-study-card {
     min-height: 450px;
     max-height: 600px;
   }
-  
+
   .case-study-card .technologies span {
     max-width: 80px;
     font-size: 0.625rem;
@@ -291,7 +293,7 @@ html {
   .cta-section {
     display: none;
   }
-  
+
   .case-study-content {
     color: black;
     background-color: white;
@@ -305,7 +307,10 @@ html {
 
 /* Smooth transitions for theme changes */
 * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 /* Metric visualization improvements */

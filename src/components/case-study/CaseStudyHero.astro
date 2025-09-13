@@ -67,25 +67,25 @@ const { study } = Astro.props;
         <!-- Quick Stats -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-            <div class="text-2xl font-bold text-blue-400 mb-1">
+            <div class="text-xl font-bold text-blue-400 mb-1 break-words">
               {study.data.results.performance?.[0]?.after || 'N/A'}
             </div>
-            <div class="text-xs text-gray-300 font-medium">
+            <div class="text-xs text-gray-300 font-medium break-words">
               {study.data.results.performance?.[0]?.metric || 'Performance'}
             </div>
           </div>
           <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-            <div class="text-2xl font-bold text-green-400 mb-1">{study.data.duration}</div>
+            <div class="text-xl font-bold text-green-400 mb-1 break-words">{study.data.duration}</div>
             <div class="text-xs text-gray-300 font-medium">Duration</div>
           </div>
           <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-            <div class="text-lg font-bold text-purple-400 mb-1 leading-tight">
+            <div class="text-sm font-bold text-purple-400 mb-1 leading-tight break-words px-1">
               {study.data.projectType}
             </div>
             <div class="text-xs text-gray-300 font-medium">Project Type</div>
           </div>
           <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-            <div class="text-2xl font-bold text-yellow-400 mb-1">{study.data.launchDate}</div>
+            <div class="text-xl font-bold text-yellow-400 mb-1 break-words">{study.data.launchDate}</div>
             <div class="text-xs text-gray-300 font-medium">Launch Date</div>
           </div>
         </div>

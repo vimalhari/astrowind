@@ -59,7 +59,7 @@ export type FilterCriteria = {
 export type SortCriteria = 'date' | 'client' | 'category' | 'featured';
 
 // Service category mapping for gradients and styling
-export type ServiceCategoryType = 
+export type ServiceCategoryType =
   | 'Web Development'
   | 'Digital Marketing'
   | 'E-commerce Development'

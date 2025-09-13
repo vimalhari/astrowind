@@ -3,17 +3,14 @@ import type { CaseStudy, FilterCriteria, SortCriteria } from '~/types/case-study
 /**
  * Filter case studies based on given criteria
  */
-export function filterCaseStudies(
-  caseStudies: CaseStudy[],
-  criteria: FilterCriteria
-): CaseStudy[] {
+export function filterCaseStudies(caseStudies: CaseStudy[], criteria: FilterCriteria): CaseStudy[] {
   return caseStudies.filter((study) => {
     const { category, client, featured } = criteria;
-    
+
     if (category && study.data.category !== category) return false;
     if (client && !study.data.client.toLowerCase().includes(client.toLowerCase())) return false;
     if (featured !== undefined && study.data.featured !== featured) return false;
-    
+
     return true;
   });
 }
@@ -28,7 +25,7 @@ export function sortCaseStudies(
 ): CaseStudy[] {
   return [...caseStudies].sort((a, b) => {
     let comparison = 0;
-    
+
     switch (criteria) {
       case 'date':
         comparison = new Date(b.data.launchDate).getTime() - new Date(a.data.launchDate).getTime();
@@ -43,7 +40,7 @@ export function sortCaseStudies(
         comparison = (b.data.featured ? 1 : 0) - (a.data.featured ? 1 : 0);
         break;
     }
-    
+
     return ascending ? comparison : -comparison;
   });
 }
@@ -60,11 +57,11 @@ export function getRelatedCaseStudies(
     .filter((study) => {
       // Exclude the current study
       if (study.id === currentStudy.id) return false;
-      
+
       // Match by category or overlapping tags
       return (
         study.data.category === currentStudy.data.category ||
-        study.data.tags.some(tag => currentStudy.data.tags.includes(tag))
+        study.data.tags.some((tag) => currentStudy.data.tags.includes(tag))
       );
     })
     .slice(0, limit);
@@ -73,10 +70,7 @@ export function getRelatedCaseStudies(
 /**
  * Get unique values for filtering options
  */
-export function getUniqueValues(
-  caseStudies: CaseStudy[],
-  field: keyof CaseStudy['data']
-): string[] {
+export function getUniqueValues(caseStudies: CaseStudy[], field: keyof CaseStudy['data']): string[] {
   const values = caseStudies.map((study) => study.data[field] as string);
   return [...new Set(values)].filter(Boolean).sort();
 }
@@ -84,13 +78,10 @@ export function getUniqueValues(
 /**
  * Search case studies by text
  */
-export function searchCaseStudies(
-  caseStudies: CaseStudy[],
-  searchTerm: string
-): CaseStudy[] {
+export function searchCaseStudies(caseStudies: CaseStudy[], searchTerm: string): CaseStudy[] {
   const term = searchTerm.toLowerCase().trim();
   if (!term) return caseStudies;
-  
+
   return caseStudies.filter((study) => {
     const searchableText = [
       study.data.title,
@@ -100,9 +91,11 @@ export function searchCaseStudies(
       study.data.category,
       study.data.projectType,
       ...(study.data.tags || []),
-      ...(study.data.seoKeywords || [])
-    ].join(' ').toLowerCase();
-    
+      ...(study.data.seoKeywords || []),
+    ]
+      .join(' ')
+      .toLowerCase();
+
     return searchableText.includes(term);
   });
 }
@@ -114,7 +107,7 @@ export function formatImprovement(improvement: string): string {
   // Extract number from improvement string
   const number = improvement.match(/\d+/)?.[0];
   if (!number) return improvement;
-  
+
   return `+${number}%`;
 }
 
@@ -123,13 +116,13 @@ export function formatImprovement(improvement: string): string {
  */
 export function calculatePerformanceScore(metrics: CaseStudy['data']['results']['performance']): number {
   if (!metrics || metrics.length === 0) return 0;
-  
+
   // Simple scoring based on improvement percentages
   const scores = metrics.map((metric) => {
     const improvement = parseInt(metric.improvement.replace(/\D/g, '')) || 0;
     return Math.min(improvement, 100); // Cap at 100%
   });
-  
+
   return Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
 }
 
