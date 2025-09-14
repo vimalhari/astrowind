@@ -3,7 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import CaseStudyCard from '~/components/CaseStudyCard.astro';
 import { getCollection } from 'astro:content';
-import { sortCaseStudies, getUniqueValues } from '~/utils/case-study-utils';
+import { sortCaseStudies } from '~/utils/case-study-utils';
 
 const metadata = {
   title: 'Case Studies - Success Stories | Criztec Technologies',
@@ -30,9 +30,6 @@ const allCaseStudies = await getCollection('case-studies', ({ id, data }) => {
 
 // Sort by publish date (newest first)
 const sortedCaseStudies = sortCaseStudies(allCaseStudies, 'date', false);
-
-// Get filter options for service categories
-const categories = getUniqueValues(allCaseStudies, 'category');
 ---
 
 <Layout metadata={metadata}>
@@ -61,7 +58,7 @@ const categories = getUniqueValues(allCaseStudies, 'category');
             <div class="text-sm text-gray-300">Success Stories</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl md:text-4xl font-bold text-green-400 mb-2">{categories.length}</div>
+            <div class="text-3xl md:text-4xl font-bold text-green-400 mb-2">10+</div>
             <div class="text-sm text-gray-300">Service Categories</div>
           </div>
           <div class="text-center">
