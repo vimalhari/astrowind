@@ -9,6 +9,8 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
+import criztecHero from '~/assets/images/criztec_hero.webp';
+
 const metadata = {
   title: 'Criztec Technologies - Web Development & Digital Marketing London',
   description:
@@ -88,7 +90,7 @@ const metadata = {
       },
       { text: 'Learn more', href: '#features' },
     ]}
-    image={{ src: '~/assets/images/hero-image.webp', alt: 'Criztec Hero Image' }}
+    bgImage={criztecHero.src}
   >
     <Fragment slot="title">
       Empowering your <span class="text-accent dark:text-white highlight"> Digital Future </span>

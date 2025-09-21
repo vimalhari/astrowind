@@ -12,26 +12,31 @@ const {
   content = await Astro.slots.render('content'),
   actions = await Astro.slots.render('actions'),
   image = await Astro.slots.render('image'),
+  bgImage,
 
   id,
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
 ---
 
-<section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
+<section
+  class={`relative not-prose ${bgImage ? 'bg-cover bg-center bg-no-repeat min-h-[80vh] flex items-center' : ''}`}
+  style={bgImage ? `background-image: url('${bgImage}');` : ''}
+  {...id ? { id } : {}}
+>
+  {bgImage && <div class="absolute inset-0 bg-black bg-opacity-20" />}
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : null}
     </slot>
   </div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
-    <div class="py-12 md:py-20">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 w-full">
+    <div class={`${bgImage ? 'py-20' : 'py-12 md:py-20'}`}>
       <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
         {
           tagline && (
             <p
-              class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+              class={`text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade ${bgImage ? 'text-white' : ''}`}
               set:html={tagline}
             />
           )
@@ -39,7 +44,7 @@ const {
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+              class={`text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade ${bgImage ? 'text-white' : ''}`}
               set:html={title}
             />
           )
@@ -48,7 +53,7 @@ const {
           {
             subtitle && (
               <p
-                class="text-xl text-muted mb-6 dark:text-slate-300 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+                class={`text-xl mb-6 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade text-white`}
                 set:html={subtitle}
               />
             )
@@ -59,7 +64,11 @@ const {
                 {Array.isArray(actions) ? (
                   actions.map((action) => (
                     <div class="flex w-full sm:w-auto">
-                      <Button {...(action || {})} class="w-full sm:mb-0" />
+                      {/* ensure secondary/outline buttons in hero are white */}
+                      <Button
+                        {...(action || {})}
+                        class={`w-full sm:mb-0 ${action?.variant === 'secondary' || (action?.class || '').includes('btn-secondary') ? 'text-white border-white/20 hover:border-white/30' : ''}`}
+                      />
                     </div>
                   ))
                 ) : (
