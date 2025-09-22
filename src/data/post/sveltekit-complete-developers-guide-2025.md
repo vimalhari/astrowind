@@ -13,7 +13,7 @@ tags:
   - performance
 metadata:
   canonical: https://criztec.com/sveltekit-complete-developers-guide-2025/
-  description: "Complete SvelteKit guide for 2025 covering architecture, performance, deployment, and real-world use cases for modern web development."
+  description: 'Complete SvelteKit guide for 2025 covering architecture, performance, deployment, and real-world use cases for modern web development.'
   openGraph:
     images:
       - url: https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/sveltekit.webp
@@ -33,9 +33,10 @@ SvelteKit is the official application framework for Svelte, designed to help dev
 Developed by Rich Harris and the Svelte team, SvelteKit reached version 1.0 in December 2022 and has since become a stable, production-ready framework used by companies like The New York Times, Apple, and Spotify.
 
 ### Key Features of SvelteKit:
+
 - **File-based routing** with nested layouts
 - **Server-side rendering (SSR)** and **static site generation (SSG)**
-- **API routes** for building full-stack applications  
+- **API routes** for building full-stack applications
 - **Code splitting** and **preloading** for optimal performance
 - **TypeScript support** built-in
 - **Adapters** for deployment to various platforms
