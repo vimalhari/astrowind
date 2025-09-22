@@ -36,6 +36,7 @@ export const headerData = {
       text: 'Design',
       links: [
         { text: 'Web Design', href: getPermalink('/web-design') },
+        { text: 'Logo Design', href: getPermalink('/logo-design') },
         // { text: 'UX Design', href: getPermalink('/ux-design') },
         // { text: 'Graphic Design', href: getPermalink('/graphic-design') },
         // { text: 'Video Production', href: getPermalink('/video-production') },
@@ -95,6 +96,7 @@ export const footerData = {
       title: 'Design Services',
       links: [
         { text: 'Web Design', href: getPermalink('/web-design') },
+        { text: 'Logo Design', href: getPermalink('/logo-design') },
         { text: 'All Services', href: getPermalink('/services') },
       ],
     },

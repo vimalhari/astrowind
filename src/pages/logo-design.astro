@@ -1,0 +1,480 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+const metadata = {
+  title: 'Professional Logo Design Services',
+  description:
+    'Create a powerful first impression that lasts forever with our professional logo design services - 600+ logos designed for businesses worldwide.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Brand Identity Solutions"
+    title="Professional Logo Design Services"
+    subtitle="Create a Powerful First Impression That Lasts Forever"
+    actions={[{ variant: 'primary', target: '', text: 'Get Started', href: '/contact' }]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
+      alt: 'Logo Design Process Illustration',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Why Your Logo Can Make or Break Your Business"
+    subtitle="Did you know that customers form an opinion about your business within the first 7 seconds of seeing your brand? A poorly designed logo can instantly damage your credibility, while a professional one builds trust, communicates quality, and sets you apart from competitors."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    columns={2}
+    items={[
+      {
+        title: 'The Cost of a Bad Logo',
+        description:
+          'Lost customers who judge your business as unprofessional, difficulty attracting premium clients, brand confusion and lack of memorability, expensive rebranding costs down the line.',
+        icon: 'tabler:alert-triangle',
+      },
+      {
+        title: 'The Power of Professional Design',
+        description:
+          'Instant credibility and trust with new customers, higher perceived value allows for premium pricing, memorable brand recognition that drives referrals, professional appearance across all marketing materials.',
+        icon: 'tabler:award',
+      },
+    ]}
+  />
+
+  <!-- Pricing Widget ****************** -->
+
+  <Pricing
+    title="Our Logo Design Packages"
+    subtitle="Tailored Solutions for Every Business Stage"
+    prices={[
+      {
+        title: 'STARTER PACKAGE',
+        subtitle: 'Perfect for new businesses and startups',
+        price: 100,
+        period: 'One-time',
+        items: [
+          {
+            description: '5 Initial Logo Concepts',
+          },
+          {
+            description: 'Market Research Report',
+          },
+          {
+            description: '3 Revision Rounds',
+          },
+          {
+            description: 'Essential File Formats',
+          },
+          {
+            description: 'Basic Brand Guidelines',
+          },
+          {
+            description: '48-Hour Turnaround Available',
+          },
+          {
+            description: '30-Day Money-Back Guarantee',
+          },
+          {
+            description: 'Commercial Usage Rights',
+          },
+        ],
+        callToAction: {
+          target: '',
+          text: 'Get Started',
+          href: '/contact',
+        },
+        hasRibbon: false,
+        ribbonTitle: '',
+      },
+      {
+        title: 'PROFESSIONAL PACKAGE',
+        subtitle: 'Most Popular - Ideal for growing businesses',
+        price: 250,
+        period: 'One-time',
+        items: [
+          {
+            description: '8 Premium Logo Concepts',
+          },
+          {
+            description: 'Everything in Starter Package',
+          },
+          {
+            description: 'Advanced Typography Analysis',
+          },
+          {
+            description: 'Logo Variations Suite',
+          },
+          {
+            description: 'Complete File Library',
+          },
+          {
+            description: 'Social Media Optimization',
+          },
+          {
+            description: 'Comprehensive Brand Guidelines',
+          },
+          {
+            description: '6 Months Minor Adjustments',
+          },
+        ],
+        callToAction: {
+          target: '',
+          text: 'Get Started',
+          href: '/contact',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'Popular',
+      },
+      {
+        title: 'PREMIUM BRAND PACKAGE',
+        subtitle: 'Complete brand transformation for serious businesses',
+        price: 450,
+        period: 'One-time',
+        items: [
+          {
+            description: '12 Exclusive Logo Concepts',
+          },
+          {
+            description: 'Everything in Professional Package',
+          },
+          {
+            description: 'Brand Strategy Consultation',
+          },
+          {
+            description: 'Complete Brand Identity System',
+          },
+          {
+            description: 'Business Stationery Suite',
+          },
+          {
+            description: 'Marketing Materials Templates',
+          },
+          {
+            description: 'Trademark Research Report',
+          },
+          {
+            description: '12 Months Unlimited Revisions',
+          },
+        ],
+        callToAction: {
+          target: '',
+          text: 'Get Started',
+          href: '/contact',
+        },
+        hasRibbon: false,
+        ribbonTitle: '',
+      },
+    ]}
+  />
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    title="Our Proven Design Process"
+    subtitle="How We Create Logos That Drive Results"
+    items={[
+      {
+        title: 'Deep Discovery',
+        description:
+          "We don't just design logos; we solve business problems. Our process begins with understanding your target audience, unique value propositions, brand personality, and industry standards.",
+        icon: 'tabler:bulb',
+      },
+      {
+        title: 'Strategic Research',
+        description:
+          'Comprehensive competitor analysis, industry trend research, color psychology analysis, typography trends, and cultural considerations for global appeal.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Creative Exploration',
+        description:
+          'Multiple conceptual directions based on strategy, hand-sketched initial ideas and digital refinements, various style explorations, and color palette development.',
+        icon: 'tabler:palette',
+      },
+      {
+        title: 'Refinement & Perfection',
+        description:
+          'Collaborative feedback sessions, scalability testing from business card to billboard size, versatility testing across different media, and final adjustments.',
+        icon: 'tabler:adjustments',
+      },
+      {
+        title: 'Delivery & Support',
+        description:
+          'Complete file package with detailed usage instructions, brand guidelines presentation, implementation support, and ongoing assistance.',
+        icon: 'tabler:package',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Logo Design Process',
+    }}
+  />
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="Why Choose Our Logo Design Services?"
+    subtitle="Trusted by 600+ Businesses Worldwide"
+    stats={[
+      { title: 'Logos Designed', amount: '600+' },
+      { title: 'Years Experience', amount: '10+' },
+      { title: 'Client Satisfaction', amount: '100%' },
+      { title: 'Turnaround Time', amount: '5-7 Days' },
+    ]}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="What Sets Us Apart"
+    columns={3}
+    items={[
+      {
+        title: 'Award-Winning Designers',
+        description:
+          'Our team includes designers with 10+ years of experience who have created logos for Fortune 500 companies, successful startups, and everything in between.',
+        icon: 'tabler:trophy',
+      },
+      {
+        title: 'Strategic Approach',
+        description:
+          'Unlike template-based services, every logo we create is built on solid strategy, considering your market position, target audience, and business goals.',
+        icon: 'tabler:chess-knight',
+      },
+      {
+        title: 'Fast Turnaround',
+        description:
+          'While others take weeks, we deliver exceptional results in 5-7 business days, with 48-hour rush service available.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: '100% Original Work',
+        description:
+          'Every design is created from scratch specifically for your business, with complete copyright ownership provided.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Unlimited Communication',
+        description:
+          'Direct access to your designer throughout the process, with no account managers or intermediaries.',
+        icon: 'tabler:message-circle',
+      },
+      {
+        title: 'Satisfaction Guaranteed',
+        description:
+          'Our revision process ensures your logo exceeds expectations, backed by our 30-day money-back guarantee.',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    title="Industries We Transform"
+    subtitle="Specialized Expertise Across Markets"
+    items={[
+      {
+        title: 'Healthcare & Medical',
+        description:
+          'Build trust with clean, professional designs, navigate regulatory requirements, appeal to practitioners and patients.',
+      },
+      {
+        title: 'Technology & Software',
+        description:
+          'Convey innovation and cutting-edge solutions, stand out in crowded digital marketplaces, scale perfectly across platforms.',
+      },
+      {
+        title: 'Food & Beverage',
+        description:
+          'Create appetite appeal and emotional connections, work beautifully on packaging and signage, reflect quality expectations.',
+      },
+      {
+        title: 'Professional Services',
+        description:
+          'Establish authority and trustworthiness, communicate expertise and reliability, appeal to discerning business clients.',
+      },
+      {
+        title: 'E-commerce & Retail',
+        description:
+          'Drive purchase decisions and brand loyalty, work across all marketing channels, create memorable shopping experiences.',
+      },
+      {
+        title: 'Creative Industries',
+        description:
+          'Reflect artistic vision and unique style, stand out in creative marketplaces, appeal to design-conscious audiences.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Industries and Brand Identities',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Success Stories That Speak Volumes
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Testimonials Widget *********** -->
+
+  <Testimonials
+    title=""
+    testimonials={[
+      {
+        testimonial: `After launching with our new logo, we secured £2M in funding within 6 months. Investors specifically mentioned how professional our brand appeared. The result was a 300% increase in qualified leads.`,
+        name: 'TechStart Solutions',
+        job: 'Software Company',
+        image: {
+          src: 'https://images.unsplash.com/photo-1619734086067-24bf8889ea7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
+          alt: 'TechStart Solutions',
+        },
+      },
+      {
+        testimonial: `Our new logo on packaging increased shelf appeal dramatically. Sales jumped 150% in the first quarter after rebranding. We've even expanded to 3 new locations since then.`,
+        name: 'Artisan Bakery Co',
+        job: 'Food & Beverage',
+        image: {
+          src: 'https://images.unsplash.com/photo-1565049786474-1dea82a8b995?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
+          alt: 'Artisan Bakery Co',
+        },
+      },
+      {
+        testimonial: `The sophisticated logo helped us attract Fortune 500 clients. Our average project value increased by 75%. We're now able to charge premium pricing for our services.`,
+        name: 'Elite Consulting',
+        job: 'Professional Services',
+        image: {
+          src: 'https://images.unsplash.com/photo-1659057106920-da022cfbc0cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
+          alt: 'Elite Consulting',
+        },
+      },
+    ]}
+    callToAction={{
+      target: '',
+      text: 'More testimonials',
+      href: '/case-studies',
+      icon: 'tabler:chevron-right',
+    }}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    title="What Makes a Logo Successful?"
+    subtitle="The Science Behind Great Design"
+    isReversed
+    items={[
+      {
+        title: 'Memorability',
+        description: 'Great logos are remembered after just one glance',
+      },
+      {
+        title: 'Simplicity',
+        description: 'Clean designs work better across all applications',
+      },
+      {
+        title: 'Versatility',
+        description: 'Must look perfect from business cards to billboards',
+      },
+      {
+        title: 'Timelessness',
+        description: 'Should remain effective for decades, not just months',
+      },
+      {
+        title: 'Appropriateness',
+        description: 'Must reflect your industry and target audience',
+      },
+      {
+        title: 'Uniqueness',
+        description: 'Stand out from competitors with distinctive design',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Successful Logo Design Elements',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Our logos score highest in all these critical areas because we understand the psychology of visual communication
+        and the technical requirements of modern branding.
+      </h3>
+    </Fragment>
+  </Content>
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    tagline=""
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'How long does the design process take?',
+        description:
+          'Standard turnaround is 5-7 business days. Rush delivery (48 hours) is available for urgent projects at no extra cost with our Professional and Premium packages.',
+      },
+      {
+        title: "What if I don't like the initial concepts?",
+        description:
+          "We offer unlimited revisions within reason. Our goal is your complete satisfaction. If we can't achieve that, we offer a full refund within 30 days.",
+      },
+      {
+        title: 'Will my logo work for both print and digital use?',
+        description:
+          'Absolutely. We design with versatility in mind and provide files optimized for every possible use case.',
+      },
+      {
+        title: 'Do I own the rights to my logo?',
+        description:
+          'Yes, complete copyright ownership transfers to you upon final payment. You can use it however you wish without any restrictions.',
+      },
+      {
+        title: 'Can you trademark my logo?',
+        description:
+          "While we can't file trademarks (that requires a lawyer), our Premium package includes trademark research to ensure your design is protectable.",
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Started Today',
+        href: '/contact',
+      },
+    ]}
+    title="Ready to Transform Your Brand?"
+    subtitle="Join 600+ Successful Businesses - Your Success Story Starts Here. Don't let another day pass with a logo that doesn't represent the quality of your business. Every moment you wait is a moment your competitors get ahead."
+  />
+</Layout>
