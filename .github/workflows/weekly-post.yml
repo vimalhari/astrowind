@@ -51,3 +51,7 @@ jobs:
           git add src/data/post/*.md
           git commit -m "content: auto-generate weekly blog post" || echo "No changes to commit"
           git push
+
+      - name: Trigger Netlify Build
+        if: success() && secrets.NETLIFY_BUILD_HOOK != ''
+        run: curl -X POST -d {} "${{ secrets.NETLIFY_BUILD_HOOK }}"
