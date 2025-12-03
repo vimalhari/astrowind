@@ -321,24 +321,27 @@ Write a professional, engaging blog post about "${topic}" for Criztec Technologi
 
 IMPORTANT: This post must be UNIQUE and different from typical generic content. Provide specific, actionable insights and fresh perspectives that showcase Criztec's expertise.
 IMPORTANT: All content must be tailored for a UK audience. Use British English spelling (e.g., 'optimisation', 'colour', 'programme') and refer to UK-specific regulations (e.g., GDPR, UK Data Protection Act), currency (£ GBP), and business practices where applicable.
+IMPORTANT: Content must be fully SEO-optimised with strategic keyword placement, semantic variations, and natural language that ranks well in search engines.
 
 The output must be a valid JSON object with the following fields:
-- title: A catchy, SEO-friendly title (max 60 characters). Make it unique and specific.
-- excerpt: A compelling summary (2-3 sentences, max 160 characters).
-- content: The full blog post content in Markdown format. Use ## for section headings. Include:
-  * An engaging introduction with a unique angle or hook
-  * 3-5 main sections with specific, actionable insights (not generic advice)
+- title: A catchy, SEO-optimised title (max 60 characters) with primary keyword. Make it unique, specific, and click-worthy.
+- excerpt: A compelling, SEO-friendly summary (2-3 sentences, max 160 characters) that includes key terms and entices clicks.
+- content: The full blog post content in Markdown format, optimised for SEO. Use ## for section headings. Include:
+  * An engaging introduction with a unique angle or hook that includes primary keywords naturally
+  * 3-5 main sections with specific, actionable insights (not generic advice) and SEO-optimised headings
+  * Strategic keyword placement throughout (primary and secondary keywords, LSI keywords, semantic variations)
   * Real-world examples, code snippets, or case studies where relevant
   * How Criztec's services relate to the topic (naturally integrated, not salesy)
   * Data points or statistics to back up claims (prefer UK-specific data if available)
+  * Internal linking opportunities (mention related topics that could link to other posts)
   * A strong conclusion with clear call-to-action
   * Do NOT include the title as an h1 in the content
 - category: One of ['Web Development', 'Digital Marketing', 'SEO', 'E-commerce', 'Technology', 'IT Services', 'Cloud Computing', 'Custom Software'].
-- tags: An array of 3-5 relevant, specific tags (e.g., "astro", "django-rest", "cloud-migration", "managed-it").
+- tags: An array of 3-5 relevant, SEO-focused tags that represent searchable keywords (e.g., "astro", "django-rest", "cloud-migration", "managed-it").
 - image_prompt: A detailed, visual description for a header image (focus on professional tech/business aesthetics).
 
 Ensure the tone is professional, informative, and actionable for business owners and technical decision-makers.
-The content should be approximately 800-1200 words with ORIGINAL insights and perspectives.
+The content should be approximately 1000-1500 words with ORIGINAL insights and perspectives, optimised for search engine ranking.
 `;
 
   const response = await fetchWithRetry('https://api.openai.com/v1/chat/completions', {
@@ -353,7 +356,7 @@ The content should be approximately 800-1200 words with ORIGINAL insights and pe
         {
           role: 'system',
           content:
-            'You are an expert content marketing assistant for Criztec Technologies, a company providing web development, IT services, cloud computing, and custom software development. Always output valid JSON. Create unique, high-quality content with original insights and specific examples that demonstrate technical expertise. Ensure all content is tailored for a UK audience using British English.',
+            'You are an expert SEO content strategist and technical writer for Criztec Technologies, a company providing web development, IT services, cloud computing, and custom software development. Always output valid JSON. Create unique, high-quality, SEO-optimised content with original insights and specific examples that demonstrate technical expertise. Use strategic keyword placement, semantic variations, and natural language optimised for search engines. Ensure all content is tailored for a UK audience using British English.',
         },
         {
           role: 'user',

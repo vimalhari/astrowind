@@ -35,7 +35,7 @@ ENABLE_IMAGE_GENERATION=true            # Default: true, set to 'false' to disab
 ### Installation
 
 ```bash
-npm install
+pnpm install
 ```
 
 ## Usage
@@ -99,12 +99,13 @@ cloud-migration-guide-2.md
 
 Posts are generated with:
 
-- 800-1200 words
-- SEO-optimized title and excerpt
-- 3-5 relevant tags
+- 1000-1500 words (SEO-optimised length)
+- SEO-optimised title and excerpt with strategic keyword placement
+- 3-5 relevant, SEO-focused tags
 - Proper category
 - British English spelling
 - UK-specific references where applicable
+- Natural keyword integration throughout content
 
 ## Output Format
 
@@ -208,13 +209,13 @@ node /tmp/test-duplicate-detection.js
 
 ```bash
 # Lint
-npm run check:eslint
+pnpm run check:eslint
 
 # Format
-npm run fix:prettier
+pnpm run fix:prettier
 
 # All checks
-npm run check
+pnpm run check
 ```
 
 ## Security
