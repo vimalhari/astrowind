@@ -15,7 +15,7 @@ from .types import BlogContent
 def generate_blog_content(
     topic: str,
     research_context: dict[str, str | list[str]] | None = None,
-    content_depth: str = "comprehensive"  # Options: "comprehensive", "expert", "thought_leadership"
+    content_depth: str = "comprehensive",  # Options: "comprehensive", "expert", "thought_leadership"
 ) -> BlogContent:
     """Generate high-value blog content with enhanced quality controls.
 
@@ -76,18 +76,18 @@ IMPORTANT: Use this research to create timely, relevant content that addresses c
         "comprehensive": {
             "word_count": "1200-1500",
             "approach": "Cover breadth with practical examples and clear explanations",
-            "tone": "Accessible expert - confident but not condescending"
+            "tone": "Accessible expert - confident but not condescending",
         },
         "expert": {
             "word_count": "1500-2000",
             "approach": "Deep technical analysis with implementation details and edge cases",
-            "tone": "Technical authority - assume sophisticated audience"
+            "tone": "Technical authority - assume sophisticated audience",
         },
         "thought_leadership": {
             "word_count": "1800-2500",
             "approach": "Original perspectives, industry analysis, future predictions with strong POV",
-            "tone": "Visionary - challenge conventions while backing claims with evidence"
-        }
+            "tone": "Visionary - challenge conventions while backing claims with evidence",
+        },
     }
 
     depth = depth_specs.get(content_depth, depth_specs["comprehensive"])
@@ -200,7 +200,9 @@ JSON Format:
     target_min = int(depth["word_count"].split("-")[0])
 
     if word_count < target_min:
-        print(f"Warning: Content length ({word_count} words) below target ({depth['word_count']} words)")
+        print(
+            f"Warning: Content length ({word_count} words) below target ({depth['word_count']} words)"
+        )
 
     quality_score = content_data.get("content_quality_score", "N/A")
     print(f"Generated content: {content_data['title']}")
@@ -231,11 +233,11 @@ def review_and_enhance_content(content: BlogContent) -> BlogContent:
     review_prompt = f"""You are a senior content editor reviewing this blog post for quality and impact.
 
 CURRENT CONTENT:
-Title: {content['title']}
-Excerpt: {content['excerpt']}
+Title: {content["title"]}
+Excerpt: {content["excerpt"]}
 
 Content:
-{content['content']}
+{content["content"]}
 
 REVIEW CRITERIA:
 1. Does the introduction hook readers immediately?
@@ -272,7 +274,9 @@ ONLY output valid JSON, no other text."""
         review_data = json.loads(review_json)
         if "enhanced_content" in review_data:
             content["content"] = review_data["enhanced_content"]
-            print(f"Content enhanced. Improvements: {review_data.get('improvements_made', 'Multiple refinements')}")
+            print(
+                f"Content enhanced. Improvements: {review_data.get('improvements_made', 'Multiple refinements')}"
+            )
     except json.JSONDecodeError:
         print("Could not parse enhancement suggestions, using original content")
 

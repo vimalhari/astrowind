@@ -5,7 +5,7 @@ import os
 from typing import Literal, cast
 
 from openai import (
-    OpenAI,  # noqa: codacy.tools-configs.codacy.python.openai.import-without-guardrails
+    OpenAI,
 )
 from prefect import task
 

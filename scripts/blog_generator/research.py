@@ -4,7 +4,7 @@ import os
 from datetime import UTC, datetime
 
 from openai import (
-    OpenAI,  # noqa: codacy.tools-configs.codacy.python.openai.import-without-guardrails
+    OpenAI,
 )
 from prefect import task
 
