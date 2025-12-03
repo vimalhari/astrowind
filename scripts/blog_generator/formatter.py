@@ -6,7 +6,7 @@ from prefect import task
 
 from .config import IMAGE_FRONTMATTER_TEMPLATE, WEBSITE_URL
 from .types import BlogContent, FormattedPost
-from .utils import sanitize_yaml, slugify
+from .utils import get_existing_post_slugs, sanitize_yaml, slugify
 
 
 @task(name="Format Markdown Post")
@@ -19,7 +19,15 @@ def format_markdown_post(content_data: BlogContent) -> FormattedPost:
     Returns:
         Tuple of (markdown content, slug, title)
     """
-    slug = slugify(content_data["title"])
+    base_slug = slugify(content_data["title"])
+    existing_slugs = get_existing_post_slugs()
+
+    # Ensure slug uniqueness - add timestamp suffix if needed
+    slug = base_slug
+    if slug in existing_slugs:
+        timestamp = datetime.utcnow().strftime("%Y%m%d-%H%M")
+        slug = f"{base_slug}-{timestamp}"
+        print(f"Warning: Slug '{base_slug}' exists, using '{slug}' instead")
     date = datetime.utcnow().isoformat()
 
     title = sanitize_yaml(content_data["title"])

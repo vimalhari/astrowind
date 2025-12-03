@@ -3,7 +3,7 @@
 import base64
 import os
 
-from github import Github, InputGitTreeElement
+from github import Github, GithubException, InputGitTreeElement
 from prefect import task
 
 from .config import IMAGE_PATH_TEMPLATE, POST_PATH_TEMPLATE, WEBSITE_URL
@@ -37,6 +37,20 @@ def commit_to_github(markdown_content: str, image_data: bytes, slug: str, title:
     # Paths in the repository
     post_path = POST_PATH_TEMPLATE.format(slug=slug)
     image_path = IMAGE_PATH_TEMPLATE.format(slug=slug)
+
+    # Check if post already exists in repository
+    try:
+        default_branch = repo.default_branch
+        existing_file = repo.get_contents(post_path, ref=default_branch)
+        if existing_file:
+            raise ValueError(
+                f"Blog post with slug '{slug}' already exists at {post_path}. "
+                "Cannot overwrite existing content. Please generate a different topic or manually remove the existing post."
+            )
+    except GithubException as e:
+        # 404 means file doesn't exist, which is what we want
+        if e.status != 404:
+            raise
 
     # Get the default branch
     default_branch = repo.default_branch

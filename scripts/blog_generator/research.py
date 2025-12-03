@@ -8,6 +8,8 @@ from openai import (
 )
 from prefect import task
 
+from .utils import get_existing_post_slugs, slugify
+
 
 @task(name="Research Tech Trends", retries=2)
 def research_tech_trends() -> dict[str, str]:
@@ -23,6 +25,10 @@ def research_tech_trends() -> dict[str, str]:
         Dictionary with researched topic and context
     """
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+    # Get existing posts to avoid duplicates
+    existing_slugs = get_existing_post_slugs()
+    existing_topics = ", ".join(sorted(existing_slugs)[:20])  # Show sample of existing topics
 
     current_date = datetime.now(UTC).strftime("%B %Y")
 
@@ -40,6 +46,8 @@ Requirements:
 3. Practical and actionable content potential
 4. SEO-optimized search potential
 5. Align with Criztec's services: web development, IT services, digital marketing
+6. MUST be completely different from existing topics (avoid these: {existing_topics})
+7. Title should generate a unique slug when converted to URL format
 
 Provide:
 1. Specific topic title (SEO-optimized, 60-70 characters)
@@ -82,6 +90,16 @@ Format as JSON:
 
     try:
         research_data = json.loads(content)
+
+        # Validate uniqueness - check if proposed topic would create duplicate slug
+        proposed_topic = research_data.get("topic", "")
+        proposed_slug = slugify(proposed_topic)
+
+        if proposed_slug in existing_slugs:
+            raise ValueError(
+                f"Proposed topic '{proposed_topic}' (slug: {proposed_slug}) already exists. "
+                "Research must find a truly unique topic."
+            )
     except json.JSONDecodeError as e:
         raise ValueError(f"Failed to parse research response: {e}\nResponse: {content}") from e
 
