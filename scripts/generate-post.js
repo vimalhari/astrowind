@@ -228,7 +228,7 @@ function getExistingPosts() {
       const content = fs.readFileSync(path.join(POSTS_DIR, file), 'utf8');
       // Handle both single and double quotes, multiline
       const titleMatch = content.match(/^title:\s*["'](.+?)["']\s*$/m);
-      return titleMatch ? titleMatch[1].replace(/\\["']/g, (m) => m[1]) : null;
+      return titleMatch ? titleMatch[1].replace(/\\["']/g, (m) => m.slice(1)) : null;
     })
     .filter(Boolean);
 }
@@ -420,9 +420,9 @@ async function generateMarkdownContent(data, slug) {
   // Sanitize title and excerpt to prevent YAML injection
   const sanitizeYAML = (str) => {
     return str
-      .replace(/\n/g, ' ') // Remove newlines
+      .replace(/\\/g, '\\\\') // Escape backslashes to prevent interference with quote escaping
       .replace(/"/g, '\\"') // Escape quotes
-      .replace(/\\/g, '\\\\') // Escape backslashes
+      .replace(/\n/g, ' ') // Remove newlines
       .trim();
   };
 
