@@ -1,5 +1,5 @@
 {
-    "name": "Astrowind Blog Generator",
+    "name": "Automated Blog Post Generator",
     "nodes": [
         {
             "parameters": {
@@ -15,127 +15,141 @@
                     ]
                 }
             },
-            "id": "schedule-trigger",
+            "id": "2b36a23e-937a-451f-9382-eb8e1d4689cf",
             "name": "Weekly Schedule",
             "type": "n8n-nodes-base.scheduleTrigger",
-            "typeVersion": 1.1,
+            "typeVersion": 1.2,
             "position": [
-                -1600,
-                -200
+                -48,
+                -48
             ]
         },
         {
             "parameters": {
-                "jsCode": "const topics = [\n    'IT Infrastructure Management for Growing Businesses',\n    'Managed IT Services: Benefits and Best Practices',\n    'Cloud Migration Strategy: Step-by-Step Guide',\n    'Custom Software Development Process: Complete Guide',\n    'Astro Framework: The Future of Content-Focused Websites',\n    'Django REST Framework for API Development',\n    'Docker Containerisation Best Practices',\n    'PostgreSQL Advanced Query Optimisation',\n    'Web Performance Optimisation: Core Web Vitals',\n    'SEO Best Practices for Technical Websites'\n];\n\nconst randomTopic = topics[Math.floor(Math.random() * topics.length)];\n\nconst systemPrompt = \"You are an expert content marketing assistant for Criztec Technologies. Always respond with valid JSON only, no markdown code blocks or other formatting.\";\n\nconst userPrompt = `Write a professional, engaging blog post about \"${randomTopic}\" for Criztec Technologies.\n\nCompany Focus:\n- Web Development and Digital Marketing\n- IT Services and Infrastructure Management\n- Cloud Computing Solutions (AWS, Azure, Google Cloud)\n- Custom Software Development\n\nRequirements:\n- UNIQUE, specific, actionable insights (no generic advice).\n- UK Audience: British English spelling, UK regulations, £ GBP.\n- Output MUST be valid JSON with fields: title, excerpt, content (markdown), category, tags (array), image_prompt.\n- Respond ONLY with the JSON object, no other text.\n- Do NOT use apostrophes with backslash like \\\\' - just use regular apostrophe '\n\nContent Structure:\n- Engaging intro with unique hook.\n- 3-5 main sections with insights.\n- Real-world examples/case studies.\n- Natural integration of Criztec services.\n- Strong conclusion with CTA.\n- 800-1200 words.\n\nJSON Format:\n{\\n  \"title\": \"Post Title\",\\n  \"excerpt\": \"Brief summary\",\\n  \"content\": \"Full markdown content\",\\n  \"category\": \"Category Name\",\\n  \"tags\": [\"tag1\", \"tag2\"],\\n  \"image_prompt\": \"DALL-E prompt for hero image\"\\n}`;\n\nreturn {\n  json: {\n    systemPrompt: systemPrompt,\n    userPrompt: userPrompt,\n    topic: randomTopic\n  }\n};"
+                "jsCode": "const topics = [\n  'Top 10 SEO tips for small businesses in 2025',\n  'How to build a responsive website with modern CSS',\n  'Digital marketing trends every entrepreneur should know',\n  'Why mobile-first design is essential for your business',\n  'Social media marketing strategies that actually work',\n  'Content marketing best practices for B2B companies',\n  'How to improve website loading speed and performance',\n  'Email marketing automation tips for better engagement',\n  'The importance of local SEO for service businesses',\n  'Web accessibility guidelines every developer should follow'\n];\n\nconst randomIndex = Math.floor(Math.random() * topics.length);\nconst selectedTopic = topics[randomIndex];\n\nreturn [{ json: { topic: selectedTopic } }];"
             },
-            "id": "select-topic",
+            "id": "c98b081b-868d-49f2-9ee0-15a7ef9b0b84",
             "name": "Select Random Topic",
             "type": "n8n-nodes-base.code",
             "typeVersion": 2,
             "position": [
-                -1376,
-                -200
+                176,
+                -48
             ]
         },
         {
             "parameters": {
-                "resource": "chat",
-                "model": "gpt-4o",
-                "prompt": {
-                    "messages": [
+                "modelId": {
+                    "__rl": true,
+                    "value": "models/gemini-2.5-flash",
+                    "mode": "list",
+                    "cachedResultName": "models/gemini-2.5-flash"
+                },
+                "messages": {
+                    "values": [
                         {
-                            "role": "system",
-                            "content": "=={{ $json.systemPrompt }}"
-                        },
-                        {
-                            "content": "=={{ $json.userPrompt }}"
+                            "content": "=You are a professional blog writer for a digital agency. Write a comprehensive blog post about: {{ $json.topic }}\n\nReturn ONLY valid JSON (no markdown code blocks, no extra text) with this exact structure:\n{\n  \"title\": \"SEO-optimized title\",\n  \"description\": \"Meta description under 160 characters\",\n  \"content\": \"Full markdown content with ## headings, bullet points, and paragraphs. Use proper markdown formatting.\",\n  \"tags\": [\"tag1\", \"tag2\", \"tag3\"],\n  \"category\": \"Category name\",\n  \"image_prompt\": \"Detailed prompt for generating a featured image\"\n}\n\nIMPORTANT: Ensure all JSON string values have proper escaping. Do not include unescaped newlines inside string values - use \\n instead. The response must be valid parseable JSON."
                         }
                     ]
                 },
-                "options": {},
-                "requestOptions": {}
+                "options": {}
             },
-            "id": "openai-generator",
-            "name": "OpenAI Generator",
-            "type": "n8n-nodes-base.openAi",
+            "id": "2c784cc2-dfc3-4bb2-a63c-160cc2ac8c5d",
+            "name": "Message a model",
+            "type": "@n8n/n8n-nodes-langchain.googleGemini",
             "typeVersion": 1,
             "position": [
-                -1152,
-                -200
+                400,
+                -48
             ],
             "credentials": {
-                "openAiApi": {
-                    "id": "MZU7ssO7dGn3JFC4",
-                    "name": "OpenAi account"
+                "googlePalmApi": {
+                    "id": "acyWBVtQH4BRp3YS",
+                    "name": "Google Gemini(PaLM) Api account"
                 }
             }
         },
         {
             "parameters": {
-                "jsCode": "const response = $input.first().json.message.content;\nlet contentData;\n\ntry {\n  contentData = JSON.parse(response);\n} catch (error) {\n  throw new Error('Failed to parse OpenAI response as JSON: ' + error.message);\n}\n\nconst required = ['title', 'excerpt', 'content', 'category', 'tags', 'image_prompt'];\nfor (const field of required) {\n  if (!contentData[field]) {\n    throw new Error(`Missing required field: ${field}`);\n  }\n}\n\nreturn { json: contentData };"
+                "jsCode": "// Get the Gemini response\nconst response = $input.first().json;\n\n// Extract the text content from the response\nlet responseText = '';\n\nif (typeof response === 'string') {\n  responseText = response;\n} else if (response.text) {\n  responseText = response.text;\n} else if (response.content && response.content.parts && response.content.parts[0]) {\n  responseText = response.content.parts[0].text;\n} else if (response.candidates && response.candidates[0]) {\n  responseText = response.candidates[0].content.parts[0].text;\n} else {\n  // Try to find any text property\n  responseText = JSON.stringify(response);\n}\n\nconsole.log('Raw response type:', typeof response);\nconsole.log('Response keys:', Object.keys(response || {}));\nconsole.log('responseText length:', responseText.length);\n\n// Clean up the response - remove markdown code blocks if present\nlet cleanedText = responseText\n  .replace(/^```json\\s*/i, '')\n  .replace(/^```\\s*/i, '')\n  .replace(/\\s*```$/i, '')\n  .trim();\n\nconsole.log('After markdown cleanup, length:', cleanedText.length);\n\n// CRITICAL: Escape control characters within JSON string values\n// This handles raw newlines, tabs, etc. that break JSON.parse()\nfunction escapeControlCharsInStrings(jsonStr) {\n  let result = '';\n  let inString = false;\n  let i = 0;\n  \n  while (i < jsonStr.length) {\n    const char = jsonStr[i];\n    const nextChar = jsonStr[i + 1];\n    \n    // Handle escaped characters (skip them)\n    if (char === '\\\\' && inString) {\n      result += char + (nextChar || '');\n      i += 2;\n      continue;\n    }\n    \n    // Toggle string state on unescaped quotes\n    if (char === '\"') {\n      inString = !inString;\n      result += char;\n      i++;\n      continue;\n    }\n    \n    // Handle control characters inside strings\n    if (inString) {\n      const charCode = char.charCodeAt(0);\n      if (charCode < 32) { // Control characters\n        switch (char) {\n          case '\\n': result += '\\\\n'; break;\n          case '\\r': result += '\\\\r'; break;\n          case '\\t': result += '\\\\t'; break;\n          case '\\b': result += '\\\\b'; break;\n          case '\\f': result += '\\\\f'; break;\n          default: result += ''; // Remove other control chars\n        }\n        i++;\n        continue;\n      }\n    }\n    \n    result += char;\n    i++;\n  }\n  \n  return result;\n}\n\n// Apply control character escaping\nlet sanitized = escapeControlCharsInStrings(cleanedText);\n\nconsole.log('After control char escaping, length:', sanitized.length);\n\n// Additional cleanup for common JSON issues\nsanitized = sanitized\n  .replace(/,\\s*}/g, '}')  // Remove trailing commas before }\n  .replace(/,\\s*]/g, ']')  // Remove trailing commas before ]\n  .replace(/[\\u2018\\u2019]/g, \"'\")  // Smart single quotes\n  .replace(/[\\u201C\\u201D]/g, '\"')  // Smart double quotes\n  .replace(/\\u0000/g, '');  // Null characters\n\nconsole.log('Final sanitized length:', sanitized.length);\nconsole.log('First 500 chars:', sanitized.substring(0, 500));\n\ntry {\n  const parsed = JSON.parse(sanitized);\n  console.log('JSON parsed successfully!');\n  console.log('Parsed keys:', Object.keys(parsed));\n  return [{ json: parsed }];\n} catch (parseError) {\n  console.log('JSON parse error:', parseError.message);\n  console.log('Error position context:', sanitized.substring(\n    Math.max(0, parseError.message.match(/position (\\d+)/)?.[1] - 50 || 0),\n    Math.min(sanitized.length, (parseError.message.match(/position (\\d+)/)?.[1] || 0) + 100)\n  ));\n  throw new Error(`JSON parse error: ${parseError.message}`);\n}"
             },
-            "id": "parse-json",
+            "id": "eaa5eb31-4f59-44f1-8c14-c4378ec77537",
             "name": "Parse JSON Response",
             "type": "n8n-nodes-base.code",
             "typeVersion": 2,
             "position": [
-                -928,
-                -200
+                752,
+                -48
             ]
         },
         {
             "parameters": {
                 "resource": "image",
-                "prompt": "=={{ $json.image_prompt }}",
-                "model": "dall-e-3",
-                "options": {},
-                "requestOptions": {}
+                "modelId": {
+                    "__rl": true,
+                    "value": "models/gemini-2.5-flash-image",
+                    "mode": "list",
+                    "cachedResultName": "models/gemini-2.5-flash-image (Nano Banana)"
+                },
+                "prompt": "={{ $json.image_prompt }}",
+                "options": {}
             },
-            "id": "dalle-3",
-            "name": "DALL-E 3",
-            "type": "n8n-nodes-base.openAi",
+            "id": "a9c1d841-0ca8-48a1-a66d-c0c3091b0710",
+            "name": "Generate an image",
+            "type": "@n8n/n8n-nodes-langchain.googleGemini",
             "typeVersion": 1,
             "position": [
-                -704,
-                -200
+                976,
+                -48
             ],
             "credentials": {
-                "openAiApi": {
-                    "id": "MZU7ssO7dGn3JFC4",
-                    "name": "OpenAi account"
+                "googlePalmApi": {
+                    "id": "acyWBVtQH4BRp3YS",
+                    "name": "Google Gemini(PaLM) Api account"
                 }
             }
         },
         {
             "parameters": {
-                "jsCode": "const contentData = $('Parse JSON Response').first().json;\nconst imageBinary = $('DALL-E 3').first().binary;\n\n// Sanitize for YAML - escape backslashes and quotes\nconst sanitizeForYaml = (str) => {\n    if (!str) return '';\n    return str\n        .replace(/\\\\/g, '')      // Remove backslashes\n        .replace(/\"/g, '\\\\\"')    // Escape double quotes\n        .replace(/'/g, \"'\");      // Normalize apostrophes\n};\n\n// Slugify title\nconst slug = contentData.title\n    .toString()\n    .toLowerCase()\n    .trim()\n    .replace(/\\s+/g, '-')\n    .replace(/[^\\w-]+/g, '')\n    .replace(/--+/g, '-')\n    .replace(/^-+|-+$/g, '');\n\nconst date = new Date().toISOString();\nconst imagePath = `~/assets/images/posts/${slug}.png`;\nconst imageGitPath = `src/assets/images/posts/${slug}.png`;\nconst postGitPath = `src/data/post/${slug}.md`;\n\nconst safeTitle = sanitizeForYaml(contentData.title);\nconst safeExcerpt = sanitizeForYaml(contentData.excerpt);\n\nconst fileContent = `---\npublishDate: ${date}\ntitle: \"${safeTitle}\"\nexcerpt: \"${safeExcerpt}\"\nimage: ${imagePath}\ncategory: ${contentData.category}\ntags:\n${contentData.tags.map(tag => `  - ${tag}`).join('\\n')}\nmetadata:\n  canonical: https://criztec.com/${slug}\n---\n\n${contentData.content}\n`;\n\nconst output = { \n    json: { \n        fileContent, \n        slug, \n        title: contentData.title, \n        url: `https://criztec.com/${slug}`,\n        imageGitPath,\n        postGitPath\n    }\n};\n\nif (imageBinary) {\n    output.binary = imageBinary;\n}\n\nreturn output;"
+                "jsCode": "// Get content from Parse JSON Response node\nconst contentData = $('Parse JSON Response').first().json;\n\n// Get image data from the previous node (Generate an image)\nconst imageData = $input.first().json;\n\nconsole.log('Content data keys:', Object.keys(contentData || {}));\nconsole.log('Image data keys:', Object.keys(imageData || {}));\n\n// Validate we have the required content\nif (!contentData || !contentData.title) {\n  throw new Error('Missing content data from Parse JSON Response. Keys: ' + Object.keys(contentData || {}));\n}\n\nconst { title, description, content, tags, category } = contentData;\n\n// Generate filename-safe slug from title\nconst slug = title\n  .toLowerCase()\n  .replace(/[^a-z0-9]+/g, '-')\n  .replace(/^-|-$/g, '');\n\nconst date = new Date().toISOString().split('T')[0];\nconst imageName = `${slug}.png`;\n\n// Get image base64 - handle different response structures\nlet imageBase64 = '';\nif (imageData.data) {\n  imageBase64 = imageData.data;\n} else if (imageData.images && imageData.images[0]) {\n  imageBase64 = imageData.images[0].base64 || imageData.images[0];\n} else if (imageData.image) {\n  imageBase64 = imageData.image.base64 || imageData.image;\n} else if (typeof imageData === 'string') {\n  imageBase64 = imageData;\n}\n\nconsole.log('Image base64 length:', imageBase64?.length || 0);\n\n// Build frontmatter\nconst frontmatter = `---\ntitle: \"${title}\"\ndescription: \"${description}\"\npubDate: ${date}\nimage: ~/assets/images/posts/${imageName}\ncategory: ${category}\ntags:\n${tags.map(tag => `  - ${tag}`).join('\\n')}\n---\n\n`;\n\nconst markdown = frontmatter + content;\n\nreturn [{\n  json: {\n    markdown,\n    filename: `${slug}.md`,\n    imageName,\n    imageBase64,\n    slug,\n    title\n  }\n}];"
             },
-            "id": "format-markdown",
+            "id": "0f33f899-6a5d-4796-b5eb-8b0b30e3f06e",
             "name": "Format Markdown",
             "type": "n8n-nodes-base.code",
             "typeVersion": 2,
             "position": [
-                -480,
-                -200
+                1200,
+                -48
             ]
         },
         {
             "parameters": {
                 "resource": "file",
-                "owner": "vimalhari",
-                "repository": "astrowind",
-                "filePath": "={{ $json.imageGitPath }}",
-                "binaryData": true,
-                "commitMessage": "={{ '[skip ci] assets: add image for ' + $json.title }}"
+                "owner": {
+                    "__rl": true,
+                    "value": "vimalhari",
+                    "mode": "list",
+                    "cachedResultName": "vimalhari"
+                },
+                "repository": {
+                    "__rl": true,
+                    "value": "astrowind",
+                    "mode": "list",
+                    "cachedResultName": "astrowind"
+                },
+                "filePath": "=src/content/post/{{ $('Format Markdown').item.json.filename }}",
+                "fileContent": "={{ $('Format Markdown').item.json.markdown }}",
+                "commitMessage": "=Add blog post: {{ $('Format Markdown').item.json.title }}"
             },
-            "id": "upload-image",
-            "name": "Upload Image to GitHub",
+            "id": "f31ed936-cf49-40e3-8e29-2cf866e86895",
+            "name": "Create Post in GitHub",
             "type": "n8n-nodes-base.github",
             "typeVersion": 1,
             "position": [
-                -256,
-                -200
+                1648,
+                -48
             ],
+            "webhookId": "35885562-79eb-420e-a894-30c99f11162d",
             "credentials": {
                 "githubApi": {
                     "id": "r6kcmLaMW40HPlpe",
@@ -146,20 +160,31 @@
         {
             "parameters": {
                 "resource": "file",
-                "owner": "vimalhari",
-                "repository": "astrowind",
-                "filePath": "={{ $('Format Markdown').first().json.postGitPath }}",
-                "fileContent": "={{ $('Format Markdown').first().json.fileContent }}",
-                "commitMessage": "={{ 'content: add blog post - ' + $('Format Markdown').first().json.title }}"
+                "owner": {
+                    "__rl": true,
+                    "value": "vimalhari",
+                    "mode": "list",
+                    "cachedResultName": "vimalhari"
+                },
+                "repository": {
+                    "__rl": true,
+                    "value": "astrowind",
+                    "mode": "list",
+                    "cachedResultName": "astrowind"
+                },
+                "filePath": "=src/assets/images/posts/{{ $json.imageName }}",
+                "fileContent": "={{ $json.imageBase64 }}",
+                "commitMessage": "=Add image for: {{ $json.title }}"
             },
-            "id": "create-post",
-            "name": "Create Post in GitHub",
+            "id": "94eb1dcb-e022-48e7-ad4b-1b97e74bdcc0",
+            "name": "Upload Image to GitHub",
             "type": "n8n-nodes-base.github",
             "typeVersion": 1,
             "position": [
-                -32,
-                -200
+                1424,
+                -48
             ],
+            "webhookId": "243edf15-954b-41a6-90dc-fe588878e5fd",
             "credentials": {
                 "githubApi": {
                     "id": "r6kcmLaMW40HPlpe",
@@ -174,36 +199,17 @@
                 "authentication": "genericCredentialType",
                 "genericAuthType": "httpHeaderAuth",
                 "sendBody": true,
-                "specifyBody": "keypair",
-                "bodyParameters": {
-                    "parameters": [
-                        {
-                            "name": "from",
-                            "value": "Criztec Blog <noreply@criztec.com>"
-                        },
-                        {
-                            "name": "to",
-                            "value": "={{ ['info@crizone.com'] }}"
-                        },
-                        {
-                            "name": "subject",
-                            "value": "=Blog Post Published: {{ $('Format Markdown').first().json.title }}"
-                        },
-                        {
-                            "name": "html",
-                            "value": "=<h2>Post Successfully Published!</h2><p><strong>Title:</strong> {{ $('Format Markdown').first().json.title }}</p><p><strong>URL:</strong> <a href='{{ $('Format Markdown').first().json.url }}'>{{ $('Format Markdown').first().json.url }}</a></p><p>The post has been published to your website.</p>"
-                        }
-                    ]
-                },
+                "specifyBody": "json",
+                "jsonBody": "={\n  \"from\": \"blog@crizone.com\",\n  \"to\": \"info@crizone.com\",\n  \"subject\": \"New Blog Post Published: {{ $('Format Markdown').item.json.title }}\",\n  \"html\": \"<h1>New Blog Post Published!</h1><p>Title: {{ $('Format Markdown').item.json.title }}</p><p>The post has been automatically generated and committed to GitHub.</p>\"\n}",
                 "options": {}
             },
-            "id": "send-email",
+            "id": "12ac19ca-27ad-4e2c-bfa4-3ed170ca1258",
             "name": "Send Success Email",
             "type": "n8n-nodes-base.httpRequest",
             "typeVersion": 4.2,
             "position": [
-                192,
-                -200
+                1872,
+                -48
             ],
             "credentials": {
                 "httpHeaderAuth": {
@@ -230,14 +236,14 @@
             "main": [
                 [
                     {
-                        "node": "OpenAI Generator",
+                        "node": "Message a model",
                         "type": "main",
                         "index": 0
                     }
                 ]
             ]
         },
-        "OpenAI Generator": {
+        "Message a model": {
             "main": [
                 [
                     {
@@ -252,14 +258,14 @@
             "main": [
                 [
                     {
-                        "node": "DALL-E 3",
+                        "node": "Generate an image",
                         "type": "main",
                         "index": 0
                     }
                 ]
             ]
         },
-        "DALL-E 3": {
+        "Generate an image": {
             "main": [
                 [
                     {
@@ -306,10 +312,12 @@
     },
     "active": false,
     "settings": {
-        "executionOrder": "v1",
-        "timezone": "Europe/London",
-        "callerPolicy": "workflowsFromSameOwner"
+        "executionOrder": "v1"
     },
-    "id": "astrowind-blog-generator",
+    "versionId": "56704525-e632-4717-8fab-811245cd62ac",
+    "meta": {
+        "instanceId": "5e3013812236ffc68673e049df10d814c2a1f810c4fc7568e02e05671f19b57a"
+    },
+    "id": "9TohKukWpXDajtNm",
     "tags": []
 }

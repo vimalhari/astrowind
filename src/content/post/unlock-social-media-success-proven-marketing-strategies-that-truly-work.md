@@ -2,7 +2,7 @@
 title: "Unlock Social Media Success: Proven Marketing Strategies That Truly Work"
 description: "Boost your brand's online presence with actionable social media marketing strategies. Learn to connect, engage, and convert your audience effectively."
 pubDate: 2025-12-03
-image: ~/assets/images/posts/unlock-social-media-success-proven-marketing-strategies-that-truly-work.png
+image: 'https://image.pollinations.ai/prompt/social-media-marketing-strategy-digital-icons-smartphones-engagement-professional-modern-blue-theme?width=1200&height=630&nologo=true'
 category: Digital Marketing
 tags:
   - social media marketing
