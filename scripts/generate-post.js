@@ -256,11 +256,12 @@ function checkDuplicateContent(newTitle, existingTitles) {
     const setB = new Set(wordsB);
     const intersection = new Set([...setA].filter((x) => setB.has(x)));
 
-    // If 5+ words overlap OR 70%+ similarity, consider duplicate
+    // If 5+ words overlap OR 70%+ similarity (with at least 3 words in smaller title), consider duplicate
     const overlapCount = intersection.size;
-    const similarity = overlapCount / Math.min(setA.size, setB.size);
+    const minWords = Math.min(setA.size, setB.size);
+    const similarity = overlapCount / minWords;
 
-    return overlapCount >= 5 || similarity > 0.7;
+    return overlapCount >= 5 || (similarity > 0.7 && minWords >= 3);
   });
 }
 
