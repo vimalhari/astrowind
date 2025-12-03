@@ -64,12 +64,12 @@ The script uses an advanced word-overlap similarity algorithm to detect duplicat
 
 **Examples:**
 
-| New Title | Existing Title | Result | Reason |
-|-----------|---------------|--------|--------|
-| "Cloud Migration Strategy" | "Cloud Migration Strategy" | ❌ Duplicate | Exact match |
-| "Ultimate Cloud Migration Strategy Guide" | "Cloud Migration Strategy" | ❌ Duplicate | 100% similarity (3/3 words) |
-| "Cloud Security Best Practices" | "Cloud Migration Strategy" | ✅ Unique | Only 1 word overlap |
-| "Docker Containerization Guide" | "Complete Guide to Docker" | ✅ Unique | 60% similarity (below threshold) |
+| New Title                                 | Existing Title             | Result       | Reason                           |
+| ----------------------------------------- | -------------------------- | ------------ | -------------------------------- |
+| "Cloud Migration Strategy"                | "Cloud Migration Strategy" | ❌ Duplicate | Exact match                      |
+| "Ultimate Cloud Migration Strategy Guide" | "Cloud Migration Strategy" | ❌ Duplicate | 100% similarity (3/3 words)      |
+| "Cloud Security Best Practices"           | "Cloud Migration Strategy" | ✅ Unique    | Only 1 word overlap              |
+| "Docker Containerization Guide"           | "Complete Guide to Docker" | ✅ Unique    | 60% similarity (below threshold) |
 
 ### 2. Slug Collision Prevention
 
@@ -84,18 +84,21 @@ cloud-migration-guide-2.md
 ### 3. Image Generation
 
 **With DALL-E 3 (default):**
+
 - Generates professional, unique images
 - 1792x1024 landscape format
 - ~$0.08 per image (standard quality)
 - Falls back to placeholder on error
 
 **Disabled (`ENABLE_IMAGE_GENERATION=false`):**
+
 - Uses placeholder: `/images/blog-placeholder.webp`
 - No API calls or costs
 
 ### 4. Content Generation
 
 Posts are generated with:
+
 - 800-1200 words
 - SEO-optimized title and excerpt
 - 3-5 relevant tags
@@ -110,9 +113,9 @@ Generated posts are saved to `src/data/post/` with this frontmatter:
 ```yaml
 ---
 publishDate: 2025-12-03T00:00:00.000Z
-title: "Your Post Title"
-excerpt: "A compelling summary of the post"
-image: "https://oaidalleapiprodscus.blob.core.windows.net/..."
+title: 'Your Post Title'
+excerpt: 'A compelling summary of the post'
+image: 'https://oaidalleapiprodscus.blob.core.windows.net/...'
 category: Technology
 tags:
   - cloud-computing
@@ -121,7 +124,6 @@ tags:
 metadata:
   canonical: https://criztec.com/your-post-title
 ---
-
 Post content here...
 ```
 
@@ -134,12 +136,14 @@ Post content here...
 - **Total per post**: ~$0.085
 
 To reduce costs:
+
 - Set `ENABLE_IMAGE_GENERATION=false` to use placeholders
 - Use `gpt-3.5-turbo` model (lower quality, cheaper)
 
 ## Rate Limiting
 
 The script includes built-in rate limiting:
+
 - 3-second delay between API calls
 - Prevents hitting OpenAI rate limits
 - Configurable via `CONFIG.apiDelay`
@@ -147,6 +151,7 @@ The script includes built-in rate limiting:
 ## Error Handling
 
 The script gracefully handles:
+
 - API failures (with retries)
 - Duplicate content (regenerates with unique angle)
 - Slug collisions (auto-increments)
@@ -158,6 +163,7 @@ The script gracefully handles:
 ### "OPENAI_API_KEY environment variable is not set"
 
 Set your API key:
+
 ```bash
 export OPENAI_API_KEY="your-api-key-here"
 ```
@@ -165,6 +171,7 @@ export OPENAI_API_KEY="your-api-key-here"
 ### "Unable to generate unique content after retries"
 
 The script tried 2 times but couldn't generate a unique title. Try:
+
 - Using a more specific topic
 - Checking if too many similar posts already exist
 - Manually specifying a different topic
@@ -172,6 +179,7 @@ The script tried 2 times but couldn't generate a unique title. Try:
 ### Image generation fails
 
 The script will automatically fall back to placeholder images. Check:
+
 - Your API key has DALL-E 3 access
 - You haven't hit rate limits
 - Your account has sufficient credits
@@ -179,6 +187,7 @@ The script will automatically fall back to placeholder images. Check:
 ### Slug collisions still occurring
 
 This shouldn't happen - the script prevents collisions automatically. If it does:
+
 1. Check if the file is being created by another process
 2. Verify filesystem permissions
 3. Report as a bug
@@ -211,6 +220,7 @@ npm run check
 ## Security
 
 The script includes multiple security measures:
+
 - YAML injection prevention via proper escaping
 - Input sanitization for titles and excerpts
 - No execution of user-provided code
