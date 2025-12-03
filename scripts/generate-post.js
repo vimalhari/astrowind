@@ -20,6 +20,12 @@ const CONFIG = {
   retryDelay: 1000,
   timeout: 30000,
   apiDelay: 3000, // Delay between API calls to avoid rate limits
+  dalleMaxPromptLength: 4000, // DALL-E 3 maximum prompt length
+  maxDuplicateRetries: 2, // Maximum retries for duplicate content detection
+  // Duplicate detection thresholds
+  duplicateMinWords: 3, // Minimum words in title for similarity check
+  duplicateMinOverlap: 5, // Minimum word overlap to consider duplicate
+  duplicateSimilarityThreshold: 0.7, // Similarity ratio threshold (70%)
 };
 
 const TOPICS = [
@@ -256,12 +262,15 @@ function checkDuplicateContent(newTitle, existingTitles) {
     const setB = new Set(wordsB);
     const intersection = new Set([...setA].filter((x) => setB.has(x)));
 
-    // If 5+ words overlap OR 70%+ similarity (with at least 3 words in smaller title), consider duplicate
+    // Check for duplicate based on configurable thresholds
     const overlapCount = intersection.size;
     const minWords = Math.min(setA.size, setB.size);
     const similarity = overlapCount / minWords;
 
-    return overlapCount >= 5 || (similarity > 0.7 && minWords >= 3);
+    return (
+      overlapCount >= CONFIG.duplicateMinOverlap ||
+      (similarity > CONFIG.duplicateSimilarityThreshold && minWords >= CONFIG.duplicateMinWords)
+    );
   });
 }
 
@@ -386,7 +395,7 @@ async function generateImageWithDallE(imagePrompt, title) {
       },
       body: JSON.stringify({
         model: CONFIG.imageModel,
-        prompt: prompt.slice(0, 4000), // DALL-E 3 max prompt length
+        prompt: prompt.slice(0, CONFIG.dalleMaxPromptLength),
         n: 1,
         size: '1792x1024', // Landscape format perfect for blog headers
         quality: 'standard', // or 'hd' for higher quality ($0.080 vs $0.120)
@@ -422,7 +431,9 @@ async function generateMarkdownContent(data, slug) {
   const sanitizeYAML = (str) => {
     return str
       .replace(/\\/g, '\\\\') // Escape backslashes to prevent interference with quote escaping
-      .replace(/"/g, '\\"') // Escape quotes
+      .replace(/"/g, '\\"') // Escape double quotes
+      .replace(/'/g, "\\'") // Escape single quotes
+      .replace(/\r/g, '') // Remove carriage returns
       .replace(/\n/g, ' ') // Remove newlines
       .trim();
   };
@@ -476,11 +487,10 @@ async function generatePost(topic = null) {
 
     // Verify the generated content is not a duplicate
     let retryCount = 0;
-    const maxDuplicateRetries = 2;
 
-    while (checkDuplicateContent(postData.title, existingPosts) && retryCount < maxDuplicateRetries) {
+    while (checkDuplicateContent(postData.title, existingPosts) && retryCount < CONFIG.maxDuplicateRetries) {
       console.warn(
-        `⚠️  Duplicate content detected (attempt ${retryCount + 1}/${maxDuplicateRetries}): "${postData.title}"`
+        `⚠️  Duplicate content detected (attempt ${retryCount + 1}/${CONFIG.maxDuplicateRetries}): "${postData.title}"`
       );
       console.warn(`   Regenerating with more specific requirements...`);
 
