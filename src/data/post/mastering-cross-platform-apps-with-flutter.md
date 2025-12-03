@@ -1,8 +1,8 @@
 ---
 publishDate: 2025-12-03T07:29:18.932Z
 title: "Mastering Cross-Platform Apps with Flutter"
-excerpt: "Unlock efficiency with Flutter: build robust cross-platform apps and optimise your development cycle with Criztec Technologies\' expertise."
-image: "https://oaidalleapiprodscus.blob.core.windows.net/private/org-LW9jLHTFawtBmQzUAVdBnpID/user-1QsNmerBDnRfJbT0ZfBYxpsW/img-n6WtZahPWIEBizFhfIwu2eNp.png?st=2025-12-03T06%3A29%3A43Z&se=2025-12-03T08%3A29%3A43Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=475fd488-6c59-44a5-9aa9-31c4db451bea&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-12-03T07%3A29%3A43Z&ske=2025-12-04T07%3A29%3A43Z&sks=b&skv=2024-08-04&sig=XB%2B4YVMyR1eRBVh13B3gia8G7YoJMlJvtDHKcMzsnKs%3D"
+excerpt: "Unlock efficiency with Flutter: build robust cross-platform apps and optimise your development cycle with Criztec Technologies expertise."
+image: ~/assets/images/posts/mastering-cross-platform-apps-with-flutter.png
 category: Custom Software
 tags:
   - flutter-development

@@ -1,8 +1,8 @@
 ---
 publishDate: 2025-12-03T00:02:28.916Z
-title: 'Microservices vs. Monoliths: Strategic Choices'
-excerpt: "Explore microservices vs. monoliths with Criztec's insights for UK tech success."
-image: 'https://image.pollinations.ai/prompt/A%20visually%20striking%20image%20of%20a%20futuristic%20cityscape%2C%20juxtaposing%20towering%20skyscrapers%20representing%20monolithic%20architecture%20and%20a%20network%20of%20connected%20smaller%20buildings%20symbolising%20microservices%2C%20with%20a%20clear%2C%20professional%20tech%20theme%20suitable%20for%20a%20business%20blog%20header.?width=1200&height=630&nologo=true&enhance=true'
+title: "Microservices vs. Monoliths: Strategic Choices"
+excerpt: "Explore microservices vs. monoliths with Criztec insights for UK tech success."
+image: ~/assets/images/posts/microservices-vs-monoliths-strategic-choices.png
 category: Technology
 tags:
   - microservices
