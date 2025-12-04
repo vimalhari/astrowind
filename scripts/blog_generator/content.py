@@ -1,13 +1,13 @@
-"""Enhanced content generation using OpenAI GPT-4 with quality improvements."""
+"""Enhanced content generation using Google Gemini 2.5 Flash with quality improvements."""
 
 import json
 import os
 import re
 
-from openai import OpenAI
+from google import genai
 from prefect import task
 
-from .config import COMPANY_CONTEXT, OPENAI_MODEL, TEMPERATURE
+from .config import COMPANY_CONTEXT, GEMINI_MODEL, TEMPERATURE
 from .types import BlogContent
 
 
@@ -30,7 +30,7 @@ def generate_blog_content(
     Raises:
         ValueError: If API response is invalid or missing required fields
     """
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
     # Enhanced system prompt with quality emphasis
     system_prompt = """You are a senior content strategist and technical writer for Criztec Technologies with 15+ years of experience.
@@ -48,7 +48,7 @@ Content Quality Standards:
 - Storytelling that engages while educating
 - Natural keyword integration that serves the reader
 
-Always respond with valid JSON only, no markdown code blocks or other formatting."""
+Respond ONLY with valid JSON, no markdown code blocks or other formatting."""
 
     # Build enhanced prompt with research context
     research_section = ""
@@ -163,18 +163,19 @@ JSON Format:
     # Use higher temperature for more creative, unique content
     enhanced_temperature = min(TEMPERATURE + 0.1, 1.0)
 
-    response = client.chat.completions.create(
-        model=OPENAI_MODEL,
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt},
-        ],
-        temperature=enhanced_temperature,
+    response = client.models.generate_content(
+        model=GEMINI_MODEL,
+        contents=user_prompt,
+        config=genai.types.GenerateContentConfig(
+            system_instruction=system_prompt,
+            temperature=enhanced_temperature,
+            response_mime_type="application/json",
+        ),
     )
 
-    content_json = response.choices[0].message.content
+    content_json = response.text
     if not content_json:
-        raise ValueError("Empty response from OpenAI")
+        raise ValueError("Empty response from Gemini")
 
     content_json = content_json.strip()
 
@@ -186,7 +187,7 @@ JSON Format:
         content_data: BlogContent = json.loads(content_json)
     except json.JSONDecodeError as e:
         raise ValueError(
-            f"Failed to parse OpenAI response as JSON: {e}\nResponse: {content_json}"
+            f"Failed to parse Gemini response as JSON: {e}\nResponse: {content_json}"
         ) from e
 
     # Validate required fields
@@ -220,7 +221,7 @@ def review_and_enhance_content(content: BlogContent) -> BlogContent:
     """Secondary pass to review and enhance generated content.
 
     This function performs a quality check and suggests improvements
-    using a second GPT-4 call with a critic perspective.
+    using a second Gemini call with a critic perspective.
 
     Args:
         content: Initial generated blog content
@@ -228,7 +229,7 @@ def review_and_enhance_content(content: BlogContent) -> BlogContent:
     Returns:
         Enhanced BlogContent with improvements applied
     """
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
     review_prompt = f"""You are a senior content editor reviewing this blog post for quality and impact.
 
@@ -257,13 +258,16 @@ Provide an enhanced version that:
 Respond with JSON containing: enhanced_content (full markdown), improvements_made (brief list).
 ONLY output valid JSON, no other text."""
 
-    response = client.chat.completions.create(
-        model=OPENAI_MODEL,
-        messages=[{"role": "user", "content": review_prompt}],
-        temperature=0.3,  # Lower temperature for consistent editing
+    response = client.models.generate_content(
+        model=GEMINI_MODEL,
+        contents=review_prompt,
+        config=genai.types.GenerateContentConfig(
+            temperature=0.3,  # Lower temperature for consistent editing
+            response_mime_type="application/json",
+        ),
     )
 
-    review_json = response.choices[0].message.content
+    review_json = response.text
     if not review_json:
         return content
 

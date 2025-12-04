@@ -3,11 +3,10 @@
 import os
 from datetime import UTC, datetime
 
-from openai import (
-    OpenAI,
-)
+from google import genai
 from prefect import task
 
+from .config import GEMINI_MODEL
 from .utils import get_existing_post_slugs, slugify
 
 
@@ -15,7 +14,7 @@ from .utils import get_existing_post_slugs, slugify
 def research_tech_trends() -> dict[str, str]:
     """Research latest trends in web development and tech stack.
 
-    Uses OpenAI with web search to find current trends related to:
+    Uses Gemini with Google Search grounding to find current trends related to:
     - Astro, SvelteKit, Next.js frameworks
     - Django, Python, Rust, Go backend technologies
     - Web development best practices
@@ -24,7 +23,7 @@ def research_tech_trends() -> dict[str, str]:
     Returns:
         Dictionary with researched topic and context
     """
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
     # Get existing posts to avoid duplicates
     existing_slugs = get_existing_post_slugs()
@@ -65,24 +64,22 @@ Format as JSON:
   "keywords": ["keyword1", "keyword2", ...]
 }}"""
 
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a tech research analyst who stays current with web development trends, framework updates, and IT industry news. Provide factual, current information.",
-            },
-            {"role": "user", "content": research_prompt},
-        ],
-        temperature=0.3,  # Lower temperature for more factual responses
+    response = client.models.generate_content(
+        model=GEMINI_MODEL,
+        contents=research_prompt,
+        config=genai.types.GenerateContentConfig(
+            system_instruction="You are a tech research analyst who stays current with web development trends, framework updates, and IT industry news. Provide factual, current information based on real-time data.",
+            temperature=0.3,  # Lower temperature for more factual responses
+            response_mime_type="application/json",
+        ),
     )
 
     import json
     import re
 
-    content = response.choices[0].message.content
+    content = response.text
     if not content:
-        raise ValueError("Empty response from OpenAI research")
+        raise ValueError("Empty response from Gemini research")
 
     # Clean markdown code blocks
     content = re.sub(r"^```json\s*", "", content.strip())

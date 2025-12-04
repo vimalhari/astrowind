@@ -53,11 +53,15 @@ Content Structure:
 - 1200-1500 words for optimal SEO
 """
 
-# OpenAI Configuration
-OPENAI_MODEL: Final[str] = "gpt-4o"
+# Google GenAI Configuration
+GEMINI_MODEL: Final[str] = "gemini-2.5-flash"  # Fast, cost-effective, 1M context
 TEMPERATURE: Final[float] = 0.7
-IMAGE_SIZE: Final[str] = "1792x1024"
-IMAGE_QUALITY: Final[str] = "standard"
+
+# Imagen Configuration
+IMAGEN_MODEL: Final[str] = "imagen-4.0-generate-001"  # Standard quality
+IMAGEN_NUMBER_OF_IMAGES: Final[int] = 1
+IMAGEN_IMAGE_SIZE: Final[str] = "2K"  # 2K resolution for hero images
+IMAGEN_ASPECT_RATIO: Final[str] = "16:9"  # Widescreen for blog headers
 
 # Paths
 POST_PATH_TEMPLATE: Final[str] = "src/data/post/{slug}.md"
