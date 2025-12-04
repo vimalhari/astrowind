@@ -147,6 +147,7 @@ dependencies = [
     { name = "httpx" },
     { name = "prefect" },
     { name = "pygithub" },
+    { name = "python-dotenv" },
 ]
 
 [package.dev-dependencies]
@@ -161,6 +162,7 @@ requires-dist = [
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "prefect", specifier = ">=3.1.11" },
     { name = "pygithub", specifier = ">=2.5.0" },
+    { name = "python-dotenv", specifier = ">=1.0.0" },
 ]
 
 [package.metadata.requires-dev]
