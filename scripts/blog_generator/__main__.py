@@ -3,6 +3,7 @@
 import os
 import sys
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -18,7 +19,7 @@ os.environ["PREFECT_SERVER_ALLOW_EPHEMERAL_MODE"] = "true"
 # Add parent directory to path to allow imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from main import blog_generator_flow
+from main import blog_generator_flow  # noqa: E402
 
 if __name__ == "__main__":
     blog_generator_flow()
