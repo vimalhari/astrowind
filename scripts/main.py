@@ -32,7 +32,7 @@ def blog_generator_flow() -> dict[str, str | bool]:
     content_data = generate_blog_content(topic, research_context=research_data)
 
     # Step 3: Generate hero image
-    print("\n🎨 Step 3: Generating hero image with DALL-E 3...")
+    print("\n🎨 Step 3: Generating hero image with Imagen 4.0...")
     image_data = generate_hero_image(content_data["image_prompt"])
 
     # Step 4: Format markdown with frontmatter

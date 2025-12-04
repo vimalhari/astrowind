@@ -155,7 +155,7 @@ JSON Format:
   "content": "Full markdown content ({depth["word_count"]} words) with H2/H3 structure, examples, and actionable insights",
   "category": "Most Relevant Category",
   "tags": ["primary-keyword", "secondary-keyword", "topic-tag", "audience-tag", "content-type-tag"],
-  "image_prompt": "Detailed DALL-E prompt for professional, on-brand hero image that captures the article's core message",
+  "image_prompt": "Detailed Imagen prompt for professional, on-brand hero image that captures the article's core message",
   "content_quality_score": 9,
   "quality_justification": "Brief explanation of why this content provides exceptional value"
 }}"""
