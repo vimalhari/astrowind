@@ -119,7 +119,11 @@ HIGH-VALUE CONTENT REQUIREMENTS:
    - Strategic keyword placement in title, headers, first 100 words
    - Semantic keyword variations throughout
    - Meta description that compels clicks (150-160 chars)
-   - Internal linking suggestions noted in [brackets]
+   - Internal links using proper markdown format: [anchor text](/page-slug)
+   - Use these internal link paths when relevant:
+     * Services: /services, /web-development, /digital-marketing, /it-support, /mobile-app
+     * About: /about, /contact, /careers
+     * Blog: /blog (for blog listing)
    - FAQ-style sections for featured snippet opportunities
 
 4. CREDIBILITY & DEPTH
