@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import { jobListings } from '~/data/jobs';
+import { buildMailto, CAREERS_EMAIL } from '~/utils/mailto';
 
 export async function getStaticPaths() {
   return jobListings.map((job) => ({
@@ -54,6 +55,24 @@ const metadata = {
     description: job.description,
   },
 };
+
+const applySubject = `Application for ${job.title}`;
+const applyBody = `Hello,
+
+I am interested in applying for the ${job.title} position (Job ID: ${job.id}).
+
+Please find my resume attached.
+
+Best regards`;
+
+const expressInterestSubject = 'Interest in Future Opportunities';
+const expressInterestBody = `Hello,
+
+I am interested in future opportunities similar to the ${job.title} position.
+
+Please keep me in mind for upcoming openings.
+
+Best regards`;
 ---
 
 <Layout metadata={metadata}>
@@ -263,7 +282,7 @@ const metadata = {
               job.isActive ? (
                 <div class="space-y-3">
                   <a
-                    href={`mailto:info@criztec.com?subject=Application for ${job.title}&body=Hello,%0D%0A%0D%0AI am interested in applying for the ${job.title} position (Job ID: ${job.id}).%0D%0A%0D%0APlease find my resume attached.%0D%0A%0D%0ABest regards`}
+                    href={buildMailto(CAREERS_EMAIL, { subject: applySubject, body: applyBody })}
                     class="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center block"
                   >
                     Apply for This Position
@@ -290,7 +309,7 @@ const metadata = {
                   </div>
 
                   <a
-                    href="mailto:info@criztec.com?subject=Interest in Future Opportunities&body=Hello,%0D%0A%0D%0AI am interested in future opportunities similar to the ${job.title} position.%0D%0A%0D%0APlease keep me in mind for upcoming openings.%0D%0A%0D%0ABest regards"
+                    href={buildMailto(CAREERS_EMAIL, { subject: expressInterestSubject, body: expressInterestBody })}
                     class="w-full border border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900 font-medium py-3 px-4 rounded-lg transition-colors text-center block"
                   >
                     Express Interest
@@ -349,7 +368,7 @@ const metadata = {
           {
             variant: 'primary',
             text: 'Apply Now',
-            href: `mailto:info@criztec.com?subject=Application for ${job.title}&body=Hello,%0D%0A%0D%0AI am interested in applying for the ${job.title} position (Job ID: ${job.id}).%0D%0A%0D%0APlease find my resume attached.%0D%0A%0D%0ABest regards`,
+            href: buildMailto(CAREERS_EMAIL, { subject: applySubject, body: applyBody }),
             icon: 'tabler:send',
           },
           {
@@ -363,7 +382,7 @@ const metadata = {
           {
             variant: 'primary',
             text: 'Express Interest',
-            href: `mailto:info@criztec.com?subject=Interest in Future Opportunities&body=Hello,%0D%0A%0D%0AI am interested in future opportunities similar to the ${job.title} position.%0D%0A%0D%0APlease keep me in mind for upcoming openings.%0D%0A%0D%0ABest regards`,
+            href: buildMailto(CAREERS_EMAIL, { subject: expressInterestSubject, body: expressInterestBody }),
             icon: 'tabler:heart',
           },
           {

@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { getActiveJobs } from '~/data/jobs';
+import { buildMailto, CAREERS_EMAIL } from '~/utils/mailto';
 
 const metadata = {
   title: 'Careers - Join Our Growing Team | Criztec Technologies',
@@ -39,7 +40,7 @@ const structuredData = {
     '@type': 'ContactPoint',
     telephone: '+44-20-XXXX-XXXX',
     contactType: 'HR',
-    email: 'careers@criztec.com',
+    email: CAREERS_EMAIL,
   },
   sameAs: ['https://www.linkedin.com/company/criztec'],
 };
@@ -111,7 +112,7 @@ const jobPostings = activeJobs.map((job) => ({
           View Open Positions
         </a>
         <a
-          href="mailto:careers@criztec.com"
+          href={buildMailto(CAREERS_EMAIL)}
           class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
         >
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -199,128 +200,61 @@ const jobPostings = activeJobs.map((job) => ({
 
     {
       activeJobs.length > 0 ? (
-        <div class="space-y-6">
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {activeJobs.map((job) => (
-            <article class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-              <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{job.title}</h3>
-                  <div class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-300">
-                    <span class="flex items-center">
-                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                        />
-                      </svg>
+            <article class="group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex flex-1 flex-col">
+                <div class="min-w-0">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    <a
+                      href={`/careers/${job.id}`}
+                      class="rounded-sm hover:text-primary-700 dark:hover:text-primary-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-800"
+                    >
+                      {job.title}
+                    </a>
+                  </h3>
+
+                  <div class="mt-3 flex flex-wrap items-center gap-2">
+                    <span class="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-700 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-200">
                       {job.department}
                     </span>
-                    <span class="flex items-center">
-                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
+                    <span class="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-700 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-200">
                       {job.location}
                     </span>
-                    <span class="flex items-center">
-                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                      {job.type}
-                    </span>
-                    <span class="flex items-center">
-                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
+                    <span class="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-700 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-200">
                       {job.experience}
                     </span>
-                  </div>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-3 mt-4 md:mt-0">
-                  {job.salaryRange && (
-                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">
-                      {job.salaryRange}
+                    <span class="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-700 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-200">
+                      {job.type.charAt(0).toUpperCase() + job.type.slice(1).replace('-', ' ')}
                     </span>
-                  )}
-                  <a
-                    href={`mailto:careers@criztec.com?subject=Application for ${job.title}&body=Hi, I would like to apply for the ${job.title} position.`}
-                    class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
-                  >
-                    Apply Now
-                  </a>
+                    {job.salaryRange && (
+                      <span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900 px-3 py-1 text-xs font-medium text-green-800 dark:text-green-200">
+                        {job.salaryRange}
+                      </span>
+                    )}
+                  </div>
+
+                  <p class="mt-4 text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3">{job.description}</p>
                 </div>
               </div>
 
-              <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{job.description}</p>
-
-              <details class="group">
-                <summary class="cursor-pointer list-none flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
-                  <svg
-                    class="w-4 h-4 mr-2 transition-transform group-open:rotate-90"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                  View Details
-                </summary>
-                <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600 space-y-4">
-                  {job.requirements.length > 0 && (
-                    <div>
-                      <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Requirements:</h4>
-                      <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                        {job.requirements.slice(0, 5).map((req) => (
-                          <li>{req}</li>
-                        ))}
-                        {job.requirements.length > 5 && (
-                          <li class="text-blue-600 dark:text-blue-400">
-                            + {job.requirements.length - 5} more requirements
-                          </li>
-                        )}
-                      </ul>
-                    </div>
-                  )}
-
-                  {job.responsibilities.length > 0 && (
-                    <div>
-                      <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Key Responsibilities:</h4>
-                      <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                        {job.responsibilities.slice(0, 4).map((resp) => (
-                          <li>{resp}</li>
-                        ))}
-                        {job.responsibilities.length > 4 && (
-                          <li class="text-blue-600 dark:text-blue-400">
-                            + {job.responsibilities.length - 4} more responsibilities
-                          </li>
-                        )}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </details>
+              <div class="mt-6 grid grid-cols-2 gap-3">
+                <a
+                  href={buildMailto(CAREERS_EMAIL, {
+                    subject: `Application for ${job.title}`,
+                    body: `Hi, I would like to apply for the ${job.title} position.`,
+                  })}
+                  class="inline-flex items-center justify-center px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors"
+                >
+                  Apply Now
+                </a>
+                <a
+                  href={`/careers/${job.id}`}
+                  class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 text-sm font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                >
+                  View role
+                </a>
+              </div>
             </article>
           ))}
         </div>
@@ -333,7 +267,7 @@ const jobPostings = activeJobs.map((job) => ({
             opportunities.
           </p>
           <a
-            href="mailto:careers@criztec.com"
+            href={buildMailto(CAREERS_EMAIL)}
             class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
           >
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -360,7 +294,7 @@ const jobPostings = activeJobs.map((job) => ({
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href="mailto:careers@criztec.com"
+          href={buildMailto(CAREERS_EMAIL)}
           class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
         >
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
