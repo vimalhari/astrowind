@@ -1,7 +1,7 @@
 ---
 publishDate: 2025-12-03T00:02:28.916Z
-title: "Microservices vs. Monoliths: Strategic Choices"
-excerpt: "Explore microservices vs. monoliths with Criztec insights for UK tech success."
+title: 'Microservices vs. Monoliths: Strategic Choices'
+excerpt: 'Explore microservices vs. monoliths with Criztec insights for UK tech success.'
 image: ~/assets/images/posts/microservices-vs-monoliths-strategic-choices.png
 category: Technology
 tags:

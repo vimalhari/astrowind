@@ -1,7 +1,7 @@
 ---
 publishDate: 2025-12-04T09:04:11.477264
-title: "Boost Your Web Apps with SvelteKit 2.0 and Rust"
-excerpt: "Discover how SvelteKit 2.0 and Rust maximize web performance and SEO for UK businesses."
+title: 'Boost Your Web Apps with SvelteKit 2.0 and Rust'
+excerpt: 'Discover how SvelteKit 2.0 and Rust maximize web performance and SEO for UK businesses.'
 image: ~/assets/images/posts/boost-your-web-apps-with-sveltekit-20-and-rust.png
 category: Web Development
 tags:
@@ -63,4 +63,3 @@ For scalability, the combination of SvelteKit’s adaptive rendering and Rust’
 ## Conclusion and Call to Action
 
 By combining **SvelteKit 2.0** and **Rust**, you’re embracing a powerful technological stack that propels your web applications to new heights of performance and SEO efficiency. Whether you’re a web developer aiming to streamline your projects or a business looking to boost your digital presence, Criztec Technologies is here to guide you through this transformation. Contact us today for a consultation and discover how we can help elevate your web development strategy to meet and exceed market demands.
-

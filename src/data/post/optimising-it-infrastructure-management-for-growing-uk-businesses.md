@@ -1,7 +1,7 @@
 ---
 publishDate: 2025-12-03T12:07:45.769Z
-title: "Optimising IT Infrastructure Management for Growing UK Businesses"
-excerpt: "Explore the strategic pathways and practical steps for effective IT infrastructure management tailored to the unique needs of growing UK businesses."
+title: 'Optimising IT Infrastructure Management for Growing UK Businesses'
+excerpt: 'Explore the strategic pathways and practical steps for effective IT infrastructure management tailored to the unique needs of growing UK businesses.'
 image: ~/assets/images/posts/optimising-it-infrastructure-management-for-growing-uk-businesses.png
 category: IT Services
 tags:

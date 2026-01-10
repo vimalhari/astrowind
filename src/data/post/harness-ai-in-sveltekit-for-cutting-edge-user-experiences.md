@@ -1,7 +1,7 @@
 ---
 publishDate: 2025-12-03T22:55:43.591534
-title: "Harness AI in SvelteKit for Cutting-Edge User Experiences"
-excerpt: "Discover how integrating AI in SvelteKit transforms UK web development with personalised, dynamic user experiences."
+title: 'Harness AI in SvelteKit for Cutting-Edge User Experiences'
+excerpt: 'Discover how integrating AI in SvelteKit transforms UK web development with personalised, dynamic user experiences.'
 image: ~/assets/images/posts/harness-ai-in-sveltekit-for-cutting-edge-user-experiences.png
 category: Web Development
 tags:
@@ -51,4 +51,3 @@ Looking ahead, the synergy between AI and web development is set to grow stronge
 ## Conclusion: Your Next Steps with Criztec Technologies
 
 As a leading provider of modern web development solutions, [Criztec Technologies](https://criztectechnologies.com/services) is uniquely positioned to help you navigate this AI integration journey. Whether you are looking to enhance user experiences or boost your SEO through AI, our team offers tailored solutions that drive results. Contact us today to explore how we can elevate your web applications to the next level.
-

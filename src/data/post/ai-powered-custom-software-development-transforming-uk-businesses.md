@@ -1,10 +1,18 @@
 ---
 publishDate: 2026-01-10T16:18:31.761Z
-title: "AI-Powered Custom Software Development: Transforming UK Businesses"
-excerpt: "Discover how AI-powered custom software development is revolutionising UK businesses. Learn how AI reduces costs, accelerates timelines, and bridges the tech skills gap."
+title: 'AI-Powered Custom Software Development: Transforming UK Businesses'
+excerpt: 'Discover how AI-powered custom software development is revolutionising UK businesses. Learn how AI reduces costs, accelerates timelines, and bridges the tech skills gap.'
 image: https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/ai-powered-custom-software-development-transforming-uk-businesses.webp
 category: Software Development & AI
-tags: ["AI in software development UK","custom software solutions AI","AI-powered coding UK","software development efficiency","UK tech innovation","AI business transformation"]
+tags:
+  [
+    'AI in software development UK',
+    'custom software solutions AI',
+    'AI-powered coding UK',
+    'software development efficiency',
+    'UK tech innovation',
+    'AI business transformation',
+  ]
 metadata:
   canonical: https://criztec.com/ai-powered-custom-software-development-transforming-uk-businesses
 ---

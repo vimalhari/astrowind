@@ -1,7 +1,7 @@
 ---
 publishDate: 2025-12-03T22:43:31.864291
-title: "Boost Your SEO with SvelteKit and Astro for UK Web Apps"
-excerpt: "Discover how SvelteKit and Astro enhance SEO for UK businesses with actionable insights and real-world examples."
+title: 'Boost Your SEO with SvelteKit and Astro for UK Web Apps'
+excerpt: 'Discover how SvelteKit and Astro enhance SEO for UK businesses with actionable insights and real-world examples.'
 image: ~/assets/images/posts/boost-your-seo-with-sveltekit-and-astro-for-uk-web-apps.png
 category: Web Development
 tags:
@@ -41,6 +41,7 @@ Consider the case of a London-based e-commerce platform that utilised SvelteKit 
 ### Best Practices for Optimising Web Performance and SEO
 
 For optimal results, consider the following strategies:
+
 - **Lazy Loading:** Implement lazy loading techniques for images and scripts to improve load times.
 - **Code Splitting:** Use code splitting in SvelteKit to minimise JavaScript bundle sizes, enhancing speed.
 - **SEO Audits:** Regularly conduct SEO audits using tools like SEMrush to identify and rectify issues.

@@ -1,7 +1,7 @@
 ---
 publishDate: 2025-12-03T22:21:23.579803
-title: "Leveraging Astro and SvelteKit for SEO-Driven Web Development"
-excerpt: "Discover how Astro and SvelteKit enhance SEO and site performance for UK businesses with actionable insights and real-world use cases."
+title: 'Leveraging Astro and SvelteKit for SEO-Driven Web Development'
+excerpt: 'Discover how Astro and SvelteKit enhance SEO and site performance for UK businesses with actionable insights and real-world use cases.'
 image: ~/assets/images/posts/leveraging-astro-and-sveltekit-for-seo-driven-web-development.png
 category: Web Development
 tags:
