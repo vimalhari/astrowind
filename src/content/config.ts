@@ -310,7 +310,31 @@ const caseStudyCollection = defineCollection({
     ),
 });
 
+const jobCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().min(1, 'Title is required'),
+    department: z.string().min(1, 'Department is required'),
+    location: z.string().min(1, 'Location is required'),
+    type: z.enum(['full-time', 'part-time', 'contract', 'internship']),
+    experience: z.string().min(1, 'Experience is required'),
+
+    isActive: z.boolean().default(true),
+    postedDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Posted date must be in YYYY-MM-DD format'),
+    description: z.string().min(1, 'Description is required'),
+
+    requirements: z.array(z.string()).default([]),
+    responsibilities: z.array(z.string()).default([]),
+    benefits: z.array(z.string()).default([]),
+    salaryRange: z.string().optional(),
+
+    metadata: metadataDefinition(),
+    draft: z.boolean().optional().default(false),
+  }),
+});
+
 export const collections = {
   post: postCollection,
   'case-studies': caseStudyCollection,
+  jobs: jobCollection,
 };

@@ -1,21 +1,32 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import { jobListings } from '~/data/jobs';
+import { getCollection } from 'astro:content';
 import { buildMailto, CAREERS_EMAIL } from '~/utils/mailto';
 
 export async function getStaticPaths() {
-  return jobListings.map((job) => ({
-    params: { id: job.id },
-    props: { job },
+  const jobs = await getCollection('jobs', ({ id, data }) => !data.draft && !id.startsWith('_'));
+
+  return jobs.map((entry) => ({
+    params: { id: entry.id },
   }));
 }
 
-const { job } = Astro.props;
+const jobId = Astro.params.id;
+
+if (!jobId) {
+  return Astro.redirect('/careers');
+}
+
+const jobs = await getCollection('jobs', ({ id, data }) => !data.draft && !id.startsWith('_'));
+const job = jobs.find((entry) => entry.id === jobId);
 
 if (!job) {
   return Astro.redirect('/careers');
 }
+
+const jobData = job.data;
+const { Content } = await job.render();
 
 // Format date for display
 const formatDate = (dateString: string) => {
@@ -43,23 +54,62 @@ const getJobTypeColor = (type: string) => {
 };
 
 const metadata = {
-  title: `${job.title} - Careers | Criztec Technologies`,
-  description: job.description,
+  title: `${jobData.title} - Careers | Criztec Technologies`,
+  description: jobData.description,
   robots: {
-    index: job.isActive,
+    index: jobData.isActive,
     follow: true,
   },
   openGraph: {
     type: 'website',
-    title: `${job.title} at Criztec Technologies`,
-    description: job.description,
+    title: `${jobData.title} at Criztec Technologies`,
+    description: jobData.description,
   },
+  canonical: `https://criztec.com/careers/${job.id}`,
 };
 
-const applySubject = `Application for ${job.title}`;
+// JobPosting structured data (emit only for active roles)
+const jobPostingStructuredData = jobData.isActive
+  ? {
+      '@context': 'https://schema.org/',
+      '@type': 'JobPosting',
+      title: jobData.title,
+      description: jobData.description,
+      identifier: job.id,
+      datePosted: jobData.postedDate,
+      employmentType: jobData.type.toUpperCase().replace('-', '_'),
+      hiringOrganization: {
+        '@type': 'Organization',
+        name: 'Criztec Technologies',
+        sameAs: 'https://criztec.com',
+        logo: 'https://criztec.com/assets/images/CriztecLogo.png',
+      },
+      jobLocation: {
+        '@type': 'Place',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: jobData.location,
+        },
+      },
+      directApply: false,
+      url: `https://criztec.com/careers/${job.id}`,
+      baseSalary: jobData.salaryRange
+        ? {
+            '@type': 'MonetaryAmount',
+            currency: jobData.salaryRange.includes('₹') ? 'INR' : 'GBP',
+            value: {
+              '@type': 'QuantitativeValue',
+              value: jobData.salaryRange,
+            },
+          }
+        : undefined,
+    }
+  : undefined;
+
+const applySubject = `Application for ${jobData.title}`;
 const applyBody = `Hello,
 
-I am interested in applying for the ${job.title} position (Job ID: ${job.id}).
+I am interested in applying for the ${jobData.title} position (Job ID: ${job.id}).
 
 Please find my resume attached.
 
@@ -68,7 +118,7 @@ Best regards`;
 const expressInterestSubject = 'Interest in Future Opportunities';
 const expressInterestBody = `Hello,
 
-I am interested in future opportunities similar to the ${job.title} position.
+I am interested in future opportunities similar to the ${jobData.title} position.
 
 Please keep me in mind for upcoming openings.
 
@@ -76,6 +126,11 @@ Best regards`;
 ---
 
 <Layout metadata={metadata}>
+  {
+    jobPostingStructuredData && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(jobPostingStructuredData)} />
+    )
+  }
   <!-- Job Header -->
   <section class="px-4 py-16 mx-auto max-w-7xl lg:px-8 lg:py-20">
     <div class="max-w-4xl mx-auto">
@@ -96,13 +151,13 @@ Best regards`;
       <div class="mb-8">
         <div class="flex flex-wrap items-center gap-3 mb-4">
           <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
-            {job.title}
+            {jobData.title}
           </h1>
-          <span class={`px-3 py-1 rounded-full text-sm font-medium ${getJobTypeColor(job.type)}`}>
-            {job.type.charAt(0).toUpperCase() + job.type.slice(1).replace('-', ' ')}
+          <span class={`px-3 py-1 rounded-full text-sm font-medium ${getJobTypeColor(jobData.type)}`}>
+            {jobData.type.charAt(0).toUpperCase() + jobData.type.slice(1).replace('-', ' ')}
           </span>
           {
-            job.isActive ? (
+            jobData.isActive ? (
               <span class="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                 Currently Hiring
               </span>
@@ -124,7 +179,7 @@ Best regards`;
                 d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
               ></path>
             </svg>
-            <span>{job.department}</span>
+            <span>{jobData.department}</span>
           </div>
 
           <div class="flex items-center gap-2">
@@ -137,7 +192,7 @@ Best regards`;
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
               ></path>
             </svg>
-            <span>{job.location}</span>
+            <span>{jobData.location}</span>
           </div>
 
           <div class="flex items-center gap-2">
@@ -148,7 +203,7 @@ Best regards`;
                 stroke-width="2"
                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <span>{job.experience}</span>
+            <span>{jobData.experience}</span>
           </div>
 
           <div class="flex items-center gap-2">
@@ -159,12 +214,12 @@ Best regards`;
                 stroke-width="2"
                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
             </svg>
-            <span>Posted {formatDate(job.postedDate)}</span>
+            <span>Posted {formatDate(jobData.postedDate)}</span>
           </div>
         </div>
 
         {
-          job.salaryRange && (
+          jobData.salaryRange && (
             <div class="flex items-center gap-2 mt-4">
               <svg
                 class="w-5 h-5 text-primary-600 dark:text-primary-400"
@@ -179,7 +234,7 @@ Best regards`;
                   d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
                 />
               </svg>
-              <span class="text-lg font-semibold text-primary-600 dark:text-primary-400">{job.salaryRange}</span>
+              <span class="text-lg font-semibold text-primary-600 dark:text-primary-400">{jobData.salaryRange}</span>
             </div>
           )
         }
@@ -189,8 +244,12 @@ Best regards`;
       <div class="mb-8">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">About This Role</h2>
         <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          {job.description}
+          {jobData.description}
         </p>
+
+        <div class="prose prose-lg dark:prose-invert max-w-none mt-6">
+          <Content />
+        </div>
       </div>
 
       <!-- Two Column Layout for Details -->
@@ -202,7 +261,7 @@ Best regards`;
             <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Requirements</h3>
             <ul class="space-y-3">
               {
-                job.requirements.map((req) => (
+                jobData.requirements.map((req) => (
                   <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
                     <svg
                       class="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 flex-shrink-0"
@@ -227,7 +286,7 @@ Best regards`;
             <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Key Responsibilities</h3>
             <ul class="space-y-3">
               {
-                job.responsibilities.map((resp) => (
+                jobData.responsibilities.map((resp) => (
                   <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
                     <svg
                       class="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 flex-shrink-0"
@@ -252,7 +311,7 @@ Best regards`;
             <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Benefits & Perks</h3>
             <ul class="space-y-3">
               {
-                job.benefits.map((benefit) => (
+                jobData.benefits.map((benefit) => (
                   <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
                     <svg
                       class="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 flex-shrink-0"
@@ -279,7 +338,7 @@ Best regards`;
             <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">Quick Actions</h3>
 
             {
-              job.isActive ? (
+              jobData.isActive ? (
                 <div class="space-y-3">
                   <a
                     href={buildMailto(CAREERS_EMAIL, { subject: applySubject, body: applyBody })}
@@ -335,21 +394,21 @@ Best regards`;
                 </div>
                 <div>
                   <dt class="text-gray-600 dark:text-gray-400">Department</dt>
-                  <dd class="font-medium text-gray-900 dark:text-gray-100">{job.department}</dd>
+                  <dd class="font-medium text-gray-900 dark:text-gray-100">{jobData.department}</dd>
                 </div>
                 <div>
                   <dt class="text-gray-600 dark:text-gray-400">Employment Type</dt>
                   <dd class="font-medium text-gray-900 dark:text-gray-100">
-                    {job.type.charAt(0).toUpperCase() + job.type.slice(1).replace('-', ' ')}
+                    {jobData.type.charAt(0).toUpperCase() + jobData.type.slice(1).replace('-', ' ')}
                   </dd>
                 </div>
                 <div>
                   <dt class="text-gray-600 dark:text-gray-400">Experience Level</dt>
-                  <dd class="font-medium text-gray-900 dark:text-gray-100">{job.experience}</dd>
+                  <dd class="font-medium text-gray-900 dark:text-gray-100">{jobData.experience}</dd>
                 </div>
                 <div>
                   <dt class="text-gray-600 dark:text-gray-400">Location</dt>
-                  <dd class="font-medium text-gray-900 dark:text-gray-100">{job.location}</dd>
+                  <dd class="font-medium text-gray-900 dark:text-gray-100">{jobData.location}</dd>
                 </div>
               </dl>
             </div>
@@ -363,7 +422,7 @@ Best regards`;
   <CallToAction
     title="Ready to Join Our Team?"
     subtitle="Take the next step in your career with Criztec Technologies."
-    actions={job.isActive
+    actions={jobData.isActive
       ? [
           {
             variant: 'primary',
