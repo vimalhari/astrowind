@@ -5,6 +5,8 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
+      "astro/jsx-runtime": ["node_modules/astro/jsx-runtime.d.ts"],
+      "astro/jsx-dev-runtime": ["node_modules/astro/jsx-runtime.d.ts"],
       "~/*": ["src/*"]
     }
   },
