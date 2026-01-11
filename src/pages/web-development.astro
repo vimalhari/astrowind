@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { cities } from '../data/cities';
+import Hero from '~/components/widgets/Hero2.astro';
 
 const metadata = {
   title: 'Professional Web Development Services - London & South East | Criztec Technologies',
@@ -64,35 +65,35 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <Hero
+    overlapHeader={false}
+    tagline="Web Development"
+    title="Professional Web Development Services"
+    subtitle="Expert web development services across London and the South East. We build custom websites, e-commerce solutions, and web applications that drive business growth."
+    actions={[
+      { variant: 'primary', text: 'Contact Our Team', href: '/contact' },
+      { text: 'Explore Digital Marketing', href: '/digital-marketing' },
+    ]}
+    image={{ src: '~/assets/images/hero-image.webp', alt: 'Professional Web Development Services' }}
+  />
+
   <section class="py-16 sm:py-24 bg-gray-50">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <!-- Header -->
-      <div class="text-center mb-16">
-        <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl mb-6">
-          Professional Web Development Services
-        </h1>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-          Expert web development and <a href="/digital-marketing" class="text-blue-600 hover:text-blue-800 underline"
-            >digital marketing services</a
-          > across London, Berkshire, Buckinghamshire, and Surrey. We create custom websites, e-commerce solutions, and web
-          applications that drive business growth.
+      <div class="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed mb-16">
+        <p class="mb-4">
+          Our experienced team of web developers specializes in modern technologies including React, Node.js, and
+          WordPress. Whether you need a simple business website, complex web application, or comprehensive <a
+            href="/seo"
+            class="text-blue-600 hover:text-blue-800 underline">SEO optimization</a
+          >, we deliver solutions that exceed expectations.
         </p>
-        <div class="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
-          <p class="mb-4">
-            Our experienced team of web developers specializes in modern technologies including React, Node.js, and
-            WordPress. Whether you need a simple business website, complex web application, or comprehensive <a
-              href="/seo"
-              class="text-blue-600 hover:text-blue-800 underline">SEO optimization</a
-            >, we deliver solutions that exceed expectations.
-          </p>
-          <p class="mb-6">
-            From responsive web design to advanced e-commerce platforms, we serve businesses across the South East of
-            England with reliable, scalable web solutions. <a
-              href="/contact"
-              class="text-blue-600 hover:text-blue-800 underline">Contact our local web development team</a
-            > to discuss your project requirements.
-          </p>
-        </div>
+        <p class="mb-6">
+          From responsive web design to advanced e-commerce platforms, we serve businesses across the South East of
+          England with reliable, scalable web solutions. <a
+            href="/contact"
+            class="text-blue-600 hover:text-blue-800 underline">Contact our local web development team</a
+          > to discuss your project requirements.
+        </p>
       </div>
 
       <!-- Services Section -->

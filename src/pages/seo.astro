@@ -2,7 +2,7 @@
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Hero from '~/components/widgets/Hero.astro';
+import Hero from '~/components/widgets/Hero2.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import Faqs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
@@ -65,6 +65,7 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Widget -->
   <Hero
+    overlapHeader={false}
     tagline="Dominate Search Results"
     title="Expert SEO Services in London"
     subtitle="Propel your business to the top of Google with data-driven SEO strategies designed for the competitive London market. Increase visibility, attract qualified leads, and achieve sustainable growth."

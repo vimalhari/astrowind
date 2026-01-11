@@ -1,7 +1,7 @@
 ---
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Hero from '~/components/widgets/Hero.astro';
+import Hero from '~/components/widgets/Hero2.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Steps from '~/components/widgets/Steps.astro';
@@ -61,6 +61,7 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <Hero
+    overlapHeader={false}
     tagline="Ruby on Rails"
     title="Ruby on Rails Development"
     subtitle="We build fast, maintainable web apps with modern Rails and Hotwire. From MVPs to mature platforms, we focus on clean architecture, security, and a great user experience."

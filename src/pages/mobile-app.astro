@@ -2,7 +2,7 @@
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Hero from '~/components/widgets/Hero.astro';
+import Hero from '~/components/widgets/Hero2.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import Faqs from '~/components/widgets/FAQs.astro';
 import Steps from '~/components/widgets/Steps.astro';
@@ -70,6 +70,7 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
+    overlapHeader={false}
     tagline="Mobile Innovation"
     title="Mobile App Development"
     subtitle="Transform your business with custom mobile applications designed and developed by our expert UK team. We create intuitive, feature-rich apps for iOS, Android, and cross-platform environments."

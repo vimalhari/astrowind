@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import Hero from '~/components/widgets/Hero.astro';
+import Hero from '~/components/widgets/Hero2.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Content from '~/components/widgets/Content.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
@@ -20,6 +20,7 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Widget -->
   <Hero
+    overlapHeader={false}
     tagline="Future-Proof Your Web Presence"
     title="Astro Web Development Services in London"
     subtitle="Leverage the power of Astro to build lightning-fast, content-rich websites that dominate search rankings and captivate your London audience. Criztec Technologies delivers cutting-edge Astro solutions tailored for UK businesses."

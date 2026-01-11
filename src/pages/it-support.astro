@@ -2,7 +2,7 @@
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Hero from '~/components/widgets/Hero.astro';
+import Hero from '~/components/widgets/Hero2.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
@@ -19,11 +19,12 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
+    overlapHeader={false}
     tagline="London's Premier IT Support"
     title="Managed IT Support Services"
     subtitle="Keep your business running smoothly with our comprehensive managed IT support solutions tailored to London businesses of all sizes."
     actions={[{ variant: 'primary', target: '', text: 'Get Support Now', href: '/contact' }]}
-    image={{ src: '', alt: 'Managed IT Support Services Hero Image' }}
+    image={{ src: '~/assets/images/hero-image.webp', alt: 'Managed IT Support Services Hero Image' }}
   />
 
   <!-- Stats Widget ****************** -->

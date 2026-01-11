@@ -4,91 +4,95 @@ import Button from '~/components/ui/Button.astro';
 
 import type { Hero as Props } from '~/types';
 
+type Hero2Props = Props & {
+  overlapHeader?: boolean;
+};
+
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline,
+
+  overlapHeader = true,
 
   content = await Astro.slots.render('content'),
   actions = await Astro.slots.render('actions'),
   image = await Astro.slots.render('image'),
 
   bgImage,
-  isDark = false,
+  isDark = true,
 
   id,
   bg = await Astro.slots.render('bg'),
-} = Astro.props;
+} = Astro.props as Hero2Props;
 
 const hasDarkBackground = Boolean(bgImage) || Boolean(isDark);
 const hasImage = Boolean(image);
 ---
 
 <section
-  class={`relative md:-mt-[76px] not-prose ${bgImage ? 'bg-cover bg-center bg-no-repeat' : ''}`}
+  class={`relative not-prose overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 ${overlapHeader ? 'md:-mt-[76px]' : ''} ${bgImage ? 'bg-cover bg-center bg-no-repeat' : ''}`}
   style={bgImage ? `background-image: url('${bgImage}');` : ''}
   {...id ? { id } : {}}
 >
-  {bgImage && <div class="absolute inset-0 bg-black/30" />}
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : null}
     </slot>
   </div>
+  <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-gray-900/70 via-blue-900/40 to-indigo-900/70">
+  </div>
+  <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
+    {overlapHeader ? <div class="pt-0 md:pt-[76px] pointer-events-none" /> : null}
     <div class="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:min-h-[70vh] lg:gap-8">
-      <div class="basis-1/2 text-center lg:text-left pb-10 md:pb-16 mx-auto">
-        <div
-          class={`w-full rounded-2xl backdrop-blur-md border shadow-2xl px-6 py-8 md:px-8 md:py-10 ${hasDarkBackground ? 'bg-white/10 border-white/20' : 'bg-white/80 border-gray-200'}`}
-        >
+      <div class="basis-1/2 text-center lg:text-left pb-10 md:pb-16 mx-auto text-white">
+        {
+          tagline && (
+            <p
+              class={`text-base font-bold tracking-wide uppercase intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter ${hasDarkBackground ? 'text-white/90' : ''}`}
+              set:html={tagline}
+            />
+          )
+        }
+        {
+          title && (
+            <h1
+              class={`text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter ${hasDarkBackground ? 'text-white' : ''}`}
+              set:html={title}
+            />
+          )
+        }
+        <div class="max-w-3xl mx-auto lg:max-w-none">
           {
-            tagline && (
+            subtitle && (
               <p
-                class={`text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter ${hasDarkBackground ? 'text-white' : ''}`}
-                set:html={tagline}
+                class={`text-xl mb-6 intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter ${hasDarkBackground ? 'text-white/80' : ''}`}
+                set:html={subtitle}
               />
             )
           }
-          {
-            title && (
-              <h1
-                class={`text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter ${hasDarkBackground ? 'text-white' : ''}`}
-                set:html={title}
-              />
-            )
-          }
-          <div class="max-w-3xl mx-auto lg:max-w-none">
-            {
-              subtitle && (
-                <p
-                  class={`text-xl text-muted mb-6 dark:text-slate-300 intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter ${hasDarkBackground ? 'text-white/70' : ''}`}
-                  set:html={subtitle}
-                />
-              )
-            }
 
-            {
-              actions && (
-                <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-7xl intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
-                  {Array.isArray(actions) ? (
-                    actions.map((action) => (
-                      <div class="flex w-full sm:w-auto">
-                        <Button
-                          {...(action || {})}
-                          class={`w-full sm:mb-0 ${hasDarkBackground && (!action?.variant || action?.variant === 'secondary' || (action?.class || '').includes('btn-secondary')) ? 'text-white border-white/20 hover:border-white/30 hover:bg-white/10' : ''}`}
-                        />
-                      </div>
-                    ))
-                  ) : (
-                    <Fragment set:html={actions} />
-                  )}
-                </div>
-              )
-            }
-          </div>
-          {content && <Fragment set:html={content} />}
+          {
+            actions && (
+              <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-7xl intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
+                {Array.isArray(actions) ? (
+                  actions.map((action) => (
+                    <div class="flex w-full sm:w-auto">
+                      <Button
+                        {...(action || {})}
+                        class={`w-full sm:mb-0 ${hasDarkBackground && (!action?.variant || action?.variant === 'secondary' || (action?.class || '').includes('btn-secondary')) ? 'text-white border-white/20 hover:border-white/30 hover:bg-white/10' : ''}`}
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <Fragment set:html={actions} />
+                )}
+              </div>
+            )
+          }
         </div>
+        {content && <Fragment set:html={content} />}
       </div>
       {
         hasImage ? (
@@ -104,7 +108,7 @@ const hasImage = Boolean(image);
                   loading="eager"
                   width={600}
                   height={600}
-                  {...image}
+                  {...(image as Record<string, unknown>)}
                 />
               )}
             </div>
