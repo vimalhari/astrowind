@@ -13,14 +13,17 @@ const {
   actions = await Astro.slots.render('actions'),
   image = await Astro.slots.render('image'),
   bgImage,
+  isDark = false,
 
   id,
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
+
+const hasDarkBackground = Boolean(bgImage) || Boolean(isDark);
 ---
 
 <section
-  class={`relative not-prose ${bgImage ? 'bg-cover bg-center bg-no-repeat min-h-[80vh] flex items-center' : ''}`}
+  class={`relative not-prose ${(bgImage || isDark) ? 'min-h-[80vh] flex items-center' : ''} ${bgImage ? 'bg-cover bg-center bg-no-repeat' : ''}`}
   style={bgImage ? `background-image: url('${bgImage}');` : ''}
   {...id ? { id } : {}}
 >
@@ -36,7 +39,7 @@ const {
         {
           tagline && (
             <p
-              class={`text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade ${bgImage ? 'text-white' : ''}`}
+              class={`text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade ${hasDarkBackground ? 'text-white' : ''}`}
               set:html={tagline}
             />
           )
@@ -44,7 +47,7 @@ const {
         {
           title && (
             <h1
-              class={`text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade ${bgImage ? 'text-white' : ''}`}
+              class={`text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade ${hasDarkBackground ? 'text-white' : ''}`}
               set:html={title}
             />
           )
@@ -53,7 +56,7 @@ const {
           {
             subtitle && (
               <p
-                class={`text-xl mb-6 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade text-white`}
+                class={`text-xl mb-6 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade ${hasDarkBackground ? 'text-white' : 'text-gray-600 dark:text-gray-400'}`}
                 set:html={subtitle}
               />
             )
@@ -64,10 +67,10 @@ const {
                 {Array.isArray(actions) ? (
                   actions.map((action) => (
                     <div class="flex w-full sm:w-auto">
-                      {/* ensure secondary/outline buttons in hero are white */}
+                      {/* ensure secondary buttons in dark/image heroes are readable */}
                       <Button
                         {...(action || {})}
-                        class={`w-full sm:mb-0 ${action?.variant === 'secondary' || (action?.class || '').includes('btn-secondary') ? 'text-white border-white/20 hover:border-white/30' : ''}`}
+                        class={`w-full sm:mb-0 ${hasDarkBackground && (!action?.variant || action?.variant === 'secondary' || (action?.class || '').includes('btn-secondary')) ? 'text-white border-white/20 hover:border-white/30 hover:bg-white/10' : ''}`}
                       />
                     </div>
                   ))
