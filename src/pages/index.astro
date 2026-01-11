@@ -9,6 +9,8 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
+import heroVideo from '~/assets/videos/herovideo.mp4';
+
 const metadata = {
   title: 'Criztec Technologies - Web Development & Digital Marketing London',
   description:
@@ -79,8 +81,8 @@ const metadata = {
 
   <Hero
     id="hero"
-    tagline="London-based • Web Development • Digital Marketing"
-    subtitle="Fast, modern websites and growth marketing that turn visitors into customers."
+    tagline="Astro • Ruby on Rails • Django"
+    subtitle="A UK-based team building high-performance sites with Astro, and production-ready apps with Ruby on Rails and Django."
     actions={[
       {
         variant: 'primary',
@@ -94,26 +96,23 @@ const metadata = {
     isDark
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-dark"></div>
-      <div class="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-primary/10"></div>
+      <video
+        src={heroVideo}
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        class="absolute inset-0 w-full h-full object-cover"
+        aria-hidden="true"></video>
+      <div class="absolute inset-0 bg-dark/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/35 via-transparent to-primary/10"></div>
     </Fragment>
 
     <Fragment slot="title">
-      Empowering your <span class="text-accent dark:text-white"> Digital Future </span>
+      Building <span class="text-accent dark:text-white"> Websites & Software </span> that ship faster
       <!-- <span class="hidden xl:inline">creating websites with</span>
       <span class="text-accent dark:text-white highlight"> Astro 5.0</span> + Tailwind CSS -->
-    </Fragment>
-
-    <Fragment slot="image">
-      <img
-        src="/hero-illustration.svg"
-        alt="Abstract digital network illustration"
-        width="1200"
-        height="900"
-        loading="eager"
-        decoding="async"
-        class="mx-auto w-full max-w-xl rounded-md"
-      />
     </Fragment>
   </Hero>
 

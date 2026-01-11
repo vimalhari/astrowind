@@ -12,6 +12,17 @@ try {
   const hero = page.locator('#hero');
   await hero.waitFor({ state: 'visible', timeout: 30_000 });
 
+  const heroVideo = hero.locator('video');
+  if (await heroVideo.count()) {
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('#hero video');
+        return Boolean(el && el.readyState >= 2);
+      },
+      { timeout: 30_000 }
+    );
+  }
+
   await hero.screenshot({ path: outputPath });
   // eslint-disable-next-line no-console
   console.log(`Saved hero screenshot to ${outputPath}`);

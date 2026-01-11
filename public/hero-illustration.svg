@@ -1,76 +1,110 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Abstract digital network illustration">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Abstract technology illustration">
   <defs>
-    <radialGradient id="g1" cx="35%" cy="35%" r="70%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.22" />
-      <stop offset="55%" stop-color="#fff" stop-opacity="0.08" />
+    <radialGradient id="glowA" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.26" />
+      <stop offset="55%" stop-color="#fff" stop-opacity="0.10" />
       <stop offset="100%" stop-color="#fff" stop-opacity="0" />
     </radialGradient>
-    <radialGradient id="g2" cx="70%" cy="60%" r="65%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.18" />
-      <stop offset="60%" stop-color="#fff" stop-opacity="0.06" />
+    <radialGradient id="glowB" cx="76%" cy="62%" r="70%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.20" />
+      <stop offset="60%" stop-color="#fff" stop-opacity="0.08" />
       <stop offset="100%" stop-color="#fff" stop-opacity="0" />
     </radialGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.10" />
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#fff" stroke-opacity="0.08" stroke-width="1" />
+      <circle cx="0" cy="0" r="1.5" fill="#fff" fill-opacity="0.10" />
+    </pattern>
     <filter id="blur" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
-      <feGaussianBlur stdDeviation="20" />
+      <feGaussianBlur stdDeviation="18" />
     </filter>
     <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
-      <feGaussianBlur stdDeviation="6" result="b" />
+      <feGaussianBlur stdDeviation="5" result="b" />
       <feColorMatrix in="b" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.35 0" result="g" />
       <feMerge>
         <feMergeNode in="g" />
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
-    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.35" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.08" />
-    </linearGradient>
+    <mask id="fadeRight">
+      <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#fff" stop-opacity="0.35" />
+        <stop offset="35%" stop-color="#fff" stop-opacity="0.55" />
+        <stop offset="100%" stop-color="#fff" stop-opacity="1" />
+      </linearGradient>
+      <rect x="0" y="0" width="1200" height="900" fill="url(#fade)" />
+    </mask>
   </defs>
 
-  <!-- soft blobs -->
+  <!-- soft background glows (kept monochrome) -->
   <g filter="url(#blur)">
-    <circle cx="420" cy="330" r="280" fill="url(#g1)" />
-    <circle cx="820" cy="560" r="300" fill="url(#g2)" />
+    <circle cx="380" cy="300" r="290" fill="url(#glowA)" />
+    <circle cx="880" cy="560" r="340" fill="url(#glowB)" />
   </g>
 
-  <!-- orbital rings -->
-  <g fill="none" stroke="url(#stroke)" stroke-width="2" opacity="0.9">
-    <ellipse cx="680" cy="440" rx="360" ry="260" />
-    <ellipse cx="680" cy="440" rx="300" ry="210" opacity="0.7" />
-    <ellipse cx="680" cy="440" rx="240" ry="165" opacity="0.5" />
+  <!-- subtle grid, stronger on the right (so left stays clean for text) -->
+  <g mask="url(#fadeRight)">
+    <rect x="0" y="0" width="1200" height="900" fill="url(#grid)" />
   </g>
 
-  <!-- connecting lines -->
-  <g fill="none" stroke="#fff" stroke-opacity="0.18" stroke-width="2" stroke-linecap="round">
-    <path d="M355 560 C 470 430, 560 380, 680 440" />
-    <path d="M680 440 C 780 500, 860 560, 980 520" />
-    <path d="M470 300 C 560 360, 620 420, 680 440" />
-    <path d="M680 440 C 740 360, 820 290, 930 310" />
-    <path d="M520 670 C 600 560, 640 500, 680 440" />
-    <path d="M680 440 C 760 430, 850 410, 910 380" />
+  <!-- rings and arcs (premium tech feel) -->
+  <g fill="none" stroke="url(#stroke)" stroke-width="2" opacity="0.95">
+    <ellipse cx="760" cy="430" rx="340" ry="250" />
+    <ellipse cx="760" cy="430" rx="280" ry="205" opacity="0.65" />
+    <path d="M520 360 C 610 260, 780 240, 920 320" opacity="0.55" />
+    <path d="M590 620 C 690 690, 860 690, 980 580" opacity="0.45" />
   </g>
 
-  <!-- nodes -->
+  <!-- network lines -->
+  <g fill="none" stroke="#fff" stroke-opacity="0.20" stroke-width="2" stroke-linecap="round">
+    <path d="M520 520 C 600 450, 660 420, 760 430" />
+    <path d="M760 430 C 860 445, 940 500, 1020 575" />
+    <path d="M640 300 C 700 360, 730 400, 760 430" />
+    <path d="M760 430 C 820 350, 900 305, 1020 330" />
+    <path d="M620 650 C 680 560, 720 500, 760 430" />
+    <path d="M760 430 C 810 410, 900 400, 980 390" />
+  </g>
+
+  <!-- nodes + micro accents -->
   <g filter="url(#softGlow)">
     <g fill="#fff">
-      <circle cx="355" cy="560" r="8" fill-opacity="0.75" />
-      <circle cx="470" cy="300" r="7" fill-opacity="0.65" />
-      <circle cx="520" cy="670" r="7" fill-opacity="0.55" />
-      <circle cx="680" cy="440" r="10" fill-opacity="0.8" />
-      <circle cx="910" cy="380" r="7" fill-opacity="0.6" />
-      <circle cx="930" cy="310" r="7" fill-opacity="0.55" />
-      <circle cx="980" cy="520" r="8" fill-opacity="0.7" />
+      <circle cx="520" cy="520" r="8" fill-opacity="0.75" />
+      <circle cx="640" cy="300" r="7" fill-opacity="0.65" />
+      <circle cx="620" cy="650" r="7" fill-opacity="0.55" />
+      <circle cx="760" cy="430" r="10" fill-opacity="0.85" />
+      <circle cx="980" cy="390" r="7" fill-opacity="0.62" />
+      <circle cx="1020" cy="330" r="7" fill-opacity="0.55" />
+      <circle cx="1020" cy="575" r="8" fill-opacity="0.72" />
     </g>
+    <g fill="#fff" fill-opacity="0.22">
+      <circle cx="700" cy="305" r="2" />
+      <circle cx="820" cy="280" r="2" />
+      <circle cx="860" cy="470" r="2" />
+      <circle cx="690" cy="565" r="2" />
+      <circle cx="910" cy="615" r="2" />
+      <circle cx="840" cy="635" r="2" />
+      <circle cx="600" cy="455" r="2" />
+    </g>
+  </g>
 
-    <!-- micro dots -->
-    <g fill="#fff" fill-opacity="0.20">
-      <circle cx="610" cy="310" r="2" />
-      <circle cx="760" cy="280" r="2" />
-      <circle cx="820" cy="470" r="2" />
-      <circle cx="560" cy="520" r="2" />
-      <circle cx="860" cy="610" r="2" />
-      <circle cx="740" cy="620" r="2" />
-      <circle cx="450" cy="460" r="2" />
-    </g>
+  <!-- UK/location cue (subtle) -->
+  <g transform="translate(0 0)" filter="url(#softGlow)">
+    <path
+      d="M1045 165
+         C1045 132 1018 105 985 105
+         C952 105 925 132 925 165
+         C925 220 985 270 985 270
+         C985 270 1045 220 1045 165Z"
+      fill="#fff"
+      fill-opacity="0.08"
+      stroke="#fff"
+      stroke-opacity="0.22"
+      stroke-width="2"
+    />
+    <circle cx="985" cy="165" r="14" fill="#fff" fill-opacity="0.16" />
+    <text x="985" y="172" text-anchor="middle" fill="#fff" fill-opacity="0.55" font-size="16">UK</text>
   </g>
 </svg>

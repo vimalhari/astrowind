@@ -23,7 +23,7 @@ const hasDarkBackground = Boolean(bgImage) || Boolean(isDark);
 ---
 
 <section
-  class={`relative not-prose ${(bgImage || isDark) ? 'min-h-[80vh] flex items-center' : ''} ${bgImage ? 'bg-cover bg-center bg-no-repeat' : ''}`}
+  class={`relative not-prose ${bgImage || isDark ? 'min-h-[80vh] flex items-center' : ''} ${bgImage ? 'bg-cover bg-center bg-no-repeat' : ''}`}
   style={bgImage ? `background-image: url('${bgImage}');` : ''}
   {...id ? { id } : {}}
 >
