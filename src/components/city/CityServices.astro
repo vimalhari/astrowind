@@ -11,10 +11,10 @@ const { city } = Astro.props;
 // Service offerings tailored to city demographics
 const services = [
   {
-    icon: '🌐',
-    title: 'Custom Website Development',
-    description: `Bespoke websites tailored for ${city.name} businesses, built with modern technologies and optimized for your local market.`,
-    features: ['Responsive Design', 'SEO Optimized', 'Fast Loading', 'Mobile-First'],
+    icon: '🚀',
+    title: 'Astro Website Development',
+    description: `Astro-first websites for ${city.name} businesses — fast, SEO-ready, and built for long-term maintainability.`,
+    features: ['Core Web Vitals', 'SEO Ready', 'Content-Friendly', 'Modern Stack'],
     emphasized: city.serviceEmphasis?.includes('Custom Web Applications'),
   },
   {
@@ -25,10 +25,10 @@ const services = [
     emphasized: city.serviceEmphasis?.includes('E-commerce Solutions'),
   },
   {
-    icon: '📱',
-    title: 'Mobile-Responsive Design',
-    description: `Ensure your website looks perfect on all devices, crucial for reaching customers throughout ${city.name} and beyond.`,
-    features: ['Touch-Friendly', 'Fast Mobile Load', 'App-Like Experience', 'Offline Capability'],
+    icon: '🔁',
+    title: 'WordPress to Astro Migration',
+    description: `Move from WordPress to Astro with a careful migration plan for content, SEO, and performance — ideal for growing ${city.name} teams.`,
+    features: ['Content Migration', 'SEO & Redirects', 'Performance Upgrade', 'Modern Rebuild'],
     emphasized: false,
   },
   {
@@ -46,10 +46,10 @@ const services = [
     emphasized: false,
   },
   {
-    icon: '🔒',
-    title: 'Security & Maintenance',
-    description: `Keep your website secure and up-to-date with our comprehensive maintenance services for ${city.name} businesses.`,
-    features: ['SSL Certificates', 'Regular Backups', 'Security Monitoring', '24/7 Support'],
+    icon: '🛠️',
+    title: 'WordPress Management',
+    description: `Prefer to keep WordPress? We manage updates, security, backups, and support for ${city.name} businesses with existing WordPress sites.`,
+    features: ['Updates & Patches', 'Security Monitoring', 'Backups', 'Support'],
     emphasized: false,
   },
 ];
@@ -112,7 +112,8 @@ const industryServices = city.keyIndustries.slice(0, 3).map((industry) => {
         Web Development Services in {city.name}
       </h2>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-        {city.servicesIntro}
+        {city.servicesIntro} We primarily build with the Astro framework — and we also help teams migrate from WordPress
+        to Astro or manage existing WordPress sites.
       </p>
 
       <!-- Location Context -->
@@ -165,7 +166,7 @@ const industryServices = city.keyIndustries.slice(0, 3).map((industry) => {
             </ul>
 
             <Button variant="secondary" class="w-full border-blue-200 text-blue-600 hover:bg-blue-50" href="/contact">
-              Learn More
+              Request a Quote
             </Button>
           </div>
         ))

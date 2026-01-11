@@ -44,11 +44,11 @@ const serviceAreas = city.nearbyAreas.slice(0, 6);
     <!-- Section Header -->
     <div class="text-center mb-16">
       <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl mb-6">
-        Get Your Free {city.name} Web Development Quote
+        Book a Free {city.name} Web Development Consultation
       </h2>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-        Ready to transform your business with a professional website? Contact our {city.name} team today for a free consultation
-        and quote.
+        Ready to improve your website performance and leads? Contact our {city.name} team for a free consultation and a tailored
+        quote.
       </p>
     </div>
 
@@ -56,7 +56,7 @@ const serviceAreas = city.nearbyAreas.slice(0, 6);
       <!-- Contact Form -->
       <div class="lg:col-span-2">
         <div class="mb-8 text-center">
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">Start Your {city.name} Project</h3>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Tell Us About Your Project</h3>
           <p class="text-gray-600">
             Tell us about your project and we'll provide a custom quote tailored to your {city.name} business needs.
           </p>
@@ -150,32 +150,6 @@ const serviceAreas = city.nearbyAreas.slice(0, 6);
               Blog
             </a>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Map Section -->
-    <div class="mt-16">
-      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-        <div class="p-8 border-b border-gray-200">
-          <h3 class="text-2xl font-bold text-gray-900 mb-2">Find Us in {city.name}</h3>
-          <p class="text-gray-600">
-            We're proud to serve businesses across {city.name} and the wider {city.region} area.
-          </p>
-        </div>
-        <div class="relative h-96">
-          <iframe
-            src={city.mapEmbedUrl}
-            width="100%"
-            height="100%"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title={`Map of ${city.name}, ${city.region}`}
-            class="w-full h-full"
-          >
-          </iframe>
         </div>
       </div>
     </div>

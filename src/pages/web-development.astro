@@ -1,42 +1,29 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/PageLayout.astro';
 import { cities } from '../data/cities';
 import Hero from '~/components/widgets/Hero2.astro';
 
 const metadata = {
-  title: 'Professional Web Development Services - London & South East | Criztec Technologies',
+  title: 'Professional Web Development Services | Criztec Technologies',
   description:
-    'Expert web development services across London, Berkshire, Buckinghamshire, and Surrey. Custom websites, e-commerce solutions, and web applications. Contact local web developers today.',
+    'Astro-first web development for businesses in the UK, Europe, and worldwide. Fast websites, e-commerce, and web apps — plus WordPress to Astro migrations and WordPress management. Contact our team today.',
   keywords:
-    'web development London, website development, custom web applications, e-commerce development, responsive web design, React development, Node.js development, WordPress development, web developers London',
+    'astro web development, astro framework, website development, custom web applications, e-commerce development, responsive web design, React development, Node.js development, wordpress to astro migration, wordpress management, wordpress maintenance',
   canonical: `${Astro.site}web-development/`,
   structuredData: {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'Web Development Services',
-    description: 'Professional web development and digital solutions across London and South East England',
+    description: 'Professional web development and digital solutions for businesses in the UK, Europe, and worldwide',
     provider: {
       '@type': 'Organization',
       name: 'Criztec Technologies',
       url: 'https://criztec.com',
     },
     areaServed: [
-      {
-        '@type': 'Place',
-        name: 'London, UK',
-      },
-      {
-        '@type': 'Place',
-        name: 'Berkshire, UK',
-      },
-      {
-        '@type': 'Place',
-        name: 'Buckinghamshire, UK',
-      },
-      {
-        '@type': 'Place',
-        name: 'Surrey, UK',
-      },
+      { '@type': 'Place', name: 'United Kingdom' },
+      { '@type': 'Place', name: 'Europe' },
+      { '@type': 'Place', name: 'Worldwide' },
     ],
     serviceType: 'Web Development',
     offers: [
@@ -69,9 +56,9 @@ const metadata = {
     overlapHeader={false}
     tagline="Web Development"
     title="Professional Web Development Services"
-    subtitle="Expert web development services across London and the South East. We build custom websites, e-commerce solutions, and web applications that drive business growth."
+    subtitle="Astro-first web development for businesses in the UK, Europe, and worldwide. We build fast websites, e-commerce solutions, and web applications — and we also handle WordPress to Astro migrations and ongoing WordPress management."
     actions={[
-      { variant: 'primary', text: 'Contact Our Team', href: '/contact' },
+      { variant: 'primary', text: 'Book a Free Consultation', href: '/contact' },
       { text: 'Explore Digital Marketing', href: '/digital-marketing' },
     ]}
     image={{ src: '~/assets/images/hero-image.webp', alt: 'Professional Web Development Services' }}
@@ -81,14 +68,15 @@ const metadata = {
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed mb-16">
         <p class="mb-4">
-          Our experienced team of web developers specializes in modern technologies including React, Node.js, and
-          WordPress. Whether you need a simple business website, complex web application, or comprehensive <a
+          We primarily build modern, high-performance sites with the Astro framework. Whether you need a simple business
+          website, a complex web application, or comprehensive <a
             href="/seo"
             class="text-blue-600 hover:text-blue-800 underline">SEO optimization</a
           >, we deliver solutions that exceed expectations.
         </p>
         <p class="mb-6">
-          From responsive web design to advanced e-commerce platforms, we serve businesses across the South East of
+          If you're on WordPress today, we can migrate you to Astro (keeping content and SEO in mind) or manage your
+          existing WordPress site with updates, security, and support. We serve businesses across the South East of
           England with reliable, scalable web solutions. <a
             href="/contact"
             class="text-blue-600 hover:text-blue-800 underline">Contact our local web development team</a
@@ -99,7 +87,13 @@ const metadata = {
       <!-- Services Section -->
       <div class="mb-16">
         <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Our Web Development Services</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Astro Website Development</h3>
+            <p class="text-gray-600">
+              Fast, modern websites built with the Astro framework for excellent SEO, performance, and maintainability.
+            </p>
+          </div>
           <div class="bg-white p-6 rounded-lg shadow-md">
             <h3 class="text-xl font-semibold text-gray-900 mb-3">Custom Website Development</h3>
             <p class="text-gray-600">
@@ -116,6 +110,18 @@ const metadata = {
             <h3 class="text-xl font-semibold text-gray-900 mb-3">Web Applications</h3>
             <p class="text-gray-600">
               Complex web applications and software solutions for business automation and efficiency.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">WordPress to Astro Migration</h3>
+            <p class="text-gray-600">
+              Move from WordPress to Astro with a clean rebuild, content migration, and SEO-aware redirects.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">WordPress Management</h3>
+            <p class="text-gray-600">
+              Ongoing updates, security, backups, and support for teams that want to keep their existing WordPress site.
             </p>
           </div>
         </div>
@@ -143,8 +149,8 @@ const metadata = {
             <div>
               <h3 class="text-2xl font-semibold text-gray-900 mb-4">Local Expertise, Global Standards</h3>
               <p class="text-gray-600 mb-4">
-                With deep understanding of the London and South East business landscape, we create websites that
-                resonate with your local audience while meeting international web standards.
+                With deep understanding of diverse business landscapes, we create websites that resonate with your
+                audience while meeting international web standards.
               </p>
               <p class="text-gray-600">
                 Our team combines local market knowledge with global technical expertise to deliver solutions that drive
@@ -198,12 +204,20 @@ const metadata = {
       </section>
 
       <!-- Cities Grid -->
+      <div class="mb-10 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Web Development in Your Area</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">
+          Choose your nearest location to see local web development services, examples, and a quick way to get a
+          tailored quote.
+        </p>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
           cities.map((city) => (
             <a
               href={`/web-development/${city.slug}`}
-              class="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+              class="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
               <div class="p-8">
                 <div class="flex items-center mb-4">
@@ -220,6 +234,15 @@ const metadata = {
                   {city.name}
                 </h2>
                 <p class="text-gray-600 mb-6 leading-relaxed">{city.subheading}</p>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {city.keyIndustries.slice(0, 3).map((industry) => (
+                    <span class="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600">
+                      {industry}
+                    </span>
+                  ))}
+                </div>
+
                 <div class="text-center">
                   <span class="inline-flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
                     View Services
@@ -249,14 +272,14 @@ const metadata = {
         <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
           <h3 class="text-2xl font-bold mb-4">Don't See Your Area?</h3>
           <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
-            We serve businesses throughout London, Home Counties, and surrounding areas. Contact us to discuss your
-            project wherever you're located.
+            We serve businesses across the UK, Europe, and worldwide. Contact us to discuss your project wherever you're
+            located.
           </p>
           <a
             href="/contact"
             class="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
           >
-            Get Your Free Quote
+            Book a Free Consultation
           </a>
         </div>
       </div>

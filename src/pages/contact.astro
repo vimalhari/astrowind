@@ -5,11 +5,11 @@ import Features2 from '~/components/widgets/Features2.astro';
 import ContactForm from '~/components/widgets/ContactForm.astro';
 
 const metadata = {
-  title: 'Contact Criztec Technologies | Web Development & Digital Marketing London',
+  title: 'Contact Criztec Technologies | Web Development & Digital Marketing',
   description:
-    'Contact Criztec Technologies for expert web development and digital marketing services in London. Get a free consultation and quote for your project. Call +44 (0) 74049 79307',
+    'Contact Criztec Technologies for expert web development and digital marketing services. Get a free consultation and quote for your project. Call +44 (0) 74049 79307',
   keywords:
-    'contact Criztec Technologies, web development London contact, digital marketing consultation, free quote London, SEO consultation London',
+    'contact Criztec Technologies, web development contact, digital marketing consultation, free quote, SEO consultation',
   structuredData: {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
@@ -23,9 +23,11 @@ const metadata = {
       url: 'https://criztec.com',
       address: {
         '@type': 'PostalAddress',
+        streetAddress: '121 Bath Road',
+        addressLocality: 'Slough',
+        addressRegion: 'Berkshire',
+        postalCode: 'SL1 3UW',
         addressCountry: 'GB',
-        addressRegion: 'England',
-        addressLocality: 'London',
       },
       contactPoint: [
         {
@@ -86,7 +88,7 @@ const metadata = {
       },
       {
         title: 'Phone',
-        description: '<a href="tel:+4407404979307">+44 (0) 74049 79307</a>',
+        description: '<a href="tel:+447404979307">+44 (0) 74049 79307</a>',
         icon: 'tabler:headset',
       },
       {

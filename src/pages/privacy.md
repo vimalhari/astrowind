@@ -51,7 +51,7 @@ You have a wide range of rights as regards your personal data. Under current dat
 
 If you have any questions at all about your data or Crizaze Business Services Ltd’s data protection, please use the following contact information:
 
-- Email: info@crizaze.com
+- Email: info@criztec.com
 - Phone: +44 7404979307
 - Post: Registered Office: 121 Bath Road, Slough, Berkshire, United Kingdom, SL1 3UW
 

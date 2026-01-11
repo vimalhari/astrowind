@@ -1,4 +1,5 @@
 import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { cities } from './data/cities';
 
 export const headerData = {
   links: [
@@ -126,6 +127,13 @@ export const footerData = {
         { text: 'Pricing', href: getPermalink('/pricing') },
         { text: 'Help Center', href: getPermalink('/contact') },
       ],
+    },
+    {
+      title: 'Locations',
+      links: cities.map((city) => ({
+        text: city.name,
+        href: getPermalink(`/web-development/${city.slug}`),
+      })),
     },
   ],
   secondaryLinks: [
