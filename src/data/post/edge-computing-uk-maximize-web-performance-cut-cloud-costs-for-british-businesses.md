@@ -66,7 +66,7 @@ The ecosystem for building edge-native applications has matured rapidly, with mo
 - **SvelteKit Edge:** SvelteKit, with its focus on compile-time performance, is a natural fit for edge environments. Its adaptor model makes deploying SvelteKit applications to various edge platforms straightforward, delivering lightning-fast server-side rendering (SSR) and API endpoints.
 - **Astro:** For content-heavy or static-first sites that require bursts of interactivity, Astro excels. It can deploy as a static site that leverages edge functions for dynamic elements, offering incredible performance and minimal JavaScript overhead.
 
-These frameworks enable developers to build highly dynamic, interactive experiences without sacrificing the speed benefits of static sites. Our [Modern Web Development](/web-development) experts at Criztec Technologies are proficient in building and deploying these cutting-edge applications, ensuring your site is not just fast, but future-proof.
+These frameworks enable developers to build highly dynamic, interactive experiences without sacrificing the speed benefits of static sites. Our [Modern Web Development](/services) experts at Criztec Technologies are proficient in building and deploying these cutting-edge applications, ensuring your site is not just fast, but future-proof.
 
 ## Powering the Edge with High-Performance Backends (Rust & Go)
 

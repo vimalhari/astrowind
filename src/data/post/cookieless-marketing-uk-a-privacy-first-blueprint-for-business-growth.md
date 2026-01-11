@@ -40,7 +40,7 @@ In a world without third-party cookies, your **first-party data strategy** becom
 3.  **Offline Data Integration:** Don't forget your physical touchpoints. Integrate data from in-store purchases, events, and direct customer feedback into your digital profiles.
 4.  **Consent-Driven Personalisation:** Use collected data to personalise user experiences on your website and in communications, always respecting consent settings. For instance, a Birmingham-based retailer could use past purchase data to recommend relevant products directly on their site or via email, rather than relying on third-party retargeting.
 
-At Criztec, our [Custom Software Development](/services) team can build bespoke CRM integrations and secure data capture systems, while our [Modern Web Development](/web-development) experts craft engaging, data-rich user interfaces that encourage consent-driven data sharing. This forms the bedrock of an effective **first-party data strategy**.
+At Criztec, our [Custom Software Development](/services) team can build bespoke CRM integrations and secure data capture systems, while our [Modern Web Development](/services) experts craft engaging, data-rich user interfaces that encourage consent-driven data sharing. This forms the bedrock of an effective **first-party data strategy**.
 
 ## Privacy-Preserving Analytics: Gaining Insights Ethically
 
@@ -101,7 +101,7 @@ Frameworks like Astro, SvelteKit, and Next.js, which Criztec specialises in, off
 - **Built-in Security:** Modern frameworks often come with robust security features and best practices, making it easier to protect sensitive first-party data from breaches.
 - **Seamless Integration:** They facilitate easier integration with server-side tagging solutions, advanced analytics platforms, and consent management platforms, creating a cohesive **digital marketing privacy** ecosystem.
 
-By leveraging Criztec's expertise in [Modern Web Development](/web-development), UK businesses can ensure their digital presence is not only visually appealing and user-friendly but also architected from the ground up to be privacy-first, secure, and ready for the cookieless future.
+By leveraging Criztec's expertise in [Modern Web Development](/services), UK businesses can ensure their digital presence is not only visually appealing and user-friendly but also architected from the ground up to be privacy-first, secure, and ready for the cookieless future.
 
 ## Future-Proofing Your UK Business: A Comprehensive Privacy-First Approach
 

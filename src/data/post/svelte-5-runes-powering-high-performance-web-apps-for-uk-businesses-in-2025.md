@@ -52,7 +52,7 @@ For UK businesses already leveraging Svelte or SvelteKit, the transition to Svel
 3.  **Refactoring Reactive Logic:** Focus on converting `$:` reactive statements and `let` declarations to their Rune equivalents (`$state`, `$derived`, `$effect`). This is often a straightforward, mechanical process.
 4.  **Testing & Performance Validation:** Rigorously test the migrated components to ensure functionality and validate the expected performance improvements. Utilise tools like Lighthouse and WebPageTest.
 
-Our [Modern Web Development](/web-development) specialists at Criztec are adept at guiding UK development teams through this migration, ensuring a smooth transition with minimal disruption and maximum benefit.
+Our [Modern Web Development](/services) specialists at Criztec are adept at guiding UK development teams through this migration, ensuring a smooth transition with minimal disruption and maximum benefit.
 
 ## Best Practices for Building Scalable Svelte 5 Applications
 
@@ -103,7 +103,7 @@ For a mid-sized UK software agency, transitioning to Svelte 5 for new projects c
 
 The landscape of web development is constantly evolving, and by December 2025, Svelte 5 with its revolutionary Runes has solidified its position as a go-to framework for building high-performance web applications. For UK businesses, this isn't merely a technical curiosity; it's a strategic imperative. Achieving peak performance, optimising SEO, reducing operational expenditure, and empowering developer teams are no longer optional – they are essential for sustained growth and competitive advantage.
 
-Embracing Svelte 5 Runes means investing in a future where your web applications are not just functional, but truly exceptional. Whether you're looking to migrate an existing application, launch a new high-performance platform, or simply understand how these cutting-edge technologies can benefit your organisation, Criztec Technologies is your trusted partner. Our expertise in [Modern Web Development](/web-development), full-stack integration, and digital strategy ensures your business harnesses the full power of Svelte 5. Let's build something extraordinary together.
+Embracing Svelte 5 Runes means investing in a future where your web applications are not just functional, but truly exceptional. Whether you're looking to migrate an existing application, launch a new high-performance platform, or simply understand how these cutting-edge technologies can benefit your organisation, Criztec Technologies is your trusted partner. Our expertise in [Modern Web Development](/services), full-stack integration, and digital strategy ensures your business harnesses the full power of Svelte 5. Let's build something extraordinary together.
 
 ### Frequently Asked Questions about Svelte 5 Runes
 
@@ -114,7 +114,7 @@ A: Yes, by Q4 2025, Svelte 5 is considered mature and production-ready, with wid
 A: Svelte 5 Runes generally offers superior performance due to its compiler-first approach, which eliminates the need for a virtual DOM and reduces runtime overhead. This often results in smaller bundle sizes and faster load times compared to frameworks that rely more heavily on client-side runtime operations.
 
 **Q: Can Criztec Technologies help my UK business migrate to Svelte 5?**
-A: Absolutely. Criztec specialises in [Modern Web Development](/web-development) and offers comprehensive migration services, strategic planning, and hands-on development to help UK businesses transition smoothly to Svelte 5. [Contact us today](/contact) to discuss your project.
+A: Absolutely. Criztec specialises in [Modern Web Development](/services) and offers comprehensive migration services, strategic planning, and hands-on development to help UK businesses transition smoothly to Svelte 5. [Contact us today](/contact) to discuss your project.
 
 **Q: What kind of applications benefit most from Svelte 5 Runes?**
 A: Svelte 5 Runes is ideal for any application where performance, small bundle sizes, and developer experience are critical. This includes complex enterprise dashboards, e-commerce platforms, real-time data visualisations, interactive tools, and public-facing websites that require excellent Core Web Vitals scores.

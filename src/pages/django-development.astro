@@ -1,0 +1,237 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero2.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Steps from '~/components/widgets/Steps.astro';
+
+const metadata = {
+  title: 'Django Development Services | Python Web Apps | Criztec Technologies',
+  description:
+    'Build secure, maintainable Django web applications. We deliver Django + PostgreSQL apps, APIs with Django REST Framework, admin workflows, and long-term support.',
+  keywords:
+    'django development, python web development, django rest framework, drf, django admin, django api development, postgresql, celery, web application development',
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Django Development',
+    description:
+      'Django application development including APIs, admin tooling, integrations, performance optimization, and ongoing maintenance.',
+    provider: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies',
+      url: 'https://criztec.com',
+    },
+    areaServed: {
+      '@type': 'Place',
+      name: 'United Kingdom',
+    },
+    serviceType: 'Django Development',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Django Product Development',
+        description: 'Build MVPs and full products with Django using pragmatic, maintainable architecture.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Django REST APIs',
+        description:
+          'Design and implement secure APIs with Django REST Framework and clear authentication/authorization.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Admin Workflows',
+        description: 'Leverage Django Admin for internal tooling, back-office workflows, and operations dashboards.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Maintenance & Upgrades',
+        description: 'Keep your Django app current with upgrades, security patches, and performance improvements.',
+      },
+    ],
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    overlapHeader={false}
+    tagline="Django"
+    title="Django Development"
+    subtitle="We build secure, maintainable Django web applications. From MVPs to mature platforms, we focus on clean architecture, strong defaults, and predictable delivery."
+    actions={[
+      { variant: 'primary', target: '', text: 'Talk to a Django Developer', href: '/contact' },
+      { text: 'Compare Rails vs Django', href: '/web-app-development' },
+    ]}
+    image={{ src: '~/assets/images/hero-image.webp', alt: 'Django development hero image' }}
+  />
+
+  <Features2
+    title="Why Django"
+    subtitle="Django is a batteries-included framework with security-minded defaults and an excellent ecosystem. It’s a strong choice for teams who want Python leverage and a robust admin experience."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <Features2
+    columns={3}
+    items={[
+      {
+        title: 'Security-first defaults',
+        description:
+          'Django ships with mature protections against common web risks and encourages safe patterns for auth, forms, and data handling.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Powerful admin tooling',
+        description:
+          'Django Admin accelerates internal workflows and back-office tooling without building everything from scratch.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Maintainable architecture',
+        description:
+          'Clear separation of concerns, strong conventions, and a mature ecosystem keep codebases readable and evolvable.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Django REST Framework',
+        description:
+          'Build well-structured APIs with authentication, permissions, pagination, and versioning strategies that scale.',
+        icon: 'tabler:plug-connected',
+      },
+      {
+        title: 'Background jobs & workflows',
+        description:
+          'Handle asynchronous work (emails, imports, webhooks, reporting) with reliable job processing patterns.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Python ecosystem',
+        description:
+          'Integrate data workflows, automation, and domain libraries from the broader Python ecosystem when it adds leverage.',
+        icon: 'tabler:brand-python',
+      },
+    ]}
+  />
+
+  <Content
+    isReversed
+    title="Modern Django architecture"
+    subtitle="A pragmatic stack that stays simple and reliable."
+    items={[
+      {
+        title: 'PostgreSQL + solid data modeling',
+        description:
+          'We design data models and migrations carefully so the app evolves safely as product requirements change.',
+      },
+      {
+        title: 'API-first when needed',
+        description:
+          'When you need mobile clients, integrations, or a separate front-end, we build robust DRF APIs with clear auth rules.',
+      },
+      {
+        title: 'Admin-first internal tooling',
+        description:
+          'We use Django Admin as a strength: operational workflows, moderation, reporting, and safe data edits.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1740&q=80',
+      alt: 'Modern Django development architecture',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Built for the long term</h3>
+      We don’t just ship features — we build a codebase that stays secure, testable, and upgradeable as your product grows.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Steps
+    title="How we deliver"
+    subtitle="A straightforward process that keeps scope clear, feedback frequent, and releases reliable."
+    items={[
+      {
+        title: 'Discovery & architecture',
+        description:
+          'We clarify user flows, data model, and constraints, then propose a Django architecture that stays simple and scalable.',
+        icon: 'tabler:compass',
+      },
+      {
+        title: 'Build the core (MVP)',
+        description:
+          'We implement the most valuable features first, prioritizing maintainability, performance, and secure defaults.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Quality and hardening',
+        description:
+          'We add tests where they give leverage, review security posture, and ensure predictable environments and deployments.',
+        icon: 'tabler:shield',
+      },
+      {
+        title: 'Launch & improve',
+        description:
+          'We support deployment and ongoing improvements: upgrades, performance tuning, monitoring, and feature delivery.',
+        icon: 'tabler:repeat',
+      },
+    ]}
+  />
+
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Quick answers to common Django development questions."
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'Do you build APIs with Django?',
+        description:
+          'Yes. We commonly use Django REST Framework to build secure APIs and integrations, with clear permissions and authentication strategies.',
+      },
+      {
+        title: 'Can you work with an existing Django app?',
+        description:
+          'Yes. We can audit the codebase, plan upgrades, improve performance, add test coverage where it helps, and ship new features safely.',
+      },
+      {
+        title: 'Is Django a good fit for SaaS?',
+        description:
+          'Often, yes. Django can be a strong foundation for SaaS products, especially when you want Python ecosystem leverage and fast internal tooling via Django Admin.',
+      },
+      {
+        title: 'Can you help choose between Django and Rails?',
+        description:
+          'Yes. We offer both. We’ll recommend the framework that best fits your product constraints, team skills, and the fastest safe route to shipping.',
+      },
+    ]}
+  />
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Start a Django Project',
+        href: '/contact',
+      },
+      {
+        text: 'Compare Django vs Rails',
+        href: '/web-app-development',
+      },
+    ]}
+    title="Ready to build with Django?"
+    subtitle="Tell us what you’re building and we’ll recommend the fastest path to a secure, maintainable Django application."
+  />
+</Layout>

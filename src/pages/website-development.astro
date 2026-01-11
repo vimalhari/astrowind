@@ -7,7 +7,9 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
-  title: 'Services',
+  title: 'WordPress Website Development | CMS Websites | Criztec Technologies',
+  description:
+    'WordPress website development for teams that need an easy-to-edit CMS. We build secure, fast, SEO-friendly sites and support migrations, hosting, and maintenance.',
 };
 ---
 
@@ -16,9 +18,9 @@ const metadata = {
 
   <Hero
     overlapHeader={false}
-    tagline=""
-    title="Website Development Solutions"
-    subtitle="Your website should be a powerful tool for growth. We'll design and develop a high-performing website that generates leads, boosts sales, and helps you achieve your business goals."
+    tagline="WordPress Websites"
+    title="WordPress Website Development"
+    subtitle="Need a site your team can edit without developer help? We build secure, fast WordPress websites with a clean CMS experience, strong performance, and SEO-friendly foundations."
     actions={[{ variant: 'primary', target: '', text: 'Work with Us', href: '/contact' }]}
     image={{
       src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
@@ -30,7 +32,7 @@ const metadata = {
 
   <Features2
     title="Built for Experience"
-    subtitle="Our team of skilled web developers is ready to collaborate with you to create an engaging and functional website that makes your business accessible. We utilize top open-source platforms to ensure your website remains secure and at the forefront of technological advancements."
+    subtitle="WordPress is a great fit when you need a familiar CMS and a website your team can update confidently. We deliver clean builds with performance, security, and SEO-friendly foundations."
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -125,7 +127,7 @@ const metadata = {
       {
         title: 'Future-Proof Technology',
         description:
-          'Our websites are built using the latest technologies and best practices, ensuring scalability and adaptability for years to come.',
+          'We build WordPress sites with best practices that keep them maintainable: clean theme work, sensible plugins, and a plan for updates.',
         icon: 'tabler:code',
       },
     ]}
@@ -149,13 +151,13 @@ const metadata = {
       {
         title: 'Custom Built',
         description:
-          'Need a site from scratch? Working with you, our in-house team will develop high quality bespoke sites and applications that match the individual needs of your business.',
+          'Need a site from scratch? Working with you, our in-house team will build a high-quality WordPress website that matches your business needs.',
         icon: 'tabler:wand',
       },
       {
         title: 'Open Source',
         description:
-          'We trust in the best open source platforms, which is why we use Joomla, Wordpress and Drupal for the sites we develop. This means that your site will be robust and up-to-date for your business going forward.',
+          'WordPress has a mature ecosystem and a huge talent pool. We build on it carefully so your site stays robust, secure, and easy to evolve.',
         icon: 'tabler:brand-open-source', // Updated icon
       },
       {
@@ -167,7 +169,7 @@ const metadata = {
       {
         title: 'Secure',
         description:
-          "Online security is paramount in our development and we know it’s a priority for your business. The sites we create don't compromise data for design.",
+          'Online security is a priority. We harden WordPress builds, keep dependencies updated, and recommend sensible plugin choices to reduce risk.',
         icon: 'tabler:shield-check', // Updated icon
       },
     ]}
@@ -263,11 +265,11 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get a Free Quote', // Changed to a more relevant CTA
-        href: '/contact', // Changed to a contact page
+        text: 'Get a Free Quote',
+        href: '/contact',
       },
     ]}
     title="Bring Your Vision to Life"
-    subtitle="We create high-performing, custom websites that drive business growth."
+    subtitle="We create easy-to-manage WordPress websites that drive business growth — with solid performance, security, and support."
   />
 </Layout>

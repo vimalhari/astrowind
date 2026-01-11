@@ -15,7 +15,7 @@ const { title, description, canonical, city } = Astro.props;
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: `Criztec Technologies - ${city.name} Web Development`,
+  name: `Criztec Technologies - ${city.name} Website Development`,
   description: description,
   url: canonical,
   address: {
@@ -51,7 +51,7 @@ const seoMeta = {
   canonical,
   keywords: city.metaKeywords.join(', '),
   openGraph: {
-    title: `${city.name} Web Development Services | Criztec Technologies`,
+    title: `${city.name} Website Development Services | Criztec Technologies`,
     description,
     type: 'website',
     url: canonical,
@@ -61,7 +61,7 @@ const seoMeta = {
         url: '~/assets/images/hero-image.webp',
         width: 1200,
         height: 630,
-        alt: `Web Development Services in ${city.name}`,
+        alt: `Website Development Services in ${city.name}`,
       },
     ],
   },
@@ -69,7 +69,7 @@ const seoMeta = {
     card: 'summary_large_image',
     site: '@Criztec_IT',
     creator: '@Criztec_IT',
-    title: `${city.name} Web Development | Criztec Technologies`,
+    title: `${city.name} Website Development | Criztec Technologies`,
     description,
     image: '~/assets/images/hero-image.webp',
   },
@@ -89,7 +89,7 @@ const seoMeta = {
 
     <!-- Local SEO -->
     <meta name="DC.title" content={title} />
-    <meta name="DC.subject" content={`Web Development Services in ${city.name}`} />
+    <meta name="DC.subject" content={`Website Development Services in ${city.name}`} />
     <meta name="DC.description" content={description} />
     <meta name="DC.coverage" content={`${city.name}, ${city.region}, UK`} />
 

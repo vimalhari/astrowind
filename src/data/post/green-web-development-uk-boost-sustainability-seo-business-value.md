@@ -43,7 +43,7 @@ Modern web development frameworks prioritise performance and efficiency, directl
 - **Astro & SvelteKit:** These frameworks excel at delivering highly optimised, lightweight front-ends. They often produce minimal JavaScript, leading to faster load times and less data transfer. Astro, for example, ships zero JavaScript by default, only loading it when necessary, dramatically cutting down on client-side processing and energy use.
 - **Next.js:** With features like automatic image optimisation, static site generation (SSG), and server-side rendering (SSR), Next.js helps reduce the amount of work a user's browser has to do, thus lowering energy consumption. Pre-rendering pages means less data is sent and less processing power is needed on the client's device.
 
-Choosing these frameworks for your new website or a redevelopment project can significantly slash your digital emissions. Our [Modern Web Development](/web-development) services focus on building high-performance, sustainable platforms tailored for the UK market.
+Choosing these frameworks for your new website or a redevelopment project can significantly slash your digital emissions. Our [Modern Web Development](/services) services focus on building high-performance, sustainable platforms tailored for the UK market.
 
 ### Optimising Digital Assets for Efficiency
 

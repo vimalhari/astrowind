@@ -1,0 +1,146 @@
+---
+import Hero from '~/components/widgets/Hero2.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Web App Development | Django + Rails | Criztec Technologies',
+  description:
+    'Web app development focused on Django and Ruby on Rails. We help you pick the right framework and deliver secure, maintainable apps — from MVPs to mature platforms.',
+  keywords:
+    'web app development, django development, ruby on rails development, rails development services, django web applications, mvp development, product development, saas development',
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    overlapHeader={false}
+    tagline="Web App Development"
+    title="Django & Ruby on Rails Web App Development"
+    subtitle="A focused offering: we build web apps with Django or Rails. We’ll help you choose the right framework for your product, then ship a secure, maintainable application you can evolve for years."
+    actions={[
+      { variant: 'primary', text: 'Discuss Your App', href: '/contact' },
+      { text: 'Ruby on Rails Deep Dive', href: '/ruby-on-rails-development' },
+      { text: 'Django Deep Dive', href: '/django-development' },
+    ]}
+    image={{ src: '~/assets/images/hero-image.webp', alt: 'Web app development with Django and Ruby on Rails' }}
+  />
+
+  <Features2
+    title="Rails vs Django: how to choose"
+    subtitle="Both are excellent. The best choice depends on your team, product constraints, and what you need to ship next."
+    columns={2}
+    items={[
+      {
+        title: 'Choose Rails when speed-to-product matters',
+        description:
+          'Rails shines when you want to move fast with a conventional full-stack framework. Hotwire can deliver highly interactive UX without heavy SPA complexity.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Choose Django when you want Python ecosystem leverage',
+        description:
+          'Django is a great fit when you benefit from Python libraries (data workflows, ML-adjacent needs, scripting) and want a batteries-included admin and security-first defaults.',
+        icon: 'tabler:brand-python',
+      },
+      {
+        title: 'Rails is great for SaaS, dashboards, and back-office apps',
+        description:
+          'If your product is CRUD-heavy with workflows, permissions, billing, and fast iteration, Rails delivers strong productivity and long-term maintainability.',
+        icon: 'tabler:layout-dashboard',
+      },
+      {
+        title: 'Django is great for content + complex domain apps',
+        description:
+          'If you need a robust admin, complex business rules, and integrations with Python services, Django is a strong, stable foundation.',
+        icon: 'tabler:layers-linked',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <Content
+    title="What we build"
+    subtitle="Practical web applications with a clear path from MVP to scale."
+    items={[
+      {
+        title: 'MVPs and product builds',
+        description:
+          'Launch the smallest valuable version quickly, with architecture that won’t block you as you learn and iterate.',
+      },
+      {
+        title: 'Dashboards and internal tools',
+        description: 'Admin panels, operations portals, reporting tools, and workflow automation that save teams time.',
+      },
+      {
+        title: 'APIs and integrations',
+        description:
+          'Payments, CRMs, analytics, auth providers, and third-party services — integrated with reliability in mind.',
+      },
+      {
+        title: 'Upgrades and maintenance',
+        description:
+          'Improve test coverage, patch security issues, and modernize legacy apps with staged rollouts and minimal risk.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=2070&q=80',
+      alt: 'Team building a web application',
+    }}
+  />
+
+  <Content
+    isReversed
+    title="How we deliver"
+    subtitle="Keep scope clear, releases frequent, and reliability high."
+    items={[
+      {
+        title: 'Discovery and architecture',
+        description:
+          'We clarify goals, users, data model, and risks, then choose Django or Rails based on what will ship fastest and stay maintainable.',
+      },
+      {
+        title: 'Iterative development',
+        description:
+          'Small releases, feedback loops, and pragmatic trade-offs. We keep complexity proportional to product stage.',
+      },
+      {
+        title: 'Security and quality',
+        description:
+          'Secure defaults, code review, and automated tests where they add leverage. We prioritize correctness and uptime.',
+      },
+      {
+        title: 'Launch and support',
+        description:
+          'Deployment, monitoring, and ongoing improvements — so your app stays fast, secure, and easy to evolve.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1740&q=80',
+      alt: 'Product delivery process for web apps',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <CallToAction
+    actions={[
+      { variant: 'primary', text: 'Book a Call', href: '/contact' },
+      { text: 'Rails Deep Dive', href: '/ruby-on-rails-development' },
+      { text: 'Django Deep Dive', href: '/django-development' },
+    ]}
+    title="Not sure which framework fits?"
+    subtitle="Tell us what you’re building (users, workflows, integrations, timeline). We’ll recommend Django or Rails and outline a delivery plan."
+  />
+</Layout>

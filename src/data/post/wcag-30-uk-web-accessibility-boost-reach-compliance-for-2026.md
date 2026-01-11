@@ -36,7 +36,7 @@ For years, WCAG 2.x has been the gold standard, providing a binary 'pass or fail
 - **Broader Scope:** WCAG 3.0 extends beyond just web content to encompass a vast array of digital experiences, including native mobile apps, virtual reality (VR), augmented reality (AR), and even IoT devices. For a UK business, this means your entire digital ecosystem – from your e-commerce platform to your customer service chatbot and mobile application – will likely fall under its purview.
 - **Emphasis on Cognitive Accessibility:** There's a much stronger focus on cognitive and learning disabilities, providing clearer guidance and success criteria to ensure these users can navigate and understand digital content effectively. This opens up entirely new demographics for your UK business website.
 
-This shift demands a proactive strategy. Waiting until WCAG 3.0 becomes fully mandated will leave you playing catch-up. Businesses that embrace inclusive design principles now will be well-positioned to meet the new standards, ensuring their [modern web development](/web-development) is inherently accessible.
+This shift demands a proactive strategy. Waiting until WCAG 3.0 becomes fully mandated will leave you playing catch-up. Businesses that embrace inclusive design principles now will be well-positioned to meet the new standards, ensuring their [modern web development](/services) is inherently accessible.
 
 ## Legal & Ethical Imperatives: Navigating UK Accessibility Laws
 
@@ -62,7 +62,7 @@ Achieving WCAG 3.0 compliance and genuine digital inclusion requires a foundatio
 5.  **Captioning & Transcripts:** All multimedia content (videos, audio) must include captions for hearing-impaired users and transcripts for those who prefer to read or have cognitive impairments. Audio descriptions for video content are also vital for visually impaired users.
 6.  **Robust Testing:** Beyond automated tools, engage real users with diverse disabilities for user testing. This provides invaluable feedback that automated checkers often miss. Consider conducting usability studies with assistive technology users.
 
-For businesses using modern frameworks like Astro, SvelteKit, Next.js, or Django, Criztec's [modern web development](/web-development) experts are adept at building accessibility into the core architecture, ensuring your digital products are robust, scalable, and inclusive from day one.
+For businesses using modern frameworks like Astro, SvelteKit, Next.js, or Django, Criztec's [modern web development](/services) experts are adept at building accessibility into the core architecture, ensuring your digital products are robust, scalable, and inclusive from day one.
 
 ## Accessibility SEO: Boosting Rankings & Audience Reach
 
@@ -112,7 +112,7 @@ The road to WCAG 3.0 compliance and genuine digital inclusion can be complex, bu
 **Our Expertise for Your Accessibility Journey:**
 
 - **Comprehensive Accessibility Audits:** We conduct thorough evaluations of your existing digital assets, identifying areas of non-compliance and providing a clear, actionable roadmap for improvement, aligning with WCAG 2.2 and preparing for WCAG 3.0.
-- **Compliant Web Development:** Whether you're building a new site or revamping an existing one, our [modern web development](/web-development) team (specialising in Astro, SvelteKit, Next.js, Django, and more) integrates accessibility best practices from the ground up, ensuring your platform is inherently inclusive.
+- **Compliant Web Development:** Whether you're building a new site or revamping an existing one, our [modern web development](/services) team (specialising in Astro, SvelteKit, Next.js, Django, and more) integrates accessibility best practices from the ground up, ensuring your platform is inherently inclusive.
 - **Digital Marketing & Accessibility SEO:** Our [digital marketing](/digital-marketing) specialists ensure your accessible content is optimised for search engines, expanding your organic reach and connecting you with a broader audience.
 - **Custom Software & Mobile App Solutions:** For bespoke applications, our [custom software development](/custom-software-development) and [mobile app development](/mobile-app) teams build accessibility into the core architecture, ensuring your unique solutions are usable by all.
 - **IT Support & Managed Services:** We provide ongoing [IT support](/it-support) and managed services to ensure your digital infrastructure remains accessible, secure, and performs optimally, adapting to evolving standards.

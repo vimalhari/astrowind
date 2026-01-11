@@ -40,7 +40,6 @@ export const headerData = {
     {
       text: 'Design',
       links: [
-        { text: 'Web Design', href: getPermalink('/web-design') },
         { text: 'Logo Design', href: getPermalink('/logo-design') },
         // { text: 'UX Design', href: getPermalink('/ux-design') },
         // { text: 'Graphic Design', href: getPermalink('/graphic-design') },
@@ -50,14 +49,16 @@ export const headerData = {
     {
       text: 'Development',
       links: [
-        { text: 'Website Development', href: getPermalink('/website-development') },
+        { text: 'Web App Development (Django + Rails)', href: getPermalink('/web-app-development') },
+        { text: 'WordPress Website Development', href: getPermalink('/website-development') },
+        { text: 'Django Development', href: getPermalink('/django-development') },
         { text: 'Mobile App Development', href: getPermalink('/mobile-app') },
         { text: 'Ruby on Rails Development', href: getPermalink('/ruby-on-rails-development') },
         { text: 'Business Automation (n8n)', href: getPermalink('/business-automation') },
         // { text: 'Software Development', href: getPermalink('/software-development') },
         // { text: 'Ecommerce Solutions', href: getPermalink('/ecommerce-solutions') },
         // { text: 'Hugo Static Site', href: getPermalink('/hugo-static-site') },
-        { text: 'Astro Site Development', href: getPermalink('/astro-site') },
+        { text: 'Astro Website Development', href: getPermalink('/astro-site') },
         // { text: 'WordPress', href: getPermalink('/wordpress') },
         // { text: 'Automation', href: getPermalink('/automation') },
         // { text: 'ETL / Data Processing', href: getPermalink('/etl-data-processing') },
@@ -103,7 +104,6 @@ export const footerData = {
     {
       title: 'Design Services',
       links: [
-        { text: 'Web Design', href: getPermalink('/web-design') },
         { text: 'Logo Design', href: getPermalink('/logo-design') },
         { text: 'All Services', href: getPermalink('/services') },
       ],
@@ -111,11 +111,13 @@ export const footerData = {
     {
       title: 'Development',
       links: [
-        { text: 'Website Development', href: getPermalink('/website-development') },
+        { text: 'Web App Development (Django + Rails)', href: getPermalink('/web-app-development') },
+        { text: 'WordPress Website Development', href: getPermalink('/website-development') },
+        { text: 'Django Development', href: getPermalink('/django-development') },
         { text: 'Mobile App Development', href: getPermalink('/mobile-app') },
         { text: 'Ruby on Rails Development', href: getPermalink('/ruby-on-rails-development') },
         { text: 'Business Automation (n8n)', href: getPermalink('/business-automation') },
-        { text: 'Astro Site Development', href: getPermalink('/astro-site') },
+        { text: 'Astro Website Development', href: getPermalink('/astro-site') },
       ],
     },
     {
@@ -139,7 +141,7 @@ export const footerData = {
       title: 'Locations',
       links: cities.map((city) => ({
         text: city.name,
-        href: getPermalink(`/web-development/${city.slug}`),
+        href: getPermalink(`/locations/${city.slug}/website-development`),
       })),
     },
   ],

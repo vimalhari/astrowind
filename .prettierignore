@@ -2,6 +2,7 @@ dist
 node_modules
 .github
 .changeset
+.codacy/codacy.yaml
 src/data/post/best-tech-stack-2025.md
 src/data/post/nextjs-vs-angular.md
 src/pages/case-studies/[slug].astro

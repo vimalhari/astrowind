@@ -1,0 +1,39 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { cities, type CityData } from '../../../data/cities';
+import CityLayout from '../../../layouts/CityLayout.astro';
+import CityHero from '../../../components/city/CityHero.astro';
+import CityServices from '../../../components/city/CityServices.astro';
+import CityAbout from '../../../components/city/CityAbout.astro';
+import CityContact from '../../../components/city/CityContact.astro';
+
+export interface Props {
+  city: CityData;
+}
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return cities.map((city) => ({
+    params: { city: city.slug },
+    props: { city },
+  }));
+};
+
+const { city } = Astro.props;
+
+// Validate that city data exists
+if (!city) {
+  return Astro.redirect('/404');
+}
+
+// SEO metadata
+const title = `${city.name} Website Development | Astro & WordPress | Criztec Technologies`;
+const description = city.metaDescription;
+const canonical = `${Astro.site}locations/${city.slug}/website-development`;
+---
+
+<CityLayout title={title} description={description} canonical={canonical} city={city}>
+  <CityHero city={city} />
+  <CityServices city={city} />
+  <CityAbout city={city} />
+  <CityContact city={city} />
+</CityLayout>
