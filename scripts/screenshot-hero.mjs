@@ -24,7 +24,7 @@ try {
   }
 
   await hero.screenshot({ path: outputPath });
-  // eslint-disable-next-line no-console
+
   console.log(`Saved hero screenshot to ${outputPath}`);
 } finally {
   await page.close();

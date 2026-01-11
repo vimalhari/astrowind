@@ -9,9 +9,9 @@ import Layout from '~/layouts/PageLayout.astro';
 const metadata = {
   title: 'Our Services | Web Development & Digital Marketing | Criztec Technologies',
   description:
-    'Comprehensive web development and digital marketing services in London. From custom websites to SEO, mobile apps to social media marketing - we deliver results that grow your business.',
+    'Comprehensive web development and digital marketing services for businesses in the UK, Europe, and worldwide. From custom websites to SEO, mobile apps to social media marketing - we deliver results that grow your business.',
   keywords:
-    'web development services London, digital marketing services, custom website development, mobile app development, SEO services, e-commerce development, social media marketing, IT support London',
+    'web development services, digital marketing services, custom website development, mobile app development, SEO services, e-commerce development, social media marketing, IT support',
   structuredData: {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -22,10 +22,11 @@ const metadata = {
       name: 'Criztec Technologies',
       url: 'https://criztec.com',
     },
-    areaServed: {
-      '@type': 'Place',
-      name: 'London, UK',
-    },
+    areaServed: [
+      { '@type': 'Place', name: 'United Kingdom' },
+      { '@type': 'Place', name: 'Europe' },
+      { '@type': 'Place', name: 'Worldwide' },
+    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Digital Services',
@@ -86,7 +87,7 @@ const metadata = {
   <Hero
     overlapHeader={false}
     tagline="Our Services"
-    title="Comprehensive Digital Solutions for London Businesses"
+    title="Comprehensive Digital Solutions"
     subtitle="From custom web development to strategic digital marketing, we provide the complete range of services your business needs to thrive online. Our expert team delivers results-driven solutions tailored to your goals."
     actions={[
       { variant: 'primary', text: 'Get Free Consultation', href: '/contact' },

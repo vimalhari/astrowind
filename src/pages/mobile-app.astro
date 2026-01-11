@@ -10,9 +10,9 @@ import Steps from '~/components/widgets/Steps.astro';
 const metadata = {
   title: 'Mobile App Development UK | iOS & Android App Developers | Criztec Technologies',
   description:
-    'Expert mobile app development services in London and UK. We create custom iOS, Android, and cross-platform mobile applications that engage users and drive business growth. Get your free consultation today.',
+    'Expert mobile app development services for businesses in the UK, Europe, and worldwide. We create custom iOS, Android, and cross-platform mobile applications that engage users and drive business growth. Get your free consultation today.',
   keywords:
-    'mobile app development UK, iOS app development London, Android app development, React Native development, Flutter development, custom mobile apps, mobile app design, app store optimization, mobile app consulting',
+    'mobile app development, iOS app development, Android app development, React Native development, Flutter development, custom mobile apps, mobile app design, app store optimization, mobile app consulting',
   structuredData: {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -23,10 +23,11 @@ const metadata = {
       name: 'Criztec Technologies',
       url: 'https://criztec.com',
     },
-    areaServed: {
-      '@type': 'Place',
-      name: 'United Kingdom',
-    },
+    areaServed: [
+      { '@type': 'Place', name: 'United Kingdom' },
+      { '@type': 'Place', name: 'Europe' },
+      { '@type': 'Place', name: 'Worldwide' },
+    ],
     serviceType: 'Mobile App Development',
     offers: [
       {

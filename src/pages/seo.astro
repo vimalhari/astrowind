@@ -8,25 +8,26 @@ import Faqs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 
 const metadata = {
-  title: 'Expert SEO Services London | Boost Your Rankings | Criztec Technologies',
+  title: 'Expert SEO Services | Boost Your Rankings | Criztec Technologies',
   description:
-    'Drive organic traffic and achieve top search engine rankings with our expert SEO services in London, UK. Proven SEO strategies that deliver measurable results and ROI for your business.',
+    'Drive organic traffic and achieve top search engine rankings with our expert SEO services for businesses in the UK, Europe, and worldwide. Proven SEO strategies that deliver measurable results and ROI.',
   keywords:
-    'SEO services London, SEO agency London, local SEO London, search engine optimization, Google ranking, organic traffic, keyword research, on-page SEO, off-page SEO, technical SEO, SEO audit, link building London',
+    'SEO services, SEO agency, local SEO, search engine optimization, Google ranking, organic traffic, keyword research, on-page SEO, off-page SEO, technical SEO, SEO audit, link building',
   structuredData: {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'SEO Services London',
+    name: 'SEO Services',
     description: 'Expert search engine optimization services to improve Google rankings and organic traffic',
     provider: {
       '@type': 'Organization',
       name: 'Criztec Technologies',
       url: 'https://criztec.com',
     },
-    areaServed: {
-      '@type': 'Place',
-      name: 'London, UK',
-    },
+    areaServed: [
+      { '@type': 'Place', name: 'United Kingdom' },
+      { '@type': 'Place', name: 'Europe' },
+      { '@type': 'Place', name: 'Worldwide' },
+    ],
     serviceType: 'Search Engine Optimization',
     priceRange: '££',
     offers: [
@@ -38,7 +39,7 @@ const metadata = {
       {
         '@type': 'Offer',
         name: 'Local SEO',
-        description: 'Local search optimization for London businesses',
+        description: 'Local search optimization for businesses targeting specific UK regions and cities',
       },
       {
         '@type': 'Offer',
@@ -55,7 +56,7 @@ const metadata = {
         url: 'https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/check-seo-banner-art-1.webp',
         width: 1200,
         height: 630,
-        alt: 'SEO Services London - Criztec Technologies',
+        alt: 'SEO Services - Criztec Technologies',
       },
     ],
   },
@@ -67,18 +68,18 @@ const metadata = {
   <Hero
     overlapHeader={false}
     tagline="Dominate Search Results"
-    title="Expert SEO Services in London"
-    subtitle="Propel your business to the top of Google with data-driven SEO strategies designed for the competitive London market. Increase visibility, attract qualified leads, and achieve sustainable growth."
+    title="Expert SEO Services"
+    subtitle="Propel your business to the top of Google with data-driven SEO strategies. Increase visibility, attract qualified leads, and achieve sustainable growth."
     actions={[{ variant: 'primary', target: '', text: 'Get Free SEO Audit', href: '/contact' }]}
     image={{
       src: 'https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/check-seo-banner-art-1.webp',
-      alt: 'SEO Services London Hero Image',
+      alt: 'SEO Services Hero Image',
     }}
   />
 
   <!-- Stats Widget -->
   <Stats
-    title="Why SEO Matters for Your London Business"
+    title="Why SEO Matters for Your Business"
     stats={[
       { title: 'Higher Rankings', amount: '75%' },
       { title: 'Increased Traffic', amount: '53%' },
@@ -90,19 +91,19 @@ const metadata = {
   <!-- Features2 Widget (Our Services) -->
   <Features2
     title="Our Comprehensive SEO Solutions"
-    subtitle="We offer a full suite of SEO services, covering every aspect needed to improve your website's performance and visibility in London and beyond."
+    subtitle="We offer a full suite of SEO services, covering every aspect needed to improve your website's performance and visibility."
     columns={3}
     items={[
       {
         title: 'SEO Consultancy',
         description:
-          'Expert guidance and strategic planning tailored to your specific business goals and market position in London.',
+          'Expert guidance and strategic planning tailored to your specific business goals and market position.',
         icon: 'tabler:users-group',
       },
       {
-        title: 'Local SEO (London Focus)',
+        title: 'Local SEO',
         description:
-          'Optimize your online presence to attract local customers in London through Google Maps and local search results.',
+          'Optimize your online presence to attract local customers through Google Maps and local search results.',
         icon: 'tabler:map-pin',
       },
       {
@@ -131,14 +132,13 @@ const metadata = {
       },
       {
         title: 'Keyword Research',
-        description:
-          'Identify valuable keywords your target audience in London is searching for to drive relevant traffic.',
+        description: 'Identify valuable keywords your target audience is searching for to drive relevant traffic.',
         icon: 'tabler:search',
       },
       {
         title: 'E-commerce SEO',
         description:
-          'Specialized strategies to increase visibility and sales for your online store in the competitive London market.',
+          'Specialized strategies to increase visibility and sales for your online store in competitive markets.',
         icon: 'tabler:shopping-cart',
       },
       {
@@ -157,18 +157,18 @@ const metadata = {
   <!-- Content Widget (Our Process) -->
   <Content
     classes={{ container: 'content-image-bg-white' }}
-    title="Our Proven SEO Process for London Success"
+    title="Our Proven SEO Process"
     subtitle="We follow a structured, data-driven process to deliver measurable results and long-term SEO success for your business."
     items={[
       {
         title: '1. Discovery & Analysis',
         description:
-          'We start by understanding your business, goals, target audience in London, and competitors. We conduct a thorough SEO audit of your current website.',
+          'We start by understanding your business, goals, target audience, and competitors. We conduct a thorough SEO audit of your current website.',
       },
       {
         title: '2. Keyword Research & Strategy',
         description:
-          'Identifying the most valuable keywords your London customers are searching for and developing a tailored SEO strategy.',
+          'Identifying the most valuable keywords your customers are searching for and developing a tailored SEO strategy.',
       },
       {
         title: '3. On-Page & Technical Implementation',
@@ -205,13 +205,12 @@ const metadata = {
   <Content
     isReversed
     classes={{ container: 'content-image-bg-white' }}
-    title="Your Expert SEO Partner in London"
-    subtitle="Choose a dedicated team committed to your success in the competitive London digital landscape."
+    title="Your Expert SEO Partner"
+    subtitle="Choose a dedicated team committed to your success in a competitive digital landscape."
     items={[
       {
-        title: 'London Market Expertise',
-        description:
-          'Deep understanding of the London market dynamics and search behaviour to give you a competitive edge.',
+        title: 'Market Expertise',
+        description: 'Deep understanding of market dynamics and search behaviour to give you a competitive edge.',
       },
       {
         title: 'Results-Driven Strategies',
@@ -229,12 +228,11 @@ const metadata = {
       },
       {
         title: 'Dedicated Support',
-        description:
-          'A proactive and responsive team based in London, always available to answer your questions and provide support.',
+        description: 'A proactive and responsive team, always available to answer your questions and provide support.',
       },
     ]}
     image={{
-      src: 'https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/SEO-Consultancy-Services-in-London-978x1024.png.webp', // Consider an image representing partnership/expertise
+      src: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       alt: 'Team collaborating on SEO strategy',
     }}
   >
@@ -249,18 +247,18 @@ const metadata = {
   <!-- FAQs Widget -->
   <Faqs
     title="Frequently Asked SEO Questions"
-    subtitle="Answers to common questions about SEO and how it can benefit your London business."
+    subtitle="Answers to common questions about SEO and how it can benefit your business."
     columns={1}
     items={[
       {
-        title: 'What is SEO and why is it important for my London business?',
+        title: 'What is SEO and why is it important for my business?',
         description:
-          "SEO (Search Engine Optimization) is the practice of improving your website to increase its visibility in search engine results (like Google) for relevant searches. It's crucial for London businesses as it drives organic (free) traffic, connects you with potential customers actively looking for your services/products, and builds brand credibility.",
+          "SEO (Search Engine Optimization) is the practice of improving your website to increase its visibility in search engine results (like Google) for relevant searches. It's crucial for businesses because it drives organic (free) traffic, connects you with potential customers actively looking for your services/products, and builds brand credibility.",
       },
       {
         title: 'How long does it take to see results from SEO?',
         description:
-          'SEO is a long-term strategy. While some improvements can be seen within a few months (3-6 months typically), significant results often take 6-12 months, especially in competitive markets like London. Consistency is key.',
+          'SEO is a long-term strategy. While some improvements can be seen within a few months (3-6 months typically), significant results often take 6-12 months, especially in competitive markets. Consistency is key.',
       },
       {
         title: "What's the difference between On-Page, Off-Page, and Technical SEO?",
@@ -270,12 +268,12 @@ const metadata = {
       {
         title: 'Is Local SEO important if I serve all of the UK?',
         description:
-          'Even if you serve the entire UK, optimizing for London (Local SEO) is vital if you have a physical presence or want to attract customers specifically searching within London. It helps you appear in map results and local searches, capturing high-intent users.',
+          'Even if you serve the entire UK (or beyond), Local SEO is vital if you have a physical presence or want to attract customers searching within specific regions and cities. It helps you appear in map results and local searches, capturing high-intent users.',
       },
       {
         title: 'How much do your SEO services cost?',
         description:
-          'Our SEO packages are tailored to your specific needs, goals, and the competitiveness of your industry in London. We offer various options and can provide a custom quote after an initial consultation and audit. Contact us for details.',
+          'Our SEO packages are tailored to your specific needs, goals, and the competitiveness of your industry. We offer various options and can provide a custom quote after an initial consultation and audit. Contact us for details.',
       },
       {
         title: 'Do you guarantee #1 rankings?',
@@ -287,8 +285,8 @@ const metadata = {
 
   <!-- CallToAction Widget -->
   <CallToAction
-    title="Ready to Rank Higher in London?"
-    subtitle="Partner with London's trusted SEO experts to drive targeted organic traffic, generate qualified leads, and achieve sustainable business growth. Contact us today for a free, no-obligation consultation and SEO audit."
+    title="Ready to Rank Higher?"
+    subtitle="Partner with our SEO team to drive targeted organic traffic, generate qualified leads, and achieve sustainable business growth. Contact us today for a free, no-obligation consultation and SEO audit."
     actions={[{ variant: 'primary', text: 'Get Your Free SEO Quote', href: '/contact' }]}
   />
 </Layout>

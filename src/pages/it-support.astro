@@ -9,9 +9,9 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 
 const metadata = {
-  title: 'Managed IT Support London',
+  title: 'Managed IT Support | Criztec Technologies',
   description:
-    'Reliable managed IT support services for London businesses. 24/7 support, proactive maintenance, and tailored IT solutions for your growing business.',
+    'Reliable managed IT support services for businesses in the UK, Europe, and worldwide. 24/7 support, proactive maintenance, and tailored IT solutions for your growing business.',
 };
 ---
 
@@ -20,9 +20,9 @@ const metadata = {
 
   <Hero
     overlapHeader={false}
-    tagline="London's Premier IT Support"
+    tagline="Managed IT Support"
     title="Managed IT Support Services"
-    subtitle="Keep your business running smoothly with our comprehensive managed IT support solutions tailored to London businesses of all sizes."
+    subtitle="Keep your business running smoothly with comprehensive managed IT support solutions tailored to your needs."
     actions={[{ variant: 'primary', target: '', text: 'Get Support Now', href: '/contact' }]}
     image={{ src: '~/assets/images/hero-image.webp', alt: 'Managed IT Support Services Hero Image' }}
   />
@@ -30,11 +30,11 @@ const metadata = {
   <!-- Stats Widget ****************** -->
 
   <Stats
-    title="Why Content Marketing Matters for Your London Business"
+    title="Why Proactive IT Support Matters"
     stats={[
       { amount: '99.9%', title: 'Uptime guarantee' },
       { amount: '15+', title: 'Years in business' },
-      { amount: '20+', title: 'London businesses served' },
+      { amount: '20+', title: 'Businesses supported' },
       { amount: '24/7', title: 'Support availability' },
     ]}
   />
@@ -42,8 +42,8 @@ const metadata = {
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Comprehensive IT Support for London Businesses"
-    subtitle="Our managed IT services are designed to provide London businesses with reliable, cost-effective support tailored to the unique challenges of the UK market."
+    title="Comprehensive IT Support"
+    subtitle="Our managed IT services are designed to provide reliable, cost-effective support tailored to the needs of modern businesses."
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -76,7 +76,7 @@ const metadata = {
       {
         title: 'Cloud Solutions',
         description:
-          'Secure cloud migration and management services optimised for London businesses with UK data sovereignty.',
+          'Secure cloud migration and management services optimised for performance, resilience, and compliance.',
         icon: 'tabler:cloud',
       },
       {
@@ -86,8 +86,7 @@ const metadata = {
       },
       {
         title: 'On-Site Support',
-        description:
-          "Rapid response on-site technical support across Greater London when remote assistance isn't sufficient.",
+        description: "On-site technical support available when remote assistance isn't sufficient.",
         icon: 'tabler:map-pin',
       },
     ]}
@@ -98,7 +97,7 @@ const metadata = {
   <Content
     image={{
       src: 'https://images.unsplash.com/photo-1600267204091-5c1ab8b10c02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'London IT Support Team',
+      alt: 'IT Support Team',
       loading: 'eager',
     }}
   >
@@ -109,16 +108,14 @@ const metadata = {
     <Fragment slot="content">
       <div class="flex flex-col space-y-4">
         <div class="content-section">
-          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">
-            Why London Businesses Choose Us
-          </h2>
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Why Businesses Choose Us</h2>
           <p>
-            As a London-based business, you face unique challenges in a fast-paced, competitive environment. Our IT
-            support services are specifically designed for the London market.
+            In fast-paced, competitive environments, businesses need IT support that is reliable, secure, and
+            responsive.
           </p>
           <p class="mt-4">
-            We understand the specific requirements of businesses operating in the UK capital, from financial services
-            in the City to creative startups in Shoreditch.
+            We support a wide range of organisations, from professional services and retail to technology-led teams and
+            growing startups.
           </p>
 
           <ul class="list-none pl-4 mt-4">
@@ -130,10 +127,10 @@ const metadata = {
               regulations
             </li>
             <li class="mb-2">
-              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Fast on-site response times across Greater London
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> On-site support available when required
             </li>
             <li class="mb-2">
-              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Experience across all London business sectors
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Experience across diverse business sectors
             </li>
             <li class="mb-2">
               <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Flexible support packages for businesses of all
@@ -168,8 +165,8 @@ const metadata = {
             identify and resolve issues before they impact your business.
           </p>
           <p class="mt-4">
-            Our service is tailored to the unique needs of UK businesses, with special consideration for London's
-            competitive business environment and high expectations for digital infrastructure.
+            Our service is tailored to the unique needs of UK businesses, with special consideration for competitive
+            environments and high expectations for digital infrastructure.
           </p>
           <ul class="list-none pl-4 mt-4">
             <li class="mb-2">
@@ -201,13 +198,13 @@ const metadata = {
   <!-- Testimonials Widget *********** -->
 
   <Testimonials
-    title="What London Businesses Say About Our IT Support"
+    title="What Our Clients Say About Our IT Support"
     testimonials={[
       {
         testimonial:
-          'The responsive support we receive has dramatically reduced our downtime and increased productivity across our London offices. Their understanding of our sector-specific requirements has been invaluable.',
+          'The responsive support we receive has dramatically reduced our downtime and increased productivity. Their understanding of our sector-specific requirements has been invaluable.',
         name: 'Sarah Thompson',
-        job: 'Operations Director, London Financial Services Firm',
+        job: 'Operations Director, Financial Services',
         image: {
           src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
           alt: 'Sarah Thompson Image',
@@ -215,9 +212,9 @@ const metadata = {
       },
       {
         testimonial:
-          'As a rapidly growing London startup, we needed IT support that could scale with us while maintaining security and compliance. Their team has been a true partner in our growth journey.',
+          'As a rapidly growing startup, we needed IT support that could scale with us while maintaining security and compliance. Their team has been a true partner in our growth journey.',
         name: 'James Wilson',
-        job: 'CEO, Tech Startup in Shoreditch',
+        job: 'CEO, Tech Startup',
         image: {
           src: 'https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
           alt: 'James Wilson Image',
@@ -225,9 +222,9 @@ const metadata = {
       },
       {
         testimonial:
-          "Their on-site support team in London is outstanding. We've had technicians at our doorstep within hours when needed, which is crucial for our business operations.",
+          "Their support team is outstanding. We've had technicians available within hours when needed, which is crucial for our business operations.",
         name: 'Emma Clarke',
-        job: 'IT Manager, Retail Chain across London',
+        job: 'IT Manager, Retail Chain',
         image: {
           src: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
           alt: 'Emma Clarke Image',
@@ -240,14 +237,13 @@ const metadata = {
 
   <FAQs
     title="Frequently Asked Questions"
-    subtitle="Get answers to common questions about our managed IT support services for London businesses."
+    subtitle="Get answers to common questions about our managed IT support services."
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'What areas of London do you provide on-site support for?',
-        description:
-          'We provide on-site IT support across all London boroughs and the Greater London area. Our technicians are strategically located to ensure rapid response times to any location within the M25.',
+        title: 'Do you offer on-site support?',
+        description: "Yes. When remote assistance isn't sufficient, we can provide on-site support by arrangement.",
       },
       {
         title: 'How do you handle UK data protection compliance?',
@@ -257,7 +253,7 @@ const metadata = {
       {
         title: 'Can you support businesses with hybrid work environments?',
         description:
-          'Absolutely. We specialise in supporting London businesses with hybrid work environments, ensuring secure and efficient connectivity between office and remote workers. Our solutions include secure VPN setups, cloud collaboration tools, and endpoint security for remote devices.',
+          'Absolutely. We support businesses with hybrid work environments, ensuring secure and efficient connectivity between office and remote workers. Our solutions include secure VPN setups, cloud collaboration tools, and endpoint security for remote devices.',
       },
       {
         title: 'What are your support hours?',
@@ -267,12 +263,12 @@ const metadata = {
       {
         title: 'Do you offer support for specific industries?',
         description:
-          'Yes, we have specialised expertise in several key London industries including financial services, legal, creative/media, healthcare, and professional services. We understand the unique IT requirements and compliance needs of each sector.',
+          'Yes, we have specialised expertise in several key industries including financial services, legal, creative/media, healthcare, and professional services. We understand the unique IT requirements and compliance needs of each sector.',
       },
       {
         title: 'How quickly can you respond to critical issues?',
         description:
-          'For businesses on our premium support packages, we guarantee a 15-minute response time for critical issues, with on-site support within 2 hours when required in the London area.',
+          'For businesses on our premium support packages, we guarantee a 15-minute response time for critical issues, with on-site support available when required.',
       },
     ]}
   />
@@ -287,7 +283,7 @@ const metadata = {
         href: '/contact',
       },
     ]}
-    title="Ready for Reliable IT Support in London?"
-    subtitle="Contact us today for a free IT infrastructure assessment and discover how our managed IT support can help your London business thrive."
+    title="Ready for Reliable IT Support?"
+    subtitle="Contact us today for a free IT infrastructure assessment and discover how our managed IT support can help your business thrive."
   />
 </Layout>

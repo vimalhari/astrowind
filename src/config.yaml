@@ -1,5 +1,5 @@
 site:
-  name: 'Criztec Technologies - London Web Development & Digital Marketing'
+  name: 'Criztec Technologies - Web Development & Digital Marketing'
   site: 'https://criztec.com'
   base: '/'
   trailingSlash: false
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: 'Criztec Technologies - London Web Development & Digital Marketing'
+    default: 'Criztec Technologies - Web Development & Digital Marketing'
     template: '%s — Criztec Technologies'
-  description: '🚀 Expert web development and digital marketing services in London. Criztec Technologies helps businesses thrive online with SEO, web design, and targeted marketing strategies.'
+  description: '🚀 Expert web development, digital marketing & IT support for businesses in the UK, Europe, and worldwide. Criztec Technologies helps businesses thrive online with SEO, web design, and targeted marketing strategies.'
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: 'Criztec Technologies - London Web Development & Digital Marketing'
+    site_name: 'Criztec Technologies - Web Development & Digital Marketing'
     images:
       - url: '~/assets/images/default.png' # Consider a more branded default image
         width: 1200
