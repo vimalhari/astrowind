@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Abstract illustration for Ruby on Rails development">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" />
+      <stop offset="1" stop-color="#f7f7fb" />
+    </linearGradient>
+    <linearGradient id="rail" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b30000" />
+      <stop offset="1" stop-color="#e00000" />
+    </linearGradient>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)" />
+
+  <!-- subtle background shapes -->
+  <circle cx="180" cy="130" r="110" fill="#f0f1f7" />
+  <circle cx="1040" cy="120" r="140" fill="#f0f1f7" />
+  <circle cx="1030" cy="560" r="180" fill="#f0f1f7" />
+
+  <!-- rails / tracks motif -->
+  <path d="M-40 520 C 220 430, 420 520, 640 460 S 1040 340, 1260 410" fill="none" stroke="#d6d7e2" stroke-width="22" stroke-linecap="round" />
+  <path d="M-40 560 C 220 470, 420 560, 640 500 S 1040 380, 1260 450" fill="none" stroke="#d6d7e2" stroke-width="22" stroke-linecap="round" />
+
+  <path d="M-40 520 C 220 430, 420 520, 640 460 S 1040 340, 1260 410" fill="none" stroke="url(#rail)" stroke-width="10" stroke-linecap="round" />
+  <path d="M-40 560 C 220 470, 420 560, 640 500 S 1040 380, 1260 450" fill="none" stroke="url(#rail)" stroke-width="10" stroke-linecap="round" />
+
+  <!-- sleepers -->
+  <g opacity="0.9">
+    <path d="M160 492 L210 482" stroke="#b8bacb" stroke-width="10" stroke-linecap="round" />
+    <path d="M255 474 L305 468" stroke="#b8bacb" stroke-width="10" stroke-linecap="round" />
+    <path d="M350 468 L402 470" stroke="#b8bacb" stroke-width="10" stroke-linecap="round" />
+    <path d="M450 474 L502 486" stroke="#b8bacb" stroke-width="10" stroke-linecap="round" />
+    <path d="M550 496 L602 508" stroke="#b8bacb" stroke-width="10" stroke-linecap="round" />
+    <path d="M650 512 L702 510" stroke="#b8bacb" stroke-width="10" stroke-linecap="round" />
+    <path d="M750 504 L802 488" stroke="#b8bacb" stroke-width="10" stroke-linecap="round" />
+    <path d="M850 474 L902 456" stroke="#b8bacb" stroke-width="10" stroke-linecap="round" />
+    <path d="M950 442 L1002 430" stroke="#b8bacb" stroke-width="10" stroke-linecap="round" />
+  </g>
+
+  <!-- "code" blocks -->
+  <g transform="translate(120,180)">
+    <rect x="0" y="0" width="440" height="230" rx="16" fill="#ffffff" stroke="#e6e7f0" />
+    <rect x="22" y="28" width="160" height="14" rx="7" fill="#e6e7f0" />
+    <rect x="22" y="60" width="250" height="12" rx="6" fill="#eef0f8" />
+    <rect x="22" y="86" width="210" height="12" rx="6" fill="#eef0f8" />
+    <rect x="22" y="112" width="280" height="12" rx="6" fill="#eef0f8" />
+    <rect x="22" y="138" width="190" height="12" rx="6" fill="#eef0f8" />
+    <rect x="22" y="176" width="220" height="14" rx="7" fill="#f0f1f7" />
+    <rect x="260" y="176" width="140" height="14" rx="7" fill="#f0f1f7" />
+    <circle cx="406" cy="56" r="28" fill="#f7e6e6" />
+    <path d="M392 56 C 392 44, 420 44, 420 56 C 420 68, 406 84, 406 84 C 406 84, 392 68, 392 56 Z" fill="#d70000" opacity="0.9" filter="url(#soft)" />
+  </g>
+
+  <g transform="translate(650,170)">
+    <rect x="0" y="0" width="430" height="250" rx="16" fill="#ffffff" stroke="#e6e7f0" />
+    <rect x="22" y="28" width="200" height="14" rx="7" fill="#e6e7f0" />
+    <rect x="22" y="64" width="320" height="12" rx="6" fill="#eef0f8" />
+    <rect x="22" y="90" width="260" height="12" rx="6" fill="#eef0f8" />
+    <rect x="22" y="116" width="310" height="12" rx="6" fill="#eef0f8" />
+    <rect x="22" y="142" width="220" height="12" rx="6" fill="#eef0f8" />
+    <rect x="22" y="168" width="290" height="12" rx="6" fill="#eef0f8" />
+    <rect x="22" y="204" width="170" height="14" rx="7" fill="#f0f1f7" />
+    <rect x="210" y="204" width="190" height="14" rx="7" fill="#f0f1f7" />
+    <circle cx="378" cy="62" r="24" fill="#f7e6e6" />
+    <circle cx="378" cy="62" r="10" fill="#d70000" opacity="0.9" />
+  </g>
+</svg>

@@ -1,0 +1,229 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+
+const metadata = {
+  title: 'Ruby on Rails Development Services | Criztec Technologies',
+  description:
+    'Build and scale modern web applications with Ruby on Rails. We deliver Rails 8-ready development with Hotwire (Turbo + Stimulus), secure-by-default architecture, and maintainable code for long-term growth.',
+  keywords:
+    'ruby on rails development, rails development services, rails 8, hotwire, turbo, stimulus, ruby web application, rails upgrades, rails maintenance, rails api development',
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Ruby on Rails Development',
+    description:
+      'Ruby on Rails application development including Hotwire-first UX, APIs, integrations, performance optimization, and ongoing maintenance.',
+    provider: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies',
+      url: 'https://criztec.com',
+    },
+    areaServed: {
+      '@type': 'Place',
+      name: 'United Kingdom',
+    },
+    serviceType: 'Ruby on Rails Development',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Rails Product Development',
+        description: 'Build MVPs and full products with Rails using pragmatic, maintainable architecture.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Hotwire (Turbo + Stimulus) UI',
+        description: 'Deliver SPA-like UX with server-rendered HTML and real-time updates when needed.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Rails APIs & Integrations',
+        description: 'Design and implement secure APIs plus integrations with third-party services.',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Maintenance & Upgrades',
+        description: 'Keep your Rails app current with upgrades, security patches, and performance improvements.',
+      },
+    ],
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    tagline="Ruby on Rails"
+    title="Ruby on Rails Development"
+    subtitle="We build fast, maintainable web apps with modern Rails and Hotwire. From MVPs to mature platforms, we focus on clean architecture, security, and a great user experience."
+    actions={[{ variant: 'primary', target: '', text: 'Talk to a Rails Developer', href: '/contact' }]}
+    image={{ src: '~/assets/images/railshero.jpg', alt: 'Ruby on Rails development hero image' }}
+  />
+
+  <Features2
+    title="Why Ruby on Rails"
+    subtitle="Rails is built for productive teams: convention over configuration, strong defaults, and a full-stack ecosystem. Modern Rails pairs especially well with Hotwire (Turbo + Stimulus) for interactive experiences without unnecessary SPA complexity."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <Features2
+    columns={3}
+    items={[
+      {
+        title: 'Hotwire-first interactivity',
+        description:
+          'Turbo Drive/Frames/Streams and lightweight Stimulus controllers help deliver responsive UIs with server-rendered HTML and minimal client-side JavaScript.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Secure by default',
+        description:
+          'Rails includes strong security conventions (e.g., CSRF protection, safe escaping, and secure cookie/session primitives) to reduce common web risks.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Maintainable codebase',
+        description:
+          'Clear conventions, strong patterns, and a mature ecosystem keep teams moving fast while staying readable and testable over time.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Import maps or bundlers',
+        description:
+          'Modern Rails supports import maps for many apps, while also supporting bundlers when you need TypeScript, heavy front-end tooling, or complex asset pipelines.',
+        icon: 'tabler:packages',
+      },
+      {
+        title: 'APIs and integrations',
+        description:
+          'Build JSON APIs, integrate payments, CRMs, analytics, and internal services with a pragmatic approach to reliability and observability.',
+        icon: 'tabler:plug-connected',
+      },
+      {
+        title: 'Real-time features',
+        description:
+          'From live dashboards to notifications, Rails can deliver real-time updates via Turbo Streams and WebSockets when the product calls for it.',
+        icon: 'tabler:live-photo',
+      },
+    ]}
+  />
+
+  <Content
+    isReversed
+    title="Modern Rails Architecture"
+    subtitle="The Rails doctrine has evolved. We leverage the full power of the modern stack."
+    items={[
+      {
+        title: 'Hotwire Stack',
+        description:
+          'We use Turbo for speed and Stimulus for modest JavaScript needs, avoiding the complexity of full client-side SPAs unless absolutely necessary.',
+      },
+      {
+        title: 'Solid Foundations',
+        description:
+          'PostgreSQL for data, Redis for caching/jobs, and deployment via standard Docker containers or PaaS ensuring reliability.',
+      },
+      {
+        title: 'Test-Driven Quality',
+        description:
+          'RSpec or Minitest suites ensure every feature is verified, making future upgrades and refactors safe and easy.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/railsfeatures.jpg',
+      alt: 'Modern Ruby on Rails features',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Built for the Long Term</h3>
+      We don't just write code; we build assets. Our Rails applications are designed to be upgraded, maintained, and scaled
+      for years, not just launched and forgotten.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Steps
+    title="How We Deliver"
+    subtitle="A straightforward process that keeps scope clear, feedback frequent, and releases reliable."
+    items={[
+      {
+        title: 'Discovery & architecture',
+        description:
+          'We clarify user flows, data model, and constraints, then propose a Rails-first architecture that stays simple and scalable.',
+        icon: 'tabler:compass',
+      },
+      {
+        title: 'Build the core (MVP)',
+        description:
+          'We implement the most valuable features first, prioritizing maintainability, performance, and secure defaults.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Iterate with Hotwire',
+        description:
+          'We refine UX with Turbo Frames/Streams and Stimulus where it adds value—keeping the product fast and approachable.',
+        icon: 'tabler:arrows-exchange',
+      },
+      {
+        title: 'Launch & improve',
+        description:
+          'We support deployment and ongoing improvements: upgrades, performance tuning, monitoring, and feature delivery.',
+        icon: 'tabler:repeat',
+      },
+    ]}
+  />
+
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Quick answers to common Rails development questions."
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'Do you build Rails apps with Hotwire?',
+        description:
+          'Yes. For many products, Hotwire (Turbo + Stimulus) delivers great interactivity with less front-end complexity. If your product needs a heavier front-end stack, we can also integrate a bundler-based setup.',
+      },
+      {
+        title: 'Import maps or JavaScript bundler—what do you recommend?',
+        description:
+          'It depends on your needs. Import maps can be a great fit for many Rails apps that don’t require complex JS tooling. When you need TypeScript, JSX, or a large front-end build pipeline, we’ll recommend a bundler approach.',
+      },
+      {
+        title: 'Can you help upgrade an existing Rails application?',
+        description:
+          'Yes. We plan upgrades carefully to reduce risk: dependency review, incremental changes, test coverage improvements where needed, and a staged rollout strategy.',
+      },
+      {
+        title: 'Do you build APIs with Rails?',
+        description:
+          'Yes. We build APIs for web/mobile clients and integrations, focusing on authentication, authorization, performance, and clear versioning strategies.',
+      },
+    ]}
+  />
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Start a Rails Project',
+        href: '/contact',
+      },
+    ]}
+    title="Ready to Build with Rails?"
+    subtitle="Tell us what you’re building and we’ll recommend the fastest path to a secure, maintainable Rails application."
+  />
+</Layout>

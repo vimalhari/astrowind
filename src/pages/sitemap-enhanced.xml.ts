@@ -20,6 +20,7 @@ const staticPages = [
   'it-support',
   'pricing',
   'astro-site',
+  'ruby-on-rails-development',
 ];
 
 export const GET: APIRoute = async () => {

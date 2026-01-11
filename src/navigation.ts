@@ -47,6 +47,7 @@ export const headerData = {
       links: [
         { text: 'Website Development', href: getPermalink('/website-development') },
         { text: 'Mobile App Development', href: getPermalink('/mobile-app') },
+        { text: 'Ruby on Rails Development', href: getPermalink('/ruby-on-rails-development') },
         // { text: 'Software Development', href: getPermalink('/software-development') },
         // { text: 'Ecommerce Solutions', href: getPermalink('/ecommerce-solutions') },
         // { text: 'Hugo Static Site', href: getPermalink('/hugo-static-site') },
@@ -105,6 +106,7 @@ export const footerData = {
       links: [
         { text: 'Website Development', href: getPermalink('/website-development') },
         { text: 'Mobile App Development', href: getPermalink('/mobile-app') },
+        { text: 'Ruby on Rails Development', href: getPermalink('/ruby-on-rails-development') },
         { text: 'Astro Site Development', href: getPermalink('/astro-site') },
       ],
     },
