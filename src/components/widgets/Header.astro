@@ -86,9 +86,9 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"
       >
         {
-          links.map(({ text, href, links }) => (
-            <li class={links?.length ? 'dropdown' : ''}>
-              {links?.length ? (
+          links.map(({ text, href, links: sublinks }) => (
+            <li class={sublinks?.length ? 'dropdown' : ''}>
+              {sublinks?.length ? (
                 <>
                   <button
                     type="button"
@@ -97,21 +97,61 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     {text}{' '}
                     <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
                   </button>
-                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
-                    {links.map(({ text: text2, href: href2 }) => (
-                      <li>
-                        <a
-                          class:list={[
-                            'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
-                            { 'aw-link-active': href2 === currentPath },
-                          ]}
-                          href={href2}
-                        >
-                          {text2}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+                  {(() => {
+                    const isGrouped = sublinks.some((link) => link.links?.length);
+
+                    return (
+                      <ul
+                        class:list={[
+                          'dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 drop-shadow-xl',
+                          isGrouped
+                            ? 'md:min-w-[520px] md:p-4 md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-6'
+                            : 'md:min-w-[200px]',
+                        ]}
+                      >
+                        {sublinks.map(({ text: text2, href: href2, links: sublinks2 }) =>
+                          sublinks2?.length ? (
+                            <li class="md:px-1 md:py-0 py-2">
+                              {text2 ? (
+                                <span class="block md:px-0 px-5 text-xs font-semibold uppercase tracking-wide text-muted dark:text-gray-300">
+                                  {text2}
+                                </span>
+                              ) : (
+                                ''
+                              )}
+                              <ul class="mt-2">
+                                {sublinks2.map(({ text: text3, href: href3 }) => (
+                                  <li>
+                                    <a
+                                      class:list={[
+                                        'md:rounded md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 md:px-3 block whitespace-no-wrap',
+                                        { 'aw-link-active': href3 === currentPath },
+                                      ]}
+                                      href={href3}
+                                    >
+                                      {text3}
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </li>
+                          ) : (
+                            <li>
+                              <a
+                                class:list={[
+                                  'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
+                                  { 'aw-link-active': href2 === currentPath },
+                                ]}
+                                href={href2}
+                              >
+                                {text2}
+                              </a>
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    );
+                  })()}
                 </>
               ) : (
                 <a
