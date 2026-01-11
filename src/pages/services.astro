@@ -1,22 +1,108 @@
 ---
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import Content from '~/components/widgets/Content.astro';
-import Features2 from '~/components/widgets/Features2.astro';
 import Hero from '~/components/widgets/Hero2.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
+const serviceGroups = [
+  {
+    title: 'Design',
+    services: [
+      {
+        title: 'Web Design',
+        href: '/web-design',
+        description: 'Modern, conversion-focused design with a clean, responsive user experience.',
+      },
+      {
+        title: 'Logo Design',
+        href: '/logo-design',
+        description: 'Brand identities and logo systems that look professional across digital and print.',
+      },
+    ],
+  },
+  {
+    title: 'Development',
+    services: [
+      {
+        title: 'Web Development',
+        href: '/web-development',
+        description: 'High-performance websites and web apps built for speed, SEO, and maintainability.',
+      },
+      {
+        title: 'Website Development',
+        href: '/website-development',
+        description: 'Bespoke website builds designed to generate leads and support growth.',
+      },
+      {
+        title: 'Astro Site Development',
+        href: '/astro-site',
+        description: 'Astro-first builds for fast, SEO-friendly sites with excellent Core Web Vitals.',
+      },
+      {
+        title: 'Ruby on Rails Development',
+        href: '/ruby-on-rails-development',
+        description: 'Production-ready Rails apps with clean architecture and pragmatic delivery.',
+      },
+      {
+        title: 'Mobile App Development',
+        href: '/mobile-app',
+        description: 'Mobile apps built with a clear roadmap, usable UI, and reliable delivery.',
+      },
+      {
+        title: 'Business Automation (n8n)',
+        href: '/business-automation',
+        description: 'Workflow automation and integrations using n8n to remove manual work and errors.',
+      },
+    ],
+  },
+  {
+    title: 'Digital Marketing',
+    services: [
+      {
+        title: 'Digital Marketing',
+        href: '/digital-marketing',
+        description: 'Multi-channel strategy across search, social, content, and performance reporting.',
+      },
+      {
+        title: 'SEO',
+        href: '/seo',
+        description: 'Technical and on-page SEO to increase qualified traffic and improve rankings.',
+      },
+      {
+        title: 'Social Media Marketing',
+        href: '/socialmedia-marketing',
+        description: 'Content and campaigns to grow brand awareness and engagement across platforms.',
+      },
+      {
+        title: 'Content Marketing',
+        href: '/content-marketing',
+        description: 'Content strategy and production to build trust and generate inbound demand.',
+      },
+    ],
+  },
+  {
+    title: 'Technical',
+    services: [
+      {
+        title: 'IT Support',
+        href: '/it-support',
+        description: 'Managed IT support, proactive maintenance, and security-first operations.',
+      },
+    ],
+  },
+];
+
 const metadata = {
-  title: 'Our Services | Web Development & Digital Marketing | Criztec Technologies',
+  title: 'Our Services | Web & Software Development, Automation (n8n) | Criztec Technologies',
   description:
-    'Comprehensive web development and digital marketing services for businesses in the UK, Europe, and worldwide. From custom websites to SEO, mobile apps to social media marketing - we deliver results that grow your business.',
+    'Comprehensive web & software development, business automation with n8n, and digital services for teams in the UK, Europe, and worldwide. From fast websites and web apps to workflow automation and marketing — we deliver outcomes that scale.',
   keywords:
-    'web development services, digital marketing services, custom website development, mobile app development, SEO services, e-commerce development, social media marketing, IT support',
+    'web development services, software development services, business automation, n8n, workflow automation, integrations, custom website development, mobile app development, SEO services, digital marketing services, IT support',
   structuredData: {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Web Development and Digital Marketing Services',
-    description: 'Comprehensive digital services including web development, mobile apps, SEO, and digital marketing',
+    name: 'Web & Software Development and Business Automation Services',
+    description:
+      'Comprehensive services including web & software development (Astro, Ruby on Rails, Django), business automation with n8n, and digital marketing',
     provider: {
       '@type': 'Organization',
       name: 'Criztec Technologies',
@@ -37,6 +123,14 @@ const metadata = {
             '@type': 'Service',
             name: 'Web Development',
             description: 'Custom website development and web applications',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Business Automation (n8n)',
+            description: 'Workflow automation and integrations using n8n to streamline operations',
           },
         },
         {
@@ -99,200 +193,53 @@ const metadata = {
     }}
   />
 
-  <!-- Features2 Widget ************** -->
+  <section class="py-16 sm:py-24 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900">Browse our services</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Choose a service to learn more. Each card links to a dedicated page with details and next steps.
+        </p>
+      </div>
 
-  <Features2
-    title="Explore our diverse templates"
-    subtitle="Discover our selection below to streamline and elevate your projects."
-    columns={3}
-    items={[
-      {
-        title: 'Educational',
-        description:
-          'By harmonizing instructional design and visual appeal, templates streamline content creation for varied materials, expediting development and cultivating engaging educational spaces.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'Interior Design',
-        description:
-          'Crafting functional, visually appealing spaces for residential and commercial use. Templates emphasize layout, colors, and furniture setups, offering a versatile toolkit for your design vision.',
-        icon: 'tabler:home-star',
-      },
-      {
-        title: 'Photography',
-        description: `Empowering photographers, our templates facilitate captivating storytelling. With a keen focus on layout, galleries, and typography, they cater to both professionals and enthusiasts.`,
-        icon: 'tabler:photo',
-      },
-      {
-        title: 'E-commerce',
-        description:
-          'Developing engaging online stores, our E-commerce templates ensure a dynamic presence to effectively showcase products. Ideal for startups or revamps.',
-        icon: 'tabler:shopping-cart',
-      },
-      {
-        title: 'Blog',
-        description:
-          'With attention to typography, these templates empower effective content presentation for writers at any stage, ensuring visually engaging and user-friendly blogs.',
-        icon: 'tabler:article',
-      },
-      {
-        title: 'Business',
-        description:
-          'Providing polished options for effective visual communication, these templates empower both startups and established companies for a professional brand presence.',
-        icon: 'tabler:building-store',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Offering pre-designed elements for a consistent brand identity, including logos and marketing materials. Ideal for new ventures or revamps.',
-        icon: 'tabler:arrow-big-up-lines',
-      },
-      {
-        title: 'Medical',
-        description: `From presentations to patient forms, these tools enhance communication effectiveness for healthcare professionals. Ideal for medical practices and research pursuits.`,
-        icon: 'tabler:vaccine',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'With attention to detail, customization, and contemporary design, they empower designers to showcase ideas cohesively. Ideal for all levels of designers.',
-        icon: 'tabler:tie',
-      },
-    ]}
-  />
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'High-Quality Designs',
-        description:
-          'Our templates feature top-tier designs that ensure a professional and polished appearance for your projects.',
-        icon: 'tabler:wand',
-      },
-      {
-        title: 'Customization Tools',
-        description:
-          'Tailor each template to your unique needs with user-friendly customization tools that let you personalize colors, fonts, and content.',
-        icon: 'tabler:settings',
-      },
-      {
-        title: 'Pre-Designed Elements',
-        description:
-          'Save time and effort with our ready-to-use elements, including graphics, icons, and layouts that enhance the visual appeal of your creations.',
-        icon: 'tabler:presentation',
-      },
-      {
-        title: 'Preview and Mockup Views',
-        description:
-          'Visualize the final outcome before making any changes using our preview and mockup views, ensuring your projects meet your expectations.',
-        icon: 'tabler:carousel-horizontal',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-      alt: 'Features Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'Time Savings',
-        description:
-          'Streamline your workflow, enabling you to create stunning materials efficiently and allocate more time to your core tasks.',
-        icon: 'tabler:clock',
-      },
-      {
-        title: 'Professional Appearance',
-        description:
-          'Elevate your projects with the polished and sophisticated look that our templates provide, making a lasting impression on your audience.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'Cost-Efficiency',
-        description:
-          'Benefit from cost savings by avoiding the need for custom design work, as our templates offer professional-grade designs at a fraction of the cost.',
-        icon: 'tabler:coin',
-      },
-      {
-        title: 'Instant Download',
-        description:
-          'Enjoy immediate access to your chosen templates upon purchase, enabling you to begin working on your projects without delay.',
-        icon: 'tabler:file-download',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Benefits Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
-    </Fragment>
-  </Content>
-
-  <!-- Testimonials Widget *********** -->
-
-  <Testimonials
-    title="Words from real customers"
-    testimonials={[
-      {
-        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
-        name: 'Emily Kennedy',
-        job: 'Front-end developer',
-        image: {
-          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
-          alt: 'Emily Kennedy Image',
-        },
-      },
-      {
-        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
-        name: 'Sarah Hansen',
-        job: 'Photographer',
-        image: {
-          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Sarah Hansen Image',
-        },
-      },
-      {
-        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
-        name: 'Mark Wilkinson',
-        job: 'Small business owner',
-        image: {
-          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
-          alt: 'Mark Wilkinson Image',
-        },
-      },
-    ]}
-    callToAction={{
-      target: '_blank',
-      text: 'More testimonials...',
-      href: 'https://criztec.com/testimonials',
-      icon: 'tabler:chevron-right',
-    }}
-  />
-
-  <!-- CallToAction Widget *********** -->
+      <div class="mt-12 space-y-14">
+        {
+          serviceGroups.map((group) => (
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900">{group.title}</h3>
+              <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {group.services.map((service) => (
+                  <a
+                    href={service.href}
+                    class="group block rounded-xl border border-gray-200 bg-white p-6 hover:shadow-md transition-shadow focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    aria-label={`${service.title} service page`}
+                  >
+                    <h4 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                      {service.title}
+                    </h4>
+                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">{service.description}</p>
+                    <div class="mt-4 text-sm font-medium text-blue-600 group-hover:text-blue-800 transition-colors">
+                      Learn more →
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Start exploring',
-        href: '/',
+        text: 'Get Free Consultation',
+        href: '/contact',
       },
     ]}
-    title="Dive into our template collection"
-    subtitle="Whether you're in business, design, or education, our templates are here to elevate your projects."
+    title="Not sure what you need?"
+    subtitle="Tell us your goals and we’ll recommend the best service path — from development to automation."
   />
 </Layout>

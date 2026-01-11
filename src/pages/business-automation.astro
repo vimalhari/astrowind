@@ -1,0 +1,161 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero2.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Business Automation with n8n | Criztec Technologies',
+  description:
+    'Automate repetitive processes and connect your tools with n8n. We design and build reliable workflows for operations, sales, support, and reporting — for teams in the UK, Europe, and worldwide.',
+  keywords:
+    'business automation, workflow automation, n8n, integrations, system integrations, process automation, Zapier alternative, data sync, alerts, approvals, reporting automation',
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Business Automation (n8n)',
+    description: 'Workflow automation and integrations using n8n to streamline operations and reduce manual work',
+    provider: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies',
+      url: 'https://criztec.com',
+    },
+    areaServed: [
+      { '@type': 'Place', name: 'United Kingdom' },
+      { '@type': 'Place', name: 'Europe' },
+      { '@type': 'Place', name: 'Worldwide' },
+    ],
+    serviceType: 'Business Automation',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Workflow Design & Build',
+        description: 'Automate end-to-end processes with clear logic, logging, and monitoring',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Integrations & Data Sync',
+        description: 'Connect SaaS tools and keep data consistent across systems',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Automation Support',
+        description: 'Ongoing updates, reliability improvements, and workflow maintenance',
+      },
+    ],
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    overlapHeader={false}
+    tagline="Business Automation (n8n)"
+    title="Automate workflows and connect your tools"
+    subtitle="We design, build, and maintain n8n automations that remove manual work, reduce errors, and keep your team focused on high-value tasks."
+    actions={[
+      { variant: 'primary', text: 'Book an Automation Call', href: '/contact' },
+      { text: 'Explore Web Development', href: '/web-development' },
+    ]}
+    image={{ src: '~/assets/images/hero-image.webp', alt: 'Business Automation with n8n' }}
+  />
+
+  <Features2
+    title="What we automate"
+    subtitle="Practical, production-ready automations built around your processes — not generic templates."
+    columns={3}
+    items={[
+      {
+        title: 'Operations',
+        description: 'Approvals, handoffs, notifications, and task routing to keep work moving.',
+        icon: 'tabler:clipboard-check',
+      },
+      {
+        title: 'Integrations',
+        description: 'Connect your CRM, email, forms, databases, and internal systems.',
+        icon: 'tabler:plug-connected',
+      },
+      {
+        title: 'Data Sync & Reporting',
+        description: 'Synchronise data and generate scheduled reports with fewer manual exports.',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'Sales & Lead Handling',
+        description: 'Capture leads, enrich data, route to the right person, and trigger follow-ups.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Customer Support',
+        description: 'Ticket creation, customer updates, and escalation flows across channels.',
+        icon: 'tabler:lifebuoy',
+      },
+      {
+        title: 'Reliability',
+        description: 'Retries, error alerts, audit trails, and monitoring so automations stay dependable.',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+  />
+
+  <Content
+    image={{
+      src: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=2070&q=80',
+      alt: 'Automation and integrations',
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+
+    <Fragment slot="content">
+      <div class="flex flex-col space-y-4">
+        <div class="content-section">
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">How we deliver automation</h2>
+          <p>
+            We start with your current process and define the inputs, outputs, edge cases, and failure handling. Then we
+            build n8n workflows with clear logic, human-in-the-loop approvals where needed, and visibility into what ran
+            and why.
+          </p>
+
+          <ul class="list-none pl-4 mt-4">
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Workflow mapping and scope</li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Integration setup and secrets management
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Error handling, retries, and alerting
+            </li>
+            <li class="mb-2"><div class="inline-block w-4 mr-2 text-right">&#8594;</div> Documentation and handover</li>
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a href="/contact" class="btn btn-primary"> Talk to Us </a>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book an Automation Call',
+        href: '/contact',
+        icon: 'tabler:user-plus',
+      },
+    ]}
+  >
+    <Fragment slot="title">Business Automation</Fragment>
+    <Fragment slot="subtitle">
+      Tell us what tools you use and what you want to automate — we’ll propose a simple n8n workflow plan.
+    </Fragment>
+  </CallToAction>
+</Layout>
