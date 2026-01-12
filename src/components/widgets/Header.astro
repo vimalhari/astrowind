@@ -90,13 +90,31 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
             <li class={sublinks?.length ? 'dropdown' : ''}>
               {sublinks?.length ? (
                 <>
-                  <button
-                    type="button"
-                    class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap"
-                  >
-                    {text}{' '}
-                    <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
-                  </button>
+                  <div class="px-4 py-3 flex items-center whitespace-nowrap">
+                    {href ? (
+                      <a
+                        class:list={[
+                          'hover:text-link dark:hover:text-white',
+                          { 'aw-link-active': href === currentPath },
+                        ]}
+                        href={href}
+                      >
+                        {text}
+                      </a>
+                    ) : (
+                      <span class="hover:text-link dark:hover:text-white">{text}</span>
+                    )}
+                    <button
+                      type="button"
+                      class="hover:text-link dark:hover:text-white flex items-center ml-1 rtl:ml-0 rtl:mr-1"
+                      aria-label={text ? `Open ${text} menu` : 'Open menu'}
+                    >
+                      <Icon
+                        name="tabler:chevron-down"
+                        class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline"
+                      />
+                    </button>
+                  </div>
                   {(() => {
                     const isGrouped = sublinks.some((link) => link.links?.length);
 

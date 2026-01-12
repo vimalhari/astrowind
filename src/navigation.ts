@@ -5,18 +5,18 @@ export const headerData = {
   links: [
     {
       text: 'Services',
+      href: getPermalink('/services'),
       links: [
         {
           text: 'Development',
           links: [
             { text: 'Web App Development (Django + Rails)', href: getPermalink('/web-app-development') },
+            { text: 'Astro Website Development', href: getPermalink('/astro-site') },
             { text: 'WordPress Website Development', href: getPermalink('/website-development') },
             { text: 'Django Development', href: getPermalink('/django-development') },
-            { text: 'Mobile App Development', href: getPermalink('/mobile-app') },
             { text: 'Ruby on Rails Development', href: getPermalink('/ruby-on-rails-development') },
             { text: 'Business Automation (n8n)', href: getPermalink('/business-automation') },
-            { text: 'Astro Website Development', href: getPermalink('/astro-site') },
-            { text: 'All Services', href: getPermalink('/services') },
+            { text: 'Mobile App Development', href: getPermalink('/mobile-app') },
           ],
         },
         {
@@ -43,6 +43,10 @@ export const headerData = {
       href: getPermalink('/case-studies'),
     },
     {
+      text: 'Blog',
+      href: getBlogPermalink(),
+    },
+    {
       text: 'Company',
       href: getPermalink('/#'),
       links: [
@@ -55,10 +59,6 @@ export const headerData = {
           href: getPermalink('/careers'),
         },
       ],
-    },
-    {
-      text: 'Blog',
-      href: getBlogPermalink(),
     },
   ],
   actions: [{ text: 'Get in Touch', href: getPermalink('/contact'), target: '_blank' }],
@@ -81,7 +81,6 @@ export const footerData = {
       title: 'Design Services',
       links: [
         { text: 'Logo Design', href: getPermalink('/logo-design') },
-        { text: 'All Services', href: getPermalink('/services') },
       ],
     },
     {
@@ -109,7 +108,6 @@ export const footerData = {
       title: 'Support & Resources',
       links: [
         { text: 'IT Support', href: getPermalink('/it-support') },
-        { text: 'Pricing', href: getPermalink('/pricing') },
         { text: 'Help Center', href: getPermalink('/contact') },
       ],
     },
