@@ -2,10 +2,23 @@
 import { Icon } from 'astro-icon/components';
 ---
 
-<section class="bg-blue-50 dark:bg-slate-800 not-prose">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
-    <span class="font-bold">
-      <Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" /> Philosophy:</span
-    > Simplicity, Best Practices and High Performance
+<section class="bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800 border-y border-slate-700/50 not-prose">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+    <div class="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-sm">
+      <div class="flex items-center gap-2 text-slate-300">
+        <Icon name="tabler:bolt" class="w-5 h-5 text-primary" />
+        <span><strong class="text-white">Fast Delivery</strong> — Launch in weeks, not months</span>
+      </div>
+      <div class="hidden sm:block w-px h-4 bg-slate-700"></div>
+      <div class="flex items-center gap-2 text-slate-300">
+        <Icon name="tabler:shield-check" class="w-5 h-5 text-primary" />
+        <span><strong class="text-white">UK-Based</strong> — Local team, global standards</span>
+      </div>
+      <div class="hidden md:block w-px h-4 bg-slate-700"></div>
+      <div class="flex items-center gap-2 text-slate-300">
+        <Icon name="tabler:headset" class="w-5 h-5 text-primary" />
+        <span><strong class="text-white">Dedicated Support</strong> — We're with you 24/7</span>
+      </div>
+    </div>
   </div>
 </section>

@@ -1,0 +1,267 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import Image from '~/components/common/Image.astro';
+import Button from '~/components/ui/Button.astro';
+import { Icon } from 'astro-icon/components';
+import type { Widget } from '~/types';
+
+interface ServiceItem {
+  title: string;
+  description: string;
+  icon?: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+  href?: string;
+  badge?: string;
+}
+
+interface Props extends Widget {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  items?: ServiceItem[];
+}
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline = await Astro.slots.render('tagline'),
+  items = [],
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+// Bento grid card component styles
+const cardBase =
+  'group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800/80 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-slate-700 intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter';
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <Headline
+    title={title}
+    subtitle={subtitle}
+    tagline={tagline}
+    classes={{
+      container: 'max-w-xl sm:mx-auto lg:max-w-2xl mb-8 md:mb-12',
+      title: 'text-3xl md:text-4xl font-bold tracking-tight mb-4 font-heading',
+      subtitle: 'max-w-3xl mx-auto sm:text-center text-lg text-muted dark:text-slate-400',
+    }}
+  />
+
+  <!-- Bento Grid Layout -->
+  <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-5 auto-rows-[280px]">
+    {/* Card 1: Development - Large Featured Card (spans 2 cols, 2 rows) */}
+    {
+      items[0] && (
+        <a href={items[0].href || '#'} class={`${cardBase} md:col-span-2 lg:col-span-2 md:row-span-2`}>
+          <Image
+            src={items[0].image.src}
+            alt={items[0].image.alt}
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            width={600}
+            height={600}
+            widths={[400, 600, 800]}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 group-hover:from-black/90 transition-all duration-500" />
+
+          {items[0].badge && (
+            <span class="absolute top-5 right-5 bg-primary text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
+              {items[0].badge}
+            </span>
+          )}
+
+          <div class="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+            {items[0].icon && (
+              <div class="w-14 h-14 bg-white/95 dark:bg-slate-900/95 rounded-2xl flex items-center justify-center shadow-xl mb-4 group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
+                <Icon name={items[0].icon} class="w-7 h-7 text-primary group-hover:text-white transition-colors" />
+              </div>
+            )}
+            <h3 class="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+              {items[0].title}
+            </h3>
+            <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-3">{items[0].description}</p>
+            <div class="mt-4 flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
+              Explore Service
+              <Icon name="tabler:arrow-right" class="w-4 h-4" />
+            </div>
+          </div>
+        </a>
+      )
+    }
+
+    {/* Card 2: Design - Wide Card (spans 2 cols) */}
+    {
+      items[1] && (
+        <a href={items[1].href || '#'} class={`${cardBase} md:col-span-2 lg:col-span-2`}>
+          <Image
+            src={items[1].image.src}
+            alt={items[1].image.alt}
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            width={500}
+            height={280}
+            widths={[400, 600]}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent group-hover:from-black/90 transition-all duration-500" />
+
+          {items[1].badge && (
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
+              {items[1].badge}
+            </span>
+          )}
+
+          <div class="absolute inset-0 p-5 flex flex-col justify-end">
+            <div class="flex items-start gap-4">
+              {items[1].icon && (
+                <div class="w-12 h-12 bg-white/95 dark:bg-slate-900/95 rounded-xl flex items-center justify-center shadow-lg shrink-0 group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
+                  <Icon name={items[1].icon} class="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                </div>
+              )}
+              <div>
+                <h3 class="text-xl font-bold text-white mb-1 group-hover:text-primary transition-colors">
+                  {items[1].title}
+                </h3>
+                <p class="text-white/70 text-sm line-clamp-2">{items[1].description}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      )
+    }
+
+    {/* Card 3: Business Automation - Wide Card (spans 2 cols) */}
+    {
+      items[2] && (
+        <a href={items[2].href || '#'} class={`${cardBase} md:col-span-2 lg:col-span-2`}>
+          <Image
+            src={items[2].image.src}
+            alt={items[2].image.alt}
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            width={500}
+            height={280}
+            widths={[400, 600]}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent group-hover:from-black/90 transition-all duration-500" />
+
+          {items[2].badge && (
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">
+              {items[2].badge}
+            </span>
+          )}
+
+          <div class="absolute inset-0 p-5 flex flex-col justify-end">
+            <div class="flex items-start gap-4">
+              {items[2].icon && (
+                <div class="w-12 h-12 bg-white/95 dark:bg-slate-900/95 rounded-xl flex items-center justify-center shadow-lg shrink-0 group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
+                  <Icon name={items[2].icon} class="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                </div>
+              )}
+              <div>
+                <h3 class="text-xl font-bold text-white mb-1 group-hover:text-primary transition-colors">
+                  {items[2].title}
+                </h3>
+                <p class="text-white/70 text-sm line-clamp-2">{items[2].description}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      )
+    }
+
+    {/* Card 4: Digital Marketing - Tall Card (spans 2 rows on large) */}
+    {
+      items[3] && (
+        <a href={items[3].href || '#'} class={`${cardBase} md:col-span-2 lg:col-span-2 lg:row-span-2`}>
+          <Image
+            src={items[3].image.src}
+            alt={items[3].image.alt}
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            width={500}
+            height={600}
+            widths={[400, 600]}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10 group-hover:from-black/90 transition-all duration-500" />
+
+          {items[3].badge && (
+            <span class="absolute top-5 right-5 bg-primary text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
+              {items[3].badge}
+            </span>
+          )}
+
+          <div class="absolute inset-0 p-6 flex flex-col justify-end">
+            {items[3].icon && (
+              <div class="w-14 h-14 bg-white/95 dark:bg-slate-900/95 rounded-2xl flex items-center justify-center shadow-xl mb-4 group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
+                <Icon name={items[3].icon} class="w-7 h-7 text-primary group-hover:text-white transition-colors" />
+              </div>
+            )}
+            <h3 class="text-xl lg:text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+              {items[3].title}
+            </h3>
+            <p class="text-white/80 text-sm leading-relaxed line-clamp-3 lg:line-clamp-4">{items[3].description}</p>
+            <div class="mt-4 flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
+              Explore Service
+              <Icon name="tabler:arrow-right" class="w-4 h-4" />
+            </div>
+          </div>
+        </a>
+      )
+    }
+
+    {/* Card 5: Technical Support - Wide Card (spans 2 cols) */}
+    {
+      items[4] && (
+        <a href={items[4].href || '#'} class={`${cardBase} md:col-span-2 lg:col-span-2`}>
+          <Image
+            src={items[4].image.src}
+            alt={items[4].image.alt}
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            width={500}
+            height={280}
+            widths={[400, 600]}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent group-hover:from-black/90 transition-all duration-500" />
+
+          {items[4].badge && (
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
+              {items[4].badge}
+            </span>
+          )}
+
+          <div class="absolute inset-0 p-5 flex flex-col justify-end">
+            <div class="flex items-start gap-4">
+              {items[4].icon && (
+                <div class="w-12 h-12 bg-white/95 dark:bg-slate-900/95 rounded-xl flex items-center justify-center shadow-lg shrink-0 group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
+                  <Icon name={items[4].icon} class="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                </div>
+              )}
+              <div>
+                <h3 class="text-xl font-bold text-white mb-1 group-hover:text-primary transition-colors">
+                  {items[4].title}
+                </h3>
+                <p class="text-white/70 text-sm line-clamp-2">{items[4].description}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      )
+    }
+  </div>
+
+  <!-- View All Services Button -->
+  <div class="text-center mt-10">
+    <Button variant="primary" href="/services" class="px-8">
+      <Icon name="tabler:apps" class="w-5 h-5 mr-2" />
+      View All Services
+    </Button>
+  </div>
+</WidgetWrapper>

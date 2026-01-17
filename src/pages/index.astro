@@ -3,11 +3,12 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero2.astro';
 import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Content from '~/components/widgets/Content.astro';
+import ServicesCards from '~/components/widgets/ServicesCards.astro';
+import WhyChooseUs from '~/components/widgets/WhyChooseUs.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
 
 import heroVideo from '~/assets/videos/herovideo.mp4';
 
@@ -93,12 +94,11 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Work with Us',
+        text: 'Get a Free Quote',
         href: '/contact',
-        // target: '_blank',
-        icon: 'tabler:user-plus',
+        icon: 'tabler:arrow-right',
       },
-      { variant: 'secondary', text: 'Learn more', href: '#features' },
+      { variant: 'secondary', text: 'View Our Work', href: '/case-studies', icon: 'tabler:briefcase' },
     ]}
     isDark
   >
@@ -127,102 +127,182 @@ const metadata = {
 
   <Note />
 
-  <!-- Stats Widget ****************** -->
+  <!-- Services Cards Widget *************** -->
 
-  <Stats
-    stats={[
-      { title: 'Innovative Solutions Delivered', amount: '75+' },
-      { title: 'Client Success Rate', amount: '95%' },
-      { title: 'Average Client Growth Achieved', amount: '30%' },
-      { title: 'Years of Combined Expertise', amount: '100+' },
-    ]}
-  />
-
-  <!-- Features Widget *************** -->
-
-  <Features
+  <ServicesCards
     id="features"
-    tagline="Services"
-    title="What we do?"
-    subtitle="We build fast websites, robust web apps, and automate business workflows with n8n—so teams ship faster and run smoother."
+    tagline="Our Services"
+    title="Everything You Need to Grow Online"
+    subtitle="From stunning websites to powerful automation — we deliver end-to-end digital solutions that help your business thrive."
     items={[
+      {
+        title: 'Web Development',
+        description:
+          'We build high-performance websites and web applications using Astro, Ruby on Rails, and Django. Fast, scalable, and built to grow with your business.',
+        icon: 'tabler:code',
+        badge: 'Core Service',
+        image: {
+          src: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          alt: 'Modern code editor with syntax highlighting',
+        },
+        href: '/web-development',
+      },
       {
         title: 'Design',
         description:
-          'Exceptional design services with a focus on user experience. The design team provides website design, graphic design, video, animation and 3D modelling services.',
-        icon: 'tabler:brush', // Or a more suitable design-related icon
+          'Exceptional design with focus on user experience. Website, graphic, video, animation and 3D modelling.',
+        icon: 'tabler:palette',
+        image: {
+          src: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          alt: 'Creative design workspace with color palettes',
+        },
+        href: '/web-design',
       },
       {
-        title: 'Development',
-        description:
-          'We use a wide range of tools to create websites, web portals and applications that are easy to use and maintain.',
-        icon: 'tabler:code', // Or a more relevant development icon
-      },
-      {
-        title: 'Business Automation (n8n)',
-        description:
-          'Automate repetitive workflows and integrate your tools with n8n—saving time, reducing errors, and improving visibility across your business.',
-        icon: 'tabler:settings',
+        title: 'Business Automation',
+        description: 'Automate workflows with n8n—save time, reduce errors, and boost visibility across your business.',
+        icon: 'tabler:robot',
+        badge: 'Popular',
+        image: {
+          src: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          alt: 'Automation and workflow concept',
+        },
+        href: '/business-automation',
       },
       {
         title: 'Digital Marketing',
         description:
-          'Professional UK agency offering bespoke, multi-channel digital marketing services to a range of small and large private and public companies.',
-        icon: 'tabler:speakerphone', // Or a marketing-related icon like 'tabler:speakerphone'
+          'Bespoke multi-channel marketing services including SEO, PPC, content marketing, and social media management to grow your online presence.',
+        icon: 'tabler:chart-arrows-vertical',
+        image: {
+          src: 'https://images.unsplash.com/photo-1533750516457-a7f992034fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          alt: 'Digital marketing growth analytics',
+        },
+        href: '/digital-marketing',
       },
       {
-        title: 'Technical',
+        title: 'Technical Support',
         description:
-          'Specialist engineers providing consultancy, support, hosting and maintenance to improve reliability, security, and performance.',
-        icon: 'tabler:server', // Or an icon related to IT support/infrastructure
+          'Expert consultancy, hosting, and 24/7 maintenance to keep your systems secure and running smoothly.',
+        icon: 'tabler:headset',
+        image: {
+          src: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          alt: 'Server room with technical infrastructure',
+        },
+        href: '/it-support',
       },
     ]}
   />
 
-  <!-- Content Widget **************** -->
+  <!-- Stats Widget ****************** -->
 
-  <Content
-    isReversed
-    tagline="Inside Criztec"
-    title="How we can help you?"
+  <Stats
+    title="Trusted by Growing Businesses"
+    subtitle="Real results from real partnerships"
+    stats={[
+      { title: 'Projects Delivered', amount: '75+', icon: 'tabler:briefcase' },
+      { title: 'Client Success Rate', amount: '95%', icon: 'tabler:trophy' },
+      { title: 'Average Growth Achieved', amount: '30%', icon: 'tabler:trending-up' },
+      { title: 'Years Combined Experience', amount: '100+', icon: 'tabler:users' },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 dark:from-primary/10 dark:to-slate-900"
+      >
+      </div>
+    </Fragment>
+  </Stats>
+
+  <!-- Why Choose Us Widget **************** -->
+
+  <WhyChooseUs
+    tagline="Why Choose Us"
+    title="Your Success Is Our Mission"
+    subtitle="We're more than just a tech company — we're your strategic partner committed to driving real results."
     items={[
       {
         title: 'Connect',
         description:
-          "We forge powerful connections between businesses and technology, seamlessly integrating innovative solutions that bridge the gap between your brand and your audience. We don't just connect systems; we connect visions.",
-        icon: 'tabler:link', // Or a suitable connection-related icon
+          'We bridge the gap between your brand and audience with seamless technology integrations that connect systems and visions alike.',
+        icon: 'tabler:plug-connected',
+        color: 'primary',
       },
       {
         title: 'Create',
         description:
-          "We design and engineer bespoke digital experiences, tailored to elevate your brand's presence and engage your audience. From visionary concepts to meticulous execution, we create transformative solutions that resonate with your unique identity.",
-        icon: 'tabler:bulb', // Or a more relevant creative icon
+          'From visionary concepts to pixel-perfect execution, we craft bespoke digital experiences that elevate your brand and engage your audience.',
+        icon: 'tabler:sparkles',
+        color: 'blue',
       },
       {
         title: 'Catalyze',
         description:
-          'We ignite your business potential, driving exponential growth with our strategic insights and cutting-edge technology. Our solutions act as a catalyst, propelling you forward to new heights of success and market leadership.',
-        icon: 'tabler:rocket', // Or an icon symbolizing growth or acceleration
+          'We ignite your business potential with strategic insights and cutting-edge technology, propelling you toward exponential growth.',
+        icon: 'tabler:rocket',
+        color: 'green',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
+      src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      alt: 'Team collaboration and success',
     }}
   >
-    <!-- <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
-    </Fragment> -->
-
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-primary/5 dark:from-slate-900 dark:via-slate-900 dark:to-primary/10"
+      >
+      </div>
     </Fragment>
-  </Content>
+  </WhyChooseUs>
+
+  <!-- Testimonials Widget *********** -->
+
+  <Testimonials
+    title="What Our Clients Say"
+    subtitle="Don't just take our word for it — hear from businesses we've helped succeed."
+    tagline="Testimonials"
+    testimonials={[
+      {
+        testimonial:
+          'Criztec delivered our new website in record time. The team was professional, responsive, and truly understood our vision. Our online presence has never been stronger.',
+        name: 'Sarah Mitchell',
+        job: 'Marketing Director, TechStart UK',
+        image: {
+          src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+          alt: 'Sarah Mitchell',
+        },
+      },
+      {
+        testimonial:
+          'The n8n automation they set up saved us 20+ hours per week. What used to take days now happens automatically. Game-changer for our operations.',
+        name: 'James Henderson',
+        job: 'Operations Manager, LogiFlow',
+        image: {
+          src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+          alt: 'James Henderson',
+        },
+      },
+      {
+        testimonial:
+          'Their Ruby on Rails expertise is exceptional. They built us a robust platform that handles thousands of users daily without a hitch. Highly recommended!',
+        name: 'Emma Thompson',
+        job: 'CEO, EduPlatform',
+        image: {
+          src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+          alt: 'Emma Thompson',
+        },
+      },
+    ]}
+  />
 
   <!-- HighlightedPosts Widget ******* -->
 
-  <BlogLatestPosts title="Find out more content in our Blog" information={``} count={6} />
+  <BlogLatestPosts
+    title="Insights & Resources"
+    information="Stay ahead with the latest trends, tips, and strategies in web development and digital marketing."
+    count={6}
+  />
 
   <!-- CallToAction Widget *********** -->
 
@@ -230,20 +310,23 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Work with us',
+        text: 'Start Your Project',
         href: '/contact',
-        // target: '_blank',
-        icon: 'tabler:user-plus',
+        icon: 'tabler:rocket',
+      },
+      {
+        variant: 'secondary',
+        text: 'Book a Free Consultation',
+        href: '/contact',
+        icon: 'tabler:calendar',
       },
     ]}
   >
-    <Fragment slot="title">
-      Criztec&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Technologies</span>
-    </Fragment>
+    <Fragment slot="title"> Ready to Transform Your Business? </Fragment>
 
     <Fragment slot="subtitle">
-      Ready to build faster and run smarter? <br class="hidden md:inline" /> Let's discuss your web/software goals and where
-      n8n automation can remove bottlenecks.
+      Join 75+ businesses that have accelerated their growth with our solutions. <br class="hidden md:inline" />
+      Let's discuss how we can help you achieve your goals.
     </Fragment>
   </CallToAction>
 </Layout>
