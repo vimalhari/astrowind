@@ -65,8 +65,8 @@ Astro's experimental SVGO (Scalable Vector Graphics Optimiser) integration furth
 
 The introduction of the `csp` option within the hydratable renderer is a quieter but equally important change. It allows Svelte to hash inline hydration scripts, enabling developers to implement strict `Content-Security-Policy` headers without compromising the framework's client-side hydration model. This closes a longstanding security vs. developer experience gap and reflects a mature framework addressing real-world production requirements.
 
-```javascript
-// Example: Using the new SvelteKit Cloudflare CLI
+```bash
+# Example: Using the new SvelteKit Cloudflare CLI
 # Previous multi-step manual setup replaced by:
 sv deploy --platform cloudflare --bind-kv MY_NAMESPACE --bind-d1 MY_DB
 ```

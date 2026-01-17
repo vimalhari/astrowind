@@ -40,7 +40,7 @@ The drive for environment parity extends to the client, where a new generation o
 
 The performance gain stems from delivering less code to the browser and executing more efficient updates. There is no framework runtime to parse, initialise, or reconcile on initial load. This complements the server-side shift by ensuring the client experience is equally optimised and predictable. SvelteKit's new native `csp` option for hydration is a direct enabler, allowing strict Content Security Policies without the fragility that often broke traditional hydration scripts, securing the performance gain.
 
-```javascript
+```svelte
 // Svelte's Runes (Zero-Runtime Reactivity)
 <script>
   let count = $state(0); // Compiled away, no runtime overhead

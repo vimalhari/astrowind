@@ -3,10 +3,9 @@ import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
   study: CollectionEntry<'case-studies'>;
-  index: number;
 }
 
-const { study, index } = Astro.props;
+const { study } = Astro.props;
 
 // Get first performance metric for highlight
 const highlightMetric = study.data.results.performance[0];

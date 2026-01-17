@@ -10,38 +10,73 @@ export const headerData = {
         {
           text: 'Websites',
           links: [
-            { text: 'Astro Websites', href: getPermalink('/astro-site'), description: 'Lightning-fast marketing sites' },
-            { text: 'WordPress Websites', href: getPermalink('/website-development'), description: 'Easy-to-edit CMS sites' },
+            {
+              text: 'Astro Websites',
+              href: getPermalink('/astro-site'),
+              description: 'Lightning-fast marketing sites',
+            },
+            {
+              text: 'WordPress Websites',
+              href: getPermalink('/website-development'),
+              description: 'Easy-to-edit CMS sites',
+            },
           ],
         },
         {
           text: 'Web & Mobile Apps',
           links: [
             { text: 'Django Apps', href: getPermalink('/django-development'), description: 'Python web applications' },
-            { text: 'Ruby on Rails Apps', href: getPermalink('/ruby-on-rails-development'), description: 'Rails web applications' },
+            {
+              text: 'Ruby on Rails Apps',
+              href: getPermalink('/ruby-on-rails-development'),
+              description: 'Rails web applications',
+            },
             { text: 'Mobile Apps', href: getPermalink('/mobile-app'), description: 'iOS & Android apps' },
           ],
         },
         {
           text: 'Automation',
           links: [
-            { text: 'Business Automation (n8n)', href: getPermalink('/business-automation'), description: 'Workflow automation' },
+            {
+              text: 'Business Automation (n8n)',
+              href: getPermalink('/business-automation'),
+              description: 'Workflow automation',
+            },
           ],
         },
         {
           text: 'Marketing',
           links: [
-            { text: 'Digital Marketing', href: getPermalink('/digital-marketing'), description: 'Full-service marketing' },
+            {
+              text: 'Digital Marketing',
+              href: getPermalink('/digital-marketing'),
+              description: 'Full-service marketing',
+            },
             { text: 'SEO', href: getPermalink('/seo'), description: 'Search engine optimization' },
-            { text: 'Social Media', href: getPermalink('/socialmedia-marketing'), description: 'Social media marketing' },
-            { text: 'Content Marketing', href: getPermalink('/content-marketing'), description: 'Content strategy & creation' },
+            {
+              text: 'Social Media',
+              href: getPermalink('/socialmedia-marketing'),
+              description: 'Social media marketing',
+            },
+            {
+              text: 'Content Marketing',
+              href: getPermalink('/content-marketing'),
+              description: 'Content strategy & creation',
+            },
           ],
         },
         {
-          text: 'Design & Support',
+          text: 'Design',
+          links: [{ text: 'Logo Design', href: getPermalink('/logo-design'), description: 'Brand identity & logos' }],
+        },
+        {
+          text: 'IT Services',
           links: [
-            { text: 'Logo Design', href: getPermalink('/logo-design'), description: 'Brand identity design' },
-            { text: 'IT Support', href: getPermalink('/it-support'), description: 'Managed IT services' },
+            {
+              text: 'Managed IT Support',
+              href: getPermalink('/it-support'),
+              description: 'Google Workspace, Microsoft 365 & more',
+            },
           ],
         },
       ],
@@ -102,9 +137,7 @@ export const footerData = {
     },
     {
       title: 'Automation',
-      links: [
-        { text: 'Business Automation (n8n)', href: getPermalink('/business-automation') },
-      ],
+      links: [{ text: 'Business Automation (n8n)', href: getPermalink('/business-automation') }],
     },
     {
       title: 'Marketing',
@@ -116,11 +149,12 @@ export const footerData = {
       ],
     },
     {
-      title: 'Design & Support',
-      links: [
-        { text: 'Logo Design', href: getPermalink('/logo-design') },
-        { text: 'IT Support', href: getPermalink('/it-support') },
-      ],
+      title: 'Design',
+      links: [{ text: 'Logo Design', href: getPermalink('/logo-design') }],
+    },
+    {
+      title: 'IT Services',
+      links: [{ text: 'Managed IT Support', href: getPermalink('/it-support') }],
     },
     {
       title: 'Locations',
