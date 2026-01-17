@@ -27,178 +27,153 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
 ---
 
 <footer
-  class:list={[{ dark: theme === 'dark' }, 'relative not-prose bg-gray-50 dark:bg-slate-900 animate-fade-in-up']}
+  class:list={[{ dark: theme === 'dark' }, 'relative not-prose overflow-hidden']}
   role="contentinfo"
   aria-label="Site footer"
 >
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-8">
-    {/* Main content container */}
-    <div class="relative">
-      {/* Top section: Logo, Description & Links */}
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        {/* Column 1: Company Brand Section */}
-        <div class="lg:col-span-1">
+  {/* Main footer background with gradient */}
+  <div class="relative bg-gradient-to-b from-slate-900 to-slate-950 pt-10 pb-6">
+    {/* Subtle gradient accent */}
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"
+    >
+    </div>
+
+    {/* Gradient orb for modern effect */}
+    <div class="absolute top-0 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Main content grid - compact layout */}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6">
+        {/* Brand Column */}
+        <div class="lg:col-span-3 space-y-4">
           {/* Logo */}
-          <div class="mb-6">
-            <a
-              class="inline-flex items-center font-bold text-xl text-gray-900 dark:text-white hover:text-primary transition-colors duration-200"
-              href={getHomePermalink()}
+          <a class="inline-flex items-center group" href={getHomePermalink()}>
+            <span
+              class="text-xl font-bold bg-gradient-to-r from-primary via-amber-400 to-primary bg-[length:200%_auto] bg-clip-text text-transparent group-hover:animate-gradient-x transition-all duration-500"
             >
-              <span class="bg-gradient-to-r from-primary to-amber-500 bg-clip-text text-transparent">
-                {SITE?.name}
-              </span>
+              {SITE?.name}
+            </span>
+          </a>
+
+          {/* Tagline */}
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Professional web development, digital marketing & IT solutions.
+          </p>
+
+          {/* Contact - inline compact */}
+          <div class="flex flex-col gap-2 text-xs">
+            <a
+              href="mailto:info@criztec.com"
+              class="inline-flex items-center gap-2 text-slate-400 hover:text-primary transition-colors"
+            >
+              <Icon name="tabler:mail" class="w-3.5 h-3.5 text-primary/70" />
+              info@criztec.com
+            </a>
+            <a
+              href="tel:+447404979307"
+              class="inline-flex items-center gap-2 text-slate-400 hover:text-primary transition-colors"
+            >
+              <Icon name="tabler:phone" class="w-3.5 h-3.5 text-primary/70" />
+              +44 7404 979307
             </a>
           </div>
 
-          {/* Company Description */}
-          <div class="mb-6">
-            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Professional web development, digital marketing & IT support services.
-            </p>
-          </div>
-
-          {/* Contact Info */}
-          <div class="space-y-3 text-sm">
-            <div class="flex items-center space-x-3">
-              <div class="w-8 h-8 bg-primary-light rounded-lg flex items-center justify-center">
-                <Icon name="tabler:mail" class="w-4 h-4 text-primary" />
+          {/* Social Links - compact */}
+          {
+            socialLinks?.length ? (
+              <div class="flex flex-wrap gap-2 pt-1">
+                {socialLinks.map(({ ariaLabel, href, text, icon }) => (
+                  <a
+                    class="group w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-primary/50 hover:bg-white/10 transition-all duration-200"
+                    aria-label={ariaLabel}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div class="text-slate-500 group-hover:text-white transition-colors">
+                      {icon && <Icon name={icon} class="w-4 h-4" />}
+                      {!icon && text && <Fragment set:html={text} />}
+                    </div>
+                  </a>
+                ))}
               </div>
-              <a
-                href="mailto:info@criztec.com"
-                class="text-gray-700 dark:text-slate-300 hover:text-primary transition-colors duration-200"
-              >
-                info@criztec.com
-              </a>
-            </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-8 h-8 bg-primary-light rounded-lg flex items-center justify-center">
-                <Icon name="tabler:phone" class="w-4 h-4 text-primary" />
-              </div>
-              <a
-                href="tel:+447404979307"
-                class="text-gray-700 dark:text-slate-300 hover:text-primary transition-colors duration-200"
-              >
-                +44 7404 979307
-              </a>
-            </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-8 h-8 bg-primary-light rounded-lg flex items-center justify-center">
-                <Icon name="tabler:map-pin" class="w-4 h-4 text-primary" />
-              </div>
-              <span class="text-gray-700 dark:text-slate-300"
-                >121 Bath Road, Slough, Berkshire, United Kingdom, SL1 3UW</span
-              >
-            </div>
-          </div>
+            ) : null
+          }
         </div>
 
-        {/* Navigation Links Grid */}
-        <div class="lg:col-span-3">
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+        {/* Navigation Links - compact grid */}
+        <div class="lg:col-span-6">
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
             {
               links.map(({ title, links: linkItems }) => (
-                <div>
-                  <nav aria-labelledby={`footer-${title?.toLowerCase().replace(/\s+/g, '-')}-heading`}>
-                    <h3
-                      id={`footer-${title?.toLowerCase().replace(/\s+/g, '-')}-heading`}
-                      class="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider"
-                    >
-                      {title}
-                    </h3>
-                    {linkItems && Array.isArray(linkItems) && linkItems.length > 0 && (
-                      <ul class="space-y-2" role="list">
-                        {linkItems.map(({ text, href, ariaLabel }) => (
-                          <li>
-                            <a
-                              class="text-sm text-gray-600 dark:text-slate-400 hover:text-primary transition-colors duration-200"
-                              href={href}
-                              aria-label={ariaLabel}
-                            >
-                              <Fragment set:html={text} />
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </nav>
-                </div>
+                <nav aria-labelledby={`footer-${title?.toLowerCase().replace(/\s+/g, '-')}-heading`}>
+                  <h3
+                    id={`footer-${title?.toLowerCase().replace(/\s+/g, '-')}-heading`}
+                    class="text-white font-medium text-xs uppercase tracking-wider mb-3"
+                  >
+                    {title}
+                  </h3>
+                  {linkItems && Array.isArray(linkItems) && linkItems.length > 0 && (
+                    <ul class="space-y-1.5" role="list">
+                      {linkItems.map(({ text, href, ariaLabel }) => (
+                        <li>
+                          <a
+                            class="text-slate-500 text-xs hover:text-white transition-colors duration-200"
+                            href={href}
+                            aria-label={ariaLabel}
+                          >
+                            <Fragment set:html={text} />
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </nav>
               ))
             }
           </div>
         </div>
+
+        {/* Newsletter - compact */}
+        <div class="lg:col-span-3">
+          <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+            <h3 class="text-white font-medium text-xs uppercase tracking-wider mb-2">Stay Updated</h3>
+            <p class="text-slate-500 text-xs mb-3">Get insights delivered to your inbox.</p>
+            <form class="flex gap-2">
+              <input
+                type="email"
+                placeholder="Email"
+                class="flex-1 min-w-0 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-600 text-xs focus:outline-none focus:border-primary/50 transition-colors"
+              />
+              <button
+                type="submit"
+                class="px-3 py-2 rounded-lg bg-gradient-to-r from-primary to-amber-500 text-white text-xs font-medium hover:shadow-lg hover:shadow-primary/20 transition-all duration-200"
+              >
+                Join
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
 
-      {/* Enhanced Bottom Section */}
-      <div class="mt-12 pt-6 border-t border-gray-200 dark:border-slate-700">
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-8 lg:space-y-0">
-          {/* Social Media Links */}
-          {
-            socialLinks?.length ? (
-              <div class="order-2 lg:order-1">
-                <h3 class="text-sm font-semibold text-gray-700 dark:text-slate-300 mb-4">Follow Us</h3>
-                <div class="flex space-x-4">
-                  {socialLinks.map(({ ariaLabel, href, text, icon }) => (
-                    <a
-                      class:list={[
-                        'group relative w-12 h-12 rounded-xl flex items-center justify-center transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl text-white',
-                        {
-                          'bg-blue-500 hover:bg-blue-600': icon === 'tabler:brand-twitter',
-                          'bg-blue-600 hover:bg-blue-700': icon === 'tabler:brand-facebook',
-                          'bg-gradient-to-br from-purple-600 via-pink-600 to-yellow-500 hover:from-purple-700 hover:via-pink-700 hover:to-yellow-600':
-                            icon === 'tabler:brand-instagram',
-                          'bg-blue-700 hover:bg-blue-800': icon === 'tabler:brand-linkedin',
-                          'bg-red-600 hover:bg-red-700': icon === 'tabler:brand-youtube',
-                          'bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600':
-                            icon === 'tabler:brand-github',
-                          'bg-green-500 hover:bg-green-600': icon === 'tabler:brand-whatsapp',
-                          'bg-gray-600 hover:bg-gray-700':
-                            !icon ||
-                            ![
-                              'tabler:brand-twitter',
-                              'tabler:brand-facebook',
-                              'tabler:brand-instagram',
-                              'tabler:brand-linkedin',
-                              'tabler:brand-youtube',
-                              'tabler:brand-github',
-                              'tabler:brand-whatsapp',
-                            ].includes(icon),
-                        },
-                      ]}
-                      aria-label={ariaLabel}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <div class="transition-all duration-300 group-hover:scale-110">
-                        {icon && <Icon name={icon} class="w-5 h-5" />}
-                        {!icon && text && <Fragment set:html={text} />}
-                      </div>
-                      <div class="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ) : null
-          }
+      {/* Bottom bar - compact */}
+      <div class="mt-8 pt-5 border-t border-white/10">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          {/* Secondary Links */}
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-1">
+            {
+              secondaryLinks.map(({ text, href }) => (
+                <a class="text-slate-600 text-xs hover:text-slate-400 transition-colors" href={href}>
+                  <Fragment set:html={text} />
+                </a>
+              ))
+            }
+          </div>
 
-          {/* Secondary Links & Legal */}
-          <div class="order-1 lg:order-2 text-center lg:text-right">
-            <div class="flex flex-wrap justify-center lg:justify-end gap-6 mb-4">
-              {
-                secondaryLinks.map(({ text, href }) => (
-                  <a
-                    class="text-sm text-gray-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200 relative group"
-                    href={href}
-                  >
-                    <span class="relative z-10" set:html={text} />
-                    <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-                  </a>
-                ))
-              }
-            </div>
-
-            {/* Enhanced Footer Note */}
-            <div class="text-sm text-gray-600 dark:text-slate-500 leading-relaxed">
+          {/* Footer Note */}
+          <div class="text-center sm:text-right">
+            <div class="text-slate-600 text-xs">
               <Fragment set:html={footNote} />
             </div>
           </div>
@@ -208,34 +183,55 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
   </div>
 </footer>
 
+{/* Back to Top Button */}
+<button
+  id="back-to-top"
+  class="fixed bottom-6 right-6 w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-amber-500 text-white flex items-center justify-center opacity-0 invisible translate-y-4 transition-all duration-300 z-50 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-1 hover:scale-105 group"
+  aria-label="Back to top"
+>
+  <Icon name="tabler:chevron-up" class="w-5 h-5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+</button>
+
+<style>
+  @keyframes gradient-x {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  .animate-gradient-x {
+    animation: gradient-x 3s ease infinite;
+  }
+</style>
+
 <script>
-  // Enhanced footer interactions with pure Tailwind
   document.addEventListener('DOMContentLoaded', () => {
-    // Back to top button with Tailwind classes
-    const backToTopButton = document.createElement('button');
-    backToTopButton.className =
-      'fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-br from-primary to-blue-600 border-0 rounded-full text-white text-xl cursor-pointer opacity-0 invisible translate-y-2 transition-all duration-300 ease-out z-[1000] shadow-lg hover:shadow-xl hover:-translate-y-1 hover:scale-105 active:translate-y-0';
-    backToTopButton.innerHTML = '↑';
-    backToTopButton.setAttribute('aria-label', 'Back to top');
-    document.body.appendChild(backToTopButton);
+    const backToTopButton = document.getElementById('back-to-top');
 
-    // Show/hide back to top button
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 500) {
-        backToTopButton.classList.remove('opacity-0', 'invisible', 'translate-y-2');
-        backToTopButton.classList.add('opacity-100', 'visible', 'translate-y-0');
-      } else {
-        backToTopButton.classList.add('opacity-0', 'invisible', 'translate-y-2');
-        backToTopButton.classList.remove('opacity-100', 'visible', 'translate-y-0');
-      }
-    });
+    if (backToTopButton) {
+      // Show/hide back to top button
+      const toggleBackToTop = () => {
+        if (window.scrollY > 500) {
+          backToTopButton.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+          backToTopButton.classList.add('opacity-100', 'visible', 'translate-y-0');
+        } else {
+          backToTopButton.classList.add('opacity-0', 'invisible', 'translate-y-4');
+          backToTopButton.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        }
+      };
 
-    // Smooth scroll to top
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
+      window.addEventListener('scroll', toggleBackToTop, { passive: true });
+
+      // Smooth scroll to top
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
       });
-    });
+    }
   });
 </script>
