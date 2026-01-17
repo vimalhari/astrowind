@@ -25,3 +25,9 @@ from = "/web-development/:city"
 to = "/locations/:city/website-development"
 status = 301
 force = true
+
+[[redirects]]
+from = "/pricing"
+to = "/contact"
+status = 301
+force = true

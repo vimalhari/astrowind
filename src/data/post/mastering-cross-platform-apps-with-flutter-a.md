@@ -1,10 +1,10 @@
 ---
 publishDate: 2026-01-12T11:51:04.075Z
-title: "Mastering Cross-Platform Apps with Flutter: A Guide to Business Growth"
-excerpt: ""
+title: 'Mastering Cross-Platform Apps with Flutter: A Guide to Business Growth'
+excerpt: ''
 image: https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/mastering-cross-platform-apps-with-flutter-a.webp
 category: Tech
-tags: ["Tech"]
+tags: ['Tech']
 metadata:
   canonical: https://criztec.com/mastering-cross-platform-apps-with-flutter-a
 ---

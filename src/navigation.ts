@@ -79,9 +79,7 @@ export const footerData = {
     },
     {
       title: 'Design Services',
-      links: [
-        { text: 'Logo Design', href: getPermalink('/logo-design') },
-      ],
+      links: [{ text: 'Logo Design', href: getPermalink('/logo-design') }],
     },
     {
       title: 'Development',

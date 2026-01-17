@@ -17,7 +17,6 @@ const staticPages = [
   'content-marketing',
   'socialmedia-marketing',
   'it-support',
-  'pricing',
   'astro-site',
   'django-development',
   'ruby-on-rails-development',
