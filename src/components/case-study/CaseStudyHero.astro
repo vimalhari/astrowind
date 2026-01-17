@@ -17,20 +17,20 @@ const { study } = Astro.props;
   </div>
 
   <!-- Gradient Overlays -->
-  <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
+  <div class="absolute top-0 right-0 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-64 h-64 bg-amber-500/20 rounded-full blur-3xl"></div>
 
-  <div class="relative px-4 py-20 mx-auto max-w-7xl lg:px-8 lg:py-28">
-    <div class="grid lg:grid-cols-12 gap-12 items-center">
+  <div class="relative px-4 py-16 mx-auto max-w-7xl lg:px-8 lg:py-20">
+    <div class="grid lg:grid-cols-12 gap-10 items-center">
       <!-- Left Content -->
-      <div class="lg:col-span-7 space-y-8">
+      <div class="lg:col-span-7 space-y-6">
         <!-- Breadcrumb -->
         <nav class="flex items-center space-x-2 text-sm text-gray-300" aria-label="breadcrumb">
-          <a href="/" class="hover:text-blue-400 transition-colors">Home</a>
+          <a href="/" class="hover:text-orange-400 transition-colors">Home</a>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
-          <a href="/case-studies" class="hover:text-blue-400 transition-colors">Case Studies</a>
+          <a href="/case-studies" class="hover:text-orange-400 transition-colors">Case Studies</a>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
@@ -40,7 +40,7 @@ const { study } = Astro.props;
         <!-- Category Badge -->
         <div class="flex items-center space-x-3">
           <span
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-300 bg-blue-900/30 rounded-full border border-blue-700/50"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-orange-300 bg-orange-900/30 rounded-full border border-orange-700/50"
           >
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -55,11 +55,11 @@ const { study } = Astro.props;
         </div>
 
         <!-- Title and Subtitle -->
-        <div class="space-y-6">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        <div class="space-y-4">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
             {study.data.title}
           </h1>
-          <p class="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl">
+          <p class="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
             {study.data.subtitle}
           </p>
         </div>
@@ -67,7 +67,7 @@ const { study } = Astro.props;
         <!-- Quick Stats -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-            <div class="text-xl font-bold text-blue-400 mb-1 break-words">
+            <div class="text-xl font-bold text-orange-400 mb-1 break-words">
               {study.data.results.performance?.[0]?.after || 'N/A'}
             </div>
             <div class="text-xs text-gray-300 font-medium break-words">
@@ -75,11 +75,11 @@ const { study } = Astro.props;
             </div>
           </div>
           <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-            <div class="text-xl font-bold text-green-400 mb-1 break-words">{study.data.duration}</div>
+            <div class="text-xl font-bold text-amber-400 mb-1 break-words">{study.data.duration}</div>
             <div class="text-xs text-gray-300 font-medium">Duration</div>
           </div>
           <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-            <div class="text-sm font-bold text-purple-400 mb-1 leading-tight break-words px-1">
+            <div class="text-sm font-bold text-orange-300 mb-1 leading-tight break-words px-1">
               {study.data.projectType}
             </div>
             <div class="text-xs text-gray-300 font-medium">Project Type</div>
@@ -96,7 +96,7 @@ const { study } = Astro.props;
         <div class="relative max-w-md mx-auto">
           <!-- Browser Frame -->
           <div
-            class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-600"
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-600"
           >
             <!-- Browser Header -->
             <div class="bg-gray-100 dark:bg-gray-700 px-4 py-3 flex items-center">
@@ -112,10 +112,10 @@ const { study } = Astro.props;
               </div>
             </div>
             <div
-              class="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 h-40 flex items-center justify-center"
+              class="p-4 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-700 h-40 flex items-center justify-center"
             >
               <div class="text-center">
-                <div class="w-16 h-16 bg-blue-600 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                <div class="w-16 h-16 bg-primary rounded-lg mx-auto mb-3 flex items-center justify-center">
                   <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       stroke-linecap="round"
@@ -136,7 +136,7 @@ const { study } = Astro.props;
               href={study.data.website}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-xl hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl border border-blue-200"
+              class="inline-flex items-center px-5 py-2.5 bg-white text-primary font-semibold rounded-lg hover:bg-orange-50 transition-all duration-300 shadow-md hover:shadow-lg border border-orange-200 text-sm"
             >
               <span>Visit Live Site</span>
               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

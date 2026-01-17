@@ -48,7 +48,7 @@ const achievements = [
       <div class="lg:pr-8">
         <!-- Section Badge -->
         <div class="mb-6">
-          <span class="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-800">
+          <span class="inline-flex items-center rounded-full bg-orange-100 px-4 py-2 text-sm font-medium text-primary">
             About Our {city.name} Team
           </span>
         </div>
@@ -78,7 +78,7 @@ const achievements = [
             {
               city.localLandmarks.slice(0, 4).map((landmark) => (
                 <div class="flex items-center text-sm text-gray-600">
-                  <svg class="w-4 h-4 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <svg class="w-4 h-4 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path
                       fill-rule="evenodd"
                       d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
@@ -98,7 +98,7 @@ const achievements = [
             expertisePoints.map((point) => (
               <div class="flex items-start">
                 <div class="flex-shrink-0">
-                  <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100">
+                  <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary-light">
                     <span class="text-lg">{point.icon}</span>
                   </div>
                 </div>
@@ -116,7 +116,7 @@ const achievements = [
           {
             achievements.map((stat) => (
               <div class="text-center">
-                <div class={`text-2xl font-bold mb-1 ${stat.highlight ? 'text-blue-600' : 'text-gray-900'}`}>
+                <div class={`text-2xl font-bold mb-1 ${stat.highlight ? 'text-primary' : 'text-gray-900'}`}>
                   {stat.number}
                 </div>
                 <div class="text-xs text-gray-600">{stat.label}</div>
@@ -150,9 +150,9 @@ const achievements = [
                 </p>
                 <div class="flex items-center text-sm">
                   <div class="flex -space-x-2 mr-3">
-                    <div class="w-6 h-6 rounded-full bg-blue-500 border-2 border-white"></div>
-                    <div class="w-6 h-6 rounded-full bg-green-500 border-2 border-white"></div>
-                    <div class="w-6 h-6 rounded-full bg-purple-500 border-2 border-white"></div>
+                    <div class="w-6 h-6 rounded-full bg-primary border-2 border-white"></div>
+                    <div class="w-6 h-6 rounded-full bg-secondary border-2 border-white"></div>
+                    <div class="w-6 h-6 rounded-full bg-accent border-2 border-white"></div>
                   </div>
                   <span class="text-gray-600">Local team of experts</span>
                 </div>
@@ -161,7 +161,7 @@ const achievements = [
           </div>
 
           <!-- Floating Elements -->
-          <div class="absolute -top-4 -right-4 bg-green-500 text-white rounded-full p-4 shadow-lg">
+          <div class="absolute -top-4 -right-4 bg-primary text-white rounded-full p-4 shadow-lg">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fill-rule="evenodd"
@@ -170,7 +170,7 @@ const achievements = [
             </svg>
           </div>
 
-          <div class="absolute -bottom-4 -left-4 bg-blue-600 text-white rounded-lg p-3 shadow-lg">
+          <div class="absolute -bottom-4 -left-4 bg-primary text-white rounded-lg p-3 shadow-lg">
             <div class="text-center">
               <div class="text-lg font-bold">Local</div>
               <div class="text-xs">Experts</div>
@@ -180,12 +180,12 @@ const achievements = [
 
         <!-- Additional Info Cards -->
         <div class="mt-8 grid grid-cols-2 gap-4">
-          <div class="bg-blue-50 rounded-lg p-4 text-center">
-            <div class="text-2xl font-bold text-blue-600 mb-1">{city.demographics.population?.toLocaleString()}</div>
+          <div class="bg-orange-50 rounded-lg p-4 text-center">
+            <div class="text-2xl font-bold text-primary mb-1">{city.demographics.population?.toLocaleString()}</div>
             <div class="text-sm text-gray-600">Population Served</div>
           </div>
-          <div class="bg-green-50 rounded-lg p-4 text-center">
-            <div class="text-2xl font-bold text-green-600 mb-1">{city.nearbyAreas.length}</div>
+          <div class="bg-orange-50 rounded-lg p-4 text-center">
+            <div class="text-2xl font-bold text-secondary mb-1">{city.nearbyAreas.length}</div>
             <div class="text-sm text-gray-600">Areas Covered</div>
           </div>
         </div>
@@ -206,8 +206,8 @@ const achievements = [
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="text-center p-6">
-          <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-primary-light rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"
               ></path>
             </svg>
@@ -217,8 +217,8 @@ const achievements = [
         </div>
 
         <div class="text-center p-6">
-          <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-primary-light rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -231,8 +231,8 @@ const achievements = [
         </div>
 
         <div class="text-center p-6">
-          <div class="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-primary-light rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"

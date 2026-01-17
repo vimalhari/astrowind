@@ -14,7 +14,7 @@ const { study, index } = Astro.props;
 ---
 
 <article
-  class="case-study-card group bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 hover:border-transparent flex flex-col h-auto"
+  class="case-study-card group bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 hover:border-transparent flex flex-col h-auto"
   data-category={study.data.category}
   data-client={study.data.client.toLowerCase()}
 >
@@ -93,7 +93,7 @@ const { study, index } = Astro.props;
     <div class="flex-shrink-0 pt-2 pb-3 mt-auto">
       <a
         href={`/case-studies/${study.id}`}
-        class="group/cta relative flex items-center justify-center w-full p-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-700 dark:to-indigo-700 dark:hover:from-blue-600 dark:hover:to-indigo-600 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] overflow-hidden"
+        class="group/cta relative flex items-center justify-center w-full p-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-700 dark:to-indigo-700 dark:hover:from-blue-600 dark:hover:to-indigo-600 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md active:scale-[0.98] overflow-hidden"
         aria-label={`View detailed case study for ${study.data.client}`}
       >
         <!-- Subtle shine effect on hover -->

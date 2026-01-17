@@ -2,6 +2,7 @@
 import type { CityData } from '../../data/cities';
 import Button from '../ui/Button.astro';
 import Image from '../common/Image.astro';
+import heroImage from '~/assets/images/hero-image.webp';
 
 export interface Props {
   city: CityData;
@@ -37,32 +38,32 @@ const { city } = Astro.props;
         </p>
 
         <!-- Main Headline -->
-        <h1 class="text-4xl font-bold tracking-tight sm:text-5xl mb-6">
+        <h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem] mb-4">
           <span class="block text-white">{city.headline}</span>
         </h1>
 
         <!-- Subheading -->
-        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+        <p class="text-lg text-blue-100 mb-6 leading-relaxed">
           {city.subheading}
         </p>
 
         <!-- Hero Description -->
-        <p class="text-lg text-blue-50 mb-8 leading-relaxed max-w-2xl">
+        <p class="text-base text-blue-50 mb-6 leading-relaxed max-w-2xl">
           {city.heroDescription}
         </p>
 
         <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4">
+        <div class="flex flex-col sm:flex-row gap-3">
           <Button
             variant="primary"
-            class="bg-white text-blue-900 hover:bg-blue-50 font-semibold px-8 py-4 text-lg shadow-xl"
+            class="bg-white text-blue-900 hover:bg-blue-50 font-semibold px-6 py-3 text-sm shadow-lg"
             href="/contact"
           >
             Book a Free Consultation
           </Button>
           <Button
             variant="secondary"
-            class="border-white text-white hover:bg-white hover:text-blue-900 font-semibold px-8 py-4 text-lg backdrop-blur-sm"
+            class="border-white text-white hover:bg-white hover:text-blue-900 font-semibold px-6 py-3 text-sm backdrop-blur-sm"
             href="#services"
           >
             View Services in {city.name}
@@ -75,10 +76,10 @@ const { city } = Astro.props;
         <div class="relative">
           <!-- Main Hero Image -->
           <div
-            class="relative rounded-2xl overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl"
+            class="relative rounded-xl overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg"
           >
             <Image
-              src="https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/websitedevelopment.avif"
+              src={heroImage}
               alt={`Website development services in ${city.name}`}
               width={600}
               height={400}

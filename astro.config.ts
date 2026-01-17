@@ -73,7 +73,13 @@ export default defineConfig({
   ],
 
   image: {
-    domains: ['cdn.pixabay.com'],
+    domains: ['cdn.pixabay.com', 'pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.r2.dev',
+      },
+    ],
   },
 
   markdown: {

@@ -87,13 +87,13 @@ const { study } = Astro.props;
           </svg>
         </div>
         <div
-          class="absolute inset-0 bg-blue-500/20 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"
+          class="absolute inset-0 bg-primary/20 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"
         >
         </div>
       </div>
 
       <h3
-        class="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
+        class="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary dark:group-hover:text-orange-400 transition-colors duration-300"
       >
         Our Solution
       </h3>
@@ -103,12 +103,12 @@ const { study } = Astro.props;
 
       <!-- Approach Steps -->
       <div class="space-y-3">
-        <div class="text-sm font-medium text-blue-700 dark:text-blue-300 mb-2">Our Approach:</div>
+        <div class="text-sm font-medium text-primary dark:text-orange-300 mb-2">Our Approach:</div>
         <div class="space-y-2">
           {
             study.data.solution.approach.slice(0, 3).map((step) => (
               <div class="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                <div class="w-2 h-2 bg-blue-500 rounded-full mr-3" />
+                <div class="w-2 h-2 bg-primary rounded-full mr-3" />
                 {step}
               </div>
             ))

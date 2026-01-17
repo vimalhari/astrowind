@@ -1,5 +1,6 @@
 ---
 import '@fontsource-variable/inter';
+import '@fontsource-variable/plus-jakarta-sans';
 
 // 'DM Sans'
 // Nunito
@@ -23,40 +24,53 @@ import '@fontsource-variable/inter';
   :root {
     --aw-font-sans: 'Inter Variable';
     --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-heading: 'Plus Jakarta Sans Variable';
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    --aw-color-primary: rgb(243 128 32);
+    --aw-color-secondary: rgb(224 109 16);
+    --aw-color-accent: rgb(255 165 77);
 
-    --aw-color-text-heading: rgb(0 0 0);
-    --aw-color-text-default: rgb(16 16 16);
-    --aw-color-text-muted: rgb(16 16 16 / 66%);
-    --aw-color-bg-page: rgb(255 255 255);
+    /* Tint colors for backgrounds */
+    --aw-color-primary-light: rgb(255 237 213);
+    --aw-color-primary-dark: rgb(124 45 18);
+    --aw-color-primary-muted: rgb(243 128 32 / 10%);
 
-    --aw-color-bg-page-dark: rgb(3 6 32);
+    --aw-color-text-heading: rgb(30 41 59);
+    --aw-color-text-default: rgb(30 41 59);
+    --aw-color-text-muted: rgb(100 116 139);
+    --aw-color-bg-page: rgb(248 250 252);
+
+    --aw-color-bg-page-dark: rgb(15 23 42);
+
+    --aw-color-surface: rgb(255 255 255);
+    --aw-color-surface-dark: rgb(30 41 59);
 
     ::selection {
-      background-color: lavender;
+      background-color: rgb(243 128 32 / 20%);
     }
   }
 
   .dark {
     --aw-font-sans: 'Inter Variable';
     --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-heading: 'Plus Jakarta Sans Variable';
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    --aw-color-primary: rgb(243 128 32);
+    --aw-color-secondary: rgb(224 109 16);
+    --aw-color-accent: rgb(255 165 77);
 
-    --aw-color-text-heading: rgb(247, 248, 248);
-    --aw-color-text-default: rgb(229 236 246);
-    --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: rgb(3 6 32);
+    /* Tint colors for backgrounds (dark mode) */
+    --aw-color-primary-light: rgb(124 45 18 / 30%);
+    --aw-color-primary-dark: rgb(124 45 18);
+    --aw-color-primary-muted: rgb(243 128 32 / 20%);
+
+    --aw-color-text-heading: rgb(241 245 249);
+    --aw-color-text-default: rgb(226 232 240);
+    --aw-color-text-muted: rgb(148 163 184);
+    --aw-color-bg-page: rgb(15 23 42);
 
     ::selection {
-      background-color: black;
+      background-color: rgb(243 128 32 / 30%);
       color: snow;
     }
   }
