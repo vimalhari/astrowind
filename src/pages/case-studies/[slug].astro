@@ -4,7 +4,6 @@ import Layout from '~/layouts/PageLayout.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import CaseStudyHero from '~/components/case-study/CaseStudyHero.astro';
 import CaseStudyOverview from '~/components/case-study/CaseStudyOverview.astro';
-import CaseStudyMetricsDashboard from '~/components/case-study/CaseStudyMetricsDashboard.astro';
 import CaseStudyTestimonial from '~/components/case-study/CaseStudyTestimonial.astro';
 import RelatedCaseStudies from '~/components/case-study/RelatedCaseStudies.astro';
 
@@ -59,84 +58,38 @@ const metadata = {
   <!-- Project Overview -->
   <CaseStudyOverview study={study} />
 
-  <!-- Performance Metrics -->
-  <CaseStudyMetricsDashboard study={study} />
-
-  <!-- Visit Website Section -->
-  <section class="px-4 py-12 mx-auto max-w-7xl lg:px-8 bg-gradient-to-r from-primary to-secondary">
-    <div class="flex flex-col md:flex-row items-center justify-between text-white">
-      <div class="mb-6 md:mb-0">
-        <h3 class="text-2xl font-bold mb-2">Ready to see {study.data.client} live?</h3>
-        <p class="text-orange-100">Experience the results firsthand by visiting the website</p>
-      </div>
-      <a
-        href={study.data.website}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="cta-button inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-orange-50 transition-all duration-300 shadow-lg hover:shadow-xl"
-      >
-        <span>Visit Live Site</span>
-        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-        </svg>
-      </a>
-    </div>
-  </section>
-
   <!-- Detailed Content -->
-  <section class="case-study-section px-4 py-16 mx-auto max-w-4xl lg:px-8">
-    <div class="prose-case-study prose prose-lg dark:prose-invert max-w-none prose-orange">
+  <section class="case-study-section px-4 py-12 mx-auto max-w-4xl lg:px-8">
+    <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:font-semibold prose-a:text-primary">
       <Content />
     </div>
   </section>
 
-  <!-- Features Showcase -->
-  <section id="features" class="case-study-section px-4 py-16 mx-auto max-w-7xl lg:px-8 bg-gray-50 dark:bg-gray-900">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Key Features & Benefits</h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
-        Discover the powerful features that drive exceptional results
-      </p>
-    </div>
+  <!-- Features Showcase - Simplified -->
+  <section id="features" class="px-4 py-12 mx-auto max-w-7xl lg:px-8 bg-gray-50 dark:bg-gray-900/50">
+    <h2 class="text-2xl md:text-3xl lg:text-[2rem] font-bold text-gray-900 dark:text-white mb-8 text-center">Key Features</h2>
 
-    <div class="case-study-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
-        study.data.features.map((feature, index) => (
-          <div class="feature-card group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600">
-            <div class="mb-6">
-              <div
-                class={`w-12 h-12 bg-gradient-to-br ${index % 2 === 0 ? 'from-orange-500 to-amber-500' : 'from-orange-600 to-orange-500'} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
-              >
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary dark:group-hover:text-orange-400 transition-colors duration-300">
-                {feature.title}
-              </h3>
-              <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">{feature.description}</p>
+        study.data.features.map((feature) => (
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
             </div>
-
-            <div class="space-y-2">
-              <div class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Benefits:</div>
-              <ul class="space-y-2">
-                {feature.benefits.map((benefit) => (
-                  <li class="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                    <div class="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0" />
-                    {benefit}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+              {feature.title}
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">{feature.description}</p>
+            <ul class="space-y-1.5">
+              {feature.benefits.slice(0, 3).map((benefit) => (
+                <li class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                  <span class="w-1 h-1 bg-primary rounded-full flex-shrink-0"></span>
+                  {benefit}
+                </li>
+              ))}
+            </ul>
           </div>
         ))
       }
@@ -146,21 +99,18 @@ const metadata = {
   <!-- Testimonial -->
   <CaseStudyTestimonial study={study} />
 
-  <!-- Tags -->
-  <section class="case-study-section px-4 py-8 mx-auto max-w-7xl lg:px-8">
-    <div class="text-center">
-      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Project Tags</h3>
-      <div class="flex flex-wrap justify-center gap-2">
-        {
-          study.data.tags &&
-            study.data.tags.length > 0 &&
-            study.data.tags.map((tag) => (
-              <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm transition-colors duration-300 hover:bg-blue-100 dark:hover:bg-blue-900/30">
-                {tag}
-              </span>
-            ))
-        }
-      </div>
+  <!-- Technologies & Tags Combined -->
+  <section class="px-4 py-8 mx-auto max-w-7xl lg:px-8">
+    <div class="flex flex-wrap justify-center gap-2">
+      {
+        study.data.tags &&
+          study.data.tags.length > 0 &&
+          study.data.tags.map((tag) => (
+            <span class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 px-3 py-1 rounded-full text-sm">
+              {tag}
+            </span>
+          ))
+      }
     </div>
   </section>
 
@@ -186,68 +136,9 @@ const metadata = {
       ]}
     />
   </div>
-
-  <!-- Floating Navigation (Desktop Only) -->
-  <div class="floating-nav fixed right-8 top-1/2 transform -translate-y-1/2 z-50 hidden xl:block">
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-600 p-4">
-      <nav class="space-y-3" aria-label="Case study navigation">
-        <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">
-          Quick Navigation
-        </div>
-
-        <a
-          href="#overview"
-          class="nav-link flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-orange-400 transition-all duration-300 p-2 rounded-lg hover:bg-orange-50 dark:hover:bg-orange-900/20 group"
-        >
-          <div
-            class="nav-dot w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-          </div>
-          <span>Overview</span>
-        </a>
-
-        <a
-          href="#metrics"
-          class="nav-link flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-orange-400 transition-all duration-300 p-2 rounded-lg hover:bg-orange-50 dark:hover:bg-orange-900/20 group"
-        >
-          <div
-            class="nav-dot w-2 h-2 bg-secondary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-          </div>
-          <span>Metrics</span>
-        </a>
-
-        <a
-          href="#features"
-          class="nav-link flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-orange-400 transition-all duration-300 p-2 rounded-lg hover:bg-orange-50 dark:hover:bg-orange-900/20 group"
-        >
-          <div
-            class="nav-dot w-2 h-2 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-          </div>
-          <span>Features</span>
-        </a>
-
-        <a
-          href="#testimonial"
-          class="nav-link flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-orange-400 transition-all duration-300 p-2 rounded-lg hover:bg-orange-50 dark:hover:bg-orange-900/20 group"
-        >
-          <div
-            class="nav-dot w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-          </div>
-          <span>Testimonial</span>
-        </a>
-      </nav>
-    </div>
-  </div>
 </Layout>
 
 <style>
-  .nav-link.active .nav-dot {
-    opacity: 1;
-  }
-
   .prose {
     color: inherit;
   }
@@ -262,47 +153,11 @@ const metadata = {
   }
 
   .prose a {
-    color: rgb(59 130 246);
+    color: var(--aw-color-primary);
     text-decoration: none;
   }
 
   .prose a:hover {
-    color: rgb(37 99 235);
     text-decoration: underline;
   }
-
-  .dark .prose a {
-    color: rgb(96 165 250);
-  }
-
-  .dark .prose a:hover {
-    color: rgb(147 197 253);
-  }
 </style>
-
-<script>
-  // Intersection Observer for navigation highlighting
-  document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section[id]');
-
-    const observerOptions = {
-      rootMargin: '-50% 0px -50% 0px',
-      threshold: 0,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navLinks.forEach((link) => link.classList.remove('active'));
-          const activeLink = document.querySelector(`a[href="#${entry.target.id}"]`);
-          if (activeLink) {
-            activeLink.classList.add('active');
-          }
-        }
-      });
-    }, observerOptions);
-
-    sections.forEach((section) => observer.observe(section));
-  });
-</script>

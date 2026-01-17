@@ -1,9 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import CaseStudyHeader from './case-study/CaseStudyHeader.astro';
-import CaseStudyBadges from './case-study/CaseStudyBadges.astro';
-import CaseStudyQuickStats from './case-study/CaseStudyQuickStats.astro';
-import CaseStudyMetrics from './case-study/CaseStudyMetrics.astro';
 
 export interface Props {
   study: CollectionEntry<'case-studies'>;
@@ -11,110 +7,78 @@ export interface Props {
 }
 
 const { study, index } = Astro.props;
+
+// Get first performance metric for highlight
+const highlightMetric = study.data.results.performance[0];
 ---
 
 <article
-  class="case-study-card group bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 hover:border-transparent flex flex-col h-auto"
+  class="case-study-card group bg-white dark:bg-gray-800/50 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-primary/30 dark:hover:border-primary/40"
   data-category={study.data.category}
   data-client={study.data.client.toLowerCase()}
 >
-  <!-- Enhanced Card Header -->
-  <CaseStudyHeader study={study} index={index}>
-    <!-- Badges -->
-    <CaseStudyBadges study={study} />
+  <!-- Clean Header with Category Badge -->
+  <div class="relative bg-gradient-to-br from-gray-900 to-gray-800 p-5">
+    <!-- Category Badge -->
+    <span class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20 mb-3">
+      {study.data.category}
+    </span>
+    
+    <!-- Client & Project Type -->
+    <h3 class="text-lg font-semibold text-white mb-1 line-clamp-1">
+      {study.data.client}
+    </h3>
+    <p class="text-gray-400 text-sm line-clamp-1">
+      {study.data.projectType}
+    </p>
+  </div>
 
-    <!-- Enhanced Content Area -->
-    <div class="absolute bottom-3 left-3 right-3 z-10">
-      <div class="mb-2">
-        <h3
-          class="text-lg font-bold text-white mb-1 group-hover:text-yellow-100 transition-colors duration-300 line-clamp-2 break-words"
-        >
-          {study.data.client}
-        </h3>
-        <p class="text-white/80 text-xs font-medium line-clamp-1 break-words">
-          {study.data.projectType}
-        </p>
-      </div>
-
-      <!-- Quick Stats -->
-      <CaseStudyQuickStats study={study} />
-    </div>
-  </CaseStudyHeader>
-
-  <!-- Enhanced Card Content -->
-  <div class="flex-1 flex flex-col p-4 space-y-3 overflow-hidden min-h-0">
+  <!-- Card Content -->
+  <div class="p-5 space-y-4">
     <!-- Description -->
-    <div class="flex-shrink-0">
-      <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-        {study.data.description}
-      </p>
-    </div>
+    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed line-clamp-2">
+      {study.data.description}
+    </p>
 
-    <!-- Key Metrics -->
-    <div class="flex-shrink-0">
-      <CaseStudyMetrics study={study} />
-    </div>
-
-    <!-- Technologies Used -->
-    <div class="flex-shrink-0">
-      <div class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Technologies:</div>
-      <div class="min-h-[50px] mb-2">
-        <div class="flex flex-wrap gap-2">
-          {
-            study.data.technologies.slice(0, 8).map((tech, techIndex) => {
-              const colorClasses = [
-                'bg-purple-100 text-purple-700 border-purple-200 dark:bg-purple-900/30 dark:text-purple-300 dark:border-purple-700',
-                'bg-cyan-100 text-cyan-700 border-cyan-200 dark:bg-cyan-900/30 dark:text-cyan-300 dark:border-cyan-700',
-                'bg-orange-100 text-orange-700 border-orange-200 dark:bg-orange-900/30 dark:text-orange-300 dark:border-orange-700',
-                'bg-pink-100 text-pink-700 border-pink-200 dark:bg-pink-900/30 dark:text-pink-300 dark:border-pink-700',
-              ];
-              return (
-                <span
-                  class={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-md border ${colorClasses[techIndex % colorClasses.length]} transition-all duration-300 hover:scale-105`}
-                  title={tech.name}
-                >
-                  {tech.name}
-                </span>
-              );
-            })
-          }
-          {
-            study.data.technologies.length > 8 && (
-              <span class="inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-md border bg-gray-100 text-gray-600 border-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">
-                +{study.data.technologies.length - 8}
-              </span>
-            )
-          }
-        </div>
-      </div>
-    </div>
-
-    <!-- Enhanced Card Footer with CTA -->
-    <div class="flex-shrink-0 pt-2 pb-3 mt-auto">
-      <a
-        href={`/case-studies/${study.id}`}
-        class="group/cta relative flex items-center justify-center w-full p-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-700 dark:to-indigo-700 dark:hover:from-blue-600 dark:hover:to-indigo-600 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md active:scale-[0.98] overflow-hidden"
-        aria-label={`View detailed case study for ${study.data.client}`}
-      >
-        <!-- Subtle shine effect on hover -->
-        <div
-          class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover/cta:translate-x-[100%] transition-transform duration-700 ease-out"
-        >
-        </div>
-
-        <span
-          class="relative text-sm font-semibold text-white group-hover/cta:text-blue-50 transition-colors duration-300 z-10"
-        >
-          View Case Study
-        </span>
-        <div
-          class="relative text-white/90 group-hover/cta:translate-x-1 group-hover/cta:text-white transition-all duration-300 ml-3 z-10"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+    <!-- Single Highlight Metric -->
+    {highlightMetric && (
+      <div class="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+        <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
           </svg>
         </div>
-      </a>
+        <div class="min-w-0">
+          <div class="text-xs text-gray-500 dark:text-gray-400 truncate">{highlightMetric.metric}</div>
+          <div class="text-sm font-semibold text-gray-900 dark:text-white">+{highlightMetric.improvement}</div>
+        </div>
+      </div>
+    )}
+
+    <!-- Technologies - Simplified -->
+    <div class="flex flex-wrap gap-1.5">
+      {study.data.technologies.slice(0, 4).map((tech) => (
+        <span class="px-2 py-0.5 text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700/50 rounded">
+          {tech.name}
+        </span>
+      ))}
+      {study.data.technologies.length > 4 && (
+        <span class="px-2 py-0.5 text-xs text-gray-500 dark:text-gray-500">
+          +{study.data.technologies.length - 4}
+        </span>
+      )}
     </div>
+
+    <!-- CTA -->
+    <a
+      href={`/case-studies/${study.id}`}
+      class="flex items-center justify-center gap-2 w-full py-2.5 text-sm font-medium text-white bg-primary hover:bg-secondary rounded-lg transition-colors duration-200"
+      aria-label={`View detailed case study for ${study.data.client}`}
+    >
+      View Case Study
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+      </svg>
+    </a>
   </div>
 </article>

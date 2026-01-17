@@ -12,97 +12,43 @@ const { currentStudy, allStudies, limit = 3 } = Astro.props;
 const relatedCaseStudies = getRelatedCaseStudies(currentStudy, allStudies, limit);
 ---
 
-<!-- Related Case Studies -->{
-  relatedCaseStudies.length > 0 && (
-    <section class="px-4 py-16 mx-auto max-w-7xl lg:px-8 bg-gray-50 dark:bg-gray-900">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Related Case Studies</h2>
-        <p class="text-lg text-gray-600 dark:text-gray-300">Discover more success stories from similar projects</p>
-      </div>
+<!-- Clean Related Case Studies -->
+{relatedCaseStudies.length > 0 && (
+  <section class="px-4 py-12 mx-auto max-w-7xl lg:px-8">
+    <h2 class="text-2xl md:text-3xl lg:text-[2rem] font-bold text-gray-900 dark:text-white mb-8 text-center">Related Projects</h2>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {relatedCaseStudies.map((relatedStudy) => (
-          <article class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 p-6">
-              <div class="absolute top-4 left-4">
-                <span class="inline-block px-3 py-1 text-xs font-semibold text-white bg-white/20 backdrop-blur-sm rounded-full">
-                  {relatedStudy.data.category}
-                </span>
-              </div>
-              <div class="absolute bottom-4 left-4 right-4">
-                <h3 class="text-xl font-bold text-white mb-2 line-clamp-2">{relatedStudy.data.client}</h3>
-                <p class="text-blue-100 text-sm line-clamp-1">{relatedStudy.data.projectType}</p>
-              </div>
-            </div>
-
-            <div class="p-6">
-              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">{relatedStudy.data.description}</p>
-
-              <div class="flex items-center justify-between mb-4">
-                <div class="text-center">
-                  <div class="text-lg font-bold text-primary dark:text-orange-400">
-                    {relatedStudy.data.results.performance[0]?.improvement || '+100%'}
-                  </div>
-                  <div class="text-xs text-gray-500 dark:text-gray-400">
-                    {relatedStudy.data.results.performance[0]?.metric || 'Improvement'}
-                  </div>
-                </div>
-                <div class="text-center">
-                  <div class="text-lg font-bold text-secondary dark:text-orange-400">{relatedStudy.data.duration}</div>
-                  <div class="text-xs text-gray-500 dark:text-gray-400">Duration</div>
-                </div>
-              </div>
-
-              <div class="flex items-center justify-between">
-                <a
-                  href={`/case-studies/${relatedStudy.id}`}
-                  class="inline-flex items-center text-primary dark:text-orange-400 hover:text-secondary dark:hover:text-orange-300 font-medium text-sm transition-colors duration-300"
-                >
-                  <span>Read Case Study</span>
-                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
-                <a
-                  href={relatedStudy.data.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300"
-                  aria-label={`Visit ${relatedStudy.data.client} website`}
-                >
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <div class="px-6 py-3 bg-gray-50 dark:bg-gray-700/50 border-t border-gray-200 dark:border-gray-600">
-              <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
-                <span>{relatedStudy.data.duration}</span>
-                <span>{relatedStudy.data.launchDate}</span>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <div class="text-center mt-12">
+    <div class="grid md:grid-cols-3 gap-6">
+      {relatedCaseStudies.map((relatedStudy) => (
         <a
-          href="/case-studies"
-          class="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-200 dark:border-gray-600"
+          href={`/case-studies/${relatedStudy.id}`}
+          class="group block bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700 hover:border-primary/30 transition-colors"
         >
-          <span>View All Case Studies</span>
-          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+          <span class="text-xs text-primary font-medium">{relatedStudy.data.category}</span>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mt-1 mb-2 group-hover:text-primary transition-colors">
+            {relatedStudy.data.client}
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{relatedStudy.data.description}</p>
+          
+          <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+            <span class="text-sm text-gray-500 dark:text-gray-400">{relatedStudy.data.duration}</span>
+            <span class="text-sm font-medium text-green-600 dark:text-green-400">
+              +{relatedStudy.data.results.performance[0]?.improvement || '100%'}
+            </span>
+          </div>
         </a>
-      </div>
-    </section>
-  )
-}
+      ))}
+    </div>
+
+    <div class="text-center mt-8">
+      <a
+        href="/case-studies"
+        class="inline-flex items-center gap-2 text-sm text-primary hover:text-secondary font-medium transition-colors"
+      >
+        View All Case Studies
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+)}

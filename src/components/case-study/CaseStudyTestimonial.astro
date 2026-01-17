@@ -8,43 +8,34 @@ export interface Props {
 const { study } = Astro.props;
 ---
 
-<!-- Client Testimonial Section -->{
-  study.data.testimonial && (
-    <section id="testimonial" class="px-4 py-20 mx-auto max-w-7xl lg:px-8">
-      <div class="max-w-4xl mx-auto text-center">
-        <div class="relative">
-          <div class="absolute top-6 left-0 w-full h-full bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-3xl" />
+<!-- Clean Testimonial Section -->
+{study.data.testimonial && (
+  <section id="testimonial" class="px-4 py-12 mx-auto max-w-3xl lg:px-8">
+    <div class="text-center">
+      <!-- Quote Icon -->
+      <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+      </div>
 
-          <div class="relative flex justify-center mb-6">
-            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg">
-              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-            </div>
-          </div>
+      <!-- Quote Text -->
+      <blockquote class="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+        "{study.data.testimonial.text}"
+      </blockquote>
 
-          <div class="relative bg-white dark:bg-gray-800 rounded-3xl p-8 lg:p-12 shadow-xl border border-gray-200 dark:border-gray-700">
-            <blockquote class="text-xl md:text-2xl font-medium text-gray-900 dark:text-white leading-relaxed mb-8">
-              "{study.data.testimonial.text}"
-            </blockquote>
-
-            <div class="flex items-center justify-center space-x-4">
-              <div class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
-                <span class="text-white font-bold text-lg">
-                  {study.data.testimonial.author
-                    .split(' ')
-                    .map((name) => name[0])
-                    .join('')}
-                </span>
-              </div>
-              <div class="text-left">
-                <div class="text-gray-900 dark:text-white font-semibold text-lg">{study.data.testimonial.author}</div>
-                <div class="text-gray-600 dark:text-gray-400">{study.data.testimonial.position}</div>
-              </div>
-            </div>
-          </div>
+      <!-- Author -->
+      <div class="flex items-center justify-center gap-3">
+        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+          <span class="text-white font-medium text-sm">
+            {study.data.testimonial.author.split(' ').map((name) => name[0]).join('')}
+          </span>
+        </div>
+        <div class="text-left">
+          <div class="text-gray-900 dark:text-white font-medium">{study.data.testimonial.author}</div>
+          <div class="text-sm text-gray-500 dark:text-gray-400">{study.data.testimonial.position}</div>
         </div>
       </div>
-    </section>
-  )
-}
+    </div>
+  </section>
+)}

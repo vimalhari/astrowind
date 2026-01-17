@@ -88,17 +88,17 @@ const hasDarkBackground = Boolean(bgImage) || Boolean(isDark);
       >
         {
           image && (
-            <div class="relative m-auto max-w-5xl">
+            <div class="relative m-auto max-w-3xl">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
                 <Image
                   class="mx-auto rounded-md w-full"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                  widths={[400, 768, 1024]}
+                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, 768px"
                   loading="eager"
-                  width={1024}
-                  height={576}
+                  width={768}
+                  height={432}
                   {...image}
                 />
               )}

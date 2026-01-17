@@ -100,17 +100,17 @@ const hasImage = Boolean(image);
       {
         hasImage ? (
           <div class="basis-1/2">
-            <div class="relative m-auto max-w-5xl intersect-once intercept-no-queue motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
+            <div class="relative m-auto max-w-md lg:max-w-lg intersect-once intercept-no-queue motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
                 <Image
                   class="mx-auto rounded-md w-full"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                  widths={[400, 512, 768]}
+                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 512px, 512px"
                   loading="eager"
-                  width={600}
-                  height={600}
+                  width={512}
+                  height={512}
                   {...(image as Record<string, unknown>)}
                 />
               )}
