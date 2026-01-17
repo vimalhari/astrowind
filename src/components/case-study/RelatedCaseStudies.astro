@@ -12,43 +12,46 @@ const { currentStudy, allStudies, limit = 3 } = Astro.props;
 const relatedCaseStudies = getRelatedCaseStudies(currentStudy, allStudies, limit);
 ---
 
-<!-- Clean Related Case Studies -->
-{relatedCaseStudies.length > 0 && (
-  <section class="px-4 py-12 mx-auto max-w-7xl lg:px-8">
-    <h2 class="text-2xl md:text-3xl lg:text-[2rem] font-bold text-gray-900 dark:text-white mb-8 text-center">Related Projects</h2>
+<!-- Clean Related Case Studies -->{
+  relatedCaseStudies.length > 0 && (
+    <section class="px-4 py-12 mx-auto max-w-7xl lg:px-8">
+      <h2 class="text-2xl md:text-3xl lg:text-[2rem] font-bold text-gray-900 dark:text-white mb-8 text-center">
+        Related Projects
+      </h2>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      {relatedCaseStudies.map((relatedStudy) => (
+      <div class="grid md:grid-cols-3 gap-6">
+        {relatedCaseStudies.map((relatedStudy) => (
+          <a
+            href={`/case-studies/${relatedStudy.id}`}
+            class="group block bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700 hover:border-primary/30 transition-colors"
+          >
+            <span class="text-xs text-primary font-medium">{relatedStudy.data.category}</span>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mt-1 mb-2 group-hover:text-primary transition-colors">
+              {relatedStudy.data.client}
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{relatedStudy.data.description}</p>
+
+            <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+              <span class="text-sm text-gray-500 dark:text-gray-400">{relatedStudy.data.duration}</span>
+              <span class="text-sm font-medium text-green-600 dark:text-green-400">
+                +{relatedStudy.data.results.performance[0]?.improvement || '100%'}
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
         <a
-          href={`/case-studies/${relatedStudy.id}`}
-          class="group block bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700 hover:border-primary/30 transition-colors"
+          href="/case-studies"
+          class="inline-flex items-center gap-2 text-sm text-primary hover:text-secondary font-medium transition-colors"
         >
-          <span class="text-xs text-primary font-medium">{relatedStudy.data.category}</span>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mt-1 mb-2 group-hover:text-primary transition-colors">
-            {relatedStudy.data.client}
-          </h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{relatedStudy.data.description}</p>
-          
-          <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
-            <span class="text-sm text-gray-500 dark:text-gray-400">{relatedStudy.data.duration}</span>
-            <span class="text-sm font-medium text-green-600 dark:text-green-400">
-              +{relatedStudy.data.results.performance[0]?.improvement || '100%'}
-            </span>
-          </div>
+          View All Case Studies
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
         </a>
-      ))}
-    </div>
-
-    <div class="text-center mt-8">
-      <a
-        href="/case-studies"
-        class="inline-flex items-center gap-2 text-sm text-primary hover:text-secondary font-medium transition-colors"
-      >
-        View All Case Studies
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
-    </div>
-  </section>
-)}
+      </div>
+    </section>
+  )
+}

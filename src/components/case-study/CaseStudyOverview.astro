@@ -21,12 +21,14 @@ const { study } = Astro.props;
         {study.data.challenge.description}
       </p>
       <ul class="space-y-2">
-        {study.data.challenge.points.slice(0, 3).map((point) => (
-          <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
-            <span class="text-red-500 mt-1">•</span>
-            {point}
-          </li>
-        ))}
+        {
+          study.data.challenge.points.slice(0, 3).map((point) => (
+            <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <span class="text-red-500 mt-1">•</span>
+              {point}
+            </li>
+          ))
+        }
       </ul>
     </div>
 
@@ -40,12 +42,14 @@ const { study } = Astro.props;
         {study.data.solution.description}
       </p>
       <ul class="space-y-2">
-        {study.data.solution.approach.slice(0, 3).map((step) => (
-          <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
-            <span class="text-primary mt-1">•</span>
-            {step}
-          </li>
-        ))}
+        {
+          study.data.solution.approach.slice(0, 3).map((step) => (
+            <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <span class="text-primary mt-1">•</span>
+              {step}
+            </li>
+          ))
+        }
       </ul>
     </div>
 
@@ -56,18 +60,22 @@ const { study } = Astro.props;
         Results Achieved
       </div>
       <div class="space-y-3">
-        {study.data.results.performance.slice(0, 3).map((result) => (
-          <div class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-            <span class="text-sm text-gray-600 dark:text-gray-400">{result.metric}</span>
-            <span class="text-sm font-semibold text-green-600 dark:text-green-400">+{result.improvement}</span>
-          </div>
-        ))}
-        {study.data.results.business.slice(0, 2).map((result) => (
-          <div class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-            <span class="text-sm text-gray-600 dark:text-gray-400">{result.metric}</span>
-            <span class="text-sm font-semibold text-green-600 dark:text-green-400">+{result.improvement}</span>
-          </div>
-        ))}
+        {
+          study.data.results.performance.slice(0, 3).map((result) => (
+            <div class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+              <span class="text-sm text-gray-600 dark:text-gray-400">{result.metric}</span>
+              <span class="text-sm font-semibold text-green-600 dark:text-green-400">+{result.improvement}</span>
+            </div>
+          ))
+        }
+        {
+          study.data.results.business.slice(0, 2).map((result) => (
+            <div class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-700">
+              <span class="text-sm text-gray-600 dark:text-gray-400">{result.metric}</span>
+              <span class="text-sm font-semibold text-green-600 dark:text-green-400">+{result.improvement}</span>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
