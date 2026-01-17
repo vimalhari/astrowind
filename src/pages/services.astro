@@ -5,69 +5,77 @@ import Layout from '~/layouts/PageLayout.astro';
 
 const serviceGroups = [
   {
-    title: 'Design',
+    title: 'Websites',
+    description: 'Fast, beautiful websites for businesses that want to stand out online.',
+    icon: 'tabler:world',
     services: [
       {
-        title: 'Logo Design',
-        href: '/logo-design',
-        description: 'Brand identities and logo systems that look professional across digital and print.',
+        title: 'Astro Websites',
+        href: '/astro-site',
+        description:
+          'Lightning-fast marketing sites with excellent Core Web Vitals and SEO. Perfect for businesses that want speed and performance.',
+        badge: 'Recommended',
+      },
+      {
+        title: 'WordPress Websites',
+        href: '/website-development',
+        description:
+          'CMS-driven websites your team can easily edit, with performance and security best practices built in.',
       },
     ],
   },
   {
-    title: 'Development',
+    title: 'Web & Mobile Apps',
+    description: 'Custom software and applications built for your specific business needs.',
+    icon: 'tabler:devices',
     services: [
       {
-        title: 'Web App Development (Django + Rails)',
-        href: '/web-app-development',
-        description:
-          'Plan, build, and scale web apps with Ruby on Rails or Django — pragmatic architecture and delivery.',
-      },
-      {
-        title: 'WordPress Website Development',
-        href: '/website-development',
-        description: 'CMS-driven websites your team can easily edit, with performance and security best practices.',
-      },
-      {
-        title: 'Astro Website Development',
-        href: '/astro-site',
-        description: 'Astro-first marketing sites for speed, SEO, and excellent Core Web Vitals.',
-      },
-      {
-        title: 'Django Development',
+        title: 'Django Apps',
         href: '/django-development',
-        description: 'Django apps with clean architecture, strong security defaults, and maintainable delivery.',
+        description:
+          'Python-powered web applications with clean architecture, strong security, and the flexibility of the Python ecosystem.',
       },
       {
-        title: 'Ruby on Rails Development',
+        title: 'Ruby on Rails Apps',
         href: '/ruby-on-rails-development',
         description:
-          'Production-ready Rails web apps with Hotwire-first UX, clean architecture, and pragmatic delivery.',
+          'Production-ready Rails applications with Hotwire-first UX, rapid development, and long-term maintainability.',
       },
       {
-        title: 'Mobile App Development',
+        title: 'Mobile Apps',
         href: '/mobile-app',
-        description: 'Mobile apps built with a clear roadmap, usable UI, and reliable delivery.',
+        description: 'iOS and Android mobile apps built with a clear roadmap, intuitive UI, and reliable delivery.',
       },
+    ],
+  },
+  {
+    title: 'Automation',
+    description: 'Streamline operations and eliminate repetitive manual work.',
+    icon: 'tabler:robot',
+    services: [
       {
         title: 'Business Automation (n8n)',
         href: '/business-automation',
-        description: 'Workflow automation and integrations using n8n to remove manual work and errors.',
+        description:
+          'Workflow automation and integrations using n8n to remove manual work, reduce errors, and give you visibility across systems.',
+        badge: 'Popular',
       },
     ],
   },
   {
-    title: 'Digital Marketing',
+    title: 'Marketing',
+    description: 'Grow your online presence and attract more customers.',
+    icon: 'tabler:chart-arrows-vertical',
     services: [
       {
         title: 'Digital Marketing',
         href: '/digital-marketing',
-        description: 'Multi-channel strategy across search, social, content, and performance reporting.',
+        description: 'Full-service multi-channel strategy across search, social, content, and performance reporting.',
       },
       {
         title: 'SEO',
         href: '/seo',
-        description: 'Technical and on-page SEO to increase qualified traffic and improve rankings.',
+        description: 'Technical and on-page SEO to increase qualified organic traffic and improve search rankings.',
       },
       {
         title: 'Social Media Marketing',
@@ -82,8 +90,15 @@ const serviceGroups = [
     ],
   },
   {
-    title: 'Technical',
+    title: 'Design & Support',
+    description: 'Brand identity and ongoing technical support to keep you running smoothly.',
+    icon: 'tabler:palette',
     services: [
+      {
+        title: 'Logo Design',
+        href: '/logo-design',
+        description: 'Brand identities and logo systems that look professional across digital and print.',
+      },
       {
         title: 'IT Support',
         href: '/it-support',
@@ -195,33 +210,44 @@ const metadata = {
     }}
   />
 
-  <section class="py-16 sm:py-24 bg-gray-50">
+  <section class="py-16 sm:py-24 bg-gray-50 dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl">
-        <h2 class="text-2xl md:text-3xl lg:text-[2rem] font-bold tracking-tight text-gray-900">Browse our services</h2>
-        <p class="mt-4 text-base md:text-lg text-gray-600">
+        <h2 class="text-2xl md:text-3xl lg:text-[2rem] font-bold tracking-tight text-gray-900 dark:text-white">
+          Browse our services
+        </h2>
+        <p class="mt-4 text-base md:text-lg text-gray-600 dark:text-slate-400">
           Choose a service to learn more. Each card links to a dedicated page with details and next steps.
         </p>
       </div>
 
-      <div class="mt-12 space-y-14">
+      <div class="mt-12 space-y-16">
         {
           serviceGroups.map((group) => (
             <div>
-              <h3 class="text-2xl font-bold text-gray-900">{group.title}</h3>
-              <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="mb-6">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">{group.title}</h3>
+                {group.description && <p class="mt-2 text-gray-600 dark:text-slate-400">{group.description}</p>}
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {group.services.map((service) => (
                   <a
                     href={service.href}
-                    class="group block rounded-xl border border-gray-200 bg-white p-6 hover:shadow-md transition-shadow focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                    class="group relative block rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:shadow-lg hover:border-primary/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                     aria-label={`${service.title} service page`}
                   >
-                    <h4 class="text-lg font-semibold text-gray-900 group-hover:text-primary transition-colors">
+                    {service.badge && (
+                      <span class="absolute -top-2 -right-2 bg-primary text-white text-xs font-semibold px-2.5 py-1 rounded-full">
+                        {service.badge}
+                      </span>
+                    )}
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
                       {service.title}
                     </h4>
-                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">{service.description}</p>
-                    <div class="mt-4 text-sm font-medium text-primary group-hover:text-secondary transition-colors">
-                      Learn more →
+                    <p class="mt-2 text-sm text-gray-600 dark:text-slate-400 leading-relaxed">{service.description}</p>
+                    <div class="mt-4 text-sm font-medium text-primary group-hover:text-secondary transition-colors flex items-center gap-1">
+                      Learn more
+                      <span class="group-hover:translate-x-1 transition-transform">→</span>
                     </div>
                   </a>
                 ))}
