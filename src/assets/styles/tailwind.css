@@ -151,7 +151,7 @@
 /* Desktop: use hover for dropdown visibility with CSS */
 @media (min-width: 768px) {
   .dropdown .dropdown-menu {
-    display: block;
+    display: grid;
     max-height: none;
     overflow: visible;
     opacity: 0;
