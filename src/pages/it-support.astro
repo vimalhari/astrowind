@@ -9,9 +9,9 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 
 const metadata = {
-  title: 'Managed IT Support | Criztec Technologies',
+  title: 'Managed IT Support Services | Criztec Technologies',
   description:
-    'Reliable managed IT support services for businesses in the UK, Europe, and worldwide. 24/7 support, proactive maintenance, and tailored IT solutions for your growing business.',
+    'Comprehensive managed IT support services for businesses in the UK, Europe, and worldwide. 24/7 help desk, network management, cybersecurity, Microsoft 365, backup solutions, and strategic IT consulting.',
 };
 ---
 
@@ -21,9 +21,12 @@ const metadata = {
   <Hero
     overlapHeader={false}
     tagline="Managed IT Support"
-    title="Managed IT Support Services"
-    subtitle="Keep your business running smoothly with comprehensive managed IT support solutions tailored to your needs."
-    actions={[{ variant: 'primary', target: '', text: 'Get Support Now', href: '/contact' }]}
+    title="Complete Managed IT Services for Modern Businesses"
+    subtitle="From 24/7 help desk support to strategic IT consulting — we provide end-to-end IT management so you can focus on growing your business."
+    actions={[
+      { variant: 'primary', target: '', text: 'Get a Free IT Assessment', href: '/contact' },
+      { variant: 'secondary', target: '', text: 'View Our Services', href: '#services' },
+    ]}
     image={{ src: '~/assets/images/hero-image.webp', alt: 'Managed IT Support Services Hero Image' }}
   />
 
@@ -39,58 +42,221 @@ const metadata = {
     ]}
   />
 
-  <!-- Features2 Widget ************** -->
+  <!-- Overview Section ************** -->
 
   <Features2
-    title="Comprehensive IT Support"
-    subtitle="Our managed IT services are designed to provide reliable, cost-effective support tailored to the needs of modern businesses."
+    id="services"
+    title="Comprehensive Managed IT Services"
+    subtitle="We deliver a full spectrum of IT services designed to keep your business secure, efficient, and future-ready. Our proactive approach means fewer disruptions, lower costs, and technology that truly works for you."
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
 
-  <!-- Features2 Widget ************** -->
+  <!-- Core IT Support Services ************** -->
 
   <Features2
+    title="Core IT Support"
+    subtitle="Reliable, responsive support when you need it most"
     columns={3}
     items={[
       {
-        title: '24/7 Remote Support',
+        title: 'Help Desk & IT Support',
         description:
-          'Round-the-clock remote monitoring and assistance ensuring your systems remain operational day and night.',
+          'Dedicated first-line support for all your day-to-day IT issues. Our friendly, UK-based team resolves problems quickly via phone, email, or remote access — minimising downtime and frustration.',
         icon: 'tabler:headset',
       },
       {
-        title: 'Proactive Maintenance',
+        title: '24/7 Remote Monitoring',
         description:
-          'Regular updates, patches, and system health checks to prevent issues before they affect your business.',
-        icon: 'tabler:tool',
-      },
-      {
-        title: 'Cyber Security',
-        description:
-          'Comprehensive security solutions compliant with UK regulations including GDPR and NIS2 Directive protection.',
-        icon: 'tabler:shield',
-      },
-      {
-        title: 'Cloud Solutions',
-        description:
-          'Secure cloud migration and management services optimised for performance, resilience, and compliance.',
-        icon: 'tabler:cloud',
-      },
-      {
-        title: 'Disaster Recovery',
-        description: 'Robust backup and recovery solutions ensuring business continuity in all circumstances.',
-        icon: 'tabler:refresh',
+          'Round-the-clock monitoring of your systems, servers, and networks. We detect and resolve issues proactively — often before you even notice them.',
+        icon: 'tabler:device-desktop-analytics',
       },
       {
         title: 'On-Site Support',
-        description: "On-site technical support available when remote assistance isn't sufficient.",
+        description:
+          "When remote support isn't enough, our engineers can be on-site quickly. We provide hands-on assistance for hardware issues, office moves, and complex installations.",
         icon: 'tabler:map-pin',
       },
     ]}
   />
+
+  <!-- Infrastructure Management ************** -->
+
+  <Features2
+    title="Infrastructure Management"
+    subtitle="Keep your IT backbone running at peak performance"
+    columns={3}
+    items={[
+      {
+        title: 'Network Management & Monitoring',
+        description:
+          'Complete management of your network infrastructure — routers, switches, firewalls, and WiFi. We ensure optimal performance, security, and reliability across all your locations.',
+        icon: 'tabler:network',
+      },
+      {
+        title: 'Server Management',
+        description:
+          'Expert administration of Windows and Linux servers, whether on-premises, in the cloud, or hybrid. Includes performance optimisation, security hardening, and regular maintenance.',
+        icon: 'tabler:server',
+      },
+      {
+        title: 'Endpoint Management',
+        description:
+          'Centralised management of all your devices — laptops, desktops, tablets, and mobile devices. Includes Mobile Device Management (MDM) for secure BYOD and remote work.',
+        icon: 'tabler:devices',
+      },
+      {
+        title: 'Print Management',
+        description:
+          'Managed print services to reduce costs and improve efficiency. We handle printer deployment, maintenance, supply management, and usage monitoring.',
+        icon: 'tabler:printer',
+      },
+      {
+        title: 'Patch Management',
+        description:
+          'Automated and managed patching for operating systems and applications. We keep your systems up-to-date and protected against known vulnerabilities.',
+        icon: 'tabler:refresh',
+      },
+      {
+        title: 'IT Asset Management',
+        description:
+          'Complete visibility of your IT assets — hardware, software, and licenses. Track lifecycle, plan replacements, and ensure compliance with vendor agreements.',
+        icon: 'tabler:clipboard-list',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Security & Compliance ************** -->
+
+  <Features2
+    title="Security & Compliance"
+    subtitle="Protect your business from cyber threats and meet regulatory requirements"
+    columns={3}
+    items={[
+      {
+        title: 'Cybersecurity Services',
+        description:
+          'Multi-layered security including next-gen antivirus, Endpoint Detection & Response (EDR), SIEM monitoring, and advanced threat detection. We protect your business from ransomware, phishing, and sophisticated attacks.',
+        icon: 'tabler:shield-lock',
+      },
+      {
+        title: 'Compliance & Security Audits',
+        description:
+          'Expert guidance for GDPR, Cyber Essentials, Cyber Essentials Plus, and ISO 27001 compliance. We conduct security audits, gap analysis, and help you achieve and maintain certifications.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Backup & Disaster Recovery',
+        description:
+          'Comprehensive backup solutions for cloud and on-premise systems. Rapid recovery options ensure business continuity — from individual file recovery to full disaster recovery.',
+        icon: 'tabler:database',
+      },
+    ]}
+  />
+
+  <!-- Cloud & Productivity ************** -->
+
+  <Features2
+    title="Cloud & Productivity"
+    subtitle="Maximise productivity with modern cloud solutions"
+    columns={3}
+    items={[
+      {
+        title: 'Microsoft 365 Management',
+        description:
+          'Full Microsoft 365 administration — Exchange, Teams, SharePoint, OneDrive, and more. We handle setup, migration, security configuration, and ongoing optimisation.',
+        icon: 'tabler:brand-office',
+      },
+      {
+        title: 'Google Workspace Management',
+        description:
+          'Expert Google Workspace administration including Gmail, Drive, Meet, and collaboration tools. Seamless migration, security setup, and user management.',
+        icon: 'tabler:brand-google',
+      },
+      {
+        title: 'Software Licensing & Management',
+        description:
+          'Simplify software procurement and compliance. We manage your software licenses, renewals, and ensure you have the right tools at the best value.',
+        icon: 'tabler:license',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Strategic IT Services ************** -->
+
+  <Features2
+    title="Strategic IT Services"
+    subtitle="Technology leadership and guidance for business growth"
+    columns={3}
+    items={[
+      {
+        title: 'Virtual CIO (vCIO) Services',
+        description:
+          'Strategic IT leadership without the full-time cost. Our vCIO services include IT roadmap development, technology strategy, budgeting, and alignment of IT with your business objectives.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'IT Procurement',
+        description:
+          'Expert guidance on hardware and software purchasing. We leverage our vendor relationships to get you the best technology at competitive prices, with proper specifications for your needs.',
+        icon: 'tabler:shopping-cart',
+      },
+      {
+        title: 'Vendor Management',
+        description:
+          'We act as your single point of contact for all IT vendors. From ISPs to software providers, we manage relationships, contracts, and support escalations on your behalf.',
+        icon: 'tabler:users',
+      },
+    ]}
+  />
+
+  <!-- User & Workforce Support ************** -->
+
+  <Features2
+    title="User & Workforce Support"
+    subtitle="Empower your team with the right tools and training"
+    columns={3}
+    items={[
+      {
+        title: 'User Onboarding & Offboarding',
+        description:
+          'Streamlined processes for new starters and leavers. We handle account creation, device setup, access provisioning — and secure offboarding to protect your data when employees leave.',
+        icon: 'tabler:user-plus',
+      },
+      {
+        title: 'Remote Work Support',
+        description:
+          'Enable secure and productive remote working. We provide VPN setup, remote desktop solutions, secure access controls, and support for hybrid work environments.',
+        icon: 'tabler:home',
+      },
+      {
+        title: 'IT Training for Staff',
+        description:
+          'Customised training programmes to improve IT literacy and security awareness. From Microsoft 365 productivity tips to cybersecurity best practices.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'IT Documentation & Knowledge Base',
+        description:
+          'Comprehensive documentation of your IT environment, processes, and procedures. Includes user guides, network diagrams, and a searchable knowledge base for your team.',
+        icon: 'tabler:book',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
 
   <!-- Content Section 1 ************ -->
 
@@ -110,37 +276,39 @@ const metadata = {
         <div class="content-section">
           <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Why Businesses Choose Us</h2>
           <p>
-            In fast-paced, competitive environments, businesses need IT support that is reliable, secure, and
-            responsive.
+            Managing IT in-house can be complex, expensive, and distracting. Our managed IT services give you access to
+            a full team of experts — from help desk technicians to security specialists and strategic consultants — at a
+            predictable monthly cost.
           </p>
           <p class="mt-4">
-            We support a wide range of organisations, from professional services and retail to technology-led teams and
-            growing startups.
+            We support businesses across professional services, retail, healthcare, creative industries, and
+            technology-led startups with tailored solutions that scale with your growth.
           </p>
 
           <ul class="list-none pl-4 mt-4">
             <li class="mb-2">
-              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> UK-based support team with deep local knowledge
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> UK-based support team with rapid response times
             </li>
             <li class="mb-2">
-              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Expertise in UK compliance and data protection
-              regulations
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> GDPR, Cyber Essentials & ISO 27001 expertise
             </li>
             <li class="mb-2">
-              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> On-site support available when required
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Single point of contact for all IT needs
             </li>
             <li class="mb-2">
-              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Experience across diverse business sectors
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Proactive monitoring prevents 90% of issues
             </li>
             <li class="mb-2">
-              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Flexible support packages for businesses of all
-              sizes
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Flexible packages from 5 to 500+ users
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Transparent pricing with no hidden costs
             </li>
           </ul>
         </div>
 
         <div class="flex flex-wrap gap-4 mt-4">
-          <a href="/contact" class="btn btn-primary"> Book a Consultation </a>
+          <a href="/contact" class="btn btn-primary"> Book a Free Consultation </a>
         </div>
       </div>
     </Fragment>
@@ -159,37 +327,42 @@ const metadata = {
     <Fragment slot="content">
       <div class="flex flex-col space-y-4">
         <div class="content-section">
-          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Our Approach to IT Support</h2>
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">
+            Our Proactive Approach to IT
+          </h2>
           <p>
-            We believe that effective IT support is proactive, not reactive. Our team monitors your systems 24/7 to
-            identify and resolve issues before they impact your business.
+            We don't wait for things to break. Our proactive methodology combines 24/7 monitoring, automated
+            maintenance, and strategic planning to keep your technology running smoothly and securely.
           </p>
           <p class="mt-4">
-            Our service is tailored to the unique needs of UK businesses, with special consideration for competitive
-            environments and high expectations for digital infrastructure.
+            Every client gets a dedicated account manager and access to our vCIO services — ensuring your IT strategy
+            aligns with your business goals and budget.
           </p>
           <ul class="list-none pl-4 mt-4">
             <li class="mb-2">
-              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Strategic IT planning aligned with your business
-              goals
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> 24/7 monitoring catches issues before they impact
+              you
             </li>
             <li class="mb-2">
-              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Proactive monitoring and maintenance
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Automated patching keeps systems secure
             </li>
             <li class="mb-2">
-              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Regular security audits and updates
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Quarterly business reviews & IT roadmap planning
             </li>
             <li class="mb-2">
-              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Transparent fixed monthly pricing
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Documented processes & knowledge base access
             </li>
             <li class="mb-2">
-              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Dedicated account manager for your business
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Regular security audits & compliance reporting
+            </li>
+            <li class="mb-2">
+              <div class="inline-block w-4 mr-2 text-right">&#8594;</div> Staff training to reduce security risks
             </li>
           </ul>
         </div>
 
         <div class="flex flex-wrap gap-4 mt-4">
-          <a href="/contact" class="btn btn-primary"> Request Support Quote </a>
+          <a href="/contact" class="btn btn-primary"> Request a Quote </a>
         </div>
       </div>
     </Fragment>
@@ -237,38 +410,69 @@ const metadata = {
 
   <FAQs
     title="Frequently Asked Questions"
-    subtitle="Get answers to common questions about our managed IT support services."
+    subtitle="Everything you need to know about our managed IT support services."
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Do you offer on-site support?',
-        description: "Yes. When remote assistance isn't sufficient, we can provide on-site support by arrangement.",
+        title: 'What is included in your managed IT support packages?',
+        description:
+          'Our comprehensive packages include help desk support, 24/7 monitoring, patch management, cybersecurity, backup management, Microsoft 365/Google Workspace administration, endpoint management, and strategic vCIO services. We tailor each package to your specific needs and budget.',
       },
       {
-        title: 'How do you handle UK data protection compliance?',
+        title: 'How does your pricing work?',
         description:
-          'We ensure all our services are fully compliant with UK GDPR and the Data Protection Act 2018. Our team includes certified data protection specialists who can help your business maintain compliance while implementing IT solutions.',
+          'We offer transparent, fixed monthly pricing based on your number of users and required services. There are no hidden costs — you know exactly what you pay each month. We offer packages suitable for businesses from 5 to 500+ users.',
       },
       {
-        title: 'Can you support businesses with hybrid work environments?',
+        title: 'Do you provide on-site support?',
         description:
-          'Absolutely. We support businesses with hybrid work environments, ensuring secure and efficient connectivity between office and remote workers. Our solutions include secure VPN setups, cloud collaboration tools, and endpoint security for remote devices.',
+          'Yes. While most issues are resolved remotely within minutes, we provide on-site support when needed — for hardware issues, office moves, new installations, or any situation where hands-on assistance is required.',
       },
       {
-        title: 'What are your support hours?',
+        title: 'What are your support hours and response times?',
         description:
-          'We offer 24/7/365 support for critical systems with guaranteed response times based on your service level agreement. Our standard business hours support operates from 8am to 6pm Monday to Friday, with extended options available.',
+          'Our help desk operates from 8am to 6pm Monday to Friday, with 24/7/365 monitoring and support available for critical issues. Response times depend on your SLA — premium clients receive a 15-minute response guarantee for critical issues.',
       },
       {
-        title: 'Do you offer support for specific industries?',
+        title: 'Can you help with compliance requirements like GDPR and Cyber Essentials?',
         description:
-          'Yes, we have specialised expertise in several key industries including financial services, legal, creative/media, healthcare, and professional services. We understand the unique IT requirements and compliance needs of each sector.',
+          'Absolutely. We have certified specialists in GDPR, Cyber Essentials, Cyber Essentials Plus, and ISO 27001. We can help you achieve certification, maintain compliance, and conduct regular security audits.',
       },
       {
-        title: 'How quickly can you respond to critical issues?',
+        title: 'Do you support remote and hybrid working setups?',
         description:
-          'For businesses on our premium support packages, we guarantee a 15-minute response time for critical issues, with on-site support available when required.',
+          'Yes. We specialise in secure remote work solutions including VPN configuration, remote desktop services, cloud collaboration tools, and endpoint security for home workers. We ensure your team can work securely from anywhere.',
+      },
+      {
+        title: 'What happens when an employee joins or leaves?',
+        description:
+          'We handle complete onboarding — account creation, device setup, software installation, and training. For leavers, we manage secure offboarding including access revocation, data backup, and device recovery to protect your business.',
+      },
+      {
+        title: 'Can you manage our Microsoft 365 or Google Workspace?',
+        description:
+          'Yes. We provide full administration of Microsoft 365 (Exchange, Teams, SharePoint, OneDrive) and Google Workspace. This includes user management, security configuration, migrations, and ongoing optimisation.',
+      },
+      {
+        title: 'Do you offer cybersecurity services?',
+        description:
+          'Security is at the core of everything we do. Our services include next-gen antivirus, EDR (Endpoint Detection & Response), SIEM monitoring, email security, phishing protection, security awareness training, and incident response.',
+      },
+      {
+        title: 'What if we already have some IT staff in-house?',
+        description:
+          'We work alongside internal IT teams as an extension of your department. We can handle specific areas like security or help desk, provide overflow support, or act as your strategic IT partner through our vCIO services.',
+      },
+      {
+        title: 'How do you handle IT procurement?',
+        description:
+          'We advise on and procure hardware and software on your behalf, leveraging our vendor relationships for competitive pricing. We ensure specifications match your needs and manage the entire procurement process.',
+      },
+      {
+        title: 'What is a Virtual CIO (vCIO)?',
+        description:
+          'A vCIO provides strategic IT leadership without the cost of a full-time executive. Our vCIO services include IT strategy development, technology roadmaps, budget planning, vendor management, and ensuring IT aligns with your business goals.',
       },
     ]}
   />

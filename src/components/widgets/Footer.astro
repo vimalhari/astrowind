@@ -140,9 +140,15 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
           <div class="p-4 rounded-xl bg-white/5 border border-white/10">
             <h3 class="text-white font-medium text-xs uppercase tracking-wider mb-2">Stay Updated</h3>
             <p class="text-slate-500 text-xs mb-3">Get insights delivered to your inbox.</p>
-            <form class="flex gap-2">
+            <form action="https://api.web3forms.com/submit" method="POST" class="flex gap-2">
+              <input type="hidden" name="access_key" value="ced19947-dbea-4cc7-8187-f3b698a668d2" />
+              <input type="hidden" name="subject" value="New Newsletter Subscription" />
+              <input type="hidden" name="from_name" value="Newsletter Signup" />
+              <input type="hidden" name="redirect" value="https://criztec.com/?subscribed=true" />
               <input
                 type="email"
+                name="email"
+                required
                 placeholder="Email"
                 class="flex-1 min-w-0 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-600 text-xs focus:outline-none focus:border-primary/50 transition-colors"
               />
