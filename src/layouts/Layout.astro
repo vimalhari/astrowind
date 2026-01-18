@@ -40,6 +40,17 @@ const { language, textDirection } = I18N;
     <Analytics />
     <GoogleAds />
 
+    <!-- Prevent flash of unstyled content -->
+    <style>
+      /* Critical CSS to prevent layout shift before styles load */
+      html {
+        background-color: #f8fafc;
+      }
+      html.dark {
+        background-color: #0f172a;
+      }
+    </style>
+
     <!-- Comment the line below to disable View Transitions -->
     <!-- <ViewTransitions /> -->
   </head>

@@ -9,6 +9,8 @@ import { UI } from 'criztec:config';
 
   window.basic_script = true;
 
+  // Theme is already applied by ApplyColorMode.astro in <head>
+  // This function is only used for toggle interactions, not initial load
   function applyTheme(theme) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -17,6 +19,8 @@ import { UI } from 'criztec:config';
     }
   }
 
+  // initTheme is only called on View Transitions navigation, not initial page load
+  // Initial theme is handled by ApplyColorMode.astro to prevent FOUC
   const initTheme = function () {
     if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
       applyTheme(defaultTheme.replace(':only', ''));
@@ -29,7 +33,7 @@ import { UI } from 'criztec:config';
       applyTheme('light');
     }
   };
-  initTheme();
+  // Removed: initTheme() - theme is already set by ApplyColorMode.astro in <head>
 
   function attachEvent(selector, event, fn) {
     const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
