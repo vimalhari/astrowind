@@ -6,6 +6,7 @@ import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Features from '~/components/widgets/Features.astro'; // Import Features for variety
+import BreadcrumbSchema from '~/components/common/BreadcrumbSchema.astro';
 
 // SEO Metadata: Enhanced metadata with structured data
 const metadata = {
@@ -78,6 +79,12 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <BreadcrumbSchema
+    items={[
+      { name: 'Home', url: '/' },
+      { name: 'About Us', url: '/about' },
+    ]}
+  />
   <!-- Hero Widget: Clear headline, engaging subtitle, relevant image -->
   <Hero
     tagline="About Us"

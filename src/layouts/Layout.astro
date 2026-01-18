@@ -14,6 +14,7 @@ import GoogleAds from '~/components/common/GoogleAds.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 import CookieConsent from '../components/common/CookieConsent.astro';
 import WhatsAppChat from '~/components/common/WhatsAppChat.astro'; // Import the WhatsApp chat component
+import SiteSchema from '~/components/common/SiteSchema.astro'; // Site-wide structured data
 
 // Comment the line below to disable View Transitions
 // import { ViewTransitions } from 'astro:transitions';
@@ -39,6 +40,7 @@ const { language, textDirection } = I18N;
     <SiteVerification />
     <Analytics />
     <GoogleAds />
+    <SiteSchema />
 
     <!-- Prevent flash of unstyled content -->
     <style>

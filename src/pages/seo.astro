@@ -6,6 +6,7 @@ import Hero from '~/components/widgets/Hero2.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import Faqs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
+import BreadcrumbSchema from '~/components/common/BreadcrumbSchema.astro';
 
 const metadata = {
   title: 'Expert SEO Services | Boost Your Rankings | Criztec Technologies',
@@ -64,6 +65,13 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <BreadcrumbSchema
+    items={[
+      { name: 'Home', url: '/' },
+      { name: 'Services', url: '/services' },
+      { name: 'SEO Services', url: '/seo' },
+    ]}
+  />
   <!-- Hero Widget -->
   <Hero
     overlapHeader={false}

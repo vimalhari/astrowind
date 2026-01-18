@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import ContactForm from '~/components/widgets/ContactForm.astro';
+import BreadcrumbSchema from '~/components/common/BreadcrumbSchema.astro';
 
 const metadata = {
   title: 'Contact Criztec Technologies | Web Development & Digital Marketing',
@@ -53,6 +54,12 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <BreadcrumbSchema
+    items={[
+      { name: 'Home', url: '/' },
+      { name: 'Contact Us', url: '/contact' },
+    ]}
+  />
   <!-- HeroText Widget ******************* -->
 
   <HeroText tagline="Contact" title="Want to discuss a project?" />

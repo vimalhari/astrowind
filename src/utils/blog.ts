@@ -55,9 +55,11 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     author,
     draft = false,
     metadata = {},
+    permalink: customPermalink,
   } = data;
 
-  const slug = cleanSlug(id); // cleanSlug(rawSlug.split('/').pop());
+  const normalizedPermalink = customPermalink ? trimSlash(customPermalink) : undefined;
+  const slug = cleanSlug(normalizedPermalink || id); // cleanSlug(rawSlug.split('/').pop());
   const publishDate = new Date(rawPublishDate);
   const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
 
@@ -76,7 +78,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   return {
     id: id,
     slug: slug,
-    permalink: await generatePermalink({ id, slug, publishDate, category: category?.slug }),
+    permalink: normalizedPermalink || (await generatePermalink({ id, slug, publishDate, category: category?.slug })),
 
     publishDate: publishDate,
     updateDate: updateDate,

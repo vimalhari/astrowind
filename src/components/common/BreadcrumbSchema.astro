@@ -1,0 +1,35 @@
+---
+/**
+ * BreadcrumbSchema.astro
+ * Generates BreadcrumbList structured data for better SERP display
+ * Usage: <BreadcrumbSchema items={[{name: 'Home', url: '/'}, {name: 'Services', url: '/services'}]} />
+ */
+
+import { SITE } from 'criztec:config';
+
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+export interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+const siteUrl = SITE?.site || 'https://criztec.com';
+
+// Generate BreadcrumbList schema
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: item.url.startsWith('http') ? item.url : `${siteUrl}${item.url}`,
+  })),
+};
+---
+
+{items.length > 0 && <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}

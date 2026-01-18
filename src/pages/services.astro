@@ -2,6 +2,7 @@
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Hero from '~/components/widgets/Hero2.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import BreadcrumbSchema from '~/components/common/BreadcrumbSchema.astro';
 
 const serviceGroups = [
   {
@@ -200,6 +201,12 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <BreadcrumbSchema
+    items={[
+      { name: 'Home', url: '/' },
+      { name: 'Services', url: '/services' },
+    ]}
+  />
   <!-- Hero Widget ******************* -->
 
   <Hero

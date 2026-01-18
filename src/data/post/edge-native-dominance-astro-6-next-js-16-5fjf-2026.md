@@ -1,5 +1,6 @@
 ---
 publishDate: 2026-01-18T09:02:06.012Z
+permalink: edge-native-dominance-astro-6-next-js-16-5fjf
 title: 'Edge-Native Dominance: Astro 6 & Next.js 16.1 Redefine 2026 Web Stacks'
 excerpt: "The Cloudflare-Astro merger and Next.js 16.1's innovations herald an architectural shift towards frameworks inseparable from their edge runtime, making edge-native the default."
 image: https://pub-693f7baf8984450ca2a6a42eec72bd69.r2.dev/edge-native-dominance-astro-6-next-js-16-5fjf.webp

@@ -1,0 +1,141 @@
+---
+/**
+ * SiteSchema.astro
+ * Adds WebSite schema with Sitelinks Search Box for Google
+ * This enables the search box to appear directly in Google search results
+ */
+
+import { SITE } from 'criztec:config';
+
+const siteUrl = SITE?.site || 'https://criztec.com';
+
+// WebSite Schema with SearchAction for Sitelinks Search Box
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Criztec Technologies',
+  alternateName: ['Criztec', 'Criztec Tech'],
+  url: siteUrl,
+  description:
+    'Expert web & software development (Astro, Ruby on Rails, Django) and business automation with n8n for teams in the UK, Europe, and worldwide.',
+  publisher: {
+    '@type': 'Organization',
+    name: 'Criztec Technologies',
+    url: siteUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/CriztecLogo.png`,
+      width: 512,
+      height: 512,
+    },
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/blog?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+  inLanguage: 'en-GB',
+};
+
+// Organization Schema (enhanced version)
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  name: 'Criztec Technologies',
+  url: siteUrl,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${siteUrl}/CriztecLogo.png`,
+    width: 512,
+    height: 512,
+  },
+  image: `${siteUrl}/CriztecLogo.png`,
+  description:
+    'UK-based web & software development company specializing in Astro, Ruby on Rails, Django, and business automation with n8n.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '121 Bath Road',
+    addressLocality: 'Slough',
+    addressRegion: 'Berkshire',
+    postalCode: 'SL1 3UW',
+    addressCountry: 'GB',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 51.5105,
+    longitude: -0.5906,
+  },
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: '+44-740-4979-307',
+      contactType: 'customer service',
+      areaServed: ['GB', 'EU', 'Worldwide'],
+      availableLanguage: 'English',
+    },
+    {
+      '@type': 'ContactPoint',
+      email: 'info@criztec.com',
+      contactType: 'sales',
+    },
+  ],
+  sameAs: ['https://twitter.com/Criztec_IT', 'https://www.linkedin.com/company/criztec-technologies'],
+  foundingDate: '2020',
+  founders: [
+    {
+      '@type': 'Person',
+      name: 'Criztec Technologies Team',
+    },
+  ],
+  numberOfEmployees: {
+    '@type': 'QuantitativeValue',
+    minValue: 10,
+    maxValue: 50,
+  },
+  slogan: 'Building Digital Excellence',
+  knowsAbout: [
+    'Web Development',
+    'Software Development',
+    'Astro',
+    'Ruby on Rails',
+    'Django',
+    'Business Automation',
+    'n8n',
+    'Digital Marketing',
+    'SEO',
+  ],
+  makesOffer: [
+    {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: 'Web Development',
+      },
+    },
+    {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: 'Business Automation',
+      },
+    },
+    {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: 'Digital Marketing',
+      },
+    },
+  ],
+};
+---
+
+<!-- WebSite Schema for Sitelinks Search Box -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+<!-- Organization Schema -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />

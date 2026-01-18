@@ -6,6 +6,7 @@ import Features3 from '~/components/widgets/Features3.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import BreadcrumbSchema from '~/components/common/BreadcrumbSchema.astro';
 
 const metadata = {
   title: 'Pricing | Criztec Technologies',
@@ -17,10 +18,68 @@ const metadata = {
     type: 'website',
     locale: 'en_GB',
   },
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Digital Marketing Partner Plans',
+    description: 'Flexible digital marketing packages including SEO, social media management, and web support.',
+    brand: {
+      '@type': 'Organization',
+      name: 'Criztec Technologies',
+    },
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Essentials',
+        description: '10 hours per month - SEO, Website Updates, Quarterly Reports',
+        price: '500',
+        priceCurrency: 'GBP',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        url: 'https://criztec.com/pricing',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Standard',
+        description: '18 hours per month - SEO, Website Updates, Social Media, Bi-Monthly Reports',
+        price: '900',
+        priceCurrency: 'GBP',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        url: 'https://criztec.com/pricing',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Business',
+        description: '24 hours per month - Full digital marketing suite with Google Ads',
+        price: '1200',
+        priceCurrency: 'GBP',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        url: 'https://criztec.com/pricing',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Business+',
+        description: '35 hours per month - Premium package with CRM support and design',
+        price: '1750',
+        priceCurrency: 'GBP',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        url: 'https://criztec.com/pricing',
+      },
+    ],
+  },
 };
 ---
 
 <Layout metadata={metadata}>
+  <BreadcrumbSchema
+    items={[
+      { name: 'Home', url: '/' },
+      { name: 'Pricing', url: '/pricing' },
+    ]}
+  />
   <!-- HeroText Widget ******************* -->
 
   <Hero

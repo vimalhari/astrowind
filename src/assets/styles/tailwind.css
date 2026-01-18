@@ -157,16 +157,19 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(8px);
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0.2s;
   }
-  
+
   .dropdown:hover .dropdown-menu,
   .dropdown:focus-within .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
-  
+
   /* Rotate arrow on hover for desktop */
   .dropdown:hover .dropdown-toggle svg,
   .dropdown:focus-within .dropdown-toggle svg {
