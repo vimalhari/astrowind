@@ -48,24 +48,81 @@ import { UI } from 'criztec:config';
     let lastKnownScrollPosition = window.scrollY;
     let ticking = true;
 
-    attachEvent('#header nav', 'click', function () {
-      document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
+    function resetDropdowns() {
+      document.querySelectorAll('#header nav .dropdown.open').forEach((el) => el.classList.remove('open'));
+    }
+
+    function closeMobileMenu() {
+      const toggleBtn = document.querySelector('[data-aw-toggle-menu]');
+      if (toggleBtn) toggleBtn.classList.remove('expanded');
       document.body.classList.remove('overflow-hidden');
-      document.getElementById('header')?.classList.remove('h-screen');
-      document.getElementById('header')?.classList.remove('expanded');
-      document.getElementById('header')?.classList.remove('bg-page');
-      document.querySelector('#header nav')?.classList.add('hidden');
-      document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
+      const header = document.getElementById('header');
+      if (header) {
+        header.classList.remove('h-screen');
+        header.classList.remove('expanded');
+      }
+      const nav = document.querySelector('#header nav');
+      if (nav) nav.classList.add('hidden');
+      resetDropdowns();
+    }
+
+    attachEvent('#header nav', 'click', function (e) {
+      const target = e?.target;
+      if (!target) return;
+
+      if (target.closest?.('.dropdown-toggle')) return;
+
+      const link = target.closest?.('a[href]');
+      if (!link) return;
+
+      closeMobileMenu();
     });
 
     attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
-      elem.classList.toggle('expanded');
-      document.body.classList.toggle('overflow-hidden');
-      document.getElementById('header')?.classList.toggle('h-screen');
-      document.getElementById('header')?.classList.toggle('expanded');
-      document.getElementById('header')?.classList.toggle('bg-page');
-      document.querySelector('#header nav')?.classList.toggle('hidden');
-      document.querySelector('#header > div > div:last-child')?.classList.toggle('hidden');
+      const isExpanded = elem.classList.contains('expanded');
+
+      if (isExpanded) {
+        closeMobileMenu();
+      } else {
+        elem.classList.add('expanded');
+        document.body.classList.add('overflow-hidden');
+        document.getElementById('header')?.classList.add('h-screen');
+        document.getElementById('header')?.classList.add('expanded');
+        document.querySelector('#header nav')?.classList.remove('hidden');
+      }
+    });
+
+    // Mobile dropdown toggle - only for touch/click on mobile
+    attachEvent('#header nav .dropdown-toggle', 'click', function (e, elem) {
+      // Only handle on mobile (< 768px)
+      if (window.innerWidth >= 768) return;
+
+      e?.preventDefault?.();
+      e?.stopPropagation?.();
+
+      const dropdown = elem.closest?.('.dropdown');
+      if (!dropdown) return;
+
+      const willOpen = !dropdown.classList.contains('open');
+
+      // Close other dropdowns
+      dropdown.parentElement?.querySelectorAll?.('.dropdown.open')?.forEach((node) => {
+        if (node !== dropdown) node.classList.remove('open');
+      });
+
+      dropdown.classList.toggle('open', willOpen);
+    });
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        const toggleBtn = document.querySelector('[data-aw-toggle-menu]');
+        if (toggleBtn?.classList.contains('expanded')) {
+          closeMobileMenu();
+        } else {
+          resetDropdowns();
+        }
+      }
     });
 
     attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
@@ -111,13 +168,7 @@ import { UI } from 'criztec:config';
 
     const screenSize = window.matchMedia('(max-width: 767px)');
     screenSize.addEventListener('change', function () {
-      document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
-      document.body.classList.remove('overflow-hidden');
-      document.getElementById('header')?.classList.remove('h-screen');
-      document.getElementById('header')?.classList.remove('expanded');
-      document.getElementById('header')?.classList.remove('bg-page');
-      document.querySelector('#header nav')?.classList.add('hidden');
-      document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
+      closeMobileMenu();
     });
 
     function applyHeaderStylesOnScroll() {
@@ -153,6 +204,7 @@ import { UI } from 'criztec:config';
     document.getElementById('header')?.classList.remove('h-screen');
     document.getElementById('header')?.classList.remove('expanded');
     document.querySelector('#header nav')?.classList.add('hidden');
+    document.querySelectorAll('#header nav .dropdown.open').forEach((el) => el.classList.remove('open'));
   };
 
   window.onload = onLoad;
